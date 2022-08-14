@@ -24,25 +24,39 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
     retsteps = {};
     retmap = mapfile;
     
+   %init array with 4 local values based on location
+   
+   yloc = visting(1);
+   xloc = visting(2);
+   checkingNextPos = {[yloc,xloc],[yloc,xloc],[yloc,xloc],[yloc,xloc]};
+    
     while (visiting ~= targetlocation)
-        yloc = visting(1);
-        xloc = visting(2);
+        
         
         % 1.place step on the map
         retvisited(yloc,xloc)=0;
         
-        % 2. in another loop Compare location of N,S,E,W using the retmap 
-        checkingNextPos = {};
-        if (xloc > 0 && xloc < mapsize(2))
-         checkingNextPos(1,1)=[yloc,xloc-1];
-         checkingNextPos(1,3)=[yloc,xloc+1];
+        % 2. in another loop Compare location of N,S,E,W using the retmap
+        
+        % checks if hitting the left border
+        if (xloc > 1)
+         checkingNextPos(1,1)=[yloc,xloc-1]; %move left
         end
         
-        if (yloc > 0 && yloc < mapsize(1))
-         checkingNextPos(1,2)=[yloc+1,xloc];
-         checkingNextPos(1,4)=[yloc-1,xloc];
+        % checks if hitting the right border
+        if (xloc < mapsize(2))
+            checkingNextPos(1,3)=[yloc,xloc+1]; %move right
         end
-
+        
+        % checks if hitting the bottom border
+        if (yloc < mapsize(1))  
+         checkingNextPos(1,2)=[yloc+1,xloc]; % move down
+        end
+        
+        %checks if hitting the top border
+        if(yloc > 1)    
+            checkingNextPos(1,4)=[yloc-1,xloc]; %move up
+        end
         
         % if out of bounds ie: wall, nonexistant col/row, visited -->
         % ignore
@@ -63,8 +77,10 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
         % 4.Take location from top of stack & add to resteps & visiting
         % 5. update retvisited map file based on visited location
         % 6. update node value
-x
-        
+
+        %update for next iteration
+        yloc = visting(1);
+        xloc = visting(2);
         
 
     end
