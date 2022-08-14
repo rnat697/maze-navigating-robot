@@ -1,0 +1,8 @@
+--------------- Build Started: 04/21/2019 13:14:25 Project: lab4, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\npat025\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\npat025\Dropbox (Uni of Auckland)\cs301_2018\psoc student pack\lab exercise\psoc_intro 4.0\lab4.cydsn\lab4.cyprj" -d CY8C5888LTI-LP097 -s "C:\Users\npat025\Dropbox (Uni of Auckland)\cs301_2018\psoc student pack\lab exercise\psoc_intro 4.0\lab4.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+ADD: sdb.M0033: error: The instance 'USBUART', of component USBFS_v3_0, contains an error. Unable to locate and customize component 'USBFS_v3_0' used in schematic 'C:\Users\npat025\Dropbox (Uni of Auckland)\cs301_2018\psoc student pack\lab exercise\psoc_intro 4.0\lab4.cydsn\TopDesign\TopDesign.cysch'.
+ *  (Component Update Tool)
+ * C:\Users\npat025\Dropbox (Uni of Auckland)\cs301_2018\psoc student pack\lab exercise\psoc_intro 4.0\lab4.cydsn\TopDesign\TopDesign.cysch (Instance:USBUART)
+Error: fit.M0050: The fitter aborted due to errors, please address all errors and rebuild. (App=cydsfit)
+--------------- Build Failed: 04/21/2019 13:14:35 ---------------

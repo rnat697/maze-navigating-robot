@@ -1,0 +1,24 @@
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/ARM_GCC_541/Debug/cyfitter_cfg.o : //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CyFlash.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CyLib.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CySpc.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyPm.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cydevice.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cydevice_trm.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter_cfg.c //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cytypes.h //files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/cyapicallbacks.h 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CyFlash.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CyLib.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/CySpc.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyPm.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cydevice.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter_cfg.c : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/Generated_Source/PSoC5/cytypes.h : 
+
+//files.auckland.ac.nz/myhome/Desktop/COMPSYS\ 301/psoc\ student\ pack/psoc\ student\ pack/lab\ exercise/psoc_intro\ 4.0/lab2.cydsn/cyapicallbacks.h : 
+

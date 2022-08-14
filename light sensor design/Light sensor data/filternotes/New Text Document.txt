@@ -1,0 +1,14 @@
+w, comes from the function generator.
+
+
+
+
+Suggestion
+Problem is sensor + filter,
+
+
+opamp not ideal
+characteristics
+output voltage doesnt go to +-15 , if you operate from 0-5vif opamp ahs large band the swing would be small,
+
+There are opamps with rail to rail and should be picked.  

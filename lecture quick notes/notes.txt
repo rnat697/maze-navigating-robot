@@ -1,0 +1,35 @@
+projector gives analogue signal of light,
+sends out black and white light.
+
+Read analogue signal into psoc, will need to use a digital filter, amplification
+will need 7 for 7 sensors, trade off versus processing time.
+
+More that is soldered more precision is needed to solder on the reference voltages.
+
+
+
+
+Motor
+inductance and resistance, connect multimeter to two terminals in motor u will measure resistance in the the motor,dc multimeter gives measurement of resistor, ac will give you something better?\
+
+
+
+Drive current into motor, to make it spin, if u mechanically drive the shaft(move it) produces a voltage,lens law change in field electrical potential. THis voltage is called back emf if the motor.
+
+Starting it off the first time,if u apply the full 12 v at the start  a large burst of current going through that current is exactly equal to V/r in the circuit. Its necessary to make the motor spin.
+
+Peak current max of 1.5A to get it going.
+
+Turning
+slow one motor down while other.
+
+How to vary voltage digitally
+PWM,changing duty cycle how long u switch something on and off.
+psoc has a PWM value adjust compare value,
+
+
+
+
+Psoc design is already done located in file lecture is 5/07/22 9:36
+
+

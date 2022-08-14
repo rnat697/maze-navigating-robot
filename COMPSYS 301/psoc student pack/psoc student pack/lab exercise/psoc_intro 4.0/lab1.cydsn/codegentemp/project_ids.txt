@@ -1,0 +1,9 @@
+\\files.auckland.ac.nz\myhome\Documents\GitHub\COMPSYS-301-Robot\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab3.cydsn\lab3.cyprj|54f79652-c6e6-4186-ad0f-126fe9e00d97
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|7793f397-fa9c-4526-84ec-0cc7ba4d98e1
+\\files.auckland.ac.nz\myhome\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|88b38489-f24f-447c-94ee-f9b460f30490
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d5e48a37-9ccb-461a-808b-e7c172cd1d68
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|4b919977-7fe5-406d-9310-07f0717e04bc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|83934059-d964-44e8-8131-0ac63980b899
+\\files.auckland.ac.nz\myhome\Documents\GitHub\COMPSYS-301-Robot\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab4.cydsn\lab4.cyprj|a93b7120-3762-4e3f-b806-fd710f098e86
+\\files.auckland.ac.nz\myhome\Documents\GitHub\COMPSYS-301-Robot\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab2.cydsn\lab2.cyprj|f9c33411-0c4e-445d-8538-5739facbc3f2
+\\files.auckland.ac.nz\myhome\Documents\GitHub\COMPSYS-301-Robot\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab1.cydsn\lab1.cyprj|33d8cd06-65a7-4dc8-b6c1-1fb6f5f61df2

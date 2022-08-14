@@ -1,0 +1,19 @@
+
+cell = {[1,2],[3,4],[5,6]};
+array = [2,2];
+putontop(cell,array);
+
+% puts node ontop top of stack and push all back
+function[modcell]= putontop(cell,array)
+    %array is node wanting to be put
+    %cell is the full stack(queue)
+modcell={1,length(cell)+1};
+modcell{1,1}= array;
+
+x = length(cell);
+
+    %takes array
+    for i = 1:x
+        modcell{1,i+1}=array
+
+end
