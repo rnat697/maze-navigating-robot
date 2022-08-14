@@ -40,22 +40,22 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
         
         % checks if hitting the left border
         if (xloc > 1)
-         checkingNextPos(1,1)=[yloc,xloc-1]; %move left
+         checkingNextPos{1,1}=[yloc,xloc-1]; %move left
         end
         
         % checks if hitting the right border
         if (xloc < mapsize(2))
-            checkingNextPos(1,3)=[yloc,xloc+1]; %move right
+            checkingNextPos{1,3}=[yloc,xloc+1]; %move right
         end
         
         % checks if hitting the bottom border
         if (yloc < mapsize(1))  
-         checkingNextPos(1,2)=[yloc+1,xloc]; % move down
+         checkingNextPos{1,2}=[yloc+1,xloc]; % move down
         end
         
         %checks if hitting the top border
         if(yloc > 1)    
-            checkingNextPos(1,4)=[yloc-1,xloc]; %move up
+            checkingNextPos{1,4}=[yloc-1,xloc]; %move up
         end
         
         % if out of bounds ie: wall, nonexistant col/row, visited -->
