@@ -1,9 +1,9 @@
 
 cell = {[1,2],[3,4],[5,6]};
-pop1(cell);
+[array,val]=pop1(cell)
 
 
-function[array]= pop1(poparray)
+function[array, value]= pop1(poparray)
 array={1,length(poparray)-1};
 poparray{1,1}= [0,0];
 
@@ -17,7 +17,7 @@ x = length(poparray);
 
     %cuts array
     for i= 1:x-1
-        array{1,i} = poparray{1,i};
+        array{1,i} = poparray{1,i}
     end
 
 end
