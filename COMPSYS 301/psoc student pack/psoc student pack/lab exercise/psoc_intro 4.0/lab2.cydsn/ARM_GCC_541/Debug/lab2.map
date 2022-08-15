@@ -740,7 +740,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3737
+.debug_info     0x00000000     0x3759
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0xe4 .\ARM_GCC_541\Debug\main.o
  .debug_info    0x000000e4      0x46e .\ARM_GCC_541\Debug\cyfitter_cfg.o
@@ -749,9 +749,9 @@ END GROUP
  .debug_info    0x00000a41     0x1374 .\ARM_GCC_541\Debug\lab2.a(CyLib.o)
  .debug_info    0x00001db5      0xa2a .\ARM_GCC_541\Debug\lab2.a(cyPm.o)
  .debug_info    0x000027df      0x2f0 .\ARM_GCC_541\Debug\lab2.a(Timer_1.o)
- .debug_info    0x00002acf       0xcb .\ARM_GCC_541\Debug\lab2.a(CyBootAsmGnu.o)
- .debug_info    0x00002b9a      0x64d .\ARM_GCC_541\Debug\lab2.a(CyFlash.o)
- .debug_info    0x000031e7      0x550 .\ARM_GCC_541\Debug\lab2.a(CySpc.o)
+ .debug_info    0x00002acf       0xed .\ARM_GCC_541\Debug\lab2.a(CyBootAsmGnu.o)
+ .debug_info    0x00002bbc      0x64d .\ARM_GCC_541\Debug\lab2.a(CyFlash.o)
+ .debug_info    0x00003209      0x550 .\ARM_GCC_541\Debug\lab2.a(CySpc.o)
 
 .debug_abbrev   0x00000000      0xd29
  *(.debug_abbrev)
@@ -795,26 +795,26 @@ END GROUP
  .debug_frame   0x00000f94       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .debug_frame   0x00000fbc       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x1475
+.debug_str      0x00000000     0x1497
  *(.debug_str)
- .debug_str     0x00000000      0x1a7 .\ARM_GCC_541\Debug\main.o
-                                0x1ef (size before relaxing)
- .debug_str     0x000001a7      0x169 .\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x32c (size before relaxing)
- .debug_str     0x00000310       0x7f .\ARM_GCC_541\Debug\cymetadata.o
-                                0x21f (size before relaxing)
- .debug_str     0x0000038f      0x144 .\ARM_GCC_541\Debug\Cm3Start.o
-                                0x345 (size before relaxing)
- .debug_str     0x000004d3      0x845 .\ARM_GCC_541\Debug\lab2.a(CyLib.o)
-                                0xa82 (size before relaxing)
- .debug_str     0x00000d18      0x365 .\ARM_GCC_541\Debug\lab2.a(cyPm.o)
-                                0x76e (size before relaxing)
- .debug_str     0x0000107d      0x191 .\ARM_GCC_541\Debug\lab2.a(Timer_1.o)
-                                0x39a (size before relaxing)
- .debug_str     0x0000120e      0x1bb .\ARM_GCC_541\Debug\lab2.a(CyFlash.o)
-                                0x3fb (size before relaxing)
- .debug_str     0x000013c9       0xac .\ARM_GCC_541\Debug\lab2.a(CySpc.o)
-                                0x373 (size before relaxing)
+ .debug_str     0x00000000      0x1c9 .\ARM_GCC_541\Debug\main.o
+                                0x211 (size before relaxing)
+ .debug_str     0x000001c9      0x169 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x34e (size before relaxing)
+ .debug_str     0x00000332       0x7f .\ARM_GCC_541\Debug\cymetadata.o
+                                0x241 (size before relaxing)
+ .debug_str     0x000003b1      0x144 .\ARM_GCC_541\Debug\Cm3Start.o
+                                0x367 (size before relaxing)
+ .debug_str     0x000004f5      0x845 .\ARM_GCC_541\Debug\lab2.a(CyLib.o)
+                                0xaa4 (size before relaxing)
+ .debug_str     0x00000d3a      0x365 .\ARM_GCC_541\Debug\lab2.a(cyPm.o)
+                                0x790 (size before relaxing)
+ .debug_str     0x0000109f      0x191 .\ARM_GCC_541\Debug\lab2.a(Timer_1.o)
+                                0x3bc (size before relaxing)
+ .debug_str     0x00001230      0x1bb .\ARM_GCC_541\Debug\lab2.a(CyFlash.o)
+                                0x41d (size before relaxing)
+ .debug_str     0x000013eb       0xac .\ARM_GCC_541\Debug\lab2.a(CySpc.o)
+                                0x395 (size before relaxing)
 
 .debug_loc      0x00000000     0x19da
  *(.debug_loc)
@@ -915,4 +915,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(\\files.auckland.ac.nz\myhome\Desktop\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab2.cydsn\ARM_GCC_541\Debug\lab2.elf elf32-littlearm)
+OUTPUT(\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\lab exercise\psoc_intro 4.0\lab2.cydsn\ARM_GCC_541\Debug\lab2.elf elf32-littlearm)

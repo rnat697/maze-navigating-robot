@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
   28:Generated_Source\PSoC5/isr_TC.c **** ********************************************************************************/
   29:Generated_Source\PSoC5/isr_TC.c **** /* `#START isr_TC_intc` */
   30:Generated_Source\PSoC5/isr_TC.c **** #include <project.h>
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 2
 
 
   31:Generated_Source\PSoC5/isr_TC.c **** /* `#END` */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
   85:Generated_Source\PSoC5/isr_TC.c **** *  the interrupt to the interrupt controller.
   86:Generated_Source\PSoC5/isr_TC.c **** *  
   87:Generated_Source\PSoC5/isr_TC.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 3
 
 
   88:Generated_Source\PSoC5/isr_TC.c **** *  used to provide consistent definition across compilers:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  142:Generated_Source\PSoC5/isr_TC.c **** 
  143:Generated_Source\PSoC5/isr_TC.c **** 
  144:Generated_Source\PSoC5/isr_TC.c **** /*******************************************************************************
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 4
 
 
  145:Generated_Source\PSoC5/isr_TC.c **** * Function Name: isr_TC_Interrupt
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  172:Generated_Source\PSoC5/isr_TC.c **** 
  173:Generated_Source\PSoC5/isr_TC.c **** 
  174:Generated_Source\PSoC5/isr_TC.c **** /*******************************************************************************
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 5
 
 
  175:Generated_Source\PSoC5/isr_TC.c **** * Function Name: isr_TC_SetVector
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
   76              		.align	2
   77              		.global	isr_TC_GetVector
   78              		.thumb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 6
 
 
   79              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  108              	isr_TC_SetPriority:
  109              	.LFB69:
  233:Generated_Source\PSoC5/isr_TC.c **** 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 7
 
 
  234:Generated_Source\PSoC5/isr_TC.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  136              	isr_TC_GetPriority:
  137              	.LFB70:
  262:Generated_Source\PSoC5/isr_TC.c **** }
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 8
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 8
 
 
  263:Generated_Source\PSoC5/isr_TC.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  165              	.LFB71:
  290:Generated_Source\PSoC5/isr_TC.c **** 
  291:Generated_Source\PSoC5/isr_TC.c **** 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 9
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 9
 
 
  292:Generated_Source\PSoC5/isr_TC.c **** /*******************************************************************************
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  321:Generated_Source\PSoC5/isr_TC.c **** *
  322:Generated_Source\PSoC5/isr_TC.c **** * Parameters:
  323:Generated_Source\PSoC5/isr_TC.c **** *   None
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 10
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 10
 
 
  324:Generated_Source\PSoC5/isr_TC.c **** *
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  217              		.loc 1 351 0
  218              		.cfi_startproc
  219              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 11
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 11
 
 
  220              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  267              	.L26:
  268 0018 00000000 		.word	isr_TC_Interrupt
  269              		.cfi_endproc
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 12
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 12
 
 
  270              	.LFE63:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  318              		@ args = 0, pretend = 0, frame = 0
  319              		@ frame_needed = 0, uses_anonymous_args = 0
  320 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 13
 
 
  321              		.cfi_def_cfa_offset 8
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  348              		.cfi_startproc
  349              		@ args = 0, pretend = 0, frame = 0
  350              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 14
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 14
 
 
  351              		@ link register save eliminated.
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  379 0002 014B     		ldr	r3, .L38
  380 0004 1A60     		str	r2, [r3]
  381 0006 7047     		bx	lr
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 15
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 15
 
 
  382              	.L39:
@@ -864,8 +864,8 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  402 000b 01       		.uleb128 0x1
  403 000c A1000000 		.4byte	.LASF38
  404 0010 0C       		.byte	0xc
- 405 0011 2D020000 		.4byte	.LASF39
- 406 0015 A4020000 		.4byte	.LASF40
+ 405 0011 CC020000 		.4byte	.LASF39
+ 406 0015 2F010000 		.4byte	.LASF40
  407 0019 00000000 		.4byte	.Ldebug_ranges0+0
  408 001d 00000000 		.4byte	0
  409 0021 00000000 		.4byte	.Ldebug_line0
@@ -876,19 +876,19 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  414 002c 03       		.uleb128 0x3
  415 002d 04       		.byte	0x4
  416 002e 07       		.byte	0x7
- 417 002f BB010000 		.4byte	.LASF0
+ 417 002f 5A020000 		.4byte	.LASF0
  418 0033 03       		.uleb128 0x3
  419 0034 08       		.byte	0x8
  420 0035 05       		.byte	0x5
- 421 0036 1F020000 		.4byte	.LASF1
+ 421 0036 BE020000 		.4byte	.LASF1
  422 003a 03       		.uleb128 0x3
  423 003b 08       		.byte	0x8
  424 003c 04       		.byte	0x4
- 425 003d 8B020000 		.4byte	.LASF2
+ 425 003d 2A030000 		.4byte	.LASF2
  426 0041 03       		.uleb128 0x3
  427 0042 01       		.byte	0x1
  428 0043 06       		.byte	0x6
- 429 0044 F4010000 		.4byte	.LASF3
+ 429 0044 93020000 		.4byte	.LASF3
  430 0048 03       		.uleb128 0x3
  431 0049 01       		.byte	0x1
  432 004a 08       		.byte	0x8
@@ -896,14 +896,14 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  434 004f 03       		.uleb128 0x3
  435 0050 02       		.byte	0x2
  436 0051 05       		.byte	0x5
- 437 0052 61020000 		.4byte	.LASF5
+ 437 0052 00030000 		.4byte	.LASF5
  438 0056 03       		.uleb128 0x3
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 16
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 16
 
 
  439 0057 02       		.byte	0x2
  440 0058 07       		.byte	0x7
- 441 0059 69010000 		.4byte	.LASF6
+ 441 0059 08020000 		.4byte	.LASF6
  442 005d 04       		.uleb128 0x4
  443 005e 23000000 		.4byte	.LASF12
  444 0062 02       		.byte	0x2
@@ -912,39 +912,39 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  447 0068 03       		.uleb128 0x3
  448 0069 04       		.byte	0x4
  449 006a 05       		.byte	0x5
- 450 006b 82020000 		.4byte	.LASF7
+ 450 006b 21030000 		.4byte	.LASF7
  451 006f 03       		.uleb128 0x3
  452 0070 04       		.byte	0x4
  453 0071 07       		.byte	0x7
- 454 0072 57010000 		.4byte	.LASF8
+ 454 0072 F6010000 		.4byte	.LASF8
  455 0076 03       		.uleb128 0x3
  456 0077 08       		.byte	0x8
  457 0078 07       		.byte	0x7
- 458 0079 D0010000 		.4byte	.LASF9
+ 458 0079 6F020000 		.4byte	.LASF9
  459 007d 03       		.uleb128 0x3
  460 007e 04       		.byte	0x4
  461 007f 07       		.byte	0x7
- 462 0080 16020000 		.4byte	.LASF10
+ 462 0080 B5020000 		.4byte	.LASF10
  463 0084 03       		.uleb128 0x3
  464 0085 01       		.byte	0x1
  465 0086 08       		.byte	0x8
- 466 0087 4D020000 		.4byte	.LASF11
+ 466 0087 EC020000 		.4byte	.LASF11
  467 008b 05       		.uleb128 0x5
  468 008c 04       		.byte	0x4
  469 008d 91000000 		.4byte	0x91
  470 0091 06       		.uleb128 0x6
  471 0092 04       		.uleb128 0x4
- 472 0093 0E020000 		.4byte	.LASF13
+ 472 0093 AD020000 		.4byte	.LASF13
  473 0097 03       		.byte	0x3
  474 0098 2C       		.byte	0x2c
  475 0099 5D000000 		.4byte	0x5d
  476 009d 07       		.uleb128 0x7
- 477 009e 6B020000 		.4byte	.LASF14
+ 477 009e 0A030000 		.4byte	.LASF14
  478 00a2 04       		.byte	0x4
  479 00a3 E401     		.2byte	0x1e4
  480 00a5 48000000 		.4byte	0x48
  481 00a9 07       		.uleb128 0x7
- 482 00aa B4010000 		.4byte	.LASF15
+ 482 00aa 53020000 		.4byte	.LASF15
  483 00ae 04       		.byte	0x4
  484 00af E601     		.2byte	0x1e6
  485 00b1 6F000000 		.4byte	0x6f
@@ -955,10 +955,10 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  490 00bc 03       		.uleb128 0x3
  491 00bd 08       		.byte	0x8
  492 00be 04       		.byte	0x4
- 493 00bf A4010000 		.4byte	.LASF17
+ 493 00bf 43020000 		.4byte	.LASF17
  494 00c3 07       		.uleb128 0x7
- 495 00c4 2F010000 		.4byte	.LASF18
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 17
+ 495 00c4 CE010000 		.4byte	.LASF18
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 17
 
 
  496 00c8 04       		.byte	0x4
@@ -974,7 +974,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  506 00e0 08       		.uleb128 0x8
  507 00e1 A9000000 		.4byte	0xa9
  508 00e5 07       		.uleb128 0x7
- 509 00e6 E7010000 		.4byte	.LASF20
+ 509 00e6 86020000 		.4byte	.LASF20
  510 00ea 04       		.byte	0x4
  511 00eb A002     		.2byte	0x2a0
  512 00ed 8B000000 		.4byte	0x8b
@@ -995,7 +995,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  527 0114 1A030000 		.4byte	0x31a
  528 0118 00       		.byte	0
  529 0119 09       		.uleb128 0x9
- 530 011a 71020000 		.4byte	.LASF22
+ 530 011a 10030000 		.4byte	.LASF22
  531 011e 01       		.byte	0x1
  532 011f C9       		.byte	0xc9
  533 0120 00000000 		.4byte	.LFB67
@@ -1004,21 +1004,21 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  536 0129 9C       		.byte	0x9c
  537 012a 49010000 		.4byte	0x149
  538 012e 0B       		.uleb128 0xb
- 539 012f C8010000 		.4byte	.LASF25
+ 539 012f 67020000 		.4byte	.LASF25
  540 0133 01       		.byte	0x1
  541 0134 C9       		.byte	0xc9
  542 0135 E5000000 		.4byte	0xe5
  543 0139 01       		.uleb128 0x1
  544 013a 50       		.byte	0x50
  545 013b 0C       		.uleb128 0xc
- 546 013c 52020000 		.4byte	.LASF23
+ 546 013c F1020000 		.4byte	.LASF23
  547 0140 01       		.byte	0x1
  548 0141 CB       		.byte	0xcb
  549 0142 49010000 		.4byte	0x149
  550 0146 01       		.uleb128 0x1
  551 0147 53       		.byte	0x53
  552 0148 00       		.byte	0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 18
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 18
 
 
  553 0149 05       		.uleb128 0x5
@@ -1035,7 +1035,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  564 0163 9C       		.byte	0x9c
  565 0164 76010000 		.4byte	0x176
  566 0168 0C       		.uleb128 0xc
- 567 0169 52020000 		.4byte	.LASF23
+ 567 0169 F1020000 		.4byte	.LASF23
  568 016d 01       		.byte	0x1
  569 016e E3       		.byte	0xe3
  570 016f 49010000 		.4byte	0x149
@@ -1052,7 +1052,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  581 0187 9C       		.byte	0x9c
  582 0188 9D010000 		.4byte	0x19d
  583 018c 0F       		.uleb128 0xf
- 584 018d AB010000 		.4byte	.LASF26
+ 584 018d 4A020000 		.4byte	.LASF26
  585 0191 01       		.byte	0x1
  586 0192 0301     		.2byte	0x103
  587 0194 9D000000 		.4byte	0x9d
@@ -1069,16 +1069,16 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  598 01b2 9C       		.byte	0x9c
  599 01b3 C8010000 		.4byte	0x1c8
  600 01b7 11       		.uleb128 0x11
- 601 01b8 AB010000 		.4byte	.LASF26
+ 601 01b8 4A020000 		.4byte	.LASF26
  602 01bc 01       		.byte	0x1
  603 01bd 1B01     		.2byte	0x11b
  604 01bf 9D000000 		.4byte	0x9d
  605 01c3 21000000 		.4byte	.LLST1
  606 01c7 00       		.byte	0
  607 01c8 12       		.uleb128 0x12
- 608 01c9 00020000 		.4byte	.LASF29
+ 608 01c9 9F020000 		.4byte	.LASF29
  609 01cd 01       		.byte	0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 19
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 19
 
 
  610 01ce 3401     		.2byte	0x134
@@ -1104,7 +1104,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  630 0200 01       		.uleb128 0x1
  631 0201 9C       		.byte	0x9c
  632 0202 09       		.uleb128 0x9
- 633 0203 97020000 		.4byte	.LASF31
+ 633 0203 36030000 		.4byte	.LASF31
  634 0207 01       		.byte	0x1
  635 0208 3D       		.byte	0x3d
  636 0209 00000000 		.4byte	.LFB63
@@ -1138,13 +1138,13 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  664 0249 00       		.byte	0
  665 024a 0A       		.uleb128 0xa
  666 024b 16000000 		.4byte	.LVL12
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 20
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 20
 
 
  667 024f C8010000 		.4byte	0x1c8
  668 0253 00       		.byte	0
  669 0254 09       		.uleb128 0x9
- 670 0255 48010000 		.4byte	.LASF32
+ 670 0255 E7010000 		.4byte	.LASF32
  671 0259 01       		.byte	0x1
  672 025a 68       		.byte	0x68
  673 025b 00000000 		.4byte	.LFB64
@@ -1153,7 +1153,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  676 0264 9C       		.byte	0x9c
  677 0265 B2020000 		.4byte	0x2b2
  678 0269 16       		.uleb128 0x16
- 679 026a C8010000 		.4byte	.LASF25
+ 679 026a 67020000 		.4byte	.LASF25
  680 026e 01       		.byte	0x1
  681 026f 68       		.byte	0x68
  682 0270 E5000000 		.4byte	0xe5
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  721 02c7 0A       		.uleb128 0xa
  722 02c8 06000000 		.4byte	.LVL18
  723 02cc F0010000 		.4byte	0x1f0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 21
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 21
 
 
  724 02d0 0A       		.uleb128 0xa
@@ -1206,7 +1206,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  726 02d5 19010000 		.4byte	0x119
  727 02d9 00       		.byte	0
  728 02da 12       		.uleb128 0x12
- 729 02db 92010000 		.4byte	.LASF34
+ 729 02db 31020000 		.4byte	.LASF34
  730 02df 01       		.byte	0x1
  731 02e0 7901     		.2byte	0x179
  732 02e2 00000000 		.4byte	.LFB74
@@ -1214,7 +1214,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  734 02ea 01       		.uleb128 0x1
  735 02eb 9C       		.byte	0x9c
  736 02ec 12       		.uleb128 0x12
- 737 02ed 34010000 		.4byte	.LASF35
+ 737 02ed D3010000 		.4byte	.LASF35
  738 02f1 01       		.byte	0x1
  739 02f2 9201     		.2byte	0x192
  740 02f4 00000000 		.4byte	.LFB75
@@ -1222,15 +1222,15 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  742 02fc 01       		.uleb128 0x1
  743 02fd 9C       		.byte	0x9c
  744 02fe 17       		.uleb128 0x17
- 745 02ff 85010000 		.4byte	.LASF42
+ 745 02ff 24020000 		.4byte	.LASF42
  746 0303 06       		.byte	0x6
  747 0304 1207     		.2byte	0x712
  748 0306 0A030000 		.4byte	0x30a
  749 030a 08       		.uleb128 0x8
  750 030b 92000000 		.4byte	0x92
  751 030f 18       		.uleb128 0x18
- 752 0310 7C010000 		.4byte	.LASF36
- 753 0314 7C010000 		.4byte	.LASF36
+ 752 0310 1B020000 		.4byte	.LASF36
+ 753 0314 1B020000 		.4byte	.LASF36
  754 0318 05       		.byte	0x5
  755 0319 29       		.byte	0x29
  756 031a 18       		.uleb128 0x18
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  778 000e 01       		.uleb128 0x1
  779 000f 10       		.uleb128 0x10
  780 0010 17       		.uleb128 0x17
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 22
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 22
 
 
  781 0011 00       		.byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  835 0047 16       		.uleb128 0x16
  836 0048 00       		.byte	0
  837 0049 03       		.uleb128 0x3
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 23
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 23
 
 
  838 004a 0E       		.uleb128 0xe
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  892 0083 0E       		.uleb128 0xe
  893 0084 3A       		.uleb128 0x3a
  894 0085 0B       		.uleb128 0xb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 24
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 24
 
 
  895 0086 3B       		.uleb128 0x3b
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  949 00bd 19       		.uleb128 0x19
  950 00be 03       		.uleb128 0x3
  951 00bf 0E       		.uleb128 0xe
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 25
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 25
 
 
  952 00c0 3A       		.uleb128 0x3a
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1006 00f7 9742     		.uleb128 0x2117
  1007 00f9 19       		.uleb128 0x19
  1008 00fa 01       		.uleb128 0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 26
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 26
 
 
  1009 00fb 13       		.uleb128 0x13
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1063 0132 49       		.uleb128 0x49
  1064 0133 13       		.uleb128 0x13
  1065 0134 11       		.uleb128 0x11
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 27
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 27
 
 
  1066 0135 01       		.uleb128 0x1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1120 0171 13       		.uleb128 0x13
  1121 0172 3F       		.uleb128 0x3f
  1122 0173 19       		.uleb128 0x19
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 28
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 28
 
 
  1123 0174 3C       		.uleb128 0x3c
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1177 0043 07000000 		.4byte	.LVL14-1
  1178 0047 1A000000 		.4byte	.LFE64
  1179 004b 0100     		.2byte	0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 29
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 29
 
 
  1180 004d 54       		.byte	0x54
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1234 0034 10000000 		.4byte	.LFE72
  1235 0038 00000000 		.4byte	.LFB73
  1236 003c 0C000000 		.4byte	.LFE73
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 30
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 30
 
 
  1237 0040 00000000 		.4byte	.LFB63
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1267      54435F49 
  1267      6E746572 
  1267      72757074 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 31
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 31
 
 
  1267      00
@@ -1836,160 +1836,165 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 1
  1279      74696F6E 
  1279      2D736563 
  1279      74696F6E 
- 1280              	.LASF18:
- 1281 012f 72656738 		.ascii	"reg8\000"
- 1281      00
- 1282              	.LASF35:
- 1283 0134 6973725F 		.ascii	"isr_TC_ClearPending\000"
- 1283      54435F43 
- 1283      6C656172 
- 1283      50656E64 
- 1283      696E6700 
- 1284              	.LASF32:
- 1285 0148 6973725F 		.ascii	"isr_TC_StartEx\000"
- 1285      54435F53 
- 1285      74617274 
- 1285      457800
- 1286              	.LASF8:
- 1287 0157 6C6F6E67 		.ascii	"long unsigned int\000"
- 1287      20756E73 
- 1287      69676E65 
- 1287      6420696E 
- 1287      7400
- 1288              	.LASF6:
- 1289 0169 73686F72 		.ascii	"short unsigned int\000"
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 32
+ 1280              	.LASF40:
+ 1281 012f 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 1281      6C65732E 
+ 1281      6175636B 
+ 1281      6C616E64 
+ 1281      2E61632E 
+ 1282 015d 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 1282      6A656374 
+ 1282      2D70726F 
+ 1282      6A656374 
+ 1282      5F67726F 
+ 1283 018d 6E742070 		.ascii	"nt pack\\psoc student pack\\lab exercise\\psoc_intr"
+ 1283      61636B5C 
+ 1283      70736F63 
+ 1283      20737475 
+ 1283      64656E74 
+ 1284 01bd 6F20342E 		.ascii	"o 4.0\\lab3.cydsn\000"
+ 1284      305C6C61 
+ 1284      62332E63 
+ 1284      7964736E 
+ 1284      00
+ 1285              	.LASF18:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 32
 
 
- 1289      7420756E 
- 1289      7369676E 
- 1289      65642069 
- 1289      6E7400
- 1290              	.LASF36:
- 1291 017c 4C45445F 		.ascii	"LED_Read\000"
- 1291      52656164 
- 1291      00
- 1292              	.LASF42:
- 1293 0185 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1293      52784275 
- 1293      66666572 
- 1293      00
- 1294              	.LASF34:
- 1295 0192 6973725F 		.ascii	"isr_TC_SetPending\000"
- 1295      54435F53 
- 1295      65745065 
- 1295      6E64696E 
- 1295      6700
- 1296              	.LASF17:
- 1297 01a4 646F7562 		.ascii	"double\000"
- 1297      6C6500
- 1298              	.LASF26:
- 1299 01ab 7072696F 		.ascii	"priority\000"
- 1299      72697479 
- 1299      00
- 1300              	.LASF15:
- 1301 01b4 75696E74 		.ascii	"uint32\000"
- 1301      333200
- 1302              	.LASF0:
- 1303 01bb 756E7369 		.ascii	"unsigned int\000"
- 1303      676E6564 
- 1303      20696E74 
- 1303      00
- 1304              	.LASF25:
- 1305 01c8 61646472 		.ascii	"address\000"
- 1305      65737300 
- 1306              	.LASF9:
- 1307 01d0 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1307      206C6F6E 
- 1307      6720756E 
- 1307      7369676E 
- 1307      65642069 
- 1308              	.LASF20:
- 1309 01e7 63796973 		.ascii	"cyisraddress\000"
- 1309      72616464 
- 1309      72657373 
- 1309      00
- 1310              	.LASF3:
- 1311 01f4 7369676E 		.ascii	"signed char\000"
- 1311      65642063 
- 1311      68617200 
- 1312              	.LASF29:
- 1313 0200 6973725F 		.ascii	"isr_TC_Enable\000"
- 1313      54435F45 
- 1313      6E61626C 
- 1313      6500
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 33
+ 1286 01ce 72656738 		.ascii	"reg8\000"
+ 1286      00
+ 1287              	.LASF35:
+ 1288 01d3 6973725F 		.ascii	"isr_TC_ClearPending\000"
+ 1288      54435F43 
+ 1288      6C656172 
+ 1288      50656E64 
+ 1288      696E6700 
+ 1289              	.LASF32:
+ 1290 01e7 6973725F 		.ascii	"isr_TC_StartEx\000"
+ 1290      54435F53 
+ 1290      74617274 
+ 1290      457800
+ 1291              	.LASF8:
+ 1292 01f6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1292      20756E73 
+ 1292      69676E65 
+ 1292      6420696E 
+ 1292      7400
+ 1293              	.LASF6:
+ 1294 0208 73686F72 		.ascii	"short unsigned int\000"
+ 1294      7420756E 
+ 1294      7369676E 
+ 1294      65642069 
+ 1294      6E7400
+ 1295              	.LASF36:
+ 1296 021b 4C45445F 		.ascii	"LED_Read\000"
+ 1296      52656164 
+ 1296      00
+ 1297              	.LASF42:
+ 1298 0224 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1298      52784275 
+ 1298      66666572 
+ 1298      00
+ 1299              	.LASF34:
+ 1300 0231 6973725F 		.ascii	"isr_TC_SetPending\000"
+ 1300      54435F53 
+ 1300      65745065 
+ 1300      6E64696E 
+ 1300      6700
+ 1301              	.LASF17:
+ 1302 0243 646F7562 		.ascii	"double\000"
+ 1302      6C6500
+ 1303              	.LASF26:
+ 1304 024a 7072696F 		.ascii	"priority\000"
+ 1304      72697479 
+ 1304      00
+ 1305              	.LASF15:
+ 1306 0253 75696E74 		.ascii	"uint32\000"
+ 1306      333200
+ 1307              	.LASF0:
+ 1308 025a 756E7369 		.ascii	"unsigned int\000"
+ 1308      676E6564 
+ 1308      20696E74 
+ 1308      00
+ 1309              	.LASF25:
+ 1310 0267 61646472 		.ascii	"address\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 33
 
 
- 1314              	.LASF13:
- 1315 020e 696E7433 		.ascii	"int32_t\000"
- 1315      325F7400 
- 1316              	.LASF10:
- 1317 0216 73697A65 		.ascii	"sizetype\000"
- 1317      74797065 
- 1317      00
- 1318              	.LASF1:
- 1319 021f 6C6F6E67 		.ascii	"long long int\000"
- 1319      206C6F6E 
- 1319      6720696E 
- 1319      7400
- 1320              	.LASF39:
- 1321 022d 47656E65 		.ascii	"Generated_Source\\PSoC5\\isr_TC.c\000"
- 1321      72617465 
- 1321      645F536F 
- 1321      75726365 
- 1321      5C50536F 
- 1322              	.LASF11:
- 1323 024d 63686172 		.ascii	"char\000"
- 1323      00
- 1324              	.LASF23:
- 1325 0252 72616D56 		.ascii	"ramVectorTable\000"
- 1325      6563746F 
- 1325      72546162 
- 1325      6C6500
- 1326              	.LASF5:
- 1327 0261 73686F72 		.ascii	"short int\000"
- 1327      7420696E 
- 1327      7400
- 1328              	.LASF14:
- 1329 026b 75696E74 		.ascii	"uint8\000"
- 1329      3800
- 1330              	.LASF22:
- 1331 0271 6973725F 		.ascii	"isr_TC_SetVector\000"
- 1331      54435F53 
- 1331      65745665 
- 1331      63746F72 
- 1331      00
- 1332              	.LASF7:
- 1333 0282 6C6F6E67 		.ascii	"long int\000"
- 1333      20696E74 
- 1333      00
- 1334              	.LASF2:
- 1335 028b 6C6F6E67 		.ascii	"long double\000"
- 1335      20646F75 
- 1335      626C6500 
- 1336              	.LASF31:
- 1337 0297 6973725F 		.ascii	"isr_TC_Start\000"
- 1337      54435F53 
- 1337      74617274 
- 1337      00
- 1338              	.LASF40:
- 1339 02a4 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Desktop\\COMPSYS "
- 1339      6C65732E 
- 1339      6175636B 
- 1339      6C616E64 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccwnIkOA.s 			page 34
+ 1310      65737300 
+ 1311              	.LASF9:
+ 1312 026f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1312      206C6F6E 
+ 1312      6720756E 
+ 1312      7369676E 
+ 1312      65642069 
+ 1313              	.LASF20:
+ 1314 0286 63796973 		.ascii	"cyisraddress\000"
+ 1314      72616464 
+ 1314      72657373 
+ 1314      00
+ 1315              	.LASF3:
+ 1316 0293 7369676E 		.ascii	"signed char\000"
+ 1316      65642063 
+ 1316      68617200 
+ 1317              	.LASF29:
+ 1318 029f 6973725F 		.ascii	"isr_TC_Enable\000"
+ 1318      54435F45 
+ 1318      6E61626C 
+ 1318      6500
+ 1319              	.LASF13:
+ 1320 02ad 696E7433 		.ascii	"int32_t\000"
+ 1320      325F7400 
+ 1321              	.LASF10:
+ 1322 02b5 73697A65 		.ascii	"sizetype\000"
+ 1322      74797065 
+ 1322      00
+ 1323              	.LASF1:
+ 1324 02be 6C6F6E67 		.ascii	"long long int\000"
+ 1324      206C6F6E 
+ 1324      6720696E 
+ 1324      7400
+ 1325              	.LASF39:
+ 1326 02cc 47656E65 		.ascii	"Generated_Source\\PSoC5\\isr_TC.c\000"
+ 1326      72617465 
+ 1326      645F536F 
+ 1326      75726365 
+ 1326      5C50536F 
+ 1327              	.LASF11:
+ 1328 02ec 63686172 		.ascii	"char\000"
+ 1328      00
+ 1329              	.LASF23:
+ 1330 02f1 72616D56 		.ascii	"ramVectorTable\000"
+ 1330      6563746F 
+ 1330      72546162 
+ 1330      6C6500
+ 1331              	.LASF5:
+ 1332 0300 73686F72 		.ascii	"short int\000"
+ 1332      7420696E 
+ 1332      7400
+ 1333              	.LASF14:
+ 1334 030a 75696E74 		.ascii	"uint8\000"
+ 1334      3800
+ 1335              	.LASF22:
+ 1336 0310 6973725F 		.ascii	"isr_TC_SetVector\000"
+ 1336      54435F53 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccj7N4EX.s 			page 34
 
 
- 1339      2E61632E 
- 1340 02d2 3330315C 		.ascii	"301\\psoc student pack\\psoc student pack\\lab exer"
- 1340      70736F63 
- 1340      20737475 
- 1340      64656E74 
- 1340      20706163 
- 1341 0302 63697365 		.ascii	"cise\\psoc_intro 4.0\\lab3.cydsn\000"
- 1341      5C70736F 
- 1341      635F696E 
- 1341      74726F20 
- 1341      342E305C 
- 1342              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1336      65745665 
+ 1336      63746F72 
+ 1336      00
+ 1337              	.LASF7:
+ 1338 0321 6C6F6E67 		.ascii	"long int\000"
+ 1338      20696E74 
+ 1338      00
+ 1339              	.LASF2:
+ 1340 032a 6C6F6E67 		.ascii	"long double\000"
+ 1340      20646F75 
+ 1340      626C6500 
+ 1341              	.LASF31:
+ 1342 0336 6973725F 		.ascii	"isr_TC_Start\000"
+ 1342      54435F53 
+ 1342      74617274 
+ 1342      00
+ 1343              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

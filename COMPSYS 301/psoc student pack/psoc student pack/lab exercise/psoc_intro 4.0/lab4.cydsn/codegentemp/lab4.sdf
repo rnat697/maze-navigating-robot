@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2022-08-12T04:52:31Z")
+ (DATE "2022-08-15T01:45:31Z")
  (DESIGN "lab4")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -26,7 +26,6 @@
     (INTERCONNECT \\ADC_SAR_1\:ADC_SAR\\.eof_udb \\ADC_SAR_1\:IRQ\\.interrupt (10.111:10.111:10.111))
     (INTERCONNECT \\ADC_SAR_1\:ADC_SAR\\.eof_udb isr_1.interrupt (10.324:10.324:10.324))
     (INTERCONNECT \\USBUART_1\:USB\\.sof_int \\USBUART_1\:sof_int\\.interrupt (1.000:1.000:1.000))
-    (INTERCONNECT \\Timer_1\:TimerHW\\.tc \\ADC_SAR_1\:ADC_SAR\\.sof_udb (9.020:9.020:9.020))
     (INTERCONNECT \\USBUART_1\:Dp\\.interrupt \\USBUART_1\:dp_int\\.interrupt (1.000:1.000:1.000))
     (INTERCONNECT \\USBUART_1\:USB\\.usb_int \\USBUART_1\:bus_reset\\.interrupt (1.000:1.000:1.000))
     (INTERCONNECT \\USBUART_1\:USB\\.arb_int \\USBUART_1\:arb_int\\.interrupt (1.000:1.000:1.000))

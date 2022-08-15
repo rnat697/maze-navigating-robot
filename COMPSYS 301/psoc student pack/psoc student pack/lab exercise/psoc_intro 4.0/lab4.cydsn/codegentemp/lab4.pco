@@ -1,5 +1,5 @@
 # lab4
-# 2022-08-12 04:52:29Z
+# 2022-08-15 01:45:28Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -13,8 +13,8 @@ set_io "\USBUART_1:Dm(0)\" iocell 15 7
 set_location "\USBUART_1:Dp\" logicalport -1 -1 15
 set_io "\USBUART_1:Dp(0)\" iocell 15 6
 set_io "\ADC_SAR_1:Bypass(0)\" iocell 0 2
-set_io "Pin_1(0)" iocell 3 7
-set_io "Pin_2(0)" iocell 0 4
+set_io "ADC_SAR(0)" iocell 3 7
+set_io "VDAC(0)" iocell 0 4
 set_location "\USBUART_1:dp_int\" interrupt -1 -1 12
 set_location "\USBUART_1:USB\" usbcell -1 -1 0
 set_location "\USBUART_1:ep_3\" interrupt -1 -1 3

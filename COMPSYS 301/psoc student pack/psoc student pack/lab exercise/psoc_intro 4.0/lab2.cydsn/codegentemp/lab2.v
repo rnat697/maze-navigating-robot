@@ -1,6 +1,6 @@
 // ======================================================================
 // lab2.v generated from TopDesign.cysch
-// 07/28/2022 at 16:33
+// 08/15/2022 at 12:54
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 

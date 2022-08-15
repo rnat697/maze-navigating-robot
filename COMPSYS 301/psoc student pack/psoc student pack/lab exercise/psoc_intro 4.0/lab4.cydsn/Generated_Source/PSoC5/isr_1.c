@@ -157,7 +157,17 @@ void isr_1_Stop(void)
 *   None
 *
 *******************************************************************************/
+CY_ISR(isr_1_Interrupt)
+{
+    #ifdef isr_1_INTERRUPT_INTERRUPT_CALLBACK
+        isr_1_Interrupt_InterruptCallback();
+    #endif /* isr_1_INTERRUPT_INTERRUPT_CALLBACK */ 
 
+    /*  Place your Interrupt code here. */
+    /* `#START isr_1_Interrupt` */
+
+    /* `#END` */
+}
 
 
 /*******************************************************************************

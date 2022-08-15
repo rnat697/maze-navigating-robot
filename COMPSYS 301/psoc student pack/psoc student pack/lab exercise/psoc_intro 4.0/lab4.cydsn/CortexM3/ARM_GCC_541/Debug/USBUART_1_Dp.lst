@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
   28:Generated_Source\PSoC5/USBUART_1_Dp.c **** *
   29:Generated_Source\PSoC5/USBUART_1_Dp.c **** * \brief Writes the value to the physical port (data output register), masking
   30:Generated_Source\PSoC5/USBUART_1_Dp.c **** *  and shifting the bits appropriately. 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 2
 
 
   31:Generated_Source\PSoC5/USBUART_1_Dp.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
   52              		.size	USBUART_1_Dp_Write, .-USBUART_1_Dp_Write
   53              		.section	.text.USBUART_1_Dp_SetDriveMode,"ax",%progbits
   54              		.align	2
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 3
 
 
   55              		.global	USBUART_1_Dp_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
   77 0012 00BF     		.align	2
   78              	.L5:
   79 0014 7E500040 		.word	1073762430
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 4
 
 
   80              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  110              		.align	2
  111              		.global	USBUART_1_Dp_ReadDataReg
  112              		.thumb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 5
 
 
  113              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  139              		.thumb_func
  140              		.type	USBUART_1_Dp_SetInterruptMode, %function
  141              	USBUART_1_Dp_SetInterruptMode:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 6
 
 
  142              	.LFB4:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  151              	.LVL6:
  152 0004 80B2     		uxth	r0, r0
  153 0006 10B1     		cbz	r0, .L13
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 7
 
 
  190:Generated_Source\PSoC5/USBUART_1_Dp.c **** 		{ 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  180              		@ link register save eliminated.
  218:Generated_Source\PSoC5/USBUART_1_Dp.c ****         return (USBUART_1_Dp_INTSTAT & USBUART_1_Dp_MASK) >> USBUART_1_Dp_SHIFT;
  181              		.loc 1 218 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 8
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 8
 
 
  182 0000 024B     		ldr	r3, .L18
@@ -446,15 +446,15 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  203 000b 01       		.uleb128 0x1
  204 000c 64000000 		.4byte	.LASF24
  205 0010 0C       		.byte	0xc
- 206 0011 73020000 		.4byte	.LASF25
- 207 0015 2A010000 		.4byte	.LASF26
+ 206 0011 7A020000 		.4byte	.LASF25
+ 207 0015 1C010000 		.4byte	.LASF26
  208 0019 00000000 		.4byte	.Ldebug_ranges0+0
  209 001d 00000000 		.4byte	0
  210 0021 00000000 		.4byte	.Ldebug_line0
  211 0025 02       		.uleb128 0x2
  212 0026 01       		.byte	0x1
  213 0027 06       		.byte	0x6
- 214 0028 99020000 		.4byte	.LASF0
+ 214 0028 A0020000 		.4byte	.LASF0
  215 002c 02       		.uleb128 0x2
  216 002d 01       		.byte	0x1
  217 002e 08       		.byte	0x8
@@ -462,7 +462,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  219 0033 02       		.uleb128 0x2
  220 0034 02       		.byte	0x2
  221 0035 05       		.byte	0x5
- 222 0036 5A020000 		.4byte	.LASF2
+ 222 0036 61020000 		.4byte	.LASF2
  223 003a 02       		.uleb128 0x2
  224 003b 02       		.byte	0x2
  225 003c 07       		.byte	0x7
@@ -470,7 +470,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  227 0041 02       		.uleb128 0x2
  228 0042 04       		.byte	0x4
  229 0043 05       		.byte	0x5
- 230 0044 6A020000 		.4byte	.LASF4
+ 230 0044 71020000 		.4byte	.LASF4
  231 0048 02       		.uleb128 0x2
  232 0049 04       		.byte	0x4
  233 004a 07       		.byte	0x7
@@ -478,14 +478,14 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  235 004f 02       		.uleb128 0x2
  236 0050 08       		.byte	0x8
  237 0051 05       		.byte	0x5
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 9
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 9
 
 
- 238 0052 0D020000 		.4byte	.LASF6
+ 238 0052 14020000 		.4byte	.LASF6
  239 0056 02       		.uleb128 0x2
  240 0057 08       		.byte	0x8
  241 0058 07       		.byte	0x7
- 242 0059 D8010000 		.4byte	.LASF7
+ 242 0059 DF010000 		.4byte	.LASF7
  243 005d 03       		.uleb128 0x3
  244 005e 04       		.byte	0x4
  245 005f 05       		.byte	0x5
@@ -493,14 +493,14 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  247 0064 02       		.uleb128 0x2
  248 0065 04       		.byte	0x4
  249 0066 07       		.byte	0x7
- 250 0067 CB010000 		.4byte	.LASF8
+ 250 0067 D2010000 		.4byte	.LASF8
  251 006b 04       		.uleb128 0x4
- 252 006c 64020000 		.4byte	.LASF9
+ 252 006c 6B020000 		.4byte	.LASF9
  253 0070 02       		.byte	0x2
  254 0071 E401     		.2byte	0x1e4
  255 0073 2C000000 		.4byte	0x2c
  256 0077 04       		.uleb128 0x4
- 257 0078 23010000 		.4byte	.LASF10
+ 257 0078 C2010000 		.4byte	.LASF10
  258 007c 02       		.byte	0x2
  259 007d E501     		.2byte	0x1e5
  260 007f 3A000000 		.4byte	0x3a
@@ -511,11 +511,11 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  265 008a 02       		.uleb128 0x2
  266 008b 08       		.byte	0x8
  267 008c 04       		.byte	0x4
- 268 008d 1C010000 		.4byte	.LASF12
+ 268 008d BB010000 		.4byte	.LASF12
  269 0091 02       		.uleb128 0x2
  270 0092 01       		.byte	0x1
  271 0093 08       		.byte	0x8
- 272 0094 39020000 		.4byte	.LASF13
+ 272 0094 40020000 		.4byte	.LASF13
  273 0098 04       		.uleb128 0x4
  274 0099 F2000000 		.4byte	.LASF14
  275 009d 02       		.byte	0x2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  292 00c4 39       		.byte	0x39
  293 00c5 6B000000 		.4byte	0x6b
  294 00c9 00000000 		.4byte	.LLST0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 10
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 10
 
 
  295 00cd 08       		.uleb128 0x8
@@ -559,7 +559,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  310 00eb 9C       		.byte	0x9c
  311 00ec 00010000 		.4byte	0x100
  312 00f0 07       		.uleb128 0x7
- 313 00f1 EF010000 		.4byte	.LASF18
+ 313 00f1 F6010000 		.4byte	.LASF18
  314 00f5 01       		.byte	0x1
  315 00f6 5A       		.byte	0x5a
  316 00f7 6B000000 		.4byte	0x6b
@@ -575,7 +575,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  326 0113 01       		.uleb128 0x1
  327 0114 9C       		.byte	0x9c
  328 0115 09       		.uleb128 0x9
- 329 0116 F4010000 		.4byte	.LASF20
+ 329 0116 FB010000 		.4byte	.LASF20
  330 011a 01       		.byte	0x1
  331 011b 8D       		.byte	0x8d
  332 011c 6B000000 		.4byte	0x6b
@@ -584,7 +584,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  335 0128 01       		.uleb128 0x1
  336 0129 9C       		.byte	0x9c
  337 012a 06       		.uleb128 0x6
- 338 012b 1B020000 		.4byte	.LASF21
+ 338 012b 22020000 		.4byte	.LASF21
  339 012f 01       		.byte	0x1
  340 0130 BB       		.byte	0xbb
  341 0131 00000000 		.4byte	.LFB4
@@ -593,23 +593,23 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  344 013a 9C       		.byte	0x9c
  345 013b 5E010000 		.4byte	0x15e
  346 013f 07       		.uleb128 0x7
- 347 0140 C2010000 		.4byte	.LASF22
+ 347 0140 C9010000 		.4byte	.LASF22
  348 0144 01       		.byte	0x1
  349 0145 BB       		.byte	0xbb
  350 0146 77000000 		.4byte	0x77
  351 014a 42000000 		.4byte	.LLST2
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 11
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 11
 
 
  352 014e 07       		.uleb128 0x7
- 353 014f EF010000 		.4byte	.LASF18
+ 353 014f F6010000 		.4byte	.LASF18
  354 0153 01       		.byte	0x1
  355 0154 BB       		.byte	0xbb
  356 0155 77000000 		.4byte	0x77
  357 0159 63000000 		.4byte	.LLST3
  358 015d 00       		.byte	0
  359 015e 09       		.uleb128 0x9
- 360 015f 3E020000 		.4byte	.LASF23
+ 360 015f 45020000 		.4byte	.LASF23
  361 0163 01       		.byte	0x1
  362 0164 D8       		.byte	0xd8
  363 0165 6B000000 		.4byte	0x6b
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  406 0023 3E       		.uleb128 0x3e
  407 0024 0B       		.uleb128 0xb
  408 0025 03       		.uleb128 0x3
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 12
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 12
 
 
  409 0026 08       		.uleb128 0x8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  463 005d 0B       		.uleb128 0xb
  464 005e 3B       		.uleb128 0x3b
  465 005f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 13
 
 
  466 0060 49       		.uleb128 0x49
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  520 000b 0A000000 		.4byte	.LVL2
  521 000f 18000000 		.4byte	.LFE0
  522 0013 0400     		.2byte	0x4
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 14
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 14
 
 
  523 0015 F3       		.byte	0xf3
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  577 000c 0000     		.2byte	0
  578 000e 0000     		.2byte	0
  579 0010 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 15
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 15
 
 
  580 0014 18000000 		.4byte	.LFE0-.LFB0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  619      747300
  620              	.LASF19:
  621 003e 55534255 		.ascii	"USBUART_1_Dp_Read\000"
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 16
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 16
 
 
  621      4152545F 
@@ -944,100 +944,102 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 1
  635      7369676E 
  635      65642069 
  635      6E7400
- 636              	.LASF12:
- 637 011c 646F7562 		.ascii	"double\000"
- 637      6C6500
- 638              	.LASF10:
- 639 0123 75696E74 		.ascii	"uint16\000"
- 639      313600
- 640              	.LASF26:
- 641 012a 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
- 641      6C65732E 
- 641      6175636B 
- 641      6C616E64 
- 641      2E61632E 
- 642 0158 5C434F4D 		.ascii	"\\COMPSYS-301-Robot\\COMPSYS 301\\psoc student pack"
- 642      50535953 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 17
+ 636              	.LASF26:
+ 637 011c 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 637      6C65732E 
+ 637      6175636B 
+ 637      6C616E64 
+ 637      2E61632E 
+ 638 014a 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 638      6A656374 
+ 638      2D70726F 
+ 638      6A656374 
+ 638      5F67726F 
+ 639 017a 6E742070 		.ascii	"nt pack\\psoc student pack\\lab exercise\\psoc_intr"
+ 639      61636B5C 
+ 639      70736F63 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 17
 
 
- 642      2D333031 
- 642      2D526F62 
- 642      6F745C43 
- 643 0188 5C70736F 		.ascii	"\\psoc student pack\\lab exercise\\psoc_intro 4.0\\"
- 643      63207374 
- 643      7564656E 
- 643      74207061 
- 643      636B5C6C 
- 644 01b7 6C616234 		.ascii	"lab4.cydsn\000"
- 644      2E637964 
- 644      736E00
+ 639      20737475 
+ 639      64656E74 
+ 640 01aa 6F20342E 		.ascii	"o 4.0\\lab4.cydsn\000"
+ 640      305C6C61 
+ 640      62342E63 
+ 640      7964736E 
+ 640      00
+ 641              	.LASF12:
+ 642 01bb 646F7562 		.ascii	"double\000"
+ 642      6C6500
+ 643              	.LASF10:
+ 644 01c2 75696E74 		.ascii	"uint16\000"
+ 644      313600
  645              	.LASF22:
- 646 01c2 706F7369 		.ascii	"position\000"
+ 646 01c9 706F7369 		.ascii	"position\000"
  646      74696F6E 
  646      00
  647              	.LASF8:
- 648 01cb 756E7369 		.ascii	"unsigned int\000"
+ 648 01d2 756E7369 		.ascii	"unsigned int\000"
  648      676E6564 
  648      20696E74 
  648      00
  649              	.LASF7:
- 650 01d8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 650 01df 6C6F6E67 		.ascii	"long long unsigned int\000"
  650      206C6F6E 
  650      6720756E 
  650      7369676E 
  650      65642069 
  651              	.LASF18:
- 652 01ef 6D6F6465 		.ascii	"mode\000"
+ 652 01f6 6D6F6465 		.ascii	"mode\000"
  652      00
  653              	.LASF20:
- 654 01f4 55534255 		.ascii	"USBUART_1_Dp_ReadDataReg\000"
+ 654 01fb 55534255 		.ascii	"USBUART_1_Dp_ReadDataReg\000"
  654      4152545F 
  654      315F4470 
  654      5F526561 
  654      64446174 
  655              	.LASF6:
- 656 020d 6C6F6E67 		.ascii	"long long int\000"
+ 656 0214 6C6F6E67 		.ascii	"long long int\000"
  656      206C6F6E 
  656      6720696E 
  656      7400
  657              	.LASF21:
- 658 021b 55534255 		.ascii	"USBUART_1_Dp_SetInterruptMode\000"
+ 658 0222 55534255 		.ascii	"USBUART_1_Dp_SetInterruptMode\000"
  658      4152545F 
  658      315F4470 
  658      5F536574 
  658      496E7465 
  659              	.LASF13:
- 660 0239 63686172 		.ascii	"char\000"
+ 660 0240 63686172 		.ascii	"char\000"
  660      00
  661              	.LASF23:
- 662 023e 55534255 		.ascii	"USBUART_1_Dp_ClearInterrupt\000"
+ 662 0245 55534255 		.ascii	"USBUART_1_Dp_ClearInterrupt\000"
  662      4152545F 
  662      315F4470 
  662      5F436C65 
  662      6172496E 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccPYQHAc.s 			page 18
+
+
  663              	.LASF2:
- 664 025a 73686F72 		.ascii	"short int\000"
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccdBClK5.s 			page 18
-
-
+ 664 0261 73686F72 		.ascii	"short int\000"
  664      7420696E 
  664      7400
  665              	.LASF9:
- 666 0264 75696E74 		.ascii	"uint8\000"
+ 666 026b 75696E74 		.ascii	"uint8\000"
  666      3800
  667              	.LASF4:
- 668 026a 6C6F6E67 		.ascii	"long int\000"
+ 668 0271 6C6F6E67 		.ascii	"long int\000"
  668      20696E74 
  668      00
  669              	.LASF25:
- 670 0273 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_1_Dp.c\000"
+ 670 027a 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_1_Dp.c\000"
  670      72617465 
  670      645F536F 
  670      75726365 
  670      5C50536F 
  671              	.LASF0:
- 672 0299 7369676E 		.ascii	"signed char\000"
+ 672 02a0 7369676E 		.ascii	"signed char\000"
  672      65642063 
  672      68617200 
  673              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

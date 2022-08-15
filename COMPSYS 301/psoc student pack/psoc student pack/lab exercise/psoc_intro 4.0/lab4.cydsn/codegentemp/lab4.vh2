@@ -2,7 +2,7 @@
 --	Conversion of lab4.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Aug 12 16:52:16 2022
+--	Mon Aug 15 13:45:15 2022
 --
 
 USE cypress.cypress.all;
@@ -99,10 +99,11 @@ SIGNAL \ADC_SAR_1:Net_385\ : bit;
 SIGNAL \ADC_SAR_1:Net_381\ : bit;
 SIGNAL \ADC_SAR_1:Net_188\ : bit;
 SIGNAL \ADC_SAR_1:Net_221\ : bit;
-TERMINAL Net_214 : bit;
+TERMINAL Net_285 : bit;
 TERMINAL \ADC_SAR_1:Net_126\ : bit;
 TERMINAL \ADC_SAR_1:Net_215\ : bit;
 TERMINAL \ADC_SAR_1:Net_257\ : bit;
+SIGNAL \ADC_SAR_1:soc\ : bit;
 SIGNAL \ADC_SAR_1:Net_252\ : bit;
 SIGNAL Net_148 : bit;
 SIGNAL \ADC_SAR_1:Net_207_11\ : bit;
@@ -128,16 +129,16 @@ TERMINAL \ADC_SAR_1:Net_209\ : bit;
 TERMINAL \ADC_SAR_1:Net_255\ : bit;
 TERMINAL \ADC_SAR_1:Net_368\ : bit;
 SIGNAL \ADC_SAR_1:Net_383\ : bit;
-SIGNAL tmpOE__Pin_1_net_0 : bit;
-SIGNAL tmpFB_0__Pin_1_net_0 : bit;
-SIGNAL tmpIO_0__Pin_1_net_0 : bit;
-TERMINAL tmpSIOVREF__Pin_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Pin_1_net_0 : bit;
-SIGNAL tmpOE__Pin_2_net_0 : bit;
-SIGNAL tmpFB_0__Pin_2_net_0 : bit;
-SIGNAL tmpIO_0__Pin_2_net_0 : bit;
-TERMINAL tmpSIOVREF__Pin_2_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Pin_2_net_0 : bit;
+SIGNAL tmpOE__ADC_SAR_net_0 : bit;
+SIGNAL tmpFB_0__ADC_SAR_net_0 : bit;
+SIGNAL tmpIO_0__ADC_SAR_net_0 : bit;
+TERMINAL tmpSIOVREF__ADC_SAR_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__ADC_SAR_net_0 : bit;
+SIGNAL tmpOE__VDAC_net_0 : bit;
+SIGNAL tmpFB_0__VDAC_net_0 : bit;
+SIGNAL tmpIO_0__VDAC_net_0 : bit;
+TERMINAL tmpSIOVREF__VDAC_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__VDAC_net_0 : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -407,7 +408,7 @@ LED:cy_psoc3_pins_v1_10
 		enable=>tmpOE__LED_net_0,
 		capture=>zero,
 		timer_reset=>zero,
-		tc=>Net_282,
+		tc=>\Timer_1:Net_51\,
 		compare=>\Timer_1:Net_261\,
 		interrupt=>\Timer_1:Net_57\);
 \VDAC8_1:viDAC8\:cy_psoc3_vidac8_v1_0
@@ -453,21 +454,21 @@ isr_1:cy_isr_v1_0
 		id=>"cf9986de-3c54-4e87-974c-8d7ddef3fc57/696a0979-21fc-4185-bf38-6c79febcde7a",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"833341666.750001",
+		period=>"113095228.670636",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>\ADC_SAR_1:Net_385\,
 		dig_domain_out=>\ADC_SAR_1:Net_381\);
 \ADC_SAR_1:ADC_SAR\:cy_psoc5_sar_v2_0
 	GENERIC MAP(cy_registers=>"")
-	PORT MAP(vplus=>Net_214,
+	PORT MAP(vplus=>Net_285,
 		vminus=>\ADC_SAR_1:Net_126\,
 		ext_pin=>\ADC_SAR_1:Net_215\,
 		vrefhi_out=>\ADC_SAR_1:Net_257\,
 		vref=>\ADC_SAR_1:Net_248\,
 		clock=>\ADC_SAR_1:Net_385\,
 		pump_clock=>\ADC_SAR_1:Net_385\,
-		sof_udb=>Net_282,
+		sof_udb=>zero,
 		clk_udb=>zero,
 		vp_ctl_udb=>(zero, zero, zero, zero),
 		vn_ctl_udb=>(zero, zero, zero, zero),
@@ -574,7 +575,7 @@ isr_1:cy_isr_v1_0
 	PORT MAP(noconnect=>\ADC_SAR_1:Net_255\);
 \ADC_SAR_1:noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\ADC_SAR_1:Net_368\);
-Pin_1:cy_psoc3_pins_v1_10
+ADC_SAR:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -632,10 +633,10 @@ Pin_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__LED_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__Pin_1_net_0),
-		analog=>Net_214,
-		io=>(tmpIO_0__Pin_1_net_0),
-		siovref=>(tmpSIOVREF__Pin_1_net_0),
+		fb=>(tmpFB_0__ADC_SAR_net_0),
+		analog=>Net_285,
+		io=>(tmpIO_0__ADC_SAR_net_0),
+		siovref=>(tmpSIOVREF__ADC_SAR_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_net_0,
@@ -643,8 +644,8 @@ Pin_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Pin_1_net_0);
-Pin_2:cy_psoc3_pins_v1_10
+		interrupt=>tmpINTERRUPT_0__ADC_SAR_net_0);
+VDAC:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"7b9d20c2-8c44-409e-8bb5-f4e900b9016e",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -702,10 +703,10 @@ Pin_2:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__LED_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__Pin_2_net_0),
+		fb=>(tmpFB_0__VDAC_net_0),
 		analog=>Net_272,
-		io=>(tmpIO_0__Pin_2_net_0),
-		siovref=>(tmpSIOVREF__Pin_2_net_0),
+		io=>(tmpIO_0__VDAC_net_0),
+		siovref=>(tmpSIOVREF__VDAC_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__LED_net_0,
@@ -713,6 +714,6 @@ Pin_2:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__LED_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Pin_2_net_0);
+		interrupt=>tmpINTERRUPT_0__VDAC_net_0);
 
 END R_T_L;

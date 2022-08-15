@@ -82,7 +82,7 @@ void VDAC8_1_Wakeup(void)          ;
 ***************************************/
 
  /* Default DAC range */
-#define VDAC8_1_DEFAULT_RANGE    0u
+#define VDAC8_1_DEFAULT_RANGE    4u
  /* Default DAC speed */
 #define VDAC8_1_DEFAULT_SPEED    0u
  /* Default Control */

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Pin_1.h  
+* File Name: ADC_SAR.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_Pin_1_ALIASES_H) /* Pins Pin_1_ALIASES_H */
-#define CY_PINS_Pin_1_ALIASES_H
+#if !defined(CY_PINS_ADC_SAR_ALIASES_H) /* Pins ADC_SAR_ALIASES_H */
+#define CY_PINS_ADC_SAR_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Pin_1_0			(Pin_1__0__PC)
-#define Pin_1_0_INTR	((uint16)((uint16)0x0001u << Pin_1__0__SHIFT))
+#define ADC_SAR_0			(ADC_SAR__0__PC)
+#define ADC_SAR_0_INTR	((uint16)((uint16)0x0001u << ADC_SAR__0__SHIFT))
 
-#define Pin_1_INTR_ALL	 ((uint16)(Pin_1_0_INTR))
+#define ADC_SAR_INTR_ALL	 ((uint16)(ADC_SAR_0_INTR))
 
-#endif /* End Pins Pin_1_ALIASES_H */
+#endif /* End Pins ADC_SAR_ALIASES_H */
 
 
 /* [] END OF FILE */

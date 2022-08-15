@@ -79,16 +79,18 @@ void handle_rx_binary();
 void handle_rx_ascii();
 void handle_usb();
 //* ========================================
-CY_ISR_PROTO(isr_1_Interrupt);
+CY_ISR_PROTO(isr_1_Interrupt_custom);
 int main()
 {
     
     CyGlobalIntEnable; /* Enable global interrupts. */
-    isr_1_StartEx(isr_1_Interrupt);
     Timer_1_Start();
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     ADC_SAR_1_Start();
-    ADC_SAR_1_IRQ_Enable();
+    isr_1_StartEx(isr_1_Interrupt_custom);
+    ADC_SAR_1_StartConvert();
+    //ADC_SAR_1_IRQ_StartEx(isr_1_Interrupt_custom);
+    //ADC_SAR_1_IRQ_Enable();
     VDAC8_1_Start();
     for(;;)
     {
@@ -99,8 +101,9 @@ int main()
   
 }
     }
-
-CY_ISR(isr_1_Interrupt)
+uint16_t count = 0;
+uint8_t test = 0;
+CY_ISR(isr_1_Interrupt_custom)
 {
     #ifdef isr_1_INTERRUPT_INTERRUPT_CALLBACK
         isr_1_Interrupt_InterruptCallback();
@@ -108,14 +111,12 @@ CY_ISR(isr_1_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_1_Interrupt` */
-    
-    
-    if (ADC_SAR_1_IsEndConversion(ADC_SAR_1_RETURN_STATUS) != 0) {
             
-           uint8 result = ADC_SAR_1_GetResult8();
-           VDAC8_1_SetValue(result);
-            LED_Write(~LED_Read());
+        LED_Write(~LED_Read());
+        uint8 result = ADC_SAR_1_GetResult8();
+        VDAC8_1_SetValue(result);
         
-    }
+        
+        isr_1_ClearPending();
     /* `#END` */
 }
