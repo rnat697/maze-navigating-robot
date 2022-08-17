@@ -50,8 +50,12 @@ https://cdn.auckland.ac.nz/assets/auckland/engineering/ece/documents/ece-altium-
 Component store
 https://share.engineering.auckland.ac.nz/ece/ts/Lists/Stock%20Inventory/Student.aspx
 
+Selecting AMPS
+-how much supply voltage can be applied at hte input of opamp called commonmode voltage range
 
+- rail to rail inpujt give input voltage directly in rail to rail output
 
+output voltage rance dont go all the way to vcc??
 
 
 
