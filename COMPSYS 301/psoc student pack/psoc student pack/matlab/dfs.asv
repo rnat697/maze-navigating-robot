@@ -31,8 +31,10 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
    checkingNextPos = {[yloc,xloc],[yloc,xloc],[yloc,xloc],[yloc,xloc]};
   % 1.place step on the map
     retvisited(yloc,xloc)=0;
-    retvisited(yloc,xloc)=0;
-    while (visiting ~= targetlocation)
+    placestep(retsteps{1,index},node) %place start location/
+
+
+    while ((targetlocation ~= visiting)==[1,1])
         
         % 2. Compare location of N,S,E,W using the retmap
         
@@ -47,21 +49,21 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
         if (xloc < mapsize(2))
             checkingNextPos{1,3}=[yloc,xloc+1]; %move right
          else
-            checkingNextPos{1,1}=[-1,-1];   
+            checkingNextPos{1,3}=[-1,-1];   
         end
         
         % checks if hitting the bottom border
         if (yloc < mapsize(1))  
          checkingNextPos{1,2}=[yloc+1,xloc]; % move down
          else
-            checkingNextPos{1,1}=[-1,-1];
+            checkingNextPos{1,2}=[-1,-1];
         end
         
         %checks if hitting the top border
         if(yloc > 1)    
             checkingNextPos{1,4}=[yloc-1,xloc]; %move up
          else
-            checkingNextPos{1,1}=[-1,-1];   
+            checkingNextPos{1,4}=[-1,-1];   
         end
         
         % if out of bounds ie: wall, nonexistant col/row, visited -->
@@ -84,7 +86,7 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
                 end
             end
         end      % to add to stack
-       
+       disp(stack)
         % 3. if statement: priority in a clk wise direction for movement 
         % ie: N>E>S>W eg: if intersection is N and E, N needs to be added 
         % to top of stack last so that the bot can move nortwards
@@ -103,13 +105,13 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
         xloc = visiting(2);
         
         % 6. update node value
-        node = node +1;
-        index = index +1;
+        node = node +1;     %number of steps
+        index = index +1;   % index of steps
 
          % 1.place step on the map
         retvisited(yloc,xloc)=0;
-        placestep(retsteps{1,index},node)
-
+        placestep(retsteps{1,index},node);
+        disp(visiting)
     end
     
     display(retsteps)
