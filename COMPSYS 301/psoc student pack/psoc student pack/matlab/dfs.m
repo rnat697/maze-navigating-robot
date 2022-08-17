@@ -14,7 +14,7 @@
 %       'retsteps' is the vector of steps to reach the target, --> "visited"
 
 function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation)
-    
+    holder =0;
     node = 1;
     stack = {startlocation};
     mapsize = size(mapfile);
@@ -34,7 +34,7 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
     placestep(retsteps{1,index},node) %place start location/
 
 
-    while ((targetlocation(1) ~= visiting(1)) && (targetlocation(2) ~= visiting(2)))
+   while (holder ~= 1)
         
         % 2. Compare location of N,S,E,W using the retmap
         
@@ -111,10 +111,11 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
          % 1.place step on the map
         retvisited(yloc,xloc)=0;
         placestep(retsteps{1,index},node);
+        holder =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
         disp(visiting)
     end
     
-    
+     display(retsteps)
 end
     
 
