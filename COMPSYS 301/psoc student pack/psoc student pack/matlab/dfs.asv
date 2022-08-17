@@ -14,18 +14,16 @@
 %       'retsteps' is the vector of steps to reach the target, --> "visited"
 
 function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation)
-    
+    holder =0;
+    node = 1;
     stack = {startlocation};
     mapsize = size(mapfile);
     retvisited= ones(mapsize);
-    
     %init visiting to starting node.
     visiting = startlocation;  
     retsteps = {startlocation};
-    
-    retmap = mapfile; %original map that was provided.
+    retmap = mapfile;
     index = 1;
-    checkifAtEnd =0;
     
    %init array with 4 local values based on location
    yloc = visiting(1);
@@ -34,10 +32,10 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
    
   % 1.place start location on visited map
     retvisited(yloc,xloc)=0;%matrix
-    placestep(retsteps{1,index},index) %map array
+    placestep(retsteps{1,index},node) %map array
 
 
-   while (checkifAtEnd ~= 1)
+   while (holder ~= 1)
         
         % 2. Compare location of N,S,E,W using the retmap
         
@@ -89,7 +87,7 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
                 end
             end
         end      % to add to stack
-        
+       disp(stack)
         % 3. if statement: priority in a clk wise direction for movement 
         % ie: N>E>S>W eg: if intersection is N and E, N needs to be added 
         % to top of stack last so that the bot can move nortwards
@@ -113,9 +111,7 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
          % 1.place step on the map
         retvisited(yloc,xloc)=0;
         placestep(retsteps{1,index},index);
-        
-        %checks if location of node is at end
-        checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
+        holder =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
         disp(visiting)
     end
     
@@ -128,8 +124,7 @@ end
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%QUEUE functions
+
 
 function placestep(position,i)
     % This function will plot a insert yellow rectangle and also print a number in this rectangle. Use with plotmap/viewmap. 

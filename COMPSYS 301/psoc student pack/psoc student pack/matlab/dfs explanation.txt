@@ -1,0 +1,29 @@
+
+
+1.place inital step on map from start location
+2. in another loop Compare location of N,S,E,W using the retmap 
+2.5 when checking left right,bottom top first check if the border is a wall or already visited.
+2.6
+	
+	if out of bounds ie: wall, nonexistant col/row, visited -->
+	ignore
+        else move to the row/col, 
+3. if statement: priority in a clk wise direction for movement 
+        ie: N>E>S>W eg: if intersection is N and E, N needs to be added 
+        to top of stack last so that the bot can move nortwards
+
+4. add locations to stack
+        end if, endloop
+	
+4.1 Take location from top of stack & add to resteps & visiting
+
+5. update retvisited map file based on visited location
+
+6. update node value
+
+
+
+
+
+other functions
+append to end,append to front(move rest backwards one)    place step is provided to us
