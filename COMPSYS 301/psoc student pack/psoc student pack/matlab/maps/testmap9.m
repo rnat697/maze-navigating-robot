@@ -1,17 +1,17 @@
 %% Function descriptions
 %% To view a map, given a map file
 
-viewmap('map_8.txt',0); % shows walls
-viewmap('map_8.txt',1); % shows track
+viewmap('map_10.txt',0); % shows walls
+viewmap('map_10.txt',1); % shows track
 
 %or else
 
-[m]=map_convert('map_8.txt');
+[m]=map_convert('map_10.txt');
 plotmap(m);
 %Here   'm' is the map file returned as a matrix
-startloc= [14,1];
-targetloc=[1,18];
-
+startloc= [7,1]; %map 9, 13,1  map 10 7,1
+targetloc=[1,12]; %map 9, 1,17  map 10 1,12
+ 
 % Your simulations will use this structure
 [m,v,s]=dfs(m,[startloc],[targetloc]);
 %Here   'm' is the map file returned as a matrix
