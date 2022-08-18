@@ -1,0 +1,21 @@
+
+function [map] = scoremap(mapScore,finishlocation)
+x=mapScore;
+mapsize = size(x);
+
+
+for i = 1: mapsize(1)
+    for j = 1:mapsize(2)
+        locationx = i
+        locationy = j
+        x(i,j) = (locationx-finishlocation(1)) + (locationy-finishlocation(2));
+        
+        
+        
+    end
+end
+
+
+
+map = x;
+end

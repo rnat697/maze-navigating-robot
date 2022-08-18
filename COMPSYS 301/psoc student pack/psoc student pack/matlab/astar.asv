@@ -18,11 +18,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
 
 
 %determine neighbours and add all to open list after calculating its score
-%visit lowest score F and call it W
-% remove W from open and add to closed list.
-% for each square T in w's walkable neighbor path
-%if T is in closed list.ignore
-% if t is in open list add and compute score
+%visit lowest score
 
 
 
