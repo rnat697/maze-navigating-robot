@@ -46,7 +46,7 @@ function [retmap,retvisited,retsteps] = dfs(mapfile,startlocation,targetlocation
    end
 
     while(~isempty(queue))
-        visiting = queue()
+        retsteps = visiting;
     
     end
 
