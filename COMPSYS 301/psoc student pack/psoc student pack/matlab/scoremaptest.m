@@ -12,7 +12,7 @@ plotmap(m);
 startloc= [14,1];
 targetloc=[1,18];
 
-[m]=scoremap(m,[targetloc]);
+[Fmaps]=scoremap(m,[targetloc],startloc);
 display("map done")
 
 
