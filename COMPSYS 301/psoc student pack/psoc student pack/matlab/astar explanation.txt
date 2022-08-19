@@ -1,16 +1,62 @@
 Hscore - Heuristic estimated movement cost from start location to target location.
          Ignores any obstucle /walls. Uses an approximation heuristic called
-         Manhattan Distance.
+         ~~Manhattan Distance~~. Now uses Euclidean Distance.
 
 Gscore - Movement cost from start point to current location. eg: "For a square neighbor 
          to the start point A, this would be 1, but this will increase as 
          we move away from the starting tile."
 
 Fscore - Total estimated cost of path. Fscore = Gscore + Hscore. This is what we
-         will use to choose which location to visit
+         will use to choose which location to visit.
 
-some assumptions: we can only move left,right,up,down on the maze. (hence we use
-                  Manhattan Distance instead of Diagonal Distance or Eucidiean Distance)
+some assumptions: We can only move left,right,up,down on the maze. ~~(hence we use
+                  Manhattan Distance instead of Diagonal Distance or Eucidiean Distance)~~
+                  Eucidiean distance seems to give a more accurate cost (and hence more 
+                  accurate shortest path) despite its recommended use is when we can
+                  move in all directions.
+Manhatten Distance -->  h = abs(current_cell.x – target.x) + abs(current_cell.y – target.y)
+Euclidean Distance --> h = sqrt((current_cell.x – target.x)^2 + (current_cell.y – goal.y)^2)
+Diagonal Distance --> dx = abs(current_cell.x – target.x)
+                      dy = abs(current_cell.y – target.y)
+                      h = D * (dx + dy) + (D2 - 2 * D) * min(dx, dy)
+                      where D is length of each node(usually = 1) and D2 is diagonal distance 
+                      between each node (usually = sqrt(2) ).                     
 
-1. while target node hasn't been found 
-    a. find the node with the lowest Fscore
+Notes: ~~ ~~ means removed/old version/can ignore
+Diagonal distance is used when you can only move 8 spaces at a time.
+
+////////////////////////
+Psuedocode:
+////////////////////////
+
+To generate possible paths:
+1. While target node hasn't been found 
+    a. Find the node with the lowest Fscore
+    b. Visit the node with the lowest Fscore, add the node to closed list, mark the node as 
+       visited on the map and remove the node from the queue
+    c. Determine neighbouring nodes of visiting node and add to a neighbours array
+    d. For each node in neighbouring nodes
+        i. Calculate Gscore, Hscore and Fscore if node is not in the (open list) queue
+            and node is not a wall and hasn't been visited. Then add visiting node as parent for this node.
+        ii. Calculate a new Fscore if node is in the queue and node is not a wall and hasn't been visited
+            ii.1. If the new Fscore is smaller than the old Fscore, update the Fscore value and set the 
+               visiting node as the parent for this node.
+    e. Repeat until 1. is true (target node has been found)
+
+To get the actual shortest path: <-- by going in reverse target to start using parents cell array
+2. Set current node to target location
+3. While current node isn't the start node
+    a. Find the parent node of the current node and add it to a reversed path list
+    b. Set the current node the the parent node for next iteration
+    c. repeat until 3. is true (start node has been found)
+4. Flip the order of the reversed path array so that the first element is the start node and last 
+   element is target node
+5. Display path on map
+
+
+Links: https://www.geeksforgeeks.org/a-search-algorithm/
+       https://medium.com/analytics-vidhya/a-algorithm-how-to-find-the-shortest-path-between-two-points-767c8a76376
+       https://brilliant.org/wiki/a-star-search/
+       https://www.youtube.com/watch?v=-L-WgKMFuhE
+       https://www.redblobgames.com/pathfinding/a-star/introduction.html
+

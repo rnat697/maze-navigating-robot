@@ -1,14 +1,10 @@
 %% A*'s Algorithm
-% https://www.geeksforgeeks.org/a-search-algorithm/
-% https://medium.com/analytics-vidhya/a-algorithm-how-to-find-the-shortest-path-between-two-points-767c8a76376
-% https://brilliant.org/wiki/a-star-search/
-% https://www.redblobgames.com/pathfinding/a-star/introduction.html
+% see astar explaination.txt for further detail
 
 function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocation)
 
     %list of squares we checked to find the nearest path    open list (queue)
-    %list that we have decided and will not change again close list(visitedlist) &
-    %retvisted
+    %list that we have decided and will not change again close list(visitedlist & retvisted)
     queue  = {startlocation}; % list of squares we checked to find the nearest path (open list)
     mapSize = size(mapfile);
     retmap = mapfile;
@@ -28,8 +24,8 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
     visiting = [-1,-1]; % just for initalisation purposes
     checkifAtEnd = 0;
 
-    
-    while (checkifAtEnd ~= 1)
+
+    while (checkifAtEnd ~= 1) % ends when we found target location
         
         % Find node with lowest Fscore to visit
         for i = 1:length(queue)
@@ -53,33 +49,38 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         visitedList= append(visitedList,visiting); %add to closed list
         retvisited(visiting(1),visiting(2)) = 0; % place visited on visited map
         queue = removeElement(queue,index);
-        
+
         %checks if location of node is at end
         checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
-
+        
+       
         % determine neighbours of visiting node and caluclate Fscore
          ycurrent = visiting(1);
-         xcurrent = visiting(2);    
-         % Neighbours are S, N,E, W from current location
+         xcurrent = visiting(2); 
+
+         % Neighbours are S, N,E, W from the current location
          neighbours = {[ycurrent+1,xcurrent],[ycurrent-1,xcurrent ],[ycurrent,xcurrent+1],[ycurrent,xcurrent-1]};
          
-         % check if neighbour is not in closed list (retsteps --> ie visted array)
+         % calculate Fscore if neighbour is not in closed list (visitedList --> ie visted array)
          % and not in open list (queue) and is not a wall
         for j = 1: length(neighbours)
             adjacentpos = neighbours{1,j};
             rows = adjacentpos(1);
             cols = adjacentpos(2);
             newFscore = 0;
+            
             if (rows > 0 && cols >0 && retmap(rows,cols) ~= 1 && retvisited(rows,cols) ~= 0) % not a wall and has not been visited
-                % check if open list (queue) does not contain current
-                % adjacent position
+                
+                % check if open list (queue) does not contain current neighbouring position
                 if(contains(queue,adjacentpos) == false)
                     queue = append(queue,adjacentpos);
                     
-                    % calculate Fscore
+                    % calculate Fscore, Gscore and Hscore
+                    % Fscore = Gscore + Hscore
                     Gscore = calculateGScore(Gscore,adjacentpos,currentGcost);
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     Fscore(rows,cols) = Gscore(rows,cols) + Hscore(rows,cols);
+                    
                     parents{rows,cols} = [ycurrent,xcurrent]; % add parent for the neighbouring node
                 
                 else % if it is already in open list update fscore if needed and update parent
@@ -88,6 +89,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     newFscore = Gscore(rows,cols) + Hscore(rows,cols);
                   
+                    % check if new Fscore is smaller than old Fscore
                     if(newFscore < oldFscore)
                         Fscore(rows,cols) = newFscore;
                         parents{rows,cols} = [ycurrent,xcurrent]; % update parent node of neighbour to current node
@@ -98,9 +100,9 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         end
     end
 
-    % Finds shortest path by going in the reverse direction and looking at
+    % Finds the actual shortest path by going in the reverse direction and looking at
     % a neighbour's parent location. eg: target location is [1,18], the
-    % parent of that point is [2,18] so we go to 2,18 and find it's parents
+    % parent of that point is [2,18] so we go to [2,18] and find it's parents
     % until we get to the start node.
     % Starts from target node and get the paths back to start node
     
@@ -127,17 +129,25 @@ end
 
 
 %% calculating H score
+% H score is the estimated cost of movement from start point to target and
+% ignores walls.
+% Using Euclidean Distance (supposed to be used for when we can move in any
+% direction but it seems to give a more accurate cost which in turn will
+% generate a more accurate shortest path) We have tried use Manhattan Distance
+% since its best used for only moving left, right,up and down but it did
+% not give an accurate shortest path in some situations.
+% Eclidian Distance --> H = square root ((currentx - targetx)^2 + (currenty-targety)^2)
+% See: https://www.geeksforgeeks.org/a-search-algorithm/]
 function [Hmaps] = calculateHScore(Hmap,current, target)
-% Using Manhattan Distance because we are only allowed to move up,down,
-% left, right. see: https://www.geeksforgeeks.org/a-search-algorithm/]
     xloc = current(1);
     yloc = current(2);
     Hmaps = Hmap;
-    Hmaps(xloc,yloc) = abs(xloc-target(1)) + abs(yloc-target(2));
+    Hmaps(xloc,yloc) = sqrt((xloc-target(1))^2 + (yloc-target(2))^2);
 end
 
 %% calculating G score
-% G score is the movement score from the start point to current point.
+% G score is the movement score from the start point to current point. We
+% add to the current cost by one each time we move away from start point.
 function [Gmaps] = calculateGScore(Gmap,currentpos,currentcost)
         Gmaps = Gmap;
         xloc = currentpos(1);
@@ -145,6 +155,7 @@ function [Gmaps] = calculateGScore(Gmap,currentpos,currentcost)
         Gmaps(xloc,yloc) = currentcost +1;
 end
 
+%% Checks if array contains a location
 function [doesContain] = contains(cellarray, target)
     doesContain = false;
     for i = 1:length(cellarray)
@@ -155,14 +166,16 @@ function [doesContain] = contains(cellarray, target)
         end
     end
 end
-%% removes an element in the array
+
+%% removes an specified element in the array
 function[array]= removeElement(poparray,index)
-% Input index has to be a integer
     array = poparray;
-    array(index)= [];
+    % Input index has to be a integer
+        array(index)= [];
+    
 
 end
-%% Appends to end of stack
+%% Appends to end of array
 function [updatedStack] = append(stack,node)
     updatedStack = stack;
     updatedStack{length(stack)+1} = node;

@@ -1,14 +1,10 @@
 %% A*'s Algorithm
-% https://www.geeksforgeeks.org/a-search-algorithm/
-% https://medium.com/analytics-vidhya/a-algorithm-how-to-find-the-shortest-path-between-two-points-767c8a76376
-% https://brilliant.org/wiki/a-star-search/
-% https://www.redblobgames.com/pathfinding/a-star/introduction.html
+% see astar explaination.txt for further detail
 
 function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocation)
 
     %list of squares we checked to find the nearest path    open list (queue)
-    %list that we have decided and will not change again close list(visitedlist) &
-    %retvisted
+    %list that we have decided and will not change again close list(visitedlist & retvisted)
     queue  = {startlocation}; % list of squares we checked to find the nearest path (open list)
     mapSize = size(mapfile);
     retmap = mapfile;
@@ -65,7 +61,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
          % Neighbours are S, N,E, W from the current location
          neighbours = {[ycurrent+1,xcurrent],[ycurrent-1,xcurrent ],[ycurrent,xcurrent+1],[ycurrent,xcurrent-1]};
          
-         % check if neighbour is not in closed list (visitedList --> ie visted array)
+         % calculate Fscore if neighbour is not in closed list (visitedList --> ie visted array)
          % and not in open list (queue) and is not a wall
         for j = 1: length(neighbours)
             adjacentpos = neighbours{1,j};
@@ -135,7 +131,6 @@ end
 %% calculating H score
 % H score is the estimated cost of movement from start point to target and
 % ignores walls.
-function [Hmaps] = calculateHScore(Hmap,current, target)
 % Using Euclidean Distance (supposed to be used for when we can move in any
 % direction but it seems to give a more accurate cost which in turn will
 % generate a more accurate shortest path) We have tried use Manhattan Distance
@@ -143,6 +138,7 @@ function [Hmaps] = calculateHScore(Hmap,current, target)
 % not give an accurate shortest path in some situations.
 % Eclidian Distance --> H = square root ((currentx - targetx)^2 + (currenty-targety)^2)
 % See: https://www.geeksforgeeks.org/a-search-algorithm/]
+function [Hmaps] = calculateHScore(Hmap,current, target)
     xloc = current(1);
     yloc = current(2);
     Hmaps = Hmap;
