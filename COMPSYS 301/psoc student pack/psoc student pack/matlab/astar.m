@@ -9,26 +9,27 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
     %list of squares we checked to find the nearest path    open list (queue)
     %list that we have decided and will not change again close list(visitedlist) &
     %retvisted
-    queue  = {startlocation};
+    queue  = {startlocation}; % list of squares we checked to find the nearest path (open list)
     mapSize = size(mapfile);
     retmap = mapfile;
     retsteps = {};
-    visitedList = {};
-    retvisited = ones(mapSize);
-    paths = zeros(mapSize);
+    visitedList = {}; % list that we have decided and will not change again (closed list)
+    retvisited = ones(mapSize); % map of visited nodes where 1 = not visited, 0 = visited
+    parents = {}; % map of parent locations (ie: the neighbouring nodes have "parent" nodes --> parent nodes is the current node)
+    
+    % maps of H, G and F scores
     Hscore = zeros(mapSize);
     Fscore = zeros(mapSize);
     Gscore = zeros(mapSize);
+    
     prevFscore = 2000;
     currentGcost = 0;
     stepNum = 0;
-
-    %add startloaction to closed list.
-    %current location = startlocation
-    %add all open location next to current location to open list
     visiting = [-1,-1]; % just for initalisation purposes
     checkifAtEnd = 0;
-    while (checkifAtEnd ~= 1)
+
+
+    while (checkifAtEnd ~= 1) % ends when we found target location
         
         % Find node with lowest Fscore to visit
         for i = 1:length(queue)
@@ -48,77 +49,91 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         % visit smallest Fscore node and remove from queue
         visiting = smallestFNode;
         stepNum = stepNum + 1;
-        prevFscore = 5000; % reset checking previous F node value
+        prevFscore = 5000; % reset to checking previous F node value for next iteration
         visitedList= append(visitedList,visiting); %add to closed list
         retvisited(visiting(1),visiting(2)) = 0; % place visited on visited map
         queue = removeElement(queue,index);
         
-         %checks if location of node is at end
+        %checks if location of node is at end
         checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
 
         % determine neighbours of visiting node and caluclate Fscore
          ycurrent = visiting(1);
-         xcurrent = visiting(2);    
-         % Neighbours are S, N,E, W from current location
+         xcurrent = visiting(2); 
+
+         % Neighbours are S, N,E, W from the current location
          neighbours = {[ycurrent+1,xcurrent],[ycurrent-1,xcurrent ],[ycurrent,xcurrent+1],[ycurrent,xcurrent-1]};
          
-         % check if neighbour is not in closed list (retsteps --> ie visted array)
+         % check if neighbour is not in closed list (visitedList --> ie visted array)
          % and not in open list (queue) and is not a wall
         for j = 1: length(neighbours)
             adjacentpos = neighbours{1,j};
             rows = adjacentpos(1);
             cols = adjacentpos(2);
             newFscore = 0;
+            
             if (rows > 0 && cols >0 && retmap(rows,cols) ~= 1 && retvisited(rows,cols) ~= 0) % not a wall and has not been visited
-                % check if open list (queue) does not contain current
-                % adjacent position
+                
+                % check if open list (queue) does not contain current neighbouring position
                 if(contains(queue,adjacentpos) == false)
                     queue = append(queue,adjacentpos);
                     
-                    % calculate Fscore
+                    % calculate Fscore, Gscore and Hscore
+                    % Fscore = Gscore + Hscore
                     Gscore = calculateGScore(Gscore,adjacentpos,currentGcost);
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     Fscore(rows,cols) = Gscore(rows,cols) + Hscore(rows,cols);
+                    
+                    parents{rows,cols} = [ycurrent,xcurrent]; % add parent for the neighbouring node
                 
-                else % if it is already in open list update fscore if needed
+                else % if it is already in open list update fscore if needed and update parent
                     oldFscore = Fscore(rows,cols);
                     Gscore = calculateGScore(Gscore,adjacentpos,currentGcost);
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     newFscore = Gscore(rows,cols) + Hscore(rows,cols);
-                    paths(row,cols) = [ycurrent,xcurrent]; % set parent node of neighbour to current node
+                  
+                    % check if new Fscore is smaller than old Fscore
                     if(newFscore < oldFscore)
                         Fscore(rows,cols) = newFscore;
+                        parents{rows,cols} = [ycurrent,xcurrent]; % update parent node of neighbour to current node
                     end
                     
                 end
             end
         end
     end
-    % go through path list from the target node and get the paths back to
-    % start node
-    index = 1;
-    while(node ~= startlocation)
-        
+
+    % Finds the actual shortest path by going in the reverse direction and looking at
+    % a neighbour's parent location. eg: target location is [1,18], the
+    % parent of that point is [2,18] so we go to [2,18] and find it's parents
+    % until we get to the start node.
+    % Starts from target node and get the paths back to start node
+    
+    currentNode = targetlocation;
+    parentNode = [-1,-1]; % initialised parent node
+    reversedPath = {};
+    checkStart = 0;
+    reversedPath = append(reversedPath,currentNode); % add target to reversed path list
+    
+    while(checkStart ~= 1)
+        parentNode = parents{currentNode(1),currentNode(2)}; % find parent node associated with current node
+        reversedPath = append(reversedPath,parentNode); % add to reversed path list
+        currentNode = parentNode; % for next iteration
+        checkStart = (currentNode(1) == startlocation(1) && currentNode(2)== startlocation(2));
     end
-         disp("ew")      
-%path Score
-%G is the estimated cost from path a to the square, (increases as u move
-%add 1 for each frame travelled.
-%away)
-%h is a heuristic movement cost as we travel awayu from the square
-%F = G+h checked when travelling
+    retsteps = flip(reversedPath); % flips order of elements to make a path to go from start to target. 
+    
 
-
-%determine neighbours and add all to open list after calculating its score
-%visit lowest score F and call it W
-% remove W from open and add to closed list.
-% for each square T in w's walkable neighbor path
-%if T is in closed list.ignore
-% if t is in open list add and compute score
+    % display path on map
+    for k = 1:length(retsteps)
+        placestep(retsteps{k},k);
+    end
 end
 
 
 %% calculating H score
+% H score is the estimated cost of movement from start point to target and
+% ignores walls.
 function [Hmaps] = calculateHScore(Hmap,current, target)
 % Using Manhattan Distance because we are only allowed to move up,down,
 % left, right. see: https://www.geeksforgeeks.org/a-search-algorithm/]
@@ -129,6 +144,8 @@ function [Hmaps] = calculateHScore(Hmap,current, target)
 end
 
 %% calculating G score
+% G score is the movement score from the start point to current point. We
+% add to the current cost by one each time we move away from start point.
 function [Gmaps] = calculateGScore(Gmap,currentpos,currentcost)
         Gmaps = Gmap;
         xloc = currentpos(1);
@@ -136,6 +153,7 @@ function [Gmaps] = calculateGScore(Gmap,currentpos,currentcost)
         Gmaps(xloc,yloc) = currentcost +1;
 end
 
+%% Checks if array contains a location
 function [doesContain] = contains(cellarray, target)
     doesContain = false;
     for i = 1:length(cellarray)
@@ -146,14 +164,15 @@ function [doesContain] = contains(cellarray, target)
         end
     end
 end
-%% removes an element in the array
+
+%% removes an specified element in the array
 function[array]= removeElement(poparray,index)
 % Input index has to be a integer
     array = poparray;
     array(index)= [];
 
 end
-%% Appends to end of stack
+%% Appends to end of array
 function [updatedStack] = append(stack,node)
     updatedStack = stack;
     updatedStack{length(stack)+1} = node;

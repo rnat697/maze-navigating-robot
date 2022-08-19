@@ -9,8 +9,8 @@ viewmap('map_10.txt',1); % shows track
 [m]=map_convert('map_10.txt');
 plotmap(m);
 %Here   'm' is the map file returned as a matrix
-startloc= [1,12];
-targetloc=[7,1];
+startloc= [1,8];
+targetloc=[2,2];
 
 % Your simulations will use this structure
 [m,v,s]=astar(m,[startloc],[targetloc]);
