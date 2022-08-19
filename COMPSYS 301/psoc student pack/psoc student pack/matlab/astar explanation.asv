@@ -1,16 +1,13 @@
 Hscore - Heuristic estimated movement cost from start location to target location.
-         Ignores any obstucle /walls. Uses an approximation heuristic called
-         Manhattan Distance.
+         Ignores any obstucle /walls. 
 
 Gscore - Movement cost from start point to current location. eg: "For a square neighbor 
          to the start point A, this would be 1, but this will increase as 
          we move away from the starting tile."
 
 Fscore - Total estimated cost of path. Fscore = Gscore + Hscore. This is what we
-         will use to choose which location to visit
 
-some assumptions: we can only move left,right,up,down on the maze. (hence we use
-                  Manhattan Distance instead of Diagonal Distance or Eucidiean Distance)
+
 
 1. while target node hasn't been found 
     a. find the node with the lowest Fscore
