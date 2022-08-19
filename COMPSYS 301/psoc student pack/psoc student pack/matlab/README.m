@@ -13,7 +13,7 @@ startloc= [14,1];
 targetloc=[1,18];
 
 % Your simulations will use this structure
-[m,v,s]=dfs(m,[startloc],[targetloc]);
+[m,v,s]=astar(m,[startloc],[targetloc]);
 %Here   'm' is the map file returned as a matrix
 %       'v' is a matrix that shows which cells have been visited, '0' means
 %       visited, '1' means not visited

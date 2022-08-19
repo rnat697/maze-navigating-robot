@@ -25,8 +25,8 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
     %current location = startlocation
     %add all open location next to current location to open list
     visiting = [-1,-1]; % just for initalisation purposes
-    checkifAtEnd = 0;
-    while (checkifAtEnd ~= 1)
+
+    while (visiting ~= targetlocation)
         
         % Find node with lowest Fscore to visit
         for i = 1:length(queue)
@@ -46,14 +46,11 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         % visit smallest Fscore node and remove from queue
         visiting = smallestFNode;
         stepNum = stepNum + 1;
-        prevFscore = 5000; % reset checking previous F node value
+        prevFscore = 0; % reset f
         retsteps = append(retsteps,visiting); %add to closed list
         retvisited(visiting) = 0; % place step on visited map
         placestep(visiting,stepNum);
         queue = removeElement(queue,index);
-        
-         %checks if location of node is at end
-        checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
 
         % determine neighbours of visiting node and caluclate Fscore
          ycurrent = visiting(1);
@@ -80,7 +77,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
                     Fscore(rows,cols) = Gscore(rows,cols) + Hscore(rows,cols);
                 
                 else % if it is already in open list update fscore if needed
-                    oldFscore = Fscore(rows,cols);
+                    oldFscore = Fscore(row,cols);
                     Gscore = calculateGScore(Gscore,adjacentpos,currentGcost);
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     newFscore = Gscore(rows,cols) + Hscore(rows,cols);
@@ -92,8 +89,9 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
                 end
             end
         end
-        
 
+
+         % calculate G and H values
     
     end
         
@@ -111,6 +109,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
 % for each square T in w's walkable neighbor path
 %if T is in closed list.ignore
 % if t is in open list add and compute score
+
 end
 
 
