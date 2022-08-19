@@ -7,13 +7,15 @@
 function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocation)
 
     %list of squares we checked to find the nearest path    open list (queue)
-    %list that we have decided and will not change again close list(retsteps) &
+    %list that we have decided and will not change again close list(visitedlist) &
     %retvisted
     queue  = {startlocation};
     mapSize = size(mapfile);
     retmap = mapfile;
     retsteps = {};
+    visitedList = {};
     retvisited = ones(mapSize);
+    paths = zeros(mapSize);
     Hscore = zeros(mapSize);
     Fscore = zeros(mapSize);
     Gscore = zeros(mapSize);
@@ -25,8 +27,8 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
     %current location = startlocation
     %add all open location next to current location to open list
     visiting = [-1,-1]; % just for initalisation purposes
-
-    while (visiting ~= targetlocation)
+    checkifAtEnd = 0;
+    while (checkifAtEnd ~= 1)
         
         % Find node with lowest Fscore to visit
         for i = 1:length(queue)
@@ -46,17 +48,20 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         % visit smallest Fscore node and remove from queue
         visiting = smallestFNode;
         stepNum = stepNum + 1;
-        prevFscore = 0; % reset f
-        retsteps = append(retsteps,visiting); %add to closed list
-        retvisited(visiting) = 0; % place step on visited map
+        prevFscore = 5000; % reset checking previous F node value
+        visitedList= append(visitedList,visiting); %add to closed list
+        retvisited(visiting(1),visiting(2)) = 0; % place step on visited map
         placestep(visiting,stepNum);
         queue = removeElement(queue,index);
+        
+         %checks if location of node is at end
+        checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
 
         % determine neighbours of visiting node and caluclate Fscore
          ycurrent = visiting(1);
          xcurrent = visiting(2);    
-         % Neighbours are S, N, E, W from current location
-         neighbours = {[ycurrent+1,xcurrent ],[ycurrent-1,xcurrent ],[ycurrent,xcurrent+1],[ycurrent,xcurrent-1]};
+         % Neighbours are S, N,E, W from current location
+         neighbours = {[ycurrent+1,xcurrent],[ycurrent-1,xcurrent ],[ycurrent,xcurrent+1],[ycurrent,xcurrent-1]};
          
          % check if neighbour is not in closed list (retsteps --> ie visted array)
          % and not in open list (queue) and is not a wall
@@ -77,24 +82,23 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
                     Fscore(rows,cols) = Gscore(rows,cols) + Hscore(rows,cols);
                 
                 else % if it is already in open list update fscore if needed
-                    oldFscore = Fscore(row,cols);
+                    oldFscore = Fscore(rows,cols);
                     Gscore = calculateGScore(Gscore,adjacentpos,currentGcost);
                     Hscore = calculateHScore(Hscore,adjacentpos, targetlocation);
                     newFscore = Gscore(rows,cols) + Hscore(rows,cols);
-                    
-                    if( newFscore < oldFscore)
+                    paths(row,cols) = [ycurrent,xcurrent];
+                    if(newFscore < oldFscore)
                         Fscore(rows,cols) = newFscore;
                     end
                     
                 end
             end
         end
-
-
-         % calculate G and H values
-    
     end
-        
+    
+    while(node ~= startlocation)
+    end
+         disp("ew")      
 %path Score
 %G is the estimated cost from path a to the square, (increases as u move
 %add 1 for each frame travelled.
@@ -109,7 +113,6 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
 % for each square T in w's walkable neighbor path
 %if T is in closed list.ignore
 % if t is in open list add and compute score
-
 end
 
 

@@ -10,23 +10,23 @@ function [map] = scoremap(ogmap, target,start)
 
     mapsize = size(ogmap);
     Hmap = zeros(mapsize);
-    Gmap = zeros(mapsize);
-    Fmap = zeros(mapsize);
+    %Gmap = zeros(mapsize);
+    %Fmap = zeros(mapsize);
 
     for xloc = 1: mapsize(1)
         for yloc = 1:mapsize(2)
-            Gmap(xloc,yloc) = abs(xloc-start(1))+ abs(yloc-start(2));
-            if(ogmap(xloc,yloc) ~= 1)
+            %Gmap(xloc,yloc) = abs(xloc-start(1))+ abs(yloc-start(2));
+            %if(ogmap(xloc,yloc) ~= 1)
                 Hmap(xloc,yloc) = abs(xloc-target(1)) + abs(yloc-target(2));
-                 Fmap(xloc,yloc) = Gmap(xloc,yloc)+ Hmap(xloc,yloc);
-            end
+                 %Fmap(xloc,yloc) = Gmap(xloc,yloc)+ Hmap(xloc,yloc);
+            %end
 
             
             
             
         end
     end
-    map = Fmap;
+    map = Hmap;
 
 end
 
