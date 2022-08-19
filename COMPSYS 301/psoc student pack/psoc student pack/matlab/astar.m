@@ -53,10 +53,11 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
         visitedList= append(visitedList,visiting); %add to closed list
         retvisited(visiting(1),visiting(2)) = 0; % place visited on visited map
         queue = removeElement(queue,index);
-        
+
         %checks if location of node is at end
         checkifAtEnd =(targetlocation(1) == visiting(1)) && (targetlocation(2) == visiting(2));
-
+        
+       
         % determine neighbours of visiting node and caluclate Fscore
          ycurrent = visiting(1);
          xcurrent = visiting(2); 
@@ -135,12 +136,17 @@ end
 % H score is the estimated cost of movement from start point to target and
 % ignores walls.
 function [Hmaps] = calculateHScore(Hmap,current, target)
-% Using Manhattan Distance because we are only allowed to move up,down,
-% left, right. see: https://www.geeksforgeeks.org/a-search-algorithm/]
+% Using Euclidean Distance (supposed to be used for when we can move in any
+% direction but it seems to give a more accurate cost which in turn will
+% generate a more accurate shortest path) We have tried use Manhattan Distance
+% since its best used for only moving left, right,up and down but it did
+% not give an accurate shortest path in some situations.
+% Eclidian Distance --> H = square root ((currentx - targetx)^2 + (currenty-targety)^2)
+% See: https://www.geeksforgeeks.org/a-search-algorithm/]
     xloc = current(1);
     yloc = current(2);
     Hmaps = Hmap;
-    Hmaps(xloc,yloc) = abs(xloc-target(1)) + abs(yloc-target(2));
+    Hmaps(xloc,yloc) = sqrt((xloc-target(1))^2 + (yloc-target(2))^2);
 end
 
 %% calculating G score
@@ -167,9 +173,10 @@ end
 
 %% removes an specified element in the array
 function[array]= removeElement(poparray,index)
-% Input index has to be a integer
     array = poparray;
-    array(index)= [];
+    % Input index has to be a integer
+        array(index)= [];
+    
 
 end
 %% Appends to end of array

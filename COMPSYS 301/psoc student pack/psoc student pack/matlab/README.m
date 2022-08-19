@@ -1,16 +1,16 @@
 %% Function descriptions
 %% To view a map, given a map file
 
-viewmap('map_10.txt',0); % shows walls
-viewmap('map_10.txt',1); % shows track
+viewmap('map_2.txt',0); % shows walls
+viewmap('map_2.txt',1); % shows track
 
 %or else
 
-[m]=map_convert('map_10.txt');
+[m]=map_convert('map_2.txt');
 plotmap(m);
 %Here   'm' is the map file returned as a matrix
-startloc= [1,12];
-targetloc=[7,1];
+startloc= [14,8];
+targetloc=[2,18];
 
 % Your simulations will use this structure
 [m,v,s]=astar(m,[startloc],[targetloc]);
