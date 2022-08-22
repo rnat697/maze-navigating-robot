@@ -21,11 +21,35 @@
 //* ========================================
 #include "defines.h"
 #include "vars.h"
+#include "isr_eoc.h"
 //* ========================================
 void usbPutString(char *s);
 void usbPutChar(char c);
 void handle_usb();
 //* ========================================
+
+CY_ISR_PROTO(isr_eoc_Interrupt_test);
+
+CY_ISR(isr_eoc_Interrupt_test)
+{
+    #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
+        isr_TS_Interrupt_InterruptCallback();
+    #endif /* isr_TS_INTERRUPT_INTERRUPT_CALLBACK */ 
+
+    /*  Place your Interrupt code here. */
+    /* `#START isr_TS_Interrupt` */
+    int8 channel = 0; // connect filter output to pin 0.5 for channel 0 
+    uint16 value =  ADC_GetResult16(channel);
+    // get value from ADC then convert to DAC to send to external LEDs
+    if (value >= 2557) // why      4095 /5v,4095 = x / voltage we want .       4095 from (2^12-1)
+    {LED_Write(1);
+    }
+    
+    else{
+        LED_Write(0);
+    }
+    /* `#END` */
+}
 
 
 int main()
@@ -35,6 +59,13 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
+    Timer_TS_Start();
+    isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    ADC_Start();
+    ADC_StartConvert();
+    
+    LED_Write(0);
+    //VDAC8_1_Start();
 
 // ------USB SETUP ----------------    
 #ifdef USE_USB    

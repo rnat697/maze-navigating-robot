@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: isr_TS.c  
-* Version 1.71
+* Version 1.70
 *
 *  Description:
 *   API for controlling the state of an interrupt.
@@ -165,7 +165,7 @@ CY_ISR(isr_TS_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_TS_Interrupt` */
-    ts++;
+
     /* `#END` */
 }
 
