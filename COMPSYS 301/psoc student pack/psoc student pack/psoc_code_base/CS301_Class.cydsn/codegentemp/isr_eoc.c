@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: isr_eoc.c  
-* Version 1.71
+* Version 1.70
 *
 *  Description:
 *   API for controlling the state of an interrupt.
@@ -177,7 +177,7 @@ CY_ISR(isr_eoc_Interrupt)
     adcvalue[6] = ADC_GetResult16(6);
     adcvalue[7] = ADC_GetResult16(7);
     dataready_flag = 1;
-
+    LED_Write(~LED_Read());
     /* `#END` */
 }
 

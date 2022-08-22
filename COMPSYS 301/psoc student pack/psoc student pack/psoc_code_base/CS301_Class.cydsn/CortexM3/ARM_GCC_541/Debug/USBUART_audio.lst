@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAj5TiB.s 			page 1
 
 
    1              		.syntax unified
@@ -27,38 +27,38 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
   24 0006 00000000 		.4byte	.Ldebug_abbrev0
   25 000a 04       		.byte	0x4
   26 000b 01       		.uleb128 0x1
-  27 000c B3000000 		.4byte	.LASF14
+  27 000c 4A000000 		.4byte	.LASF14
   28 0010 0C       		.byte	0xc
-  29 0011 64010000 		.4byte	.LASF15
-  30 0015 0E000000 		.4byte	.LASF16
+  29 0011 FB000000 		.4byte	.LASF15
+  30 0015 57010000 		.4byte	.LASF16
   31 0019 00000000 		.4byte	.Ldebug_line0
   32 001d 02       		.uleb128 0x2
   33 001e 01       		.byte	0x1
   34 001f 06       		.byte	0x6
-  35 0020 9E010000 		.4byte	.LASF0
+  35 0020 35010000 		.4byte	.LASF0
   36 0024 02       		.uleb128 0x2
   37 0025 01       		.byte	0x1
   38 0026 08       		.byte	0x8
-  39 0027 41010000 		.4byte	.LASF1
+  39 0027 D8000000 		.4byte	.LASF1
   40 002b 02       		.uleb128 0x2
   41 002c 02       		.byte	0x2
   42 002d 05       		.byte	0x5
-  43 002e B6010000 		.4byte	.LASF2
+  43 002e 4D010000 		.4byte	.LASF2
   44 0032 02       		.uleb128 0x2
   45 0033 02       		.byte	0x2
   46 0034 07       		.byte	0x7
-  47 0035 8B010000 		.4byte	.LASF3
+  47 0035 22010000 		.4byte	.LASF3
   48 0039 02       		.uleb128 0x2
   49 003a 04       		.byte	0x4
   50 003b 05       		.byte	0x5
-  51 003c 54010000 		.4byte	.LASF4
+  51 003c EB000000 		.4byte	.LASF4
   52 0040 02       		.uleb128 0x2
   53 0041 04       		.byte	0x4
   54 0042 07       		.byte	0x7
-  55 0043 84000000 		.4byte	.LASF5
+  55 0043 1B000000 		.4byte	.LASF5
   56 0047 02       		.uleb128 0x2
   57 0048 08       		.byte	0x8
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAj5TiB.s 			page 2
 
 
   58 0049 05       		.byte	0x5
@@ -66,7 +66,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
   60 004e 02       		.uleb128 0x2
   61 004f 08       		.byte	0x8
   62 0050 07       		.byte	0x7
-  63 0051 96000000 		.4byte	.LASF7
+  63 0051 2D000000 		.4byte	.LASF7
   64 0055 03       		.uleb128 0x3
   65 0056 04       		.byte	0x4
   66 0057 05       		.byte	0x5
@@ -74,27 +74,27 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
   68 005c 02       		.uleb128 0x2
   69 005d 04       		.byte	0x4
   70 005e 07       		.byte	0x7
-  71 005f 77000000 		.4byte	.LASF8
+  71 005f 0E000000 		.4byte	.LASF8
   72 0063 02       		.uleb128 0x2
   73 0064 04       		.byte	0x4
   74 0065 04       		.byte	0x4
-  75 0066 AD000000 		.4byte	.LASF9
+  75 0066 44000000 		.4byte	.LASF9
   76 006a 02       		.uleb128 0x2
   77 006b 08       		.byte	0x8
   78 006c 04       		.byte	0x4
-  79 006d 5D010000 		.4byte	.LASF10
+  79 006d F4000000 		.4byte	.LASF10
   80 0071 02       		.uleb128 0x2
   81 0072 01       		.byte	0x1
   82 0073 08       		.byte	0x8
-  83 0074 4F010000 		.4byte	.LASF11
+  83 0074 E6000000 		.4byte	.LASF11
   84 0078 02       		.uleb128 0x2
   85 0079 08       		.byte	0x8
   86 007a 04       		.byte	0x4
-  87 007b AA010000 		.4byte	.LASF12
+  87 007b 41010000 		.4byte	.LASF12
   88 007f 02       		.uleb128 0x2
   89 0080 04       		.byte	0x4
   90 0081 07       		.byte	0x7
-  91 0082 C0010000 		.4byte	.LASF13
+  91 0082 F0010000 		.4byte	.LASF13
   92 0086 00       		.byte	0
   93              		.section	.debug_abbrev,"",%progbits
   94              	.Ldebug_abbrev0:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
  112 0011 00       		.byte	0
  113 0012 0B       		.uleb128 0xb
  114 0013 0B       		.uleb128 0xb
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAj5TiB.s 			page 3
 
 
  115 0014 3E       		.uleb128 0x3e
@@ -161,103 +161,108 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 1
  147      206C6F6E 
  147      6720696E 
  147      7400
- 148              	.LASF16:
- 149 000e 433A5C55 		.ascii	"C:\\Users\\npat025\\Dropbox (Uni of Auckland)\\CS30"
- 149      73657273 
- 149      5C6E7061 
- 149      74303235 
- 149      5C44726F 
- 150 003d 315C3230 		.ascii	"1\\2021\\psoc student pack\\psoc_code_base\\CS301_C"
- 150      32315C70 
- 150      736F6320 
- 150      73747564 
- 150      656E7420 
- 151 006c 6C617373 		.ascii	"lass.cydsn\000"
- 151      2E637964 
- 151      736E00
- 152              	.LASF8:
- 153 0077 756E7369 		.ascii	"unsigned int\000"
- 153      676E6564 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 4
+ 148              	.LASF8:
+ 149 000e 756E7369 		.ascii	"unsigned int\000"
+ 149      676E6564 
+ 149      20696E74 
+ 149      00
+ 150              	.LASF5:
+ 151 001b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 151      20756E73 
+ 151      69676E65 
+ 151      6420696E 
+ 151      7400
+ 152              	.LASF7:
+ 153 002d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 153      206C6F6E 
+ 153      6720756E 
+ 153      7369676E 
+ 153      65642069 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAj5TiB.s 			page 4
 
 
- 153      20696E74 
- 153      00
- 154              	.LASF5:
- 155 0084 6C6F6E67 		.ascii	"long unsigned int\000"
- 155      20756E73 
- 155      69676E65 
- 155      6420696E 
+ 154              	.LASF9:
+ 155 0044 666C6F61 		.ascii	"float\000"
  155      7400
- 156              	.LASF7:
- 157 0096 6C6F6E67 		.ascii	"long long unsigned int\000"
- 157      206C6F6E 
- 157      6720756E 
- 157      7369676E 
- 157      65642069 
- 158              	.LASF9:
- 159 00ad 666C6F61 		.ascii	"float\000"
- 159      7400
- 160              	.LASF14:
- 161 00b3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 161      43313120 
- 161      352E342E 
- 161      31203230 
- 161      31363036 
- 162 00e6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 162      20726576 
- 162      6973696F 
- 162      6E203233 
- 162      37373135 
- 163 0119 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 163      66756E63 
- 163      74696F6E 
- 163      2D736563 
- 163      74696F6E 
- 164              	.LASF1:
- 165 0141 756E7369 		.ascii	"unsigned char\000"
- 165      676E6564 
- 165      20636861 
- 165      7200
- 166              	.LASF11:
- 167 014f 63686172 		.ascii	"char\000"
- 167      00
- 168              	.LASF4:
- 169 0154 6C6F6E67 		.ascii	"long int\000"
- 169      20696E74 
- 169      00
- 170              	.LASF10:
- 171 015d 646F7562 		.ascii	"double\000"
- 171      6C6500
- 172              	.LASF15:
- 173 0164 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_audio.c\000"
- 173      72617465 
- 173      645F536F 
- 173      75726365 
- 173      5C50536F 
- 174              	.LASF3:
- 175 018b 73686F72 		.ascii	"short unsigned int\000"
- 175      7420756E 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\cclJretB.s 			page 5
+ 156              	.LASF14:
+ 157 004a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 157      43313120 
+ 157      352E342E 
+ 157      31203230 
+ 157      31363036 
+ 158 007d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 158      20726576 
+ 158      6973696F 
+ 158      6E203233 
+ 158      37373135 
+ 159 00b0 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 159      66756E63 
+ 159      74696F6E 
+ 159      2D736563 
+ 159      74696F6E 
+ 160              	.LASF1:
+ 161 00d8 756E7369 		.ascii	"unsigned char\000"
+ 161      676E6564 
+ 161      20636861 
+ 161      7200
+ 162              	.LASF11:
+ 163 00e6 63686172 		.ascii	"char\000"
+ 163      00
+ 164              	.LASF4:
+ 165 00eb 6C6F6E67 		.ascii	"long int\000"
+ 165      20696E74 
+ 165      00
+ 166              	.LASF10:
+ 167 00f4 646F7562 		.ascii	"double\000"
+ 167      6C6500
+ 168              	.LASF15:
+ 169 00fb 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_audio.c\000"
+ 169      72617465 
+ 169      645F536F 
+ 169      75726365 
+ 169      5C50536F 
+ 170              	.LASF3:
+ 171 0122 73686F72 		.ascii	"short unsigned int\000"
+ 171      7420756E 
+ 171      7369676E 
+ 171      65642069 
+ 171      6E7400
+ 172              	.LASF0:
+ 173 0135 7369676E 		.ascii	"signed char\000"
+ 173      65642063 
+ 173      68617200 
+ 174              	.LASF12:
+ 175 0141 6C6F6E67 		.ascii	"long double\000"
+ 175      20646F75 
+ 175      626C6500 
+ 176              	.LASF2:
+ 177 014d 73686F72 		.ascii	"short int\000"
+ 177      7420696E 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAj5TiB.s 			page 5
 
 
- 175      7369676E 
- 175      65642069 
- 175      6E7400
- 176              	.LASF0:
- 177 019e 7369676E 		.ascii	"signed char\000"
- 177      65642063 
- 177      68617200 
- 178              	.LASF12:
- 179 01aa 6C6F6E67 		.ascii	"long double\000"
- 179      20646F75 
- 179      626C6500 
- 180              	.LASF2:
- 181 01b6 73686F72 		.ascii	"short int\000"
- 181      7420696E 
- 181      7400
- 182              	.LASF13:
- 183 01c0 73697A65 		.ascii	"sizetype\000"
- 183      74797065 
- 183      00
- 184              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 177      7400
+ 178              	.LASF16:
+ 179 0157 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 179      6C65732E 
+ 179      6175636B 
+ 179      6C616E64 
+ 179      2E61632E 
+ 180 0185 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 180      6A656374 
+ 180      2D70726F 
+ 180      6A656374 
+ 180      5F67726F 
+ 181 01b5 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
+ 181      61636B5C 
+ 181      70736F63 
+ 181      20737475 
+ 181      64656E74 
+ 182 01e5 6C617373 		.ascii	"lass.cydsn\000"
+ 182      2E637964 
+ 182      736E00
+ 183              	.LASF13:
+ 184 01f0 73697A65 		.ascii	"sizetype\000"
+ 184      74797065 
+ 184      00
+ 185              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

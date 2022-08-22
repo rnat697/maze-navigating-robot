@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 1
 
 
    1              		.syntax unified
@@ -30,7 +30,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
   27              		.file 1 "Generated_Source\\PSoC5\\isr_TS.c"
    1:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
    2:Generated_Source\PSoC5/isr_TS.c **** * File Name: isr_TS.c  
-   3:Generated_Source\PSoC5/isr_TS.c **** * Version 1.71
+   3:Generated_Source\PSoC5/isr_TS.c **** * Version 1.70
    4:Generated_Source\PSoC5/isr_TS.c **** *
    5:Generated_Source\PSoC5/isr_TS.c **** *  Description:
    6:Generated_Source\PSoC5/isr_TS.c **** *   API for controlling the state of an interrupt.
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
   28:Generated_Source\PSoC5/isr_TS.c **** ********************************************************************************/
   29:Generated_Source\PSoC5/isr_TS.c **** /* `#START isr_TS_intc` */
   30:Generated_Source\PSoC5/isr_TS.c **** extern uint8 ts;
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 2
 
 
   31:Generated_Source\PSoC5/isr_TS.c **** /* `#END` */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
   70:Generated_Source\PSoC5/isr_TS.c ****     isr_TS_SetPriority((uint8)isr_TS_INTC_PRIOR_NUMBER);
   43              		.loc 1 70 0
   44 000e 0720     		movs	r0, #7
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 3
 
 
   45 0010 FFF7FEFF 		bl	isr_TS_SetPriority
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  104:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_StartEx(cyisraddress address)
  105:Generated_Source\PSoC5/isr_TS.c **** {
   66              		.loc 1 105 0
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 4
 
 
   67              		.cfi_startproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  119:Generated_Source\PSoC5/isr_TS.c **** 
  120:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
  121:Generated_Source\PSoC5/isr_TS.c **** * Function Name: isr_TS_Stop
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 5
 
 
  122:Generated_Source\PSoC5/isr_TS.c **** ********************************************************************************
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  143:Generated_Source\PSoC5/isr_TS.c **** 
  144:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
  145:Generated_Source\PSoC5/isr_TS.c **** * Function Name: isr_TS_Interrupt
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 6
 
 
  146:Generated_Source\PSoC5/isr_TS.c **** ********************************************************************************
@@ -333,45 +333,34 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  165:Generated_Source\PSoC5/isr_TS.c **** 
  166:Generated_Source\PSoC5/isr_TS.c ****     /*  Place your Interrupt code here. */
  167:Generated_Source\PSoC5/isr_TS.c ****     /* `#START isr_TS_Interrupt` */
- 168:Generated_Source\PSoC5/isr_TS.c ****     ts++;
- 151              		.loc 1 168 0
- 152 0004 044B     		ldr	r3, .L9
- 153 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 154 0008 0133     		adds	r3, r3, #1
- 155 000a DAB2     		uxtb	r2, r3
- 156 000c 024B     		ldr	r3, .L9
- 157 000e 1A70     		strb	r2, [r3]
+ 168:Generated_Source\PSoC5/isr_TS.c **** 
  169:Generated_Source\PSoC5/isr_TS.c ****     /* `#END` */
  170:Generated_Source\PSoC5/isr_TS.c **** }
- 158              		.loc 1 170 0
- 159 0010 00BF     		nop
- 160 0012 BD46     		mov	sp, r7
- 161              		.cfi_def_cfa_register 13
- 162              		@ sp needed
- 163 0014 80BC     		pop	{r7}
- 164              		.cfi_restore 7
- 165              		.cfi_def_cfa_offset 0
- 166 0016 7047     		bx	lr
- 167              	.L10:
- 168              		.align	2
- 169              	.L9:
- 170 0018 00000000 		.word	ts
- 171              		.cfi_endproc
- 172              	.LFE3:
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 7
-
-
- 173              		.size	isr_TS_Interrupt, .-isr_TS_Interrupt
- 174              		.section	.text.isr_TS_SetVector,"ax",%progbits
- 175              		.align	2
- 176              		.global	isr_TS_SetVector
- 177              		.thumb
- 178              		.thumb_func
- 179              		.type	isr_TS_SetVector, %function
- 180              	isr_TS_SetVector:
- 181              	.LFB4:
+ 151              		.loc 1 170 0
+ 152 0004 00BF     		nop
+ 153 0006 BD46     		mov	sp, r7
+ 154              		.cfi_def_cfa_register 13
+ 155              		@ sp needed
+ 156 0008 80BC     		pop	{r7}
+ 157              		.cfi_restore 7
+ 158              		.cfi_def_cfa_offset 0
+ 159 000a 7047     		bx	lr
+ 160              		.cfi_endproc
+ 161              	.LFE3:
+ 162              		.size	isr_TS_Interrupt, .-isr_TS_Interrupt
+ 163              		.section	.text.isr_TS_SetVector,"ax",%progbits
+ 164              		.align	2
+ 165              		.global	isr_TS_SetVector
+ 166              		.thumb
+ 167              		.thumb_func
+ 168              		.type	isr_TS_SetVector, %function
+ 169              	isr_TS_SetVector:
+ 170              	.LFB4:
  171:Generated_Source\PSoC5/isr_TS.c **** 
  172:Generated_Source\PSoC5/isr_TS.c **** 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 7
+
+
  173:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
  174:Generated_Source\PSoC5/isr_TS.c **** * Function Name: isr_TS_SetVector
  175:Generated_Source\PSoC5/isr_TS.c **** ********************************************************************************
@@ -401,63 +390,63 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  199:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  200:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_SetVector(cyisraddress address)
  201:Generated_Source\PSoC5/isr_TS.c **** {
- 182              		.loc 1 201 0
- 183              		.cfi_startproc
- 184              		@ args = 0, pretend = 0, frame = 16
- 185              		@ frame_needed = 1, uses_anonymous_args = 0
- 186              		@ link register save eliminated.
- 187 0000 80B4     		push	{r7}
- 188              		.cfi_def_cfa_offset 4
- 189              		.cfi_offset 7, -4
- 190 0002 85B0     		sub	sp, sp, #20
- 191              		.cfi_def_cfa_offset 24
- 192 0004 00AF     		add	r7, sp, #0
- 193              		.cfi_def_cfa_register 7
- 194 0006 7860     		str	r0, [r7, #4]
+ 171              		.loc 1 201 0
+ 172              		.cfi_startproc
+ 173              		@ args = 0, pretend = 0, frame = 16
+ 174              		@ frame_needed = 1, uses_anonymous_args = 0
+ 175              		@ link register save eliminated.
+ 176 0000 80B4     		push	{r7}
+ 177              		.cfi_def_cfa_offset 4
+ 178              		.cfi_offset 7, -4
+ 179 0002 85B0     		sub	sp, sp, #20
+ 180              		.cfi_def_cfa_offset 24
+ 181 0004 00AF     		add	r7, sp, #0
+ 182              		.cfi_def_cfa_register 7
+ 183 0006 7860     		str	r0, [r7, #4]
  202:Generated_Source\PSoC5/isr_TS.c ****     cyisraddress * ramVectorTable;
  203:Generated_Source\PSoC5/isr_TS.c **** 
  204:Generated_Source\PSoC5/isr_TS.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
- 195              		.loc 1 204 0
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 8
-
-
- 196 0008 054B     		ldr	r3, .L12
- 197 000a 1B68     		ldr	r3, [r3]
- 198 000c FB60     		str	r3, [r7, #12]
+ 184              		.loc 1 204 0
+ 185 0008 054B     		ldr	r3, .L10
+ 186 000a 1B68     		ldr	r3, [r3]
+ 187 000c FB60     		str	r3, [r7, #12]
  205:Generated_Source\PSoC5/isr_TS.c **** 
  206:Generated_Source\PSoC5/isr_TS.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_TS__INTC_NUMBER] = address;
- 199              		.loc 1 206 0
- 200 000e FB68     		ldr	r3, [r7, #12]
- 201 0010 5833     		adds	r3, r3, #88
- 202 0012 7A68     		ldr	r2, [r7, #4]
- 203 0014 1A60     		str	r2, [r3]
+ 188              		.loc 1 206 0
+ 189 000e FB68     		ldr	r3, [r7, #12]
+ 190 0010 5833     		adds	r3, r3, #88
+ 191 0012 7A68     		ldr	r2, [r7, #4]
+ 192 0014 1A60     		str	r2, [r3]
  207:Generated_Source\PSoC5/isr_TS.c **** }
- 204              		.loc 1 207 0
- 205 0016 00BF     		nop
- 206 0018 1437     		adds	r7, r7, #20
- 207              		.cfi_def_cfa_offset 4
- 208 001a BD46     		mov	sp, r7
- 209              		.cfi_def_cfa_register 13
- 210              		@ sp needed
- 211 001c 80BC     		pop	{r7}
- 212              		.cfi_restore 7
- 213              		.cfi_def_cfa_offset 0
- 214 001e 7047     		bx	lr
- 215              	.L13:
- 216              		.align	2
- 217              	.L12:
- 218 0020 08ED00E0 		.word	-536810232
- 219              		.cfi_endproc
- 220              	.LFE4:
- 221              		.size	isr_TS_SetVector, .-isr_TS_SetVector
- 222              		.section	.text.isr_TS_GetVector,"ax",%progbits
- 223              		.align	2
- 224              		.global	isr_TS_GetVector
- 225              		.thumb
- 226              		.thumb_func
- 227              		.type	isr_TS_GetVector, %function
- 228              	isr_TS_GetVector:
- 229              	.LFB5:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 8
+
+
+ 193              		.loc 1 207 0
+ 194 0016 00BF     		nop
+ 195 0018 1437     		adds	r7, r7, #20
+ 196              		.cfi_def_cfa_offset 4
+ 197 001a BD46     		mov	sp, r7
+ 198              		.cfi_def_cfa_register 13
+ 199              		@ sp needed
+ 200 001c 80BC     		pop	{r7}
+ 201              		.cfi_restore 7
+ 202              		.cfi_def_cfa_offset 0
+ 203 001e 7047     		bx	lr
+ 204              	.L11:
+ 205              		.align	2
+ 206              	.L10:
+ 207 0020 08ED00E0 		.word	-536810232
+ 208              		.cfi_endproc
+ 209              	.LFE4:
+ 210              		.size	isr_TS_SetVector, .-isr_TS_SetVector
+ 211              		.section	.text.isr_TS_GetVector,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	isr_TS_GetVector
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.type	isr_TS_GetVector, %function
+ 217              	isr_TS_GetVector:
+ 218              	.LFB5:
  208:Generated_Source\PSoC5/isr_TS.c **** 
  209:Generated_Source\PSoC5/isr_TS.c **** 
  210:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -476,60 +465,60 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  223:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  224:Generated_Source\PSoC5/isr_TS.c **** cyisraddress isr_TS_GetVector(void)
  225:Generated_Source\PSoC5/isr_TS.c **** {
- 230              		.loc 1 225 0
- 231              		.cfi_startproc
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 9
-
-
- 232              		@ args = 0, pretend = 0, frame = 8
- 233              		@ frame_needed = 1, uses_anonymous_args = 0
- 234              		@ link register save eliminated.
- 235 0000 80B4     		push	{r7}
- 236              		.cfi_def_cfa_offset 4
- 237              		.cfi_offset 7, -4
- 238 0002 83B0     		sub	sp, sp, #12
- 239              		.cfi_def_cfa_offset 16
- 240 0004 00AF     		add	r7, sp, #0
- 241              		.cfi_def_cfa_register 7
+ 219              		.loc 1 225 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 8
+ 222              		@ frame_needed = 1, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224 0000 80B4     		push	{r7}
+ 225              		.cfi_def_cfa_offset 4
+ 226              		.cfi_offset 7, -4
+ 227 0002 83B0     		sub	sp, sp, #12
+ 228              		.cfi_def_cfa_offset 16
+ 229 0004 00AF     		add	r7, sp, #0
+ 230              		.cfi_def_cfa_register 7
  226:Generated_Source\PSoC5/isr_TS.c ****     cyisraddress * ramVectorTable;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 9
+
+
  227:Generated_Source\PSoC5/isr_TS.c **** 
  228:Generated_Source\PSoC5/isr_TS.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
- 242              		.loc 1 228 0
- 243 0006 054B     		ldr	r3, .L16
- 244 0008 1B68     		ldr	r3, [r3]
- 245 000a 7B60     		str	r3, [r7, #4]
+ 231              		.loc 1 228 0
+ 232 0006 054B     		ldr	r3, .L14
+ 233 0008 1B68     		ldr	r3, [r3]
+ 234 000a 7B60     		str	r3, [r7, #4]
  229:Generated_Source\PSoC5/isr_TS.c **** 
  230:Generated_Source\PSoC5/isr_TS.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_TS__INTC_NUMBER];
- 246              		.loc 1 230 0
- 247 000c 7B68     		ldr	r3, [r7, #4]
- 248 000e 9B6D     		ldr	r3, [r3, #88]
+ 235              		.loc 1 230 0
+ 236 000c 7B68     		ldr	r3, [r7, #4]
+ 237 000e 9B6D     		ldr	r3, [r3, #88]
  231:Generated_Source\PSoC5/isr_TS.c **** }
- 249              		.loc 1 231 0
- 250 0010 1846     		mov	r0, r3
- 251 0012 0C37     		adds	r7, r7, #12
- 252              		.cfi_def_cfa_offset 4
- 253 0014 BD46     		mov	sp, r7
- 254              		.cfi_def_cfa_register 13
- 255              		@ sp needed
- 256 0016 80BC     		pop	{r7}
- 257              		.cfi_restore 7
- 258              		.cfi_def_cfa_offset 0
- 259 0018 7047     		bx	lr
- 260              	.L17:
- 261 001a 00BF     		.align	2
- 262              	.L16:
- 263 001c 08ED00E0 		.word	-536810232
- 264              		.cfi_endproc
- 265              	.LFE5:
- 266              		.size	isr_TS_GetVector, .-isr_TS_GetVector
- 267              		.section	.text.isr_TS_SetPriority,"ax",%progbits
- 268              		.align	2
- 269              		.global	isr_TS_SetPriority
- 270              		.thumb
- 271              		.thumb_func
- 272              		.type	isr_TS_SetPriority, %function
- 273              	isr_TS_SetPriority:
- 274              	.LFB6:
+ 238              		.loc 1 231 0
+ 239 0010 1846     		mov	r0, r3
+ 240 0012 0C37     		adds	r7, r7, #12
+ 241              		.cfi_def_cfa_offset 4
+ 242 0014 BD46     		mov	sp, r7
+ 243              		.cfi_def_cfa_register 13
+ 244              		@ sp needed
+ 245 0016 80BC     		pop	{r7}
+ 246              		.cfi_restore 7
+ 247              		.cfi_def_cfa_offset 0
+ 248 0018 7047     		bx	lr
+ 249              	.L15:
+ 250 001a 00BF     		.align	2
+ 251              	.L14:
+ 252 001c 08ED00E0 		.word	-536810232
+ 253              		.cfi_endproc
+ 254              	.LFE5:
+ 255              		.size	isr_TS_GetVector, .-isr_TS_GetVector
+ 256              		.section	.text.isr_TS_SetPriority,"ax",%progbits
+ 257              		.align	2
+ 258              		.global	isr_TS_SetPriority
+ 259              		.thumb
+ 260              		.thumb_func
+ 261              		.type	isr_TS_SetPriority, %function
+ 262              	isr_TS_SetPriority:
+ 263              	.LFB6:
  232:Generated_Source\PSoC5/isr_TS.c **** 
  233:Generated_Source\PSoC5/isr_TS.c **** 
  234:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -538,9 +527,6 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  237:Generated_Source\PSoC5/isr_TS.c **** *
  238:Generated_Source\PSoC5/isr_TS.c **** * Summary:
  239:Generated_Source\PSoC5/isr_TS.c **** *   Sets the Priority of the Interrupt. 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 10
-
-
  240:Generated_Source\PSoC5/isr_TS.c **** *
  241:Generated_Source\PSoC5/isr_TS.c **** *   Note calling isr_TS_Start or isr_TS_StartEx will 
  242:Generated_Source\PSoC5/isr_TS.c **** *   override any effect this API would have had. This API should only be called
@@ -552,6 +538,9 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  248:Generated_Source\PSoC5/isr_TS.c **** *
  249:Generated_Source\PSoC5/isr_TS.c **** * Parameters:
  250:Generated_Source\PSoC5/isr_TS.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 10
+
+
  251:Generated_Source\PSoC5/isr_TS.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
  252:Generated_Source\PSoC5/isr_TS.c **** *             PSoC 4: Priority is from 0 to 3.
  253:Generated_Source\PSoC5/isr_TS.c **** *
@@ -561,57 +550,57 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  257:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  258:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_SetPriority(uint8 priority)
  259:Generated_Source\PSoC5/isr_TS.c **** {
- 275              		.loc 1 259 0
- 276              		.cfi_startproc
- 277              		@ args = 0, pretend = 0, frame = 8
- 278              		@ frame_needed = 1, uses_anonymous_args = 0
- 279              		@ link register save eliminated.
- 280 0000 80B4     		push	{r7}
- 281              		.cfi_def_cfa_offset 4
- 282              		.cfi_offset 7, -4
- 283 0002 83B0     		sub	sp, sp, #12
- 284              		.cfi_def_cfa_offset 16
- 285 0004 00AF     		add	r7, sp, #0
- 286              		.cfi_def_cfa_register 7
- 287 0006 0346     		mov	r3, r0
- 288 0008 FB71     		strb	r3, [r7, #7]
+ 264              		.loc 1 259 0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 8
+ 267              		@ frame_needed = 1, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 269 0000 80B4     		push	{r7}
+ 270              		.cfi_def_cfa_offset 4
+ 271              		.cfi_offset 7, -4
+ 272 0002 83B0     		sub	sp, sp, #12
+ 273              		.cfi_def_cfa_offset 16
+ 274 0004 00AF     		add	r7, sp, #0
+ 275              		.cfi_def_cfa_register 7
+ 276 0006 0346     		mov	r3, r0
+ 277 0008 FB71     		strb	r3, [r7, #7]
  260:Generated_Source\PSoC5/isr_TS.c ****     *isr_TS_INTC_PRIOR = priority << 5;
- 289              		.loc 1 260 0
- 290 000a 054A     		ldr	r2, .L19
- 291 000c FB79     		ldrb	r3, [r7, #7]
- 292 000e 5B01     		lsls	r3, r3, #5
- 293 0010 DBB2     		uxtb	r3, r3
- 294 0012 1370     		strb	r3, [r2]
+ 278              		.loc 1 260 0
+ 279 000a 054A     		ldr	r2, .L17
+ 280 000c FB79     		ldrb	r3, [r7, #7]
+ 281 000e 5B01     		lsls	r3, r3, #5
+ 282 0010 DBB2     		uxtb	r3, r3
+ 283 0012 1370     		strb	r3, [r2]
  261:Generated_Source\PSoC5/isr_TS.c **** }
- 295              		.loc 1 261 0
- 296 0014 00BF     		nop
- 297 0016 0C37     		adds	r7, r7, #12
- 298              		.cfi_def_cfa_offset 4
- 299 0018 BD46     		mov	sp, r7
- 300              		.cfi_def_cfa_register 13
- 301              		@ sp needed
- 302 001a 80BC     		pop	{r7}
- 303              		.cfi_restore 7
- 304              		.cfi_def_cfa_offset 0
- 305 001c 7047     		bx	lr
- 306              	.L20:
- 307 001e 00BF     		.align	2
- 308              	.L19:
- 309 0020 06E400E0 		.word	-536812538
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 11
+ 284              		.loc 1 261 0
+ 285 0014 00BF     		nop
+ 286 0016 0C37     		adds	r7, r7, #12
+ 287              		.cfi_def_cfa_offset 4
+ 288 0018 BD46     		mov	sp, r7
+ 289              		.cfi_def_cfa_register 13
+ 290              		@ sp needed
+ 291 001a 80BC     		pop	{r7}
+ 292              		.cfi_restore 7
+ 293              		.cfi_def_cfa_offset 0
+ 294 001c 7047     		bx	lr
+ 295              	.L18:
+ 296 001e 00BF     		.align	2
+ 297              	.L17:
+ 298 0020 06E400E0 		.word	-536812538
+ 299              		.cfi_endproc
+ 300              	.LFE6:
+ 301              		.size	isr_TS_SetPriority, .-isr_TS_SetPriority
+ 302              		.section	.text.isr_TS_GetPriority,"ax",%progbits
+ 303              		.align	2
+ 304              		.global	isr_TS_GetPriority
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.type	isr_TS_GetPriority, %function
+ 308              	isr_TS_GetPriority:
+ 309              	.LFB7:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 11
 
 
- 310              		.cfi_endproc
- 311              	.LFE6:
- 312              		.size	isr_TS_SetPriority, .-isr_TS_SetPriority
- 313              		.section	.text.isr_TS_GetPriority,"ax",%progbits
- 314              		.align	2
- 315              		.global	isr_TS_GetPriority
- 316              		.thumb
- 317              		.thumb_func
- 318              		.type	isr_TS_GetPriority, %function
- 319              	isr_TS_GetPriority:
- 320              	.LFB7:
  262:Generated_Source\PSoC5/isr_TS.c **** 
  263:Generated_Source\PSoC5/isr_TS.c **** 
  264:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -632,62 +621,62 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  279:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  280:Generated_Source\PSoC5/isr_TS.c **** uint8 isr_TS_GetPriority(void)
  281:Generated_Source\PSoC5/isr_TS.c **** {
- 321              		.loc 1 281 0
- 322              		.cfi_startproc
- 323              		@ args = 0, pretend = 0, frame = 8
- 324              		@ frame_needed = 1, uses_anonymous_args = 0
- 325              		@ link register save eliminated.
- 326 0000 80B4     		push	{r7}
- 327              		.cfi_def_cfa_offset 4
- 328              		.cfi_offset 7, -4
- 329 0002 83B0     		sub	sp, sp, #12
- 330              		.cfi_def_cfa_offset 16
- 331 0004 00AF     		add	r7, sp, #0
- 332              		.cfi_def_cfa_register 7
+ 310              		.loc 1 281 0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 8
+ 313              		@ frame_needed = 1, uses_anonymous_args = 0
+ 314              		@ link register save eliminated.
+ 315 0000 80B4     		push	{r7}
+ 316              		.cfi_def_cfa_offset 4
+ 317              		.cfi_offset 7, -4
+ 318 0002 83B0     		sub	sp, sp, #12
+ 319              		.cfi_def_cfa_offset 16
+ 320 0004 00AF     		add	r7, sp, #0
+ 321              		.cfi_def_cfa_register 7
  282:Generated_Source\PSoC5/isr_TS.c ****     uint8 priority;
  283:Generated_Source\PSoC5/isr_TS.c **** 
  284:Generated_Source\PSoC5/isr_TS.c **** 
  285:Generated_Source\PSoC5/isr_TS.c ****     priority = *isr_TS_INTC_PRIOR >> 5;
- 333              		.loc 1 285 0
- 334 0006 054B     		ldr	r3, .L23
- 335 0008 1B78     		ldrb	r3, [r3]
- 336 000a DBB2     		uxtb	r3, r3
- 337 000c 5B09     		lsrs	r3, r3, #5
- 338 000e FB71     		strb	r3, [r7, #7]
+ 322              		.loc 1 285 0
+ 323 0006 054B     		ldr	r3, .L21
+ 324 0008 1B78     		ldrb	r3, [r3]
+ 325 000a DBB2     		uxtb	r3, r3
+ 326 000c 5B09     		lsrs	r3, r3, #5
+ 327 000e FB71     		strb	r3, [r7, #7]
  286:Generated_Source\PSoC5/isr_TS.c **** 
  287:Generated_Source\PSoC5/isr_TS.c ****     return priority;
- 339              		.loc 1 287 0
- 340 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 12
-
-
+ 328              		.loc 1 287 0
+ 329 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
  288:Generated_Source\PSoC5/isr_TS.c **** }
- 341              		.loc 1 288 0
- 342 0012 1846     		mov	r0, r3
- 343 0014 0C37     		adds	r7, r7, #12
- 344              		.cfi_def_cfa_offset 4
- 345 0016 BD46     		mov	sp, r7
- 346              		.cfi_def_cfa_register 13
- 347              		@ sp needed
- 348 0018 80BC     		pop	{r7}
- 349              		.cfi_restore 7
- 350              		.cfi_def_cfa_offset 0
- 351 001a 7047     		bx	lr
- 352              	.L24:
- 353              		.align	2
- 354              	.L23:
- 355 001c 06E400E0 		.word	-536812538
- 356              		.cfi_endproc
- 357              	.LFE7:
- 358              		.size	isr_TS_GetPriority, .-isr_TS_GetPriority
- 359              		.section	.text.isr_TS_Enable,"ax",%progbits
- 360              		.align	2
- 361              		.global	isr_TS_Enable
- 362              		.thumb
- 363              		.thumb_func
- 364              		.type	isr_TS_Enable, %function
- 365              	isr_TS_Enable:
- 366              	.LFB8:
+ 330              		.loc 1 288 0
+ 331 0012 1846     		mov	r0, r3
+ 332 0014 0C37     		adds	r7, r7, #12
+ 333              		.cfi_def_cfa_offset 4
+ 334 0016 BD46     		mov	sp, r7
+ 335              		.cfi_def_cfa_register 13
+ 336              		@ sp needed
+ 337 0018 80BC     		pop	{r7}
+ 338              		.cfi_restore 7
+ 339              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 12
+
+
+ 340 001a 7047     		bx	lr
+ 341              	.L22:
+ 342              		.align	2
+ 343              	.L21:
+ 344 001c 06E400E0 		.word	-536812538
+ 345              		.cfi_endproc
+ 346              	.LFE7:
+ 347              		.size	isr_TS_GetPriority, .-isr_TS_GetPriority
+ 348              		.section	.text.isr_TS_Enable,"ax",%progbits
+ 349              		.align	2
+ 350              		.global	isr_TS_Enable
+ 351              		.thumb
+ 352              		.thumb_func
+ 353              		.type	isr_TS_Enable, %function
+ 354              	isr_TS_Enable:
+ 355              	.LFB8:
  289:Generated_Source\PSoC5/isr_TS.c **** 
  290:Generated_Source\PSoC5/isr_TS.c **** 
  291:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -708,50 +697,50 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  306:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  307:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_Enable(void)
  308:Generated_Source\PSoC5/isr_TS.c **** {
- 367              		.loc 1 308 0
- 368              		.cfi_startproc
- 369              		@ args = 0, pretend = 0, frame = 0
- 370              		@ frame_needed = 1, uses_anonymous_args = 0
- 371              		@ link register save eliminated.
- 372 0000 80B4     		push	{r7}
- 373              		.cfi_def_cfa_offset 4
- 374              		.cfi_offset 7, -4
- 375 0002 00AF     		add	r7, sp, #0
- 376              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 13
-
-
+ 356              		.loc 1 308 0
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 0
+ 359              		@ frame_needed = 1, uses_anonymous_args = 0
+ 360              		@ link register save eliminated.
+ 361 0000 80B4     		push	{r7}
+ 362              		.cfi_def_cfa_offset 4
+ 363              		.cfi_offset 7, -4
+ 364 0002 00AF     		add	r7, sp, #0
+ 365              		.cfi_def_cfa_register 7
  309:Generated_Source\PSoC5/isr_TS.c ****     /* Enable the general interrupt. */
  310:Generated_Source\PSoC5/isr_TS.c ****     *isr_TS_INTC_SET_EN = isr_TS__INTC_MASK;
- 377              		.loc 1 310 0
- 378 0004 034B     		ldr	r3, .L26
- 379 0006 4022     		movs	r2, #64
- 380 0008 1A60     		str	r2, [r3]
+ 366              		.loc 1 310 0
+ 367 0004 034B     		ldr	r3, .L24
+ 368 0006 4022     		movs	r2, #64
+ 369 0008 1A60     		str	r2, [r3]
  311:Generated_Source\PSoC5/isr_TS.c **** }
- 381              		.loc 1 311 0
- 382 000a 00BF     		nop
- 383 000c BD46     		mov	sp, r7
- 384              		.cfi_def_cfa_register 13
- 385              		@ sp needed
- 386 000e 80BC     		pop	{r7}
- 387              		.cfi_restore 7
- 388              		.cfi_def_cfa_offset 0
- 389 0010 7047     		bx	lr
- 390              	.L27:
- 391 0012 00BF     		.align	2
- 392              	.L26:
- 393 0014 00E100E0 		.word	-536813312
- 394              		.cfi_endproc
- 395              	.LFE8:
- 396              		.size	isr_TS_Enable, .-isr_TS_Enable
- 397              		.section	.text.isr_TS_GetState,"ax",%progbits
- 398              		.align	2
- 399              		.global	isr_TS_GetState
- 400              		.thumb
- 401              		.thumb_func
- 402              		.type	isr_TS_GetState, %function
- 403              	isr_TS_GetState:
- 404              	.LFB9:
+ 370              		.loc 1 311 0
+ 371 000a 00BF     		nop
+ 372 000c BD46     		mov	sp, r7
+ 373              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 13
+
+
+ 374              		@ sp needed
+ 375 000e 80BC     		pop	{r7}
+ 376              		.cfi_restore 7
+ 377              		.cfi_def_cfa_offset 0
+ 378 0010 7047     		bx	lr
+ 379              	.L25:
+ 380 0012 00BF     		.align	2
+ 381              	.L24:
+ 382 0014 00E100E0 		.word	-536813312
+ 383              		.cfi_endproc
+ 384              	.LFE8:
+ 385              		.size	isr_TS_Enable, .-isr_TS_Enable
+ 386              		.section	.text.isr_TS_GetState,"ax",%progbits
+ 387              		.align	2
+ 388              		.global	isr_TS_GetState
+ 389              		.thumb
+ 390              		.thumb_func
+ 391              		.type	isr_TS_GetState, %function
+ 392              	isr_TS_GetState:
+ 393              	.LFB9:
  312:Generated_Source\PSoC5/isr_TS.c **** 
  313:Generated_Source\PSoC5/isr_TS.c **** 
  314:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -770,59 +759,59 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  327:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  328:Generated_Source\PSoC5/isr_TS.c **** uint8 isr_TS_GetState(void)
  329:Generated_Source\PSoC5/isr_TS.c **** {
- 405              		.loc 1 329 0
- 406              		.cfi_startproc
- 407              		@ args = 0, pretend = 0, frame = 0
- 408              		@ frame_needed = 1, uses_anonymous_args = 0
- 409              		@ link register save eliminated.
- 410 0000 80B4     		push	{r7}
- 411              		.cfi_def_cfa_offset 4
- 412              		.cfi_offset 7, -4
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 14
-
-
- 413 0002 00AF     		add	r7, sp, #0
- 414              		.cfi_def_cfa_register 7
+ 394              		.loc 1 329 0
+ 395              		.cfi_startproc
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 1, uses_anonymous_args = 0
+ 398              		@ link register save eliminated.
+ 399 0000 80B4     		push	{r7}
+ 400              		.cfi_def_cfa_offset 4
+ 401              		.cfi_offset 7, -4
+ 402 0002 00AF     		add	r7, sp, #0
+ 403              		.cfi_def_cfa_register 7
  330:Generated_Source\PSoC5/isr_TS.c ****     /* Get the state of the general interrupt. */
  331:Generated_Source\PSoC5/isr_TS.c ****     return ((*isr_TS_INTC_SET_EN & (uint32)isr_TS__INTC_MASK) != 0u) ? 1u:0u;
- 415              		.loc 1 331 0
- 416 0004 064B     		ldr	r3, .L32
- 417 0006 1B68     		ldr	r3, [r3]
- 418 0008 03F04003 		and	r3, r3, #64
- 419 000c 002B     		cmp	r3, #0
- 420 000e 01D0     		beq	.L29
- 421              		.loc 1 331 0 is_stmt 0 discriminator 1
- 422 0010 0123     		movs	r3, #1
- 423 0012 00E0     		b	.L30
- 424              	.L29:
- 425              		.loc 1 331 0 discriminator 2
- 426 0014 0023     		movs	r3, #0
- 427              	.L30:
+ 404              		.loc 1 331 0
+ 405 0004 064B     		ldr	r3, .L30
+ 406 0006 1B68     		ldr	r3, [r3]
+ 407 0008 03F04003 		and	r3, r3, #64
+ 408 000c 002B     		cmp	r3, #0
+ 409 000e 01D0     		beq	.L27
+ 410              		.loc 1 331 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 14
+
+
+ 411 0010 0123     		movs	r3, #1
+ 412 0012 00E0     		b	.L28
+ 413              	.L27:
+ 414              		.loc 1 331 0 discriminator 2
+ 415 0014 0023     		movs	r3, #0
+ 416              	.L28:
  332:Generated_Source\PSoC5/isr_TS.c **** }
- 428              		.loc 1 332 0 is_stmt 1 discriminator 4
- 429 0016 1846     		mov	r0, r3
- 430 0018 BD46     		mov	sp, r7
- 431              		.cfi_def_cfa_register 13
- 432              		@ sp needed
- 433 001a 80BC     		pop	{r7}
- 434              		.cfi_restore 7
- 435              		.cfi_def_cfa_offset 0
- 436 001c 7047     		bx	lr
- 437              	.L33:
- 438 001e 00BF     		.align	2
- 439              	.L32:
- 440 0020 00E100E0 		.word	-536813312
- 441              		.cfi_endproc
- 442              	.LFE9:
- 443              		.size	isr_TS_GetState, .-isr_TS_GetState
- 444              		.section	.text.isr_TS_Disable,"ax",%progbits
- 445              		.align	2
- 446              		.global	isr_TS_Disable
- 447              		.thumb
- 448              		.thumb_func
- 449              		.type	isr_TS_Disable, %function
- 450              	isr_TS_Disable:
- 451              	.LFB10:
+ 417              		.loc 1 332 0 is_stmt 1 discriminator 4
+ 418 0016 1846     		mov	r0, r3
+ 419 0018 BD46     		mov	sp, r7
+ 420              		.cfi_def_cfa_register 13
+ 421              		@ sp needed
+ 422 001a 80BC     		pop	{r7}
+ 423              		.cfi_restore 7
+ 424              		.cfi_def_cfa_offset 0
+ 425 001c 7047     		bx	lr
+ 426              	.L31:
+ 427 001e 00BF     		.align	2
+ 428              	.L30:
+ 429 0020 00E100E0 		.word	-536813312
+ 430              		.cfi_endproc
+ 431              	.LFE9:
+ 432              		.size	isr_TS_GetState, .-isr_TS_GetState
+ 433              		.section	.text.isr_TS_Disable,"ax",%progbits
+ 434              		.align	2
+ 435              		.global	isr_TS_Disable
+ 436              		.thumb
+ 437              		.thumb_func
+ 438              		.type	isr_TS_Disable, %function
+ 439              	isr_TS_Disable:
+ 440              	.LFB10:
  333:Generated_Source\PSoC5/isr_TS.c **** 
  334:Generated_Source\PSoC5/isr_TS.c **** 
  335:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -838,53 +827,53 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  345:Generated_Source\PSoC5/isr_TS.c **** * Return:
  346:Generated_Source\PSoC5/isr_TS.c **** *   None
  347:Generated_Source\PSoC5/isr_TS.c **** *
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 15
-
-
  348:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  349:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_Disable(void)
  350:Generated_Source\PSoC5/isr_TS.c **** {
- 452              		.loc 1 350 0
- 453              		.cfi_startproc
- 454              		@ args = 0, pretend = 0, frame = 0
- 455              		@ frame_needed = 1, uses_anonymous_args = 0
- 456              		@ link register save eliminated.
- 457 0000 80B4     		push	{r7}
- 458              		.cfi_def_cfa_offset 4
- 459              		.cfi_offset 7, -4
- 460 0002 00AF     		add	r7, sp, #0
- 461              		.cfi_def_cfa_register 7
+ 441              		.loc 1 350 0
+ 442              		.cfi_startproc
+ 443              		@ args = 0, pretend = 0, frame = 0
+ 444              		@ frame_needed = 1, uses_anonymous_args = 0
+ 445              		@ link register save eliminated.
+ 446 0000 80B4     		push	{r7}
+ 447              		.cfi_def_cfa_offset 4
+ 448              		.cfi_offset 7, -4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 15
+
+
+ 449 0002 00AF     		add	r7, sp, #0
+ 450              		.cfi_def_cfa_register 7
  351:Generated_Source\PSoC5/isr_TS.c ****     /* Disable the general interrupt. */
  352:Generated_Source\PSoC5/isr_TS.c ****     *isr_TS_INTC_CLR_EN = isr_TS__INTC_MASK;
- 462              		.loc 1 352 0
- 463 0004 034B     		ldr	r3, .L35
- 464 0006 4022     		movs	r2, #64
- 465 0008 1A60     		str	r2, [r3]
+ 451              		.loc 1 352 0
+ 452 0004 034B     		ldr	r3, .L33
+ 453 0006 4022     		movs	r2, #64
+ 454 0008 1A60     		str	r2, [r3]
  353:Generated_Source\PSoC5/isr_TS.c **** }
- 466              		.loc 1 353 0
- 467 000a 00BF     		nop
- 468 000c BD46     		mov	sp, r7
- 469              		.cfi_def_cfa_register 13
- 470              		@ sp needed
- 471 000e 80BC     		pop	{r7}
- 472              		.cfi_restore 7
- 473              		.cfi_def_cfa_offset 0
- 474 0010 7047     		bx	lr
- 475              	.L36:
- 476 0012 00BF     		.align	2
- 477              	.L35:
- 478 0014 80E100E0 		.word	-536813184
- 479              		.cfi_endproc
- 480              	.LFE10:
- 481              		.size	isr_TS_Disable, .-isr_TS_Disable
- 482              		.section	.text.isr_TS_SetPending,"ax",%progbits
- 483              		.align	2
- 484              		.global	isr_TS_SetPending
- 485              		.thumb
- 486              		.thumb_func
- 487              		.type	isr_TS_SetPending, %function
- 488              	isr_TS_SetPending:
- 489              	.LFB11:
+ 455              		.loc 1 353 0
+ 456 000a 00BF     		nop
+ 457 000c BD46     		mov	sp, r7
+ 458              		.cfi_def_cfa_register 13
+ 459              		@ sp needed
+ 460 000e 80BC     		pop	{r7}
+ 461              		.cfi_restore 7
+ 462              		.cfi_def_cfa_offset 0
+ 463 0010 7047     		bx	lr
+ 464              	.L34:
+ 465 0012 00BF     		.align	2
+ 466              	.L33:
+ 467 0014 80E100E0 		.word	-536813184
+ 468              		.cfi_endproc
+ 469              	.LFE10:
+ 470              		.size	isr_TS_Disable, .-isr_TS_Disable
+ 471              		.section	.text.isr_TS_SetPending,"ax",%progbits
+ 472              		.align	2
+ 473              		.global	isr_TS_SetPending
+ 474              		.thumb
+ 475              		.thumb_func
+ 476              		.type	isr_TS_SetPending, %function
+ 477              	isr_TS_SetPending:
+ 478              	.LFB11:
  354:Generated_Source\PSoC5/isr_TS.c **** 
  355:Generated_Source\PSoC5/isr_TS.c **** 
  356:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
@@ -898,9 +887,6 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  364:Generated_Source\PSoC5/isr_TS.c **** * Parameters:
  365:Generated_Source\PSoC5/isr_TS.c **** *   None
  366:Generated_Source\PSoC5/isr_TS.c **** *
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 16
-
-
  367:Generated_Source\PSoC5/isr_TS.c **** * Return:
  368:Generated_Source\PSoC5/isr_TS.c **** *   None
  369:Generated_Source\PSoC5/isr_TS.c **** *
@@ -912,55 +898,55 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  375:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  376:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_SetPending(void)
  377:Generated_Source\PSoC5/isr_TS.c **** {
- 490              		.loc 1 377 0
- 491              		.cfi_startproc
- 492              		@ args = 0, pretend = 0, frame = 0
- 493              		@ frame_needed = 1, uses_anonymous_args = 0
- 494              		@ link register save eliminated.
- 495 0000 80B4     		push	{r7}
- 496              		.cfi_def_cfa_offset 4
- 497              		.cfi_offset 7, -4
- 498 0002 00AF     		add	r7, sp, #0
- 499              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 16
+
+
+ 479              		.loc 1 377 0
+ 480              		.cfi_startproc
+ 481              		@ args = 0, pretend = 0, frame = 0
+ 482              		@ frame_needed = 1, uses_anonymous_args = 0
+ 483              		@ link register save eliminated.
+ 484 0000 80B4     		push	{r7}
+ 485              		.cfi_def_cfa_offset 4
+ 486              		.cfi_offset 7, -4
+ 487 0002 00AF     		add	r7, sp, #0
+ 488              		.cfi_def_cfa_register 7
  378:Generated_Source\PSoC5/isr_TS.c ****     *isr_TS_INTC_SET_PD = isr_TS__INTC_MASK;
- 500              		.loc 1 378 0
- 501 0004 034B     		ldr	r3, .L38
- 502 0006 4022     		movs	r2, #64
- 503 0008 1A60     		str	r2, [r3]
+ 489              		.loc 1 378 0
+ 490 0004 034B     		ldr	r3, .L36
+ 491 0006 4022     		movs	r2, #64
+ 492 0008 1A60     		str	r2, [r3]
  379:Generated_Source\PSoC5/isr_TS.c **** }
- 504              		.loc 1 379 0
- 505 000a 00BF     		nop
- 506 000c BD46     		mov	sp, r7
- 507              		.cfi_def_cfa_register 13
- 508              		@ sp needed
- 509 000e 80BC     		pop	{r7}
- 510              		.cfi_restore 7
- 511              		.cfi_def_cfa_offset 0
- 512 0010 7047     		bx	lr
- 513              	.L39:
- 514 0012 00BF     		.align	2
- 515              	.L38:
- 516 0014 00E200E0 		.word	-536813056
- 517              		.cfi_endproc
- 518              	.LFE11:
- 519              		.size	isr_TS_SetPending, .-isr_TS_SetPending
- 520              		.section	.text.isr_TS_ClearPending,"ax",%progbits
- 521              		.align	2
- 522              		.global	isr_TS_ClearPending
- 523              		.thumb
- 524              		.thumb_func
- 525              		.type	isr_TS_ClearPending, %function
- 526              	isr_TS_ClearPending:
- 527              	.LFB12:
+ 493              		.loc 1 379 0
+ 494 000a 00BF     		nop
+ 495 000c BD46     		mov	sp, r7
+ 496              		.cfi_def_cfa_register 13
+ 497              		@ sp needed
+ 498 000e 80BC     		pop	{r7}
+ 499              		.cfi_restore 7
+ 500              		.cfi_def_cfa_offset 0
+ 501 0010 7047     		bx	lr
+ 502              	.L37:
+ 503 0012 00BF     		.align	2
+ 504              	.L36:
+ 505 0014 00E200E0 		.word	-536813056
+ 506              		.cfi_endproc
+ 507              	.LFE11:
+ 508              		.size	isr_TS_SetPending, .-isr_TS_SetPending
+ 509              		.section	.text.isr_TS_ClearPending,"ax",%progbits
+ 510              		.align	2
+ 511              		.global	isr_TS_ClearPending
+ 512              		.thumb
+ 513              		.thumb_func
+ 514              		.type	isr_TS_ClearPending, %function
+ 515              	isr_TS_ClearPending:
+ 516              	.LFB12:
  380:Generated_Source\PSoC5/isr_TS.c **** 
  381:Generated_Source\PSoC5/isr_TS.c **** 
  382:Generated_Source\PSoC5/isr_TS.c **** /*******************************************************************************
  383:Generated_Source\PSoC5/isr_TS.c **** * Function Name: isr_TS_ClearPending
  384:Generated_Source\PSoC5/isr_TS.c **** ********************************************************************************
  385:Generated_Source\PSoC5/isr_TS.c **** *
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 17
-
-
  386:Generated_Source\PSoC5/isr_TS.c **** * Summary:
  387:Generated_Source\PSoC5/isr_TS.c **** *   Clears a pending interrupt in the interrupt controller.
  388:Generated_Source\PSoC5/isr_TS.c **** *
@@ -972,1028 +958,1011 @@ ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 1
  394:Generated_Source\PSoC5/isr_TS.c **** * Parameters:
  395:Generated_Source\PSoC5/isr_TS.c **** *   None
  396:Generated_Source\PSoC5/isr_TS.c **** *
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 17
+
+
  397:Generated_Source\PSoC5/isr_TS.c **** * Return:
  398:Generated_Source\PSoC5/isr_TS.c **** *   None
  399:Generated_Source\PSoC5/isr_TS.c **** *
  400:Generated_Source\PSoC5/isr_TS.c **** *******************************************************************************/
  401:Generated_Source\PSoC5/isr_TS.c **** void isr_TS_ClearPending(void)
  402:Generated_Source\PSoC5/isr_TS.c **** {
- 528              		.loc 1 402 0
- 529              		.cfi_startproc
- 530              		@ args = 0, pretend = 0, frame = 0
- 531              		@ frame_needed = 1, uses_anonymous_args = 0
- 532              		@ link register save eliminated.
- 533 0000 80B4     		push	{r7}
- 534              		.cfi_def_cfa_offset 4
- 535              		.cfi_offset 7, -4
- 536 0002 00AF     		add	r7, sp, #0
- 537              		.cfi_def_cfa_register 7
+ 517              		.loc 1 402 0
+ 518              		.cfi_startproc
+ 519              		@ args = 0, pretend = 0, frame = 0
+ 520              		@ frame_needed = 1, uses_anonymous_args = 0
+ 521              		@ link register save eliminated.
+ 522 0000 80B4     		push	{r7}
+ 523              		.cfi_def_cfa_offset 4
+ 524              		.cfi_offset 7, -4
+ 525 0002 00AF     		add	r7, sp, #0
+ 526              		.cfi_def_cfa_register 7
  403:Generated_Source\PSoC5/isr_TS.c ****     *isr_TS_INTC_CLR_PD = isr_TS__INTC_MASK;
- 538              		.loc 1 403 0
- 539 0004 034B     		ldr	r3, .L41
- 540 0006 4022     		movs	r2, #64
- 541 0008 1A60     		str	r2, [r3]
+ 527              		.loc 1 403 0
+ 528 0004 034B     		ldr	r3, .L39
+ 529 0006 4022     		movs	r2, #64
+ 530 0008 1A60     		str	r2, [r3]
  404:Generated_Source\PSoC5/isr_TS.c **** }
- 542              		.loc 1 404 0
- 543 000a 00BF     		nop
- 544 000c BD46     		mov	sp, r7
- 545              		.cfi_def_cfa_register 13
- 546              		@ sp needed
- 547 000e 80BC     		pop	{r7}
- 548              		.cfi_restore 7
- 549              		.cfi_def_cfa_offset 0
- 550 0010 7047     		bx	lr
- 551              	.L42:
- 552 0012 00BF     		.align	2
- 553              	.L41:
- 554 0014 80E200E0 		.word	-536812928
- 555              		.cfi_endproc
- 556              	.LFE12:
- 557              		.size	isr_TS_ClearPending, .-isr_TS_ClearPending
- 558              		.text
- 559              	.Letext0:
- 560              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
- 561              		.section	.debug_info,"",%progbits
- 562              	.Ldebug_info0:
- 563 0000 47020000 		.4byte	0x247
- 564 0004 0400     		.2byte	0x4
- 565 0006 00000000 		.4byte	.Ldebug_abbrev0
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 18
+ 531              		.loc 1 404 0
+ 532 000a 00BF     		nop
+ 533 000c BD46     		mov	sp, r7
+ 534              		.cfi_def_cfa_register 13
+ 535              		@ sp needed
+ 536 000e 80BC     		pop	{r7}
+ 537              		.cfi_restore 7
+ 538              		.cfi_def_cfa_offset 0
+ 539 0010 7047     		bx	lr
+ 540              	.L40:
+ 541 0012 00BF     		.align	2
+ 542              	.L39:
+ 543 0014 80E200E0 		.word	-536812928
+ 544              		.cfi_endproc
+ 545              	.LFE12:
+ 546              		.size	isr_TS_ClearPending, .-isr_TS_ClearPending
+ 547              		.text
+ 548              	.Letext0:
+ 549              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 550              		.section	.debug_info,"",%progbits
+ 551              	.Ldebug_info0:
+ 552 0000 3D020000 		.4byte	0x23d
+ 553 0004 0400     		.2byte	0x4
+ 554 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 555 000a 04       		.byte	0x4
+ 556 000b 01       		.uleb128 0x1
+ 557 000c 1A000000 		.4byte	.LASF34
+ 558 0010 0C       		.byte	0xc
+ 559 0011 E4000000 		.4byte	.LASF35
+ 560 0015 D8010000 		.4byte	.LASF36
+ 561 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 562 001d 00000000 		.4byte	0
+ 563 0021 00000000 		.4byte	.Ldebug_line0
+ 564 0025 02       		.uleb128 0x2
+ 565 0026 04       		.byte	0x4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 18
 
 
- 566 000a 04       		.byte	0x4
- 567 000b 01       		.uleb128 0x1
- 568 000c 1A000000 		.4byte	.LASF34
- 569 0010 0C       		.byte	0xc
- 570 0011 E4000000 		.4byte	.LASF35
- 571 0015 55020000 		.4byte	.LASF36
- 572 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 573 001d 00000000 		.4byte	0
- 574 0021 00000000 		.4byte	.Ldebug_line0
- 575 0025 02       		.uleb128 0x2
- 576 0026 04       		.byte	0x4
- 577 0027 05       		.byte	0x5
- 578 0028 696E7400 		.ascii	"int\000"
- 579 002c 03       		.uleb128 0x3
- 580 002d 04       		.byte	0x4
- 581 002e 07       		.byte	0x7
- 582 002f 91010000 		.4byte	.LASF0
- 583 0033 03       		.uleb128 0x3
- 584 0034 08       		.byte	0x8
- 585 0035 05       		.byte	0x5
- 586 0036 F0010000 		.4byte	.LASF1
- 587 003a 03       		.uleb128 0x3
- 588 003b 08       		.byte	0x8
- 589 003c 04       		.byte	0x4
- 590 003d 49020000 		.4byte	.LASF2
- 591 0041 03       		.uleb128 0x3
- 592 0042 01       		.byte	0x1
- 593 0043 06       		.byte	0x6
- 594 0044 BE020000 		.4byte	.LASF3
- 595 0048 03       		.uleb128 0x3
- 596 0049 01       		.byte	0x1
- 597 004a 08       		.byte	0x8
- 598 004b 11010000 		.4byte	.LASF4
- 599 004f 03       		.uleb128 0x3
- 600 0050 02       		.byte	0x2
- 601 0051 05       		.byte	0x5
- 602 0052 12020000 		.4byte	.LASF5
- 603 0056 03       		.uleb128 0x3
- 604 0057 02       		.byte	0x2
- 605 0058 07       		.byte	0x7
- 606 0059 CB000000 		.4byte	.LASF6
- 607 005d 03       		.uleb128 0x3
- 608 005e 04       		.byte	0x4
- 609 005f 05       		.byte	0x5
- 610 0060 40020000 		.4byte	.LASF7
- 611 0064 03       		.uleb128 0x3
- 612 0065 04       		.byte	0x4
- 613 0066 07       		.byte	0x7
- 614 0067 41010000 		.4byte	.LASF8
- 615 006b 03       		.uleb128 0x3
- 616 006c 08       		.byte	0x8
- 617 006d 07       		.byte	0x7
- 618 006e A6010000 		.4byte	.LASF9
- 619 0072 03       		.uleb128 0x3
- 620 0073 04       		.byte	0x4
- 621 0074 07       		.byte	0x7
- 622 0075 E7010000 		.4byte	.LASF10
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 19
+ 566 0027 05       		.byte	0x5
+ 567 0028 696E7400 		.ascii	"int\000"
+ 568 002c 03       		.uleb128 0x3
+ 569 002d 04       		.byte	0x4
+ 570 002e 07       		.byte	0x7
+ 571 002f 91010000 		.4byte	.LASF0
+ 572 0033 03       		.uleb128 0x3
+ 573 0034 08       		.byte	0x8
+ 574 0035 05       		.byte	0x5
+ 575 0036 89020000 		.4byte	.LASF1
+ 576 003a 03       		.uleb128 0x3
+ 577 003b 08       		.byte	0x8
+ 578 003c 04       		.byte	0x4
+ 579 003d E2020000 		.4byte	.LASF2
+ 580 0041 03       		.uleb128 0x3
+ 581 0042 01       		.byte	0x1
+ 582 0043 06       		.byte	0x6
+ 583 0044 EE020000 		.4byte	.LASF3
+ 584 0048 03       		.uleb128 0x3
+ 585 0049 01       		.byte	0x1
+ 586 004a 08       		.byte	0x8
+ 587 004b 11010000 		.4byte	.LASF4
+ 588 004f 03       		.uleb128 0x3
+ 589 0050 02       		.byte	0x2
+ 590 0051 05       		.byte	0x5
+ 591 0052 AB020000 		.4byte	.LASF5
+ 592 0056 03       		.uleb128 0x3
+ 593 0057 02       		.byte	0x2
+ 594 0058 07       		.byte	0x7
+ 595 0059 CB000000 		.4byte	.LASF6
+ 596 005d 03       		.uleb128 0x3
+ 597 005e 04       		.byte	0x4
+ 598 005f 05       		.byte	0x5
+ 599 0060 D9020000 		.4byte	.LASF7
+ 600 0064 03       		.uleb128 0x3
+ 601 0065 04       		.byte	0x4
+ 602 0066 07       		.byte	0x7
+ 603 0067 41010000 		.4byte	.LASF8
+ 604 006b 03       		.uleb128 0x3
+ 605 006c 08       		.byte	0x8
+ 606 006d 07       		.byte	0x7
+ 607 006e A6010000 		.4byte	.LASF9
+ 608 0072 03       		.uleb128 0x3
+ 609 0073 04       		.byte	0x4
+ 610 0074 07       		.byte	0x7
+ 611 0075 80020000 		.4byte	.LASF10
+ 612 0079 03       		.uleb128 0x3
+ 613 007a 01       		.byte	0x1
+ 614 007b 08       		.byte	0x8
+ 615 007c 97020000 		.4byte	.LASF11
+ 616 0080 04       		.uleb128 0x4
+ 617 0081 04       		.byte	0x4
+ 618 0082 86000000 		.4byte	0x86
+ 619 0086 05       		.uleb128 0x5
+ 620 0087 06       		.uleb128 0x6
+ 621 0088 53010000 		.4byte	.LASF12
+ 622 008c 02       		.byte	0x2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 19
 
 
- 623 0079 03       		.uleb128 0x3
- 624 007a 01       		.byte	0x1
- 625 007b 08       		.byte	0x8
- 626 007c FE010000 		.4byte	.LASF11
- 627 0080 04       		.uleb128 0x4
- 628 0081 04       		.byte	0x4
- 629 0082 86000000 		.4byte	0x86
- 630 0086 05       		.uleb128 0x5
- 631 0087 06       		.uleb128 0x6
- 632 0088 53010000 		.4byte	.LASF12
- 633 008c 02       		.byte	0x2
- 634 008d E701     		.2byte	0x1e7
- 635 008f 48000000 		.4byte	0x48
- 636 0093 06       		.uleb128 0x6
- 637 0094 8A010000 		.4byte	.LASF13
- 638 0098 02       		.byte	0x2
- 639 0099 E901     		.2byte	0x1e9
- 640 009b 64000000 		.4byte	0x64
- 641 009f 03       		.uleb128 0x3
- 642 00a0 04       		.byte	0x4
- 643 00a1 04       		.byte	0x4
- 644 00a2 DE000000 		.4byte	.LASF14
- 645 00a6 03       		.uleb128 0x3
- 646 00a7 08       		.byte	0x8
- 647 00a8 04       		.byte	0x4
- 648 00a9 62010000 		.4byte	.LASF15
- 649 00ad 06       		.uleb128 0x6
- 650 00ae 2B010000 		.4byte	.LASF16
- 651 00b2 02       		.byte	0x2
- 652 00b3 9102     		.2byte	0x291
- 653 00b5 B9000000 		.4byte	0xb9
- 654 00b9 07       		.uleb128 0x7
- 655 00ba 87000000 		.4byte	0x87
- 656 00be 06       		.uleb128 0x6
- 657 00bf 00000000 		.4byte	.LASF17
- 658 00c3 02       		.byte	0x2
- 659 00c4 9302     		.2byte	0x293
- 660 00c6 CA000000 		.4byte	0xca
- 661 00ca 07       		.uleb128 0x7
- 662 00cb 93000000 		.4byte	0x93
- 663 00cf 06       		.uleb128 0x6
- 664 00d0 CB010000 		.4byte	.LASF18
- 665 00d4 02       		.byte	0x2
- 666 00d5 A302     		.2byte	0x2a3
- 667 00d7 80000000 		.4byte	0x80
- 668 00db 08       		.uleb128 0x8
- 669 00dc 04010000 		.4byte	.LASF19
- 670 00e0 01       		.byte	0x1
- 671 00e1 3D       		.byte	0x3d
- 672 00e2 00000000 		.4byte	.LFB0
- 673 00e6 20000000 		.4byte	.LFE0-.LFB0
- 674 00ea 01       		.uleb128 0x1
- 675 00eb 9C       		.byte	0x9c
- 676 00ec 09       		.uleb128 0x9
- 677 00ed 7B010000 		.4byte	.LASF22
- 678 00f1 01       		.byte	0x1
- 679 00f2 68       		.byte	0x68
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 20
+ 623 008d E401     		.2byte	0x1e4
+ 624 008f 48000000 		.4byte	0x48
+ 625 0093 06       		.uleb128 0x6
+ 626 0094 8A010000 		.4byte	.LASF13
+ 627 0098 02       		.byte	0x2
+ 628 0099 E601     		.2byte	0x1e6
+ 629 009b 64000000 		.4byte	0x64
+ 630 009f 03       		.uleb128 0x3
+ 631 00a0 04       		.byte	0x4
+ 632 00a1 04       		.byte	0x4
+ 633 00a2 DE000000 		.4byte	.LASF14
+ 634 00a6 03       		.uleb128 0x3
+ 635 00a7 08       		.byte	0x8
+ 636 00a8 04       		.byte	0x4
+ 637 00a9 62010000 		.4byte	.LASF15
+ 638 00ad 06       		.uleb128 0x6
+ 639 00ae 2B010000 		.4byte	.LASF16
+ 640 00b2 02       		.byte	0x2
+ 641 00b3 8E02     		.2byte	0x28e
+ 642 00b5 B9000000 		.4byte	0xb9
+ 643 00b9 07       		.uleb128 0x7
+ 644 00ba 87000000 		.4byte	0x87
+ 645 00be 06       		.uleb128 0x6
+ 646 00bf 00000000 		.4byte	.LASF17
+ 647 00c3 02       		.byte	0x2
+ 648 00c4 9002     		.2byte	0x290
+ 649 00c6 CA000000 		.4byte	0xca
+ 650 00ca 07       		.uleb128 0x7
+ 651 00cb 93000000 		.4byte	0x93
+ 652 00cf 06       		.uleb128 0x6
+ 653 00d0 CB010000 		.4byte	.LASF18
+ 654 00d4 02       		.byte	0x2
+ 655 00d5 A002     		.2byte	0x2a0
+ 656 00d7 80000000 		.4byte	0x80
+ 657 00db 08       		.uleb128 0x8
+ 658 00dc 04010000 		.4byte	.LASF19
+ 659 00e0 01       		.byte	0x1
+ 660 00e1 3D       		.byte	0x3d
+ 661 00e2 00000000 		.4byte	.LFB0
+ 662 00e6 20000000 		.4byte	.LFE0-.LFB0
+ 663 00ea 01       		.uleb128 0x1
+ 664 00eb 9C       		.byte	0x9c
+ 665 00ec 09       		.uleb128 0x9
+ 666 00ed 7B010000 		.4byte	.LASF22
+ 667 00f1 01       		.byte	0x1
+ 668 00f2 68       		.byte	0x68
+ 669 00f3 00000000 		.4byte	.LFB1
+ 670 00f7 24000000 		.4byte	.LFE1-.LFB1
+ 671 00fb 01       		.uleb128 0x1
+ 672 00fc 9C       		.byte	0x9c
+ 673 00fd 10010000 		.4byte	0x110
+ 674 0101 0A       		.uleb128 0xa
+ 675 0102 9E010000 		.4byte	.LASF24
+ 676 0106 01       		.byte	0x1
+ 677 0107 68       		.byte	0x68
+ 678 0108 CF000000 		.4byte	0xcf
+ 679 010c 02       		.uleb128 0x2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 20
 
 
- 680 00f3 00000000 		.4byte	.LFB1
- 681 00f7 24000000 		.4byte	.LFE1-.LFB1
- 682 00fb 01       		.uleb128 0x1
- 683 00fc 9C       		.byte	0x9c
- 684 00fd 10010000 		.4byte	0x110
- 685 0101 0A       		.uleb128 0xa
- 686 0102 9E010000 		.4byte	.LASF24
- 687 0106 01       		.byte	0x1
- 688 0107 68       		.byte	0x68
- 689 0108 CF000000 		.4byte	0xcf
- 690 010c 02       		.uleb128 0x2
- 691 010d 91       		.byte	0x91
- 692 010e 74       		.sleb128 -12
- 693 010f 00       		.byte	0
- 694 0110 08       		.uleb128 0x8
- 695 0111 1F010000 		.4byte	.LASF20
- 696 0115 01       		.byte	0x1
- 697 0116 86       		.byte	0x86
- 698 0117 00000000 		.4byte	.LFB2
- 699 011b 18000000 		.4byte	.LFE2-.LFB2
- 700 011f 01       		.uleb128 0x1
- 701 0120 9C       		.byte	0x9c
- 702 0121 0B       		.uleb128 0xb
- 703 0122 30010000 		.4byte	.LASF21
- 704 0126 01       		.byte	0x1
- 705 0127 A0       		.byte	0xa0
- 706 0128 00000000 		.4byte	.LFB3
- 707 012c 1C000000 		.4byte	.LFE3-.LFB3
- 708 0130 01       		.uleb128 0x1
- 709 0131 9C       		.byte	0x9c
- 710 0132 0C       		.uleb128 0xc
- 711 0133 CA020000 		.4byte	.LASF23
- 712 0137 01       		.byte	0x1
- 713 0138 C8       		.byte	0xc8
- 714 0139 00000000 		.4byte	.LFB4
- 715 013d 24000000 		.4byte	.LFE4-.LFB4
- 716 0141 01       		.uleb128 0x1
- 717 0142 9C       		.byte	0x9c
- 718 0143 64010000 		.4byte	0x164
- 719 0147 0A       		.uleb128 0xa
- 720 0148 9E010000 		.4byte	.LASF24
- 721 014c 01       		.byte	0x1
- 722 014d C8       		.byte	0xc8
- 723 014e CF000000 		.4byte	0xcf
- 724 0152 02       		.uleb128 0x2
- 725 0153 91       		.byte	0x91
- 726 0154 6C       		.sleb128 -20
- 727 0155 0D       		.uleb128 0xd
- 728 0156 03020000 		.4byte	.LASF25
- 729 015a 01       		.byte	0x1
- 730 015b CA       		.byte	0xca
- 731 015c 64010000 		.4byte	0x164
- 732 0160 02       		.uleb128 0x2
- 733 0161 91       		.byte	0x91
- 734 0162 74       		.sleb128 -12
- 735 0163 00       		.byte	0
- 736 0164 04       		.uleb128 0x4
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 21
+ 680 010d 91       		.byte	0x91
+ 681 010e 74       		.sleb128 -12
+ 682 010f 00       		.byte	0
+ 683 0110 08       		.uleb128 0x8
+ 684 0111 1F010000 		.4byte	.LASF20
+ 685 0115 01       		.byte	0x1
+ 686 0116 86       		.byte	0x86
+ 687 0117 00000000 		.4byte	.LFB2
+ 688 011b 18000000 		.4byte	.LFE2-.LFB2
+ 689 011f 01       		.uleb128 0x1
+ 690 0120 9C       		.byte	0x9c
+ 691 0121 0B       		.uleb128 0xb
+ 692 0122 30010000 		.4byte	.LASF21
+ 693 0126 01       		.byte	0x1
+ 694 0127 A0       		.byte	0xa0
+ 695 0128 00000000 		.4byte	.LFB3
+ 696 012c 0C000000 		.4byte	.LFE3-.LFB3
+ 697 0130 01       		.uleb128 0x1
+ 698 0131 9C       		.byte	0x9c
+ 699 0132 0C       		.uleb128 0xc
+ 700 0133 FA020000 		.4byte	.LASF23
+ 701 0137 01       		.byte	0x1
+ 702 0138 C8       		.byte	0xc8
+ 703 0139 00000000 		.4byte	.LFB4
+ 704 013d 24000000 		.4byte	.LFE4-.LFB4
+ 705 0141 01       		.uleb128 0x1
+ 706 0142 9C       		.byte	0x9c
+ 707 0143 64010000 		.4byte	0x164
+ 708 0147 0A       		.uleb128 0xa
+ 709 0148 9E010000 		.4byte	.LASF24
+ 710 014c 01       		.byte	0x1
+ 711 014d C8       		.byte	0xc8
+ 712 014e CF000000 		.4byte	0xcf
+ 713 0152 02       		.uleb128 0x2
+ 714 0153 91       		.byte	0x91
+ 715 0154 6C       		.sleb128 -20
+ 716 0155 0D       		.uleb128 0xd
+ 717 0156 9C020000 		.4byte	.LASF25
+ 718 015a 01       		.byte	0x1
+ 719 015b CA       		.byte	0xca
+ 720 015c 64010000 		.4byte	0x164
+ 721 0160 02       		.uleb128 0x2
+ 722 0161 91       		.byte	0x91
+ 723 0162 74       		.sleb128 -12
+ 724 0163 00       		.byte	0
+ 725 0164 04       		.uleb128 0x4
+ 726 0165 04       		.byte	0x4
+ 727 0166 CF000000 		.4byte	0xcf
+ 728 016a 0E       		.uleb128 0xe
+ 729 016b C8020000 		.4byte	.LASF28
+ 730 016f 01       		.byte	0x1
+ 731 0170 E0       		.byte	0xe0
+ 732 0171 CF000000 		.4byte	0xcf
+ 733 0175 00000000 		.4byte	.LFB5
+ 734 0179 20000000 		.4byte	.LFE5-.LFB5
+ 735 017d 01       		.uleb128 0x1
+ 736 017e 9C       		.byte	0x9c
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 21
 
 
- 737 0165 04       		.byte	0x4
- 738 0166 CF000000 		.4byte	0xcf
- 739 016a 0E       		.uleb128 0xe
- 740 016b 2F020000 		.4byte	.LASF28
- 741 016f 01       		.byte	0x1
- 742 0170 E0       		.byte	0xe0
- 743 0171 CF000000 		.4byte	0xcf
- 744 0175 00000000 		.4byte	.LFB5
- 745 0179 20000000 		.4byte	.LFE5-.LFB5
- 746 017d 01       		.uleb128 0x1
- 747 017e 9C       		.byte	0x9c
- 748 017f 92010000 		.4byte	0x192
- 749 0183 0D       		.uleb128 0xd
- 750 0184 03020000 		.4byte	.LASF25
- 751 0188 01       		.byte	0x1
- 752 0189 E2       		.byte	0xe2
- 753 018a 64010000 		.4byte	0x164
- 754 018e 02       		.uleb128 0x2
- 755 018f 91       		.byte	0x91
- 756 0190 74       		.sleb128 -12
- 757 0191 00       		.byte	0
- 758 0192 0F       		.uleb128 0xf
- 759 0193 B8000000 		.4byte	.LASF26
- 760 0197 01       		.byte	0x1
- 761 0198 0201     		.2byte	0x102
- 762 019a 00000000 		.4byte	.LFB6
- 763 019e 24000000 		.4byte	.LFE6-.LFB6
- 764 01a2 01       		.uleb128 0x1
- 765 01a3 9C       		.byte	0x9c
- 766 01a4 B8010000 		.4byte	0x1b8
- 767 01a8 10       		.uleb128 0x10
- 768 01a9 59010000 		.4byte	.LASF27
- 769 01ad 01       		.byte	0x1
- 770 01ae 0201     		.2byte	0x102
- 771 01b0 87000000 		.4byte	0x87
- 772 01b4 02       		.uleb128 0x2
- 773 01b5 91       		.byte	0x91
- 774 01b6 77       		.sleb128 -9
- 775 01b7 00       		.byte	0
- 776 01b8 11       		.uleb128 0x11
- 777 01b9 1C020000 		.4byte	.LASF29
- 778 01bd 01       		.byte	0x1
- 779 01be 1801     		.2byte	0x118
- 780 01c0 87000000 		.4byte	0x87
- 781 01c4 00000000 		.4byte	.LFB7
- 782 01c8 20000000 		.4byte	.LFE7-.LFB7
- 783 01cc 01       		.uleb128 0x1
- 784 01cd 9C       		.byte	0x9c
- 785 01ce E2010000 		.4byte	0x1e2
- 786 01d2 12       		.uleb128 0x12
- 787 01d3 59010000 		.4byte	.LASF27
- 788 01d7 01       		.byte	0x1
- 789 01d8 1A01     		.2byte	0x11a
- 790 01da 87000000 		.4byte	0x87
- 791 01de 02       		.uleb128 0x2
- 792 01df 91       		.byte	0x91
- 793 01e0 77       		.sleb128 -9
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 22
+ 737 017f 92010000 		.4byte	0x192
+ 738 0183 0D       		.uleb128 0xd
+ 739 0184 9C020000 		.4byte	.LASF25
+ 740 0188 01       		.byte	0x1
+ 741 0189 E2       		.byte	0xe2
+ 742 018a 64010000 		.4byte	0x164
+ 743 018e 02       		.uleb128 0x2
+ 744 018f 91       		.byte	0x91
+ 745 0190 74       		.sleb128 -12
+ 746 0191 00       		.byte	0
+ 747 0192 0F       		.uleb128 0xf
+ 748 0193 B8000000 		.4byte	.LASF26
+ 749 0197 01       		.byte	0x1
+ 750 0198 0201     		.2byte	0x102
+ 751 019a 00000000 		.4byte	.LFB6
+ 752 019e 24000000 		.4byte	.LFE6-.LFB6
+ 753 01a2 01       		.uleb128 0x1
+ 754 01a3 9C       		.byte	0x9c
+ 755 01a4 B8010000 		.4byte	0x1b8
+ 756 01a8 10       		.uleb128 0x10
+ 757 01a9 59010000 		.4byte	.LASF27
+ 758 01ad 01       		.byte	0x1
+ 759 01ae 0201     		.2byte	0x102
+ 760 01b0 87000000 		.4byte	0x87
+ 761 01b4 02       		.uleb128 0x2
+ 762 01b5 91       		.byte	0x91
+ 763 01b6 77       		.sleb128 -9
+ 764 01b7 00       		.byte	0
+ 765 01b8 11       		.uleb128 0x11
+ 766 01b9 B5020000 		.4byte	.LASF29
+ 767 01bd 01       		.byte	0x1
+ 768 01be 1801     		.2byte	0x118
+ 769 01c0 87000000 		.4byte	0x87
+ 770 01c4 00000000 		.4byte	.LFB7
+ 771 01c8 20000000 		.4byte	.LFE7-.LFB7
+ 772 01cc 01       		.uleb128 0x1
+ 773 01cd 9C       		.byte	0x9c
+ 774 01ce E2010000 		.4byte	0x1e2
+ 775 01d2 12       		.uleb128 0x12
+ 776 01d3 59010000 		.4byte	.LASF27
+ 777 01d7 01       		.byte	0x1
+ 778 01d8 1A01     		.2byte	0x11a
+ 779 01da 87000000 		.4byte	0x87
+ 780 01de 02       		.uleb128 0x2
+ 781 01df 91       		.byte	0x91
+ 782 01e0 77       		.sleb128 -9
+ 783 01e1 00       		.byte	0
+ 784 01e2 13       		.uleb128 0x13
+ 785 01e3 BD010000 		.4byte	.LASF30
+ 786 01e7 01       		.byte	0x1
+ 787 01e8 3301     		.2byte	0x133
+ 788 01ea 00000000 		.4byte	.LFB8
+ 789 01ee 18000000 		.4byte	.LFE8-.LFB8
+ 790 01f2 01       		.uleb128 0x1
+ 791 01f3 9C       		.byte	0x9c
+ 792 01f4 14       		.uleb128 0x14
+ 793 01f5 A8000000 		.4byte	.LASF37
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 22
 
 
- 794 01e1 00       		.byte	0
- 795 01e2 13       		.uleb128 0x13
- 796 01e3 BD010000 		.4byte	.LASF30
- 797 01e7 01       		.byte	0x1
- 798 01e8 3301     		.2byte	0x133
- 799 01ea 00000000 		.4byte	.LFB8
- 800 01ee 18000000 		.4byte	.LFE8-.LFB8
- 801 01f2 01       		.uleb128 0x1
- 802 01f3 9C       		.byte	0x9c
- 803 01f4 14       		.uleb128 0x14
- 804 01f5 A8000000 		.4byte	.LASF37
- 805 01f9 01       		.byte	0x1
- 806 01fa 4801     		.2byte	0x148
- 807 01fc 87000000 		.4byte	0x87
- 808 0200 00000000 		.4byte	.LFB9
- 809 0204 24000000 		.4byte	.LFE9-.LFB9
- 810 0208 01       		.uleb128 0x1
- 811 0209 9C       		.byte	0x9c
- 812 020a 13       		.uleb128 0x13
- 813 020b D8010000 		.4byte	.LASF31
- 814 020f 01       		.byte	0x1
- 815 0210 5D01     		.2byte	0x15d
- 816 0212 00000000 		.4byte	.LFB10
- 817 0216 18000000 		.4byte	.LFE10-.LFB10
- 818 021a 01       		.uleb128 0x1
- 819 021b 9C       		.byte	0x9c
- 820 021c 13       		.uleb128 0x13
- 821 021d 69010000 		.4byte	.LASF32
- 822 0221 01       		.byte	0x1
- 823 0222 7801     		.2byte	0x178
- 824 0224 00000000 		.4byte	.LFB11
- 825 0228 18000000 		.4byte	.LFE11-.LFB11
- 826 022c 01       		.uleb128 0x1
- 827 022d 9C       		.byte	0x9c
- 828 022e 13       		.uleb128 0x13
- 829 022f 06000000 		.4byte	.LASF33
- 830 0233 01       		.byte	0x1
- 831 0234 9101     		.2byte	0x191
- 832 0236 00000000 		.4byte	.LFB12
- 833 023a 18000000 		.4byte	.LFE12-.LFB12
- 834 023e 01       		.uleb128 0x1
- 835 023f 9C       		.byte	0x9c
- 836 0240 15       		.uleb128 0x15
- 837 0241 747300   		.ascii	"ts\000"
- 838 0244 01       		.byte	0x1
- 839 0245 1E       		.byte	0x1e
- 840 0246 87000000 		.4byte	0x87
- 841 024a 00       		.byte	0
- 842              		.section	.debug_abbrev,"",%progbits
- 843              	.Ldebug_abbrev0:
- 844 0000 01       		.uleb128 0x1
- 845 0001 11       		.uleb128 0x11
- 846 0002 01       		.byte	0x1
- 847 0003 25       		.uleb128 0x25
- 848 0004 0E       		.uleb128 0xe
- 849 0005 13       		.uleb128 0x13
- 850 0006 0B       		.uleb128 0xb
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 23
+ 794 01f9 01       		.byte	0x1
+ 795 01fa 4801     		.2byte	0x148
+ 796 01fc 87000000 		.4byte	0x87
+ 797 0200 00000000 		.4byte	.LFB9
+ 798 0204 24000000 		.4byte	.LFE9-.LFB9
+ 799 0208 01       		.uleb128 0x1
+ 800 0209 9C       		.byte	0x9c
+ 801 020a 13       		.uleb128 0x13
+ 802 020b 71020000 		.4byte	.LASF31
+ 803 020f 01       		.byte	0x1
+ 804 0210 5D01     		.2byte	0x15d
+ 805 0212 00000000 		.4byte	.LFB10
+ 806 0216 18000000 		.4byte	.LFE10-.LFB10
+ 807 021a 01       		.uleb128 0x1
+ 808 021b 9C       		.byte	0x9c
+ 809 021c 13       		.uleb128 0x13
+ 810 021d 69010000 		.4byte	.LASF32
+ 811 0221 01       		.byte	0x1
+ 812 0222 7801     		.2byte	0x178
+ 813 0224 00000000 		.4byte	.LFB11
+ 814 0228 18000000 		.4byte	.LFE11-.LFB11
+ 815 022c 01       		.uleb128 0x1
+ 816 022d 9C       		.byte	0x9c
+ 817 022e 13       		.uleb128 0x13
+ 818 022f 06000000 		.4byte	.LASF33
+ 819 0233 01       		.byte	0x1
+ 820 0234 9101     		.2byte	0x191
+ 821 0236 00000000 		.4byte	.LFB12
+ 822 023a 18000000 		.4byte	.LFE12-.LFB12
+ 823 023e 01       		.uleb128 0x1
+ 824 023f 9C       		.byte	0x9c
+ 825 0240 00       		.byte	0
+ 826              		.section	.debug_abbrev,"",%progbits
+ 827              	.Ldebug_abbrev0:
+ 828 0000 01       		.uleb128 0x1
+ 829 0001 11       		.uleb128 0x11
+ 830 0002 01       		.byte	0x1
+ 831 0003 25       		.uleb128 0x25
+ 832 0004 0E       		.uleb128 0xe
+ 833 0005 13       		.uleb128 0x13
+ 834 0006 0B       		.uleb128 0xb
+ 835 0007 03       		.uleb128 0x3
+ 836 0008 0E       		.uleb128 0xe
+ 837 0009 1B       		.uleb128 0x1b
+ 838 000a 0E       		.uleb128 0xe
+ 839 000b 55       		.uleb128 0x55
+ 840 000c 17       		.uleb128 0x17
+ 841 000d 11       		.uleb128 0x11
+ 842 000e 01       		.uleb128 0x1
+ 843 000f 10       		.uleb128 0x10
+ 844 0010 17       		.uleb128 0x17
+ 845 0011 00       		.byte	0
+ 846 0012 00       		.byte	0
+ 847 0013 02       		.uleb128 0x2
+ 848 0014 24       		.uleb128 0x24
+ 849 0015 00       		.byte	0
+ 850 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 23
 
 
- 851 0007 03       		.uleb128 0x3
- 852 0008 0E       		.uleb128 0xe
- 853 0009 1B       		.uleb128 0x1b
- 854 000a 0E       		.uleb128 0xe
- 855 000b 55       		.uleb128 0x55
- 856 000c 17       		.uleb128 0x17
- 857 000d 11       		.uleb128 0x11
- 858 000e 01       		.uleb128 0x1
- 859 000f 10       		.uleb128 0x10
- 860 0010 17       		.uleb128 0x17
- 861 0011 00       		.byte	0
- 862 0012 00       		.byte	0
- 863 0013 02       		.uleb128 0x2
- 864 0014 24       		.uleb128 0x24
- 865 0015 00       		.byte	0
- 866 0016 0B       		.uleb128 0xb
- 867 0017 0B       		.uleb128 0xb
- 868 0018 3E       		.uleb128 0x3e
- 869 0019 0B       		.uleb128 0xb
- 870 001a 03       		.uleb128 0x3
- 871 001b 08       		.uleb128 0x8
- 872 001c 00       		.byte	0
- 873 001d 00       		.byte	0
- 874 001e 03       		.uleb128 0x3
- 875 001f 24       		.uleb128 0x24
- 876 0020 00       		.byte	0
- 877 0021 0B       		.uleb128 0xb
- 878 0022 0B       		.uleb128 0xb
- 879 0023 3E       		.uleb128 0x3e
- 880 0024 0B       		.uleb128 0xb
- 881 0025 03       		.uleb128 0x3
- 882 0026 0E       		.uleb128 0xe
- 883 0027 00       		.byte	0
- 884 0028 00       		.byte	0
- 885 0029 04       		.uleb128 0x4
- 886 002a 0F       		.uleb128 0xf
- 887 002b 00       		.byte	0
- 888 002c 0B       		.uleb128 0xb
- 889 002d 0B       		.uleb128 0xb
- 890 002e 49       		.uleb128 0x49
- 891 002f 13       		.uleb128 0x13
- 892 0030 00       		.byte	0
- 893 0031 00       		.byte	0
- 894 0032 05       		.uleb128 0x5
- 895 0033 15       		.uleb128 0x15
- 896 0034 00       		.byte	0
- 897 0035 27       		.uleb128 0x27
- 898 0036 19       		.uleb128 0x19
- 899 0037 00       		.byte	0
- 900 0038 00       		.byte	0
- 901 0039 06       		.uleb128 0x6
- 902 003a 16       		.uleb128 0x16
- 903 003b 00       		.byte	0
- 904 003c 03       		.uleb128 0x3
- 905 003d 0E       		.uleb128 0xe
- 906 003e 3A       		.uleb128 0x3a
- 907 003f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 24
+ 851 0017 0B       		.uleb128 0xb
+ 852 0018 3E       		.uleb128 0x3e
+ 853 0019 0B       		.uleb128 0xb
+ 854 001a 03       		.uleb128 0x3
+ 855 001b 08       		.uleb128 0x8
+ 856 001c 00       		.byte	0
+ 857 001d 00       		.byte	0
+ 858 001e 03       		.uleb128 0x3
+ 859 001f 24       		.uleb128 0x24
+ 860 0020 00       		.byte	0
+ 861 0021 0B       		.uleb128 0xb
+ 862 0022 0B       		.uleb128 0xb
+ 863 0023 3E       		.uleb128 0x3e
+ 864 0024 0B       		.uleb128 0xb
+ 865 0025 03       		.uleb128 0x3
+ 866 0026 0E       		.uleb128 0xe
+ 867 0027 00       		.byte	0
+ 868 0028 00       		.byte	0
+ 869 0029 04       		.uleb128 0x4
+ 870 002a 0F       		.uleb128 0xf
+ 871 002b 00       		.byte	0
+ 872 002c 0B       		.uleb128 0xb
+ 873 002d 0B       		.uleb128 0xb
+ 874 002e 49       		.uleb128 0x49
+ 875 002f 13       		.uleb128 0x13
+ 876 0030 00       		.byte	0
+ 877 0031 00       		.byte	0
+ 878 0032 05       		.uleb128 0x5
+ 879 0033 15       		.uleb128 0x15
+ 880 0034 00       		.byte	0
+ 881 0035 27       		.uleb128 0x27
+ 882 0036 19       		.uleb128 0x19
+ 883 0037 00       		.byte	0
+ 884 0038 00       		.byte	0
+ 885 0039 06       		.uleb128 0x6
+ 886 003a 16       		.uleb128 0x16
+ 887 003b 00       		.byte	0
+ 888 003c 03       		.uleb128 0x3
+ 889 003d 0E       		.uleb128 0xe
+ 890 003e 3A       		.uleb128 0x3a
+ 891 003f 0B       		.uleb128 0xb
+ 892 0040 3B       		.uleb128 0x3b
+ 893 0041 05       		.uleb128 0x5
+ 894 0042 49       		.uleb128 0x49
+ 895 0043 13       		.uleb128 0x13
+ 896 0044 00       		.byte	0
+ 897 0045 00       		.byte	0
+ 898 0046 07       		.uleb128 0x7
+ 899 0047 35       		.uleb128 0x35
+ 900 0048 00       		.byte	0
+ 901 0049 49       		.uleb128 0x49
+ 902 004a 13       		.uleb128 0x13
+ 903 004b 00       		.byte	0
+ 904 004c 00       		.byte	0
+ 905 004d 08       		.uleb128 0x8
+ 906 004e 2E       		.uleb128 0x2e
+ 907 004f 00       		.byte	0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 24
 
 
- 908 0040 3B       		.uleb128 0x3b
- 909 0041 05       		.uleb128 0x5
- 910 0042 49       		.uleb128 0x49
- 911 0043 13       		.uleb128 0x13
- 912 0044 00       		.byte	0
- 913 0045 00       		.byte	0
- 914 0046 07       		.uleb128 0x7
- 915 0047 35       		.uleb128 0x35
- 916 0048 00       		.byte	0
- 917 0049 49       		.uleb128 0x49
- 918 004a 13       		.uleb128 0x13
- 919 004b 00       		.byte	0
- 920 004c 00       		.byte	0
- 921 004d 08       		.uleb128 0x8
- 922 004e 2E       		.uleb128 0x2e
- 923 004f 00       		.byte	0
- 924 0050 3F       		.uleb128 0x3f
- 925 0051 19       		.uleb128 0x19
- 926 0052 03       		.uleb128 0x3
- 927 0053 0E       		.uleb128 0xe
- 928 0054 3A       		.uleb128 0x3a
- 929 0055 0B       		.uleb128 0xb
- 930 0056 3B       		.uleb128 0x3b
- 931 0057 0B       		.uleb128 0xb
- 932 0058 27       		.uleb128 0x27
- 933 0059 19       		.uleb128 0x19
- 934 005a 11       		.uleb128 0x11
- 935 005b 01       		.uleb128 0x1
- 936 005c 12       		.uleb128 0x12
- 937 005d 06       		.uleb128 0x6
- 938 005e 40       		.uleb128 0x40
- 939 005f 18       		.uleb128 0x18
- 940 0060 9642     		.uleb128 0x2116
- 941 0062 19       		.uleb128 0x19
- 942 0063 00       		.byte	0
- 943 0064 00       		.byte	0
- 944 0065 09       		.uleb128 0x9
- 945 0066 2E       		.uleb128 0x2e
- 946 0067 01       		.byte	0x1
- 947 0068 3F       		.uleb128 0x3f
- 948 0069 19       		.uleb128 0x19
- 949 006a 03       		.uleb128 0x3
- 950 006b 0E       		.uleb128 0xe
- 951 006c 3A       		.uleb128 0x3a
- 952 006d 0B       		.uleb128 0xb
- 953 006e 3B       		.uleb128 0x3b
- 954 006f 0B       		.uleb128 0xb
- 955 0070 27       		.uleb128 0x27
- 956 0071 19       		.uleb128 0x19
- 957 0072 11       		.uleb128 0x11
- 958 0073 01       		.uleb128 0x1
- 959 0074 12       		.uleb128 0x12
- 960 0075 06       		.uleb128 0x6
- 961 0076 40       		.uleb128 0x40
- 962 0077 18       		.uleb128 0x18
- 963 0078 9642     		.uleb128 0x2116
- 964 007a 19       		.uleb128 0x19
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 25
+ 908 0050 3F       		.uleb128 0x3f
+ 909 0051 19       		.uleb128 0x19
+ 910 0052 03       		.uleb128 0x3
+ 911 0053 0E       		.uleb128 0xe
+ 912 0054 3A       		.uleb128 0x3a
+ 913 0055 0B       		.uleb128 0xb
+ 914 0056 3B       		.uleb128 0x3b
+ 915 0057 0B       		.uleb128 0xb
+ 916 0058 27       		.uleb128 0x27
+ 917 0059 19       		.uleb128 0x19
+ 918 005a 11       		.uleb128 0x11
+ 919 005b 01       		.uleb128 0x1
+ 920 005c 12       		.uleb128 0x12
+ 921 005d 06       		.uleb128 0x6
+ 922 005e 40       		.uleb128 0x40
+ 923 005f 18       		.uleb128 0x18
+ 924 0060 9642     		.uleb128 0x2116
+ 925 0062 19       		.uleb128 0x19
+ 926 0063 00       		.byte	0
+ 927 0064 00       		.byte	0
+ 928 0065 09       		.uleb128 0x9
+ 929 0066 2E       		.uleb128 0x2e
+ 930 0067 01       		.byte	0x1
+ 931 0068 3F       		.uleb128 0x3f
+ 932 0069 19       		.uleb128 0x19
+ 933 006a 03       		.uleb128 0x3
+ 934 006b 0E       		.uleb128 0xe
+ 935 006c 3A       		.uleb128 0x3a
+ 936 006d 0B       		.uleb128 0xb
+ 937 006e 3B       		.uleb128 0x3b
+ 938 006f 0B       		.uleb128 0xb
+ 939 0070 27       		.uleb128 0x27
+ 940 0071 19       		.uleb128 0x19
+ 941 0072 11       		.uleb128 0x11
+ 942 0073 01       		.uleb128 0x1
+ 943 0074 12       		.uleb128 0x12
+ 944 0075 06       		.uleb128 0x6
+ 945 0076 40       		.uleb128 0x40
+ 946 0077 18       		.uleb128 0x18
+ 947 0078 9642     		.uleb128 0x2116
+ 948 007a 19       		.uleb128 0x19
+ 949 007b 01       		.uleb128 0x1
+ 950 007c 13       		.uleb128 0x13
+ 951 007d 00       		.byte	0
+ 952 007e 00       		.byte	0
+ 953 007f 0A       		.uleb128 0xa
+ 954 0080 05       		.uleb128 0x5
+ 955 0081 00       		.byte	0
+ 956 0082 03       		.uleb128 0x3
+ 957 0083 0E       		.uleb128 0xe
+ 958 0084 3A       		.uleb128 0x3a
+ 959 0085 0B       		.uleb128 0xb
+ 960 0086 3B       		.uleb128 0x3b
+ 961 0087 0B       		.uleb128 0xb
+ 962 0088 49       		.uleb128 0x49
+ 963 0089 13       		.uleb128 0x13
+ 964 008a 02       		.uleb128 0x2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 25
 
 
- 965 007b 01       		.uleb128 0x1
- 966 007c 13       		.uleb128 0x13
- 967 007d 00       		.byte	0
- 968 007e 00       		.byte	0
- 969 007f 0A       		.uleb128 0xa
- 970 0080 05       		.uleb128 0x5
- 971 0081 00       		.byte	0
- 972 0082 03       		.uleb128 0x3
- 973 0083 0E       		.uleb128 0xe
- 974 0084 3A       		.uleb128 0x3a
- 975 0085 0B       		.uleb128 0xb
- 976 0086 3B       		.uleb128 0x3b
- 977 0087 0B       		.uleb128 0xb
- 978 0088 49       		.uleb128 0x49
- 979 0089 13       		.uleb128 0x13
- 980 008a 02       		.uleb128 0x2
- 981 008b 18       		.uleb128 0x18
- 982 008c 00       		.byte	0
- 983 008d 00       		.byte	0
- 984 008e 0B       		.uleb128 0xb
- 985 008f 2E       		.uleb128 0x2e
- 986 0090 00       		.byte	0
- 987 0091 3F       		.uleb128 0x3f
- 988 0092 19       		.uleb128 0x19
- 989 0093 03       		.uleb128 0x3
- 990 0094 0E       		.uleb128 0xe
- 991 0095 3A       		.uleb128 0x3a
- 992 0096 0B       		.uleb128 0xb
- 993 0097 3B       		.uleb128 0x3b
- 994 0098 0B       		.uleb128 0xb
- 995 0099 27       		.uleb128 0x27
- 996 009a 19       		.uleb128 0x19
- 997 009b 11       		.uleb128 0x11
- 998 009c 01       		.uleb128 0x1
- 999 009d 12       		.uleb128 0x12
- 1000 009e 06       		.uleb128 0x6
- 1001 009f 40       		.uleb128 0x40
- 1002 00a0 18       		.uleb128 0x18
- 1003 00a1 9742     		.uleb128 0x2117
- 1004 00a3 19       		.uleb128 0x19
- 1005 00a4 00       		.byte	0
- 1006 00a5 00       		.byte	0
- 1007 00a6 0C       		.uleb128 0xc
- 1008 00a7 2E       		.uleb128 0x2e
- 1009 00a8 01       		.byte	0x1
- 1010 00a9 3F       		.uleb128 0x3f
- 1011 00aa 19       		.uleb128 0x19
- 1012 00ab 03       		.uleb128 0x3
- 1013 00ac 0E       		.uleb128 0xe
- 1014 00ad 3A       		.uleb128 0x3a
- 1015 00ae 0B       		.uleb128 0xb
- 1016 00af 3B       		.uleb128 0x3b
- 1017 00b0 0B       		.uleb128 0xb
- 1018 00b1 27       		.uleb128 0x27
- 1019 00b2 19       		.uleb128 0x19
- 1020 00b3 11       		.uleb128 0x11
- 1021 00b4 01       		.uleb128 0x1
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 26
+ 965 008b 18       		.uleb128 0x18
+ 966 008c 00       		.byte	0
+ 967 008d 00       		.byte	0
+ 968 008e 0B       		.uleb128 0xb
+ 969 008f 2E       		.uleb128 0x2e
+ 970 0090 00       		.byte	0
+ 971 0091 3F       		.uleb128 0x3f
+ 972 0092 19       		.uleb128 0x19
+ 973 0093 03       		.uleb128 0x3
+ 974 0094 0E       		.uleb128 0xe
+ 975 0095 3A       		.uleb128 0x3a
+ 976 0096 0B       		.uleb128 0xb
+ 977 0097 3B       		.uleb128 0x3b
+ 978 0098 0B       		.uleb128 0xb
+ 979 0099 27       		.uleb128 0x27
+ 980 009a 19       		.uleb128 0x19
+ 981 009b 11       		.uleb128 0x11
+ 982 009c 01       		.uleb128 0x1
+ 983 009d 12       		.uleb128 0x12
+ 984 009e 06       		.uleb128 0x6
+ 985 009f 40       		.uleb128 0x40
+ 986 00a0 18       		.uleb128 0x18
+ 987 00a1 9742     		.uleb128 0x2117
+ 988 00a3 19       		.uleb128 0x19
+ 989 00a4 00       		.byte	0
+ 990 00a5 00       		.byte	0
+ 991 00a6 0C       		.uleb128 0xc
+ 992 00a7 2E       		.uleb128 0x2e
+ 993 00a8 01       		.byte	0x1
+ 994 00a9 3F       		.uleb128 0x3f
+ 995 00aa 19       		.uleb128 0x19
+ 996 00ab 03       		.uleb128 0x3
+ 997 00ac 0E       		.uleb128 0xe
+ 998 00ad 3A       		.uleb128 0x3a
+ 999 00ae 0B       		.uleb128 0xb
+ 1000 00af 3B       		.uleb128 0x3b
+ 1001 00b0 0B       		.uleb128 0xb
+ 1002 00b1 27       		.uleb128 0x27
+ 1003 00b2 19       		.uleb128 0x19
+ 1004 00b3 11       		.uleb128 0x11
+ 1005 00b4 01       		.uleb128 0x1
+ 1006 00b5 12       		.uleb128 0x12
+ 1007 00b6 06       		.uleb128 0x6
+ 1008 00b7 40       		.uleb128 0x40
+ 1009 00b8 18       		.uleb128 0x18
+ 1010 00b9 9742     		.uleb128 0x2117
+ 1011 00bb 19       		.uleb128 0x19
+ 1012 00bc 01       		.uleb128 0x1
+ 1013 00bd 13       		.uleb128 0x13
+ 1014 00be 00       		.byte	0
+ 1015 00bf 00       		.byte	0
+ 1016 00c0 0D       		.uleb128 0xd
+ 1017 00c1 34       		.uleb128 0x34
+ 1018 00c2 00       		.byte	0
+ 1019 00c3 03       		.uleb128 0x3
+ 1020 00c4 0E       		.uleb128 0xe
+ 1021 00c5 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 26
 
 
- 1022 00b5 12       		.uleb128 0x12
- 1023 00b6 06       		.uleb128 0x6
- 1024 00b7 40       		.uleb128 0x40
- 1025 00b8 18       		.uleb128 0x18
- 1026 00b9 9742     		.uleb128 0x2117
- 1027 00bb 19       		.uleb128 0x19
- 1028 00bc 01       		.uleb128 0x1
- 1029 00bd 13       		.uleb128 0x13
- 1030 00be 00       		.byte	0
- 1031 00bf 00       		.byte	0
- 1032 00c0 0D       		.uleb128 0xd
- 1033 00c1 34       		.uleb128 0x34
- 1034 00c2 00       		.byte	0
- 1035 00c3 03       		.uleb128 0x3
- 1036 00c4 0E       		.uleb128 0xe
- 1037 00c5 3A       		.uleb128 0x3a
- 1038 00c6 0B       		.uleb128 0xb
- 1039 00c7 3B       		.uleb128 0x3b
- 1040 00c8 0B       		.uleb128 0xb
- 1041 00c9 49       		.uleb128 0x49
- 1042 00ca 13       		.uleb128 0x13
- 1043 00cb 02       		.uleb128 0x2
- 1044 00cc 18       		.uleb128 0x18
- 1045 00cd 00       		.byte	0
- 1046 00ce 00       		.byte	0
- 1047 00cf 0E       		.uleb128 0xe
- 1048 00d0 2E       		.uleb128 0x2e
- 1049 00d1 01       		.byte	0x1
- 1050 00d2 3F       		.uleb128 0x3f
- 1051 00d3 19       		.uleb128 0x19
- 1052 00d4 03       		.uleb128 0x3
- 1053 00d5 0E       		.uleb128 0xe
- 1054 00d6 3A       		.uleb128 0x3a
- 1055 00d7 0B       		.uleb128 0xb
- 1056 00d8 3B       		.uleb128 0x3b
- 1057 00d9 0B       		.uleb128 0xb
- 1058 00da 27       		.uleb128 0x27
- 1059 00db 19       		.uleb128 0x19
- 1060 00dc 49       		.uleb128 0x49
- 1061 00dd 13       		.uleb128 0x13
- 1062 00de 11       		.uleb128 0x11
- 1063 00df 01       		.uleb128 0x1
- 1064 00e0 12       		.uleb128 0x12
- 1065 00e1 06       		.uleb128 0x6
- 1066 00e2 40       		.uleb128 0x40
- 1067 00e3 18       		.uleb128 0x18
- 1068 00e4 9742     		.uleb128 0x2117
- 1069 00e6 19       		.uleb128 0x19
- 1070 00e7 01       		.uleb128 0x1
- 1071 00e8 13       		.uleb128 0x13
- 1072 00e9 00       		.byte	0
- 1073 00ea 00       		.byte	0
- 1074 00eb 0F       		.uleb128 0xf
- 1075 00ec 2E       		.uleb128 0x2e
- 1076 00ed 01       		.byte	0x1
- 1077 00ee 3F       		.uleb128 0x3f
- 1078 00ef 19       		.uleb128 0x19
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 27
+ 1022 00c6 0B       		.uleb128 0xb
+ 1023 00c7 3B       		.uleb128 0x3b
+ 1024 00c8 0B       		.uleb128 0xb
+ 1025 00c9 49       		.uleb128 0x49
+ 1026 00ca 13       		.uleb128 0x13
+ 1027 00cb 02       		.uleb128 0x2
+ 1028 00cc 18       		.uleb128 0x18
+ 1029 00cd 00       		.byte	0
+ 1030 00ce 00       		.byte	0
+ 1031 00cf 0E       		.uleb128 0xe
+ 1032 00d0 2E       		.uleb128 0x2e
+ 1033 00d1 01       		.byte	0x1
+ 1034 00d2 3F       		.uleb128 0x3f
+ 1035 00d3 19       		.uleb128 0x19
+ 1036 00d4 03       		.uleb128 0x3
+ 1037 00d5 0E       		.uleb128 0xe
+ 1038 00d6 3A       		.uleb128 0x3a
+ 1039 00d7 0B       		.uleb128 0xb
+ 1040 00d8 3B       		.uleb128 0x3b
+ 1041 00d9 0B       		.uleb128 0xb
+ 1042 00da 27       		.uleb128 0x27
+ 1043 00db 19       		.uleb128 0x19
+ 1044 00dc 49       		.uleb128 0x49
+ 1045 00dd 13       		.uleb128 0x13
+ 1046 00de 11       		.uleb128 0x11
+ 1047 00df 01       		.uleb128 0x1
+ 1048 00e0 12       		.uleb128 0x12
+ 1049 00e1 06       		.uleb128 0x6
+ 1050 00e2 40       		.uleb128 0x40
+ 1051 00e3 18       		.uleb128 0x18
+ 1052 00e4 9742     		.uleb128 0x2117
+ 1053 00e6 19       		.uleb128 0x19
+ 1054 00e7 01       		.uleb128 0x1
+ 1055 00e8 13       		.uleb128 0x13
+ 1056 00e9 00       		.byte	0
+ 1057 00ea 00       		.byte	0
+ 1058 00eb 0F       		.uleb128 0xf
+ 1059 00ec 2E       		.uleb128 0x2e
+ 1060 00ed 01       		.byte	0x1
+ 1061 00ee 3F       		.uleb128 0x3f
+ 1062 00ef 19       		.uleb128 0x19
+ 1063 00f0 03       		.uleb128 0x3
+ 1064 00f1 0E       		.uleb128 0xe
+ 1065 00f2 3A       		.uleb128 0x3a
+ 1066 00f3 0B       		.uleb128 0xb
+ 1067 00f4 3B       		.uleb128 0x3b
+ 1068 00f5 05       		.uleb128 0x5
+ 1069 00f6 27       		.uleb128 0x27
+ 1070 00f7 19       		.uleb128 0x19
+ 1071 00f8 11       		.uleb128 0x11
+ 1072 00f9 01       		.uleb128 0x1
+ 1073 00fa 12       		.uleb128 0x12
+ 1074 00fb 06       		.uleb128 0x6
+ 1075 00fc 40       		.uleb128 0x40
+ 1076 00fd 18       		.uleb128 0x18
+ 1077 00fe 9742     		.uleb128 0x2117
+ 1078 0100 19       		.uleb128 0x19
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 27
 
 
- 1079 00f0 03       		.uleb128 0x3
- 1080 00f1 0E       		.uleb128 0xe
- 1081 00f2 3A       		.uleb128 0x3a
- 1082 00f3 0B       		.uleb128 0xb
- 1083 00f4 3B       		.uleb128 0x3b
- 1084 00f5 05       		.uleb128 0x5
- 1085 00f6 27       		.uleb128 0x27
- 1086 00f7 19       		.uleb128 0x19
- 1087 00f8 11       		.uleb128 0x11
- 1088 00f9 01       		.uleb128 0x1
- 1089 00fa 12       		.uleb128 0x12
- 1090 00fb 06       		.uleb128 0x6
- 1091 00fc 40       		.uleb128 0x40
- 1092 00fd 18       		.uleb128 0x18
- 1093 00fe 9742     		.uleb128 0x2117
- 1094 0100 19       		.uleb128 0x19
- 1095 0101 01       		.uleb128 0x1
- 1096 0102 13       		.uleb128 0x13
- 1097 0103 00       		.byte	0
- 1098 0104 00       		.byte	0
- 1099 0105 10       		.uleb128 0x10
- 1100 0106 05       		.uleb128 0x5
- 1101 0107 00       		.byte	0
- 1102 0108 03       		.uleb128 0x3
- 1103 0109 0E       		.uleb128 0xe
- 1104 010a 3A       		.uleb128 0x3a
- 1105 010b 0B       		.uleb128 0xb
- 1106 010c 3B       		.uleb128 0x3b
- 1107 010d 05       		.uleb128 0x5
- 1108 010e 49       		.uleb128 0x49
- 1109 010f 13       		.uleb128 0x13
- 1110 0110 02       		.uleb128 0x2
- 1111 0111 18       		.uleb128 0x18
- 1112 0112 00       		.byte	0
- 1113 0113 00       		.byte	0
- 1114 0114 11       		.uleb128 0x11
- 1115 0115 2E       		.uleb128 0x2e
- 1116 0116 01       		.byte	0x1
- 1117 0117 3F       		.uleb128 0x3f
- 1118 0118 19       		.uleb128 0x19
- 1119 0119 03       		.uleb128 0x3
- 1120 011a 0E       		.uleb128 0xe
- 1121 011b 3A       		.uleb128 0x3a
- 1122 011c 0B       		.uleb128 0xb
- 1123 011d 3B       		.uleb128 0x3b
- 1124 011e 05       		.uleb128 0x5
- 1125 011f 27       		.uleb128 0x27
- 1126 0120 19       		.uleb128 0x19
- 1127 0121 49       		.uleb128 0x49
- 1128 0122 13       		.uleb128 0x13
- 1129 0123 11       		.uleb128 0x11
- 1130 0124 01       		.uleb128 0x1
- 1131 0125 12       		.uleb128 0x12
- 1132 0126 06       		.uleb128 0x6
- 1133 0127 40       		.uleb128 0x40
- 1134 0128 18       		.uleb128 0x18
- 1135 0129 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 28
+ 1079 0101 01       		.uleb128 0x1
+ 1080 0102 13       		.uleb128 0x13
+ 1081 0103 00       		.byte	0
+ 1082 0104 00       		.byte	0
+ 1083 0105 10       		.uleb128 0x10
+ 1084 0106 05       		.uleb128 0x5
+ 1085 0107 00       		.byte	0
+ 1086 0108 03       		.uleb128 0x3
+ 1087 0109 0E       		.uleb128 0xe
+ 1088 010a 3A       		.uleb128 0x3a
+ 1089 010b 0B       		.uleb128 0xb
+ 1090 010c 3B       		.uleb128 0x3b
+ 1091 010d 05       		.uleb128 0x5
+ 1092 010e 49       		.uleb128 0x49
+ 1093 010f 13       		.uleb128 0x13
+ 1094 0110 02       		.uleb128 0x2
+ 1095 0111 18       		.uleb128 0x18
+ 1096 0112 00       		.byte	0
+ 1097 0113 00       		.byte	0
+ 1098 0114 11       		.uleb128 0x11
+ 1099 0115 2E       		.uleb128 0x2e
+ 1100 0116 01       		.byte	0x1
+ 1101 0117 3F       		.uleb128 0x3f
+ 1102 0118 19       		.uleb128 0x19
+ 1103 0119 03       		.uleb128 0x3
+ 1104 011a 0E       		.uleb128 0xe
+ 1105 011b 3A       		.uleb128 0x3a
+ 1106 011c 0B       		.uleb128 0xb
+ 1107 011d 3B       		.uleb128 0x3b
+ 1108 011e 05       		.uleb128 0x5
+ 1109 011f 27       		.uleb128 0x27
+ 1110 0120 19       		.uleb128 0x19
+ 1111 0121 49       		.uleb128 0x49
+ 1112 0122 13       		.uleb128 0x13
+ 1113 0123 11       		.uleb128 0x11
+ 1114 0124 01       		.uleb128 0x1
+ 1115 0125 12       		.uleb128 0x12
+ 1116 0126 06       		.uleb128 0x6
+ 1117 0127 40       		.uleb128 0x40
+ 1118 0128 18       		.uleb128 0x18
+ 1119 0129 9742     		.uleb128 0x2117
+ 1120 012b 19       		.uleb128 0x19
+ 1121 012c 01       		.uleb128 0x1
+ 1122 012d 13       		.uleb128 0x13
+ 1123 012e 00       		.byte	0
+ 1124 012f 00       		.byte	0
+ 1125 0130 12       		.uleb128 0x12
+ 1126 0131 34       		.uleb128 0x34
+ 1127 0132 00       		.byte	0
+ 1128 0133 03       		.uleb128 0x3
+ 1129 0134 0E       		.uleb128 0xe
+ 1130 0135 3A       		.uleb128 0x3a
+ 1131 0136 0B       		.uleb128 0xb
+ 1132 0137 3B       		.uleb128 0x3b
+ 1133 0138 05       		.uleb128 0x5
+ 1134 0139 49       		.uleb128 0x49
+ 1135 013a 13       		.uleb128 0x13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 28
 
 
- 1136 012b 19       		.uleb128 0x19
- 1137 012c 01       		.uleb128 0x1
- 1138 012d 13       		.uleb128 0x13
- 1139 012e 00       		.byte	0
- 1140 012f 00       		.byte	0
- 1141 0130 12       		.uleb128 0x12
- 1142 0131 34       		.uleb128 0x34
- 1143 0132 00       		.byte	0
- 1144 0133 03       		.uleb128 0x3
- 1145 0134 0E       		.uleb128 0xe
- 1146 0135 3A       		.uleb128 0x3a
- 1147 0136 0B       		.uleb128 0xb
- 1148 0137 3B       		.uleb128 0x3b
- 1149 0138 05       		.uleb128 0x5
- 1150 0139 49       		.uleb128 0x49
- 1151 013a 13       		.uleb128 0x13
- 1152 013b 02       		.uleb128 0x2
- 1153 013c 18       		.uleb128 0x18
- 1154 013d 00       		.byte	0
- 1155 013e 00       		.byte	0
- 1156 013f 13       		.uleb128 0x13
- 1157 0140 2E       		.uleb128 0x2e
- 1158 0141 00       		.byte	0
- 1159 0142 3F       		.uleb128 0x3f
- 1160 0143 19       		.uleb128 0x19
- 1161 0144 03       		.uleb128 0x3
- 1162 0145 0E       		.uleb128 0xe
- 1163 0146 3A       		.uleb128 0x3a
- 1164 0147 0B       		.uleb128 0xb
- 1165 0148 3B       		.uleb128 0x3b
- 1166 0149 05       		.uleb128 0x5
- 1167 014a 27       		.uleb128 0x27
- 1168 014b 19       		.uleb128 0x19
- 1169 014c 11       		.uleb128 0x11
- 1170 014d 01       		.uleb128 0x1
- 1171 014e 12       		.uleb128 0x12
- 1172 014f 06       		.uleb128 0x6
- 1173 0150 40       		.uleb128 0x40
- 1174 0151 18       		.uleb128 0x18
- 1175 0152 9742     		.uleb128 0x2117
- 1176 0154 19       		.uleb128 0x19
- 1177 0155 00       		.byte	0
- 1178 0156 00       		.byte	0
- 1179 0157 14       		.uleb128 0x14
- 1180 0158 2E       		.uleb128 0x2e
- 1181 0159 00       		.byte	0
- 1182 015a 3F       		.uleb128 0x3f
- 1183 015b 19       		.uleb128 0x19
- 1184 015c 03       		.uleb128 0x3
- 1185 015d 0E       		.uleb128 0xe
- 1186 015e 3A       		.uleb128 0x3a
- 1187 015f 0B       		.uleb128 0xb
- 1188 0160 3B       		.uleb128 0x3b
- 1189 0161 05       		.uleb128 0x5
- 1190 0162 27       		.uleb128 0x27
- 1191 0163 19       		.uleb128 0x19
- 1192 0164 49       		.uleb128 0x49
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 29
+ 1136 013b 02       		.uleb128 0x2
+ 1137 013c 18       		.uleb128 0x18
+ 1138 013d 00       		.byte	0
+ 1139 013e 00       		.byte	0
+ 1140 013f 13       		.uleb128 0x13
+ 1141 0140 2E       		.uleb128 0x2e
+ 1142 0141 00       		.byte	0
+ 1143 0142 3F       		.uleb128 0x3f
+ 1144 0143 19       		.uleb128 0x19
+ 1145 0144 03       		.uleb128 0x3
+ 1146 0145 0E       		.uleb128 0xe
+ 1147 0146 3A       		.uleb128 0x3a
+ 1148 0147 0B       		.uleb128 0xb
+ 1149 0148 3B       		.uleb128 0x3b
+ 1150 0149 05       		.uleb128 0x5
+ 1151 014a 27       		.uleb128 0x27
+ 1152 014b 19       		.uleb128 0x19
+ 1153 014c 11       		.uleb128 0x11
+ 1154 014d 01       		.uleb128 0x1
+ 1155 014e 12       		.uleb128 0x12
+ 1156 014f 06       		.uleb128 0x6
+ 1157 0150 40       		.uleb128 0x40
+ 1158 0151 18       		.uleb128 0x18
+ 1159 0152 9742     		.uleb128 0x2117
+ 1160 0154 19       		.uleb128 0x19
+ 1161 0155 00       		.byte	0
+ 1162 0156 00       		.byte	0
+ 1163 0157 14       		.uleb128 0x14
+ 1164 0158 2E       		.uleb128 0x2e
+ 1165 0159 00       		.byte	0
+ 1166 015a 3F       		.uleb128 0x3f
+ 1167 015b 19       		.uleb128 0x19
+ 1168 015c 03       		.uleb128 0x3
+ 1169 015d 0E       		.uleb128 0xe
+ 1170 015e 3A       		.uleb128 0x3a
+ 1171 015f 0B       		.uleb128 0xb
+ 1172 0160 3B       		.uleb128 0x3b
+ 1173 0161 05       		.uleb128 0x5
+ 1174 0162 27       		.uleb128 0x27
+ 1175 0163 19       		.uleb128 0x19
+ 1176 0164 49       		.uleb128 0x49
+ 1177 0165 13       		.uleb128 0x13
+ 1178 0166 11       		.uleb128 0x11
+ 1179 0167 01       		.uleb128 0x1
+ 1180 0168 12       		.uleb128 0x12
+ 1181 0169 06       		.uleb128 0x6
+ 1182 016a 40       		.uleb128 0x40
+ 1183 016b 18       		.uleb128 0x18
+ 1184 016c 9742     		.uleb128 0x2117
+ 1185 016e 19       		.uleb128 0x19
+ 1186 016f 00       		.byte	0
+ 1187 0170 00       		.byte	0
+ 1188 0171 00       		.byte	0
+ 1189              		.section	.debug_aranges,"",%progbits
+ 1190 0000 7C000000 		.4byte	0x7c
+ 1191 0004 0200     		.2byte	0x2
+ 1192 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 29
 
 
- 1193 0165 13       		.uleb128 0x13
- 1194 0166 11       		.uleb128 0x11
- 1195 0167 01       		.uleb128 0x1
- 1196 0168 12       		.uleb128 0x12
- 1197 0169 06       		.uleb128 0x6
- 1198 016a 40       		.uleb128 0x40
- 1199 016b 18       		.uleb128 0x18
- 1200 016c 9742     		.uleb128 0x2117
- 1201 016e 19       		.uleb128 0x19
- 1202 016f 00       		.byte	0
- 1203 0170 00       		.byte	0
- 1204 0171 15       		.uleb128 0x15
- 1205 0172 34       		.uleb128 0x34
- 1206 0173 00       		.byte	0
- 1207 0174 03       		.uleb128 0x3
- 1208 0175 08       		.uleb128 0x8
- 1209 0176 3A       		.uleb128 0x3a
- 1210 0177 0B       		.uleb128 0xb
- 1211 0178 3B       		.uleb128 0x3b
- 1212 0179 0B       		.uleb128 0xb
- 1213 017a 49       		.uleb128 0x49
- 1214 017b 13       		.uleb128 0x13
- 1215 017c 3F       		.uleb128 0x3f
- 1216 017d 19       		.uleb128 0x19
- 1217 017e 3C       		.uleb128 0x3c
- 1218 017f 19       		.uleb128 0x19
- 1219 0180 00       		.byte	0
- 1220 0181 00       		.byte	0
- 1221 0182 00       		.byte	0
- 1222              		.section	.debug_aranges,"",%progbits
- 1223 0000 7C000000 		.4byte	0x7c
- 1224 0004 0200     		.2byte	0x2
- 1225 0006 00000000 		.4byte	.Ldebug_info0
- 1226 000a 04       		.byte	0x4
- 1227 000b 00       		.byte	0
- 1228 000c 0000     		.2byte	0
- 1229 000e 0000     		.2byte	0
- 1230 0010 00000000 		.4byte	.LFB0
- 1231 0014 20000000 		.4byte	.LFE0-.LFB0
- 1232 0018 00000000 		.4byte	.LFB1
- 1233 001c 24000000 		.4byte	.LFE1-.LFB1
- 1234 0020 00000000 		.4byte	.LFB2
- 1235 0024 18000000 		.4byte	.LFE2-.LFB2
- 1236 0028 00000000 		.4byte	.LFB3
- 1237 002c 1C000000 		.4byte	.LFE3-.LFB3
- 1238 0030 00000000 		.4byte	.LFB4
- 1239 0034 24000000 		.4byte	.LFE4-.LFB4
- 1240 0038 00000000 		.4byte	.LFB5
- 1241 003c 20000000 		.4byte	.LFE5-.LFB5
- 1242 0040 00000000 		.4byte	.LFB6
- 1243 0044 24000000 		.4byte	.LFE6-.LFB6
- 1244 0048 00000000 		.4byte	.LFB7
- 1245 004c 20000000 		.4byte	.LFE7-.LFB7
- 1246 0050 00000000 		.4byte	.LFB8
- 1247 0054 18000000 		.4byte	.LFE8-.LFB8
- 1248 0058 00000000 		.4byte	.LFB9
- 1249 005c 24000000 		.4byte	.LFE9-.LFB9
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 30
+ 1193 000a 04       		.byte	0x4
+ 1194 000b 00       		.byte	0
+ 1195 000c 0000     		.2byte	0
+ 1196 000e 0000     		.2byte	0
+ 1197 0010 00000000 		.4byte	.LFB0
+ 1198 0014 20000000 		.4byte	.LFE0-.LFB0
+ 1199 0018 00000000 		.4byte	.LFB1
+ 1200 001c 24000000 		.4byte	.LFE1-.LFB1
+ 1201 0020 00000000 		.4byte	.LFB2
+ 1202 0024 18000000 		.4byte	.LFE2-.LFB2
+ 1203 0028 00000000 		.4byte	.LFB3
+ 1204 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 1205 0030 00000000 		.4byte	.LFB4
+ 1206 0034 24000000 		.4byte	.LFE4-.LFB4
+ 1207 0038 00000000 		.4byte	.LFB5
+ 1208 003c 20000000 		.4byte	.LFE5-.LFB5
+ 1209 0040 00000000 		.4byte	.LFB6
+ 1210 0044 24000000 		.4byte	.LFE6-.LFB6
+ 1211 0048 00000000 		.4byte	.LFB7
+ 1212 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1213 0050 00000000 		.4byte	.LFB8
+ 1214 0054 18000000 		.4byte	.LFE8-.LFB8
+ 1215 0058 00000000 		.4byte	.LFB9
+ 1216 005c 24000000 		.4byte	.LFE9-.LFB9
+ 1217 0060 00000000 		.4byte	.LFB10
+ 1218 0064 18000000 		.4byte	.LFE10-.LFB10
+ 1219 0068 00000000 		.4byte	.LFB11
+ 1220 006c 18000000 		.4byte	.LFE11-.LFB11
+ 1221 0070 00000000 		.4byte	.LFB12
+ 1222 0074 18000000 		.4byte	.LFE12-.LFB12
+ 1223 0078 00000000 		.4byte	0
+ 1224 007c 00000000 		.4byte	0
+ 1225              		.section	.debug_ranges,"",%progbits
+ 1226              	.Ldebug_ranges0:
+ 1227 0000 00000000 		.4byte	.LFB0
+ 1228 0004 20000000 		.4byte	.LFE0
+ 1229 0008 00000000 		.4byte	.LFB1
+ 1230 000c 24000000 		.4byte	.LFE1
+ 1231 0010 00000000 		.4byte	.LFB2
+ 1232 0014 18000000 		.4byte	.LFE2
+ 1233 0018 00000000 		.4byte	.LFB3
+ 1234 001c 0C000000 		.4byte	.LFE3
+ 1235 0020 00000000 		.4byte	.LFB4
+ 1236 0024 24000000 		.4byte	.LFE4
+ 1237 0028 00000000 		.4byte	.LFB5
+ 1238 002c 20000000 		.4byte	.LFE5
+ 1239 0030 00000000 		.4byte	.LFB6
+ 1240 0034 24000000 		.4byte	.LFE6
+ 1241 0038 00000000 		.4byte	.LFB7
+ 1242 003c 20000000 		.4byte	.LFE7
+ 1243 0040 00000000 		.4byte	.LFB8
+ 1244 0044 18000000 		.4byte	.LFE8
+ 1245 0048 00000000 		.4byte	.LFB9
+ 1246 004c 24000000 		.4byte	.LFE9
+ 1247 0050 00000000 		.4byte	.LFB10
+ 1248 0054 18000000 		.4byte	.LFE10
+ 1249 0058 00000000 		.4byte	.LFB11
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 30
 
 
- 1250 0060 00000000 		.4byte	.LFB10
- 1251 0064 18000000 		.4byte	.LFE10-.LFB10
- 1252 0068 00000000 		.4byte	.LFB11
- 1253 006c 18000000 		.4byte	.LFE11-.LFB11
- 1254 0070 00000000 		.4byte	.LFB12
- 1255 0074 18000000 		.4byte	.LFE12-.LFB12
- 1256 0078 00000000 		.4byte	0
- 1257 007c 00000000 		.4byte	0
- 1258              		.section	.debug_ranges,"",%progbits
- 1259              	.Ldebug_ranges0:
- 1260 0000 00000000 		.4byte	.LFB0
- 1261 0004 20000000 		.4byte	.LFE0
- 1262 0008 00000000 		.4byte	.LFB1
- 1263 000c 24000000 		.4byte	.LFE1
- 1264 0010 00000000 		.4byte	.LFB2
- 1265 0014 18000000 		.4byte	.LFE2
- 1266 0018 00000000 		.4byte	.LFB3
- 1267 001c 1C000000 		.4byte	.LFE3
- 1268 0020 00000000 		.4byte	.LFB4
- 1269 0024 24000000 		.4byte	.LFE4
- 1270 0028 00000000 		.4byte	.LFB5
- 1271 002c 20000000 		.4byte	.LFE5
- 1272 0030 00000000 		.4byte	.LFB6
- 1273 0034 24000000 		.4byte	.LFE6
- 1274 0038 00000000 		.4byte	.LFB7
- 1275 003c 20000000 		.4byte	.LFE7
- 1276 0040 00000000 		.4byte	.LFB8
- 1277 0044 18000000 		.4byte	.LFE8
- 1278 0048 00000000 		.4byte	.LFB9
- 1279 004c 24000000 		.4byte	.LFE9
- 1280 0050 00000000 		.4byte	.LFB10
- 1281 0054 18000000 		.4byte	.LFE10
- 1282 0058 00000000 		.4byte	.LFB11
- 1283 005c 18000000 		.4byte	.LFE11
- 1284 0060 00000000 		.4byte	.LFB12
- 1285 0064 18000000 		.4byte	.LFE12
- 1286 0068 00000000 		.4byte	0
- 1287 006c 00000000 		.4byte	0
- 1288              		.section	.debug_line,"",%progbits
- 1289              	.Ldebug_line0:
- 1290 0000 4C010000 		.section	.debug_str,"MS",%progbits,1
- 1290      02004300 
- 1290      00000201 
- 1290      FB0E0D00 
- 1290      01010101 
- 1291              	.LASF17:
- 1292 0000 72656733 		.ascii	"reg32\000"
- 1292      3200
- 1293              	.LASF33:
- 1294 0006 6973725F 		.ascii	"isr_TS_ClearPending\000"
- 1294      54535F43 
- 1294      6C656172 
- 1294      50656E64 
- 1294      696E6700 
- 1295              	.LASF34:
- 1296 001a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1296      43313120 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 31
+ 1250 005c 18000000 		.4byte	.LFE11
+ 1251 0060 00000000 		.4byte	.LFB12
+ 1252 0064 18000000 		.4byte	.LFE12
+ 1253 0068 00000000 		.4byte	0
+ 1254 006c 00000000 		.4byte	0
+ 1255              		.section	.debug_line,"",%progbits
+ 1256              	.Ldebug_line0:
+ 1257 0000 4D010000 		.section	.debug_str,"MS",%progbits,1
+ 1257      02004300 
+ 1257      00000201 
+ 1257      FB0E0D00 
+ 1257      01010101 
+ 1258              	.LASF17:
+ 1259 0000 72656733 		.ascii	"reg32\000"
+ 1259      3200
+ 1260              	.LASF33:
+ 1261 0006 6973725F 		.ascii	"isr_TS_ClearPending\000"
+ 1261      54535F43 
+ 1261      6C656172 
+ 1261      50656E64 
+ 1261      696E6700 
+ 1262              	.LASF34:
+ 1263 001a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1263      43313120 
+ 1263      352E342E 
+ 1263      31203230 
+ 1263      31363036 
+ 1264 004d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1264      20726576 
+ 1264      6973696F 
+ 1264      6E203233 
+ 1264      37373135 
+ 1265 0080 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1265      66756E63 
+ 1265      74696F6E 
+ 1265      2D736563 
+ 1265      74696F6E 
+ 1266              	.LASF37:
+ 1267 00a8 6973725F 		.ascii	"isr_TS_GetState\000"
+ 1267      54535F47 
+ 1267      65745374 
+ 1267      61746500 
+ 1268              	.LASF26:
+ 1269 00b8 6973725F 		.ascii	"isr_TS_SetPriority\000"
+ 1269      54535F53 
+ 1269      65745072 
+ 1269      696F7269 
+ 1269      747900
+ 1270              	.LASF6:
+ 1271 00cb 73686F72 		.ascii	"short unsigned int\000"
+ 1271      7420756E 
+ 1271      7369676E 
+ 1271      65642069 
+ 1271      6E7400
+ 1272              	.LASF14:
+ 1273 00de 666C6F61 		.ascii	"float\000"
+ 1273      7400
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 31
 
 
- 1296      352E342E 
- 1296      31203230 
- 1296      31363036 
- 1297 004d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1297      20726576 
- 1297      6973696F 
- 1297      6E203233 
- 1297      37373135 
- 1298 0080 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1298      66756E63 
- 1298      74696F6E 
- 1298      2D736563 
- 1298      74696F6E 
- 1299              	.LASF37:
- 1300 00a8 6973725F 		.ascii	"isr_TS_GetState\000"
- 1300      54535F47 
- 1300      65745374 
- 1300      61746500 
- 1301              	.LASF26:
- 1302 00b8 6973725F 		.ascii	"isr_TS_SetPriority\000"
- 1302      54535F53 
- 1302      65745072 
- 1302      696F7269 
- 1302      747900
- 1303              	.LASF6:
- 1304 00cb 73686F72 		.ascii	"short unsigned int\000"
- 1304      7420756E 
- 1304      7369676E 
- 1304      65642069 
- 1304      6E7400
- 1305              	.LASF14:
- 1306 00de 666C6F61 		.ascii	"float\000"
- 1306      7400
- 1307              	.LASF35:
- 1308 00e4 47656E65 		.ascii	"Generated_Source\\PSoC5\\isr_TS.c\000"
- 1308      72617465 
- 1308      645F536F 
- 1308      75726365 
- 1308      5C50536F 
- 1309              	.LASF19:
- 1310 0104 6973725F 		.ascii	"isr_TS_Start\000"
- 1310      54535F53 
- 1310      74617274 
- 1310      00
- 1311              	.LASF4:
- 1312 0111 756E7369 		.ascii	"unsigned char\000"
- 1312      676E6564 
- 1312      20636861 
- 1312      7200
- 1313              	.LASF20:
- 1314 011f 6973725F 		.ascii	"isr_TS_Stop\000"
- 1314      54535F53 
- 1314      746F7000 
- 1315              	.LASF16:
- 1316 012b 72656738 		.ascii	"reg8\000"
- 1316      00
- 1317              	.LASF21:
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 32
+ 1274              	.LASF35:
+ 1275 00e4 47656E65 		.ascii	"Generated_Source\\PSoC5\\isr_TS.c\000"
+ 1275      72617465 
+ 1275      645F536F 
+ 1275      75726365 
+ 1275      5C50536F 
+ 1276              	.LASF19:
+ 1277 0104 6973725F 		.ascii	"isr_TS_Start\000"
+ 1277      54535F53 
+ 1277      74617274 
+ 1277      00
+ 1278              	.LASF4:
+ 1279 0111 756E7369 		.ascii	"unsigned char\000"
+ 1279      676E6564 
+ 1279      20636861 
+ 1279      7200
+ 1280              	.LASF20:
+ 1281 011f 6973725F 		.ascii	"isr_TS_Stop\000"
+ 1281      54535F53 
+ 1281      746F7000 
+ 1282              	.LASF16:
+ 1283 012b 72656738 		.ascii	"reg8\000"
+ 1283      00
+ 1284              	.LASF21:
+ 1285 0130 6973725F 		.ascii	"isr_TS_Interrupt\000"
+ 1285      54535F49 
+ 1285      6E746572 
+ 1285      72757074 
+ 1285      00
+ 1286              	.LASF8:
+ 1287 0141 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1287      20756E73 
+ 1287      69676E65 
+ 1287      6420696E 
+ 1287      7400
+ 1288              	.LASF12:
+ 1289 0153 75696E74 		.ascii	"uint8\000"
+ 1289      3800
+ 1290              	.LASF27:
+ 1291 0159 7072696F 		.ascii	"priority\000"
+ 1291      72697479 
+ 1291      00
+ 1292              	.LASF15:
+ 1293 0162 646F7562 		.ascii	"double\000"
+ 1293      6C6500
+ 1294              	.LASF32:
+ 1295 0169 6973725F 		.ascii	"isr_TS_SetPending\000"
+ 1295      54535F53 
+ 1295      65745065 
+ 1295      6E64696E 
+ 1295      6700
+ 1296              	.LASF22:
+ 1297 017b 6973725F 		.ascii	"isr_TS_StartEx\000"
+ 1297      54535F53 
+ 1297      74617274 
+ 1297      457800
+ 1298              	.LASF13:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 32
 
 
- 1318 0130 6973725F 		.ascii	"isr_TS_Interrupt\000"
- 1318      54535F49 
- 1318      6E746572 
- 1318      72757074 
+ 1299 018a 75696E74 		.ascii	"uint32\000"
+ 1299      333200
+ 1300              	.LASF0:
+ 1301 0191 756E7369 		.ascii	"unsigned int\000"
+ 1301      676E6564 
+ 1301      20696E74 
+ 1301      00
+ 1302              	.LASF24:
+ 1303 019e 61646472 		.ascii	"address\000"
+ 1303      65737300 
+ 1304              	.LASF9:
+ 1305 01a6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1305      206C6F6E 
+ 1305      6720756E 
+ 1305      7369676E 
+ 1305      65642069 
+ 1306              	.LASF30:
+ 1307 01bd 6973725F 		.ascii	"isr_TS_Enable\000"
+ 1307      54535F45 
+ 1307      6E61626C 
+ 1307      6500
+ 1308              	.LASF18:
+ 1309 01cb 63796973 		.ascii	"cyisraddress\000"
+ 1309      72616464 
+ 1309      72657373 
+ 1309      00
+ 1310              	.LASF36:
+ 1311 01d8 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 1311      6C65732E 
+ 1311      6175636B 
+ 1311      6C616E64 
+ 1311      2E61632E 
+ 1312 0206 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 1312      6A656374 
+ 1312      2D70726F 
+ 1312      6A656374 
+ 1312      5F67726F 
+ 1313 0236 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
+ 1313      61636B5C 
+ 1313      70736F63 
+ 1313      20737475 
+ 1313      64656E74 
+ 1314 0266 6C617373 		.ascii	"lass.cydsn\000"
+ 1314      2E637964 
+ 1314      736E00
+ 1315              	.LASF31:
+ 1316 0271 6973725F 		.ascii	"isr_TS_Disable\000"
+ 1316      54535F44 
+ 1316      69736162 
+ 1316      6C6500
+ 1317              	.LASF10:
+ 1318 0280 73697A65 		.ascii	"sizetype\000"
+ 1318      74797065 
  1318      00
- 1319              	.LASF8:
- 1320 0141 6C6F6E67 		.ascii	"long unsigned int\000"
- 1320      20756E73 
- 1320      69676E65 
- 1320      6420696E 
+ 1319              	.LASF1:
+ 1320 0289 6C6F6E67 		.ascii	"long long int\000"
+ 1320      206C6F6E 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc7usonJ.s 			page 33
+
+
+ 1320      6720696E 
  1320      7400
- 1321              	.LASF12:
- 1322 0153 75696E74 		.ascii	"uint8\000"
- 1322      3800
- 1323              	.LASF27:
- 1324 0159 7072696F 		.ascii	"priority\000"
- 1324      72697479 
- 1324      00
- 1325              	.LASF15:
- 1326 0162 646F7562 		.ascii	"double\000"
- 1326      6C6500
- 1327              	.LASF32:
- 1328 0169 6973725F 		.ascii	"isr_TS_SetPending\000"
- 1328      54535F53 
- 1328      65745065 
- 1328      6E64696E 
- 1328      6700
- 1329              	.LASF22:
- 1330 017b 6973725F 		.ascii	"isr_TS_StartEx\000"
- 1330      54535F53 
- 1330      74617274 
- 1330      457800
- 1331              	.LASF13:
- 1332 018a 75696E74 		.ascii	"uint32\000"
- 1332      333200
- 1333              	.LASF0:
- 1334 0191 756E7369 		.ascii	"unsigned int\000"
- 1334      676E6564 
- 1334      20696E74 
- 1334      00
- 1335              	.LASF24:
- 1336 019e 61646472 		.ascii	"address\000"
- 1336      65737300 
- 1337              	.LASF9:
- 1338 01a6 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1338      206C6F6E 
- 1338      6720756E 
- 1338      7369676E 
- 1338      65642069 
- 1339              	.LASF30:
- 1340 01bd 6973725F 		.ascii	"isr_TS_Enable\000"
- 1340      54535F45 
- 1340      6E61626C 
- 1340      6500
- 1341              	.LASF18:
- 1342 01cb 63796973 		.ascii	"cyisraddress\000"
- 1342      72616464 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 33
-
-
- 1342      72657373 
- 1342      00
- 1343              	.LASF31:
- 1344 01d8 6973725F 		.ascii	"isr_TS_Disable\000"
- 1344      54535F44 
- 1344      69736162 
- 1344      6C6500
- 1345              	.LASF10:
- 1346 01e7 73697A65 		.ascii	"sizetype\000"
- 1346      74797065 
- 1346      00
- 1347              	.LASF1:
- 1348 01f0 6C6F6E67 		.ascii	"long long int\000"
- 1348      206C6F6E 
- 1348      6720696E 
- 1348      7400
- 1349              	.LASF11:
- 1350 01fe 63686172 		.ascii	"char\000"
- 1350      00
- 1351              	.LASF25:
- 1352 0203 72616D56 		.ascii	"ramVectorTable\000"
- 1352      6563746F 
- 1352      72546162 
- 1352      6C6500
- 1353              	.LASF5:
- 1354 0212 73686F72 		.ascii	"short int\000"
- 1354      7420696E 
- 1354      7400
- 1355              	.LASF29:
- 1356 021c 6973725F 		.ascii	"isr_TS_GetPriority\000"
- 1356      54535F47 
- 1356      65745072 
- 1356      696F7269 
- 1356      747900
- 1357              	.LASF28:
- 1358 022f 6973725F 		.ascii	"isr_TS_GetVector\000"
- 1358      54535F47 
- 1358      65745665 
- 1358      63746F72 
- 1358      00
- 1359              	.LASF7:
- 1360 0240 6C6F6E67 		.ascii	"long int\000"
- 1360      20696E74 
- 1360      00
- 1361              	.LASF2:
- 1362 0249 6C6F6E67 		.ascii	"long double\000"
- 1362      20646F75 
- 1362      626C6500 
- 1363              	.LASF36:
- 1364 0255 433A5C55 		.ascii	"C:\\Users\\npat025\\Dropbox (Uni of Auckland)\\CS30"
- 1364      73657273 
- 1364      5C6E7061 
- 1364      74303235 
- 1364      5C44726F 
- 1365 0284 315C3230 		.ascii	"1\\2021\\psoc student pack\\psoc_code_base\\CS301_C"
- 1365      32315C70 
- 1365      736F6320 
-ARM GAS  C:\Users\npat025\AppData\Local\Temp\ccQ12FVV.s 			page 34
-
-
- 1365      73747564 
- 1365      656E7420 
- 1366 02b3 6C617373 		.ascii	"lass.cydsn\000"
- 1366      2E637964 
- 1366      736E00
- 1367              	.LASF3:
- 1368 02be 7369676E 		.ascii	"signed char\000"
- 1368      65642063 
- 1368      68617200 
- 1369              	.LASF23:
- 1370 02ca 6973725F 		.ascii	"isr_TS_SetVector\000"
- 1370      54535F53 
- 1370      65745665 
- 1370      63746F72 
- 1370      00
- 1371              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1321              	.LASF11:
+ 1322 0297 63686172 		.ascii	"char\000"
+ 1322      00
+ 1323              	.LASF25:
+ 1324 029c 72616D56 		.ascii	"ramVectorTable\000"
+ 1324      6563746F 
+ 1324      72546162 
+ 1324      6C6500
+ 1325              	.LASF5:
+ 1326 02ab 73686F72 		.ascii	"short int\000"
+ 1326      7420696E 
+ 1326      7400
+ 1327              	.LASF29:
+ 1328 02b5 6973725F 		.ascii	"isr_TS_GetPriority\000"
+ 1328      54535F47 
+ 1328      65745072 
+ 1328      696F7269 
+ 1328      747900
+ 1329              	.LASF28:
+ 1330 02c8 6973725F 		.ascii	"isr_TS_GetVector\000"
+ 1330      54535F47 
+ 1330      65745665 
+ 1330      63746F72 
+ 1330      00
+ 1331              	.LASF7:
+ 1332 02d9 6C6F6E67 		.ascii	"long int\000"
+ 1332      20696E74 
+ 1332      00
+ 1333              	.LASF2:
+ 1334 02e2 6C6F6E67 		.ascii	"long double\000"
+ 1334      20646F75 
+ 1334      626C6500 
+ 1335              	.LASF3:
+ 1336 02ee 7369676E 		.ascii	"signed char\000"
+ 1336      65642063 
+ 1336      68617200 
+ 1337              	.LASF23:
+ 1338 02fa 6973725F 		.ascii	"isr_TS_SetVector\000"
+ 1338      54535F53 
+ 1338      65745665 
+ 1338      63746F72 
+ 1338      00
+ 1339              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

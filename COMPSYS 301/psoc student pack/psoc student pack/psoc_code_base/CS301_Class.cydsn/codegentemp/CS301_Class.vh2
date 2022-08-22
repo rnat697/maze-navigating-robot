@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Jul 17 00:57:55 2021
+--	Mon Aug 22 15:20:49 2022
 --
 
 USE cypress.cypress.all;
@@ -3361,7 +3361,7 @@ A0:cy_psoc3_pins_v1_10
 		id=>"fde0a943-5276-4812-84ac-47fe7c122954/9725d809-97e7-404e-b621-dfdbe78d0ca9",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"976562500",
+		period=>"976654061.318249",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>\ADC:clock\,
