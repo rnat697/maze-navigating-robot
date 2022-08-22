@@ -1,6 +1,6 @@
 Hscore - Heuristic estimated movement cost from start location to target location.
          Ignores any obstucle /walls. Uses an approximation heuristic called
-         ~~Manhattan Distance~~. Now uses Euclidean Distance.
+         ~~Manhattan Distance~~. Now uses Euclidean Distance. 
 
 Gscore - Movement cost from start point to current location. eg: "For a square neighbor 
          to the start point A, this would be 1, but this will increase as 
@@ -14,6 +14,7 @@ some assumptions: We can only move left,right,up,down on the maze. ~~(hence we u
                   Eucidiean distance seems to give a more accurate cost (and hence more 
                   accurate shortest path) despite its recommended use is when we can
                   move in all directions.
+(See link 1 for more detail about H score calculation)
 Manhatten Distance -->  h = abs(current_cell.x – target.x) + abs(current_cell.y – target.y)
 Euclidean Distance --> h = sqrt((current_cell.x – target.x)^2 + (current_cell.y – goal.y)^2)
 Diagonal Distance --> dx = abs(current_cell.x – target.x)
@@ -54,9 +55,9 @@ To get the actual shortest path: <-- by going in reverse target to start using p
 5. Display path on map
 
 
-Links: https://www.geeksforgeeks.org/a-search-algorithm/
-       https://medium.com/analytics-vidhya/a-algorithm-how-to-find-the-shortest-path-between-two-points-767c8a76376
-       https://brilliant.org/wiki/a-star-search/
-       https://www.youtube.com/watch?v=-L-WgKMFuhE
-       https://www.redblobgames.com/pathfinding/a-star/introduction.html
+Links: 1. https://www.geeksforgeeks.org/a-search-algorithm/
+       2. https://medium.com/analytics-vidhya/a-algorithm-how-to-find-the-shortest-path-between-two-points-767c8a76376
+       3. https://brilliant.org/wiki/a-star-search/
+       4. https://www.youtube.com/watch?v=-L-WgKMFuhE
+       5. https://www.redblobgames.com/pathfinding/a-star/introduction.html
 

@@ -68,7 +68,7 @@ function [retmap,retvisited,retsteps] = astar(mapfile,startlocation,targetlocati
             rows = adjacentpos(1);
             cols = adjacentpos(2);
             newFscore = 0;
-            
+            currentGcost = Gscore(ycurrent,xcurrent);
             if (rows > 0 && cols >0 && retmap(rows,cols) ~= 1 && retvisited(rows,cols) ~= 0) % not a wall and has not been visited
                 
                 % check if open list (queue) does not contain current neighbouring position
@@ -131,6 +131,7 @@ end
 %% calculating H score
 % H score is the estimated cost of movement from start point to target and
 % ignores walls.
+% //Previously used Manhattan Distance [Hmaps(xloc,yloc)=abs(xloc-target(1)) + abs(yloc-target(2));)]//
 % Using Euclidean Distance (supposed to be used for when we can move in any
 % direction but it seems to give a more accurate cost which in turn will
 % generate a more accurate shortest path) We have tried use Manhattan Distance
@@ -143,6 +144,8 @@ function [Hmaps] = calculateHScore(Hmap,current, target)
     yloc = current(2);
     Hmaps = Hmap;
     Hmaps(xloc,yloc) = sqrt((xloc-target(1))^2 + (yloc-target(2))^2);
+    
+    
 end
 
 %% calculating G score
