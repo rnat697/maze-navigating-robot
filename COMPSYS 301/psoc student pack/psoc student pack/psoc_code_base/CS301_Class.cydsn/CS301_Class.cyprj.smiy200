@@ -169,6 +169,8 @@
 <dep name=".\Generated_Source\PSoC5\USBUART_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_pvt.h" />
+<dep name=".\Generated_Source\PSoC5\blue.h" />
+<dep name=".\Generated_Source\PSoC5\blue_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
@@ -188,6 +190,8 @@
 <dep name=".\Generated_Source\PSoC5\isr_TS.h" />
 <dep name=".\Generated_Source\PSoC5\isr_eoc.h" />
 <dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\rED.h" />
+<dep name=".\Generated_Source\PSoC5\rED_aliases.h" />
 <dep name=".\defines.h" />
 <dep name=".\main.c" />
 <dep name=".\vars.h" />
@@ -273,6 +277,8 @@
 <file name=".\Generated_Source\PSoC5\USBUART_midi.h" />
 <file name=".\Generated_Source\PSoC5\USBUART_msc.h" />
 <file name=".\Generated_Source\PSoC5\USBUART_pvt.h" />
+<file name=".\Generated_Source\PSoC5\blue.h" />
+<file name=".\Generated_Source\PSoC5\blue_aliases.h" />
 <file name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <file name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
 <file name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
@@ -291,6 +297,8 @@
 <file name=".\Generated_Source\PSoC5\isr_TS.h" />
 <file name=".\Generated_Source\PSoC5\isr_eoc.h" />
 <file name=".\Generated_Source\PSoC5\project.h" />
+<file name=".\Generated_Source\PSoC5\rED.h" />
+<file name=".\Generated_Source\PSoC5\rED_aliases.h" />
 <file name=".\defines.h" />
 <file name=".\main.c" />
 <file name=".\vars.h" />
@@ -1349,6 +1357,17 @@
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\USBUART_vnd.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\blue.o">
+<dep name=".\Generated_Source\PSoC5\blue.c" />
+<dep name=".\Generated_Source\PSoC5\blue.h" />
+<dep name=".\Generated_Source\PSoC5\blue_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\blue.c" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\cyPm.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -1521,6 +1540,8 @@
 <dep name=".\Generated_Source\PSoC5\USBUART_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_pvt.h" />
+<dep name=".\Generated_Source\PSoC5\blue.h" />
+<dep name=".\Generated_Source\PSoC5\blue_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
@@ -1541,9 +1562,22 @@
 <dep name=".\Generated_Source\PSoC5\isr_eoc.c" />
 <dep name=".\Generated_Source\PSoC5\isr_eoc.h" />
 <dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\rED.h" />
+<dep name=".\Generated_Source\PSoC5\rED_aliases.h" />
 <dep name=".\defines.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\isr_eoc.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\rED.o">
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\rED.c" />
+<dep name=".\Generated_Source\PSoC5\rED.h" />
+<dep name=".\Generated_Source\PSoC5\rED_aliases.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\rED.c" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\tacho.o">
 <dep name=".\Generated_Source\PSoC5\A0.h" />
 <dep name=".\Generated_Source\PSoC5\A0_aliases.h" />
@@ -1627,6 +1661,8 @@
 <dep name=".\Generated_Source\PSoC5\USBUART_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBUART_pvt.h" />
+<dep name=".\Generated_Source\PSoC5\blue.h" />
+<dep name=".\Generated_Source\PSoC5\blue_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
@@ -1646,6 +1682,8 @@
 <dep name=".\Generated_Source\PSoC5\isr_TS.h" />
 <dep name=".\Generated_Source\PSoC5\isr_eoc.h" />
 <dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\rED.h" />
+<dep name=".\Generated_Source\PSoC5\rED_aliases.h" />
 <dep name=".\defines.h" />
 <dep name=".\tacho.c" />
 </file>
@@ -1760,6 +1798,8 @@
 <dep name=".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\rED.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\blue.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\CS301_Class.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" />
 </file>
@@ -1865,6 +1905,8 @@
 <name_val_pair name="Generated_Source\PSoC5\RF_BT_SELECT_PM.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\cy_em_eeprom.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CortexM3\ARM_GCC_541\Debug\CS301_Class.hex" v="-mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC5\rED.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\blue.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\smiy200\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p &quot;\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj&quot; -d CY8C5888LTI-LP097 -s &quot;\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5&quot; -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -1872,8 +1914,50 @@
 </dataGuid>
 <dataGuid v="718b6b01-68ba-4a17-b632-d38dc61ebb3b">
 <CyGuid_718b6b01-68ba-4a17-b632-d38dc61ebb3b type_name="CyDesigner.Gde.Schematic.Symbolcatalog.CyComponentCatalogControl+CyCompCatalogData" version="1" tab="Cypress">
-<tree_states_tab_names />
-<tree_states />
+<tree_states_tab_names>
+<v>Cypress</v>
+<v>Off-Chip</v>
+</tree_states_tab_names>
+<tree_states>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\Ports and Pins">
+<ExpandedNodeIds>
+<v>Cypress Component Catalog</v>
+<v>Cypress Component Catalog\Ports and Pins</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Cypress Component Catalog</v>
+<v>Cypress Component Catalog\Analog</v>
+<v>Cypress Component Catalog\CapSense</v>
+<v>Cypress Component Catalog\Communications</v>
+<v>Cypress Component Catalog\Digital</v>
+<v>Cypress Component Catalog\Display</v>
+<v>Cypress Component Catalog\Filters</v>
+<v>Cypress Component Catalog\Ports and Pins</v>
+<v>Cypress Component Catalog\Ports and Pins\Analog Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Bidirectional Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Input Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Output Pin [v2.20]</v>
+<v>Cypress Component Catalog\Power Supervision</v>
+<v>Cypress Component Catalog\System</v>
+<v>Cypress Component Catalog\Thermal Management</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Off-Chip Component Catalog</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Off-Chip Component Catalog</v>
+<v>Off-Chip Component Catalog\Active</v>
+<v>Off-Chip Component Catalog\Diodes</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical</v>
+<v>Off-Chip Component Catalog\Passive</v>
+<v>Off-Chip Component Catalog\Power</v>
+<v>Off-Chip Component Catalog\Sensors</v>
+<v>Off-Chip Component Catalog\Transistors</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</tree_states>
 </CyGuid_718b6b01-68ba-4a17-b632-d38dc61ebb3b>
 </dataGuid>
 <dataGuid v="925cc1e1-309e-4e08-b0a1-09a83c35b157">
@@ -2670,6 +2754,12 @@
 <v>Generated_Source\PSoC5\RF_BT_SELECT_PM.c</v>
 <v>Generated_Source\PSoC5\cy_em_eeprom.c</v>
 <v>Generated_Source\PSoC5\cy_em_eeprom.h</v>
+<v>Generated_Source\PSoC5\rED_aliases.h</v>
+<v>Generated_Source\PSoC5\rED.c</v>
+<v>Generated_Source\PSoC5\rED.h</v>
+<v>Generated_Source\PSoC5\blue_aliases.h</v>
+<v>Generated_Source\PSoC5\blue.c</v>
+<v>Generated_Source\PSoC5\blue.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2679,7 +2769,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="133056122079054718" />
+<deps_time v="133057144071366671" />
 <top_block v="TopDesign" />
 <last_generation v="11" />
 <pdl_path v="" />
@@ -2689,7 +2779,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="133056122105679396" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="133057176856798279" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>

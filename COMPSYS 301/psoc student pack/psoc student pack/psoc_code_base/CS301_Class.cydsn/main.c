@@ -34,19 +34,26 @@ CY_ISR(isr_eoc_Interrupt_test)
 {
     #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
         isr_TS_Interrupt_InterruptCallback();
-    #endif /* isr_TS_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #endif /* isr_eoc_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START isr_TS_Interrupt` */
+    /* `#START isr_eoc_Interrupt` */
     int8 channel = 0; // connect filter output to pin 0.5 for channel 0 
     uint16 value =  ADC_GetResult16(channel);
     // get value from ADC then convert to DAC to send to external LEDs
-    if (value >= 2557) // why      4095 /5v,4095 = x / voltage we want .       4095 from (2^12-1)
-    {LED_Write(1);
+    if (value >= 3500) // why      4095 /5v,4095 = x / voltage we want .       4095 from (2^12-1)   2.194v
+    {
+        LED_Write(1);
+    
+        blue_Write(1); //red
+        rED_Write(0); //blue -.-
+    
     }
     
     else{
         LED_Write(0);
+        blue_Write(0);
+        rED_Write(1);
     }
     /* `#END` */
 }

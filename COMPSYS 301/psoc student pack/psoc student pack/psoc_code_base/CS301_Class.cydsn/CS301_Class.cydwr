@@ -427,9 +427,11 @@
       <Data key="47415e34-6a00-43f6-8ebd-1d6599a97918" value="DIN_7" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
       <Data key="3076204a-988e-43fd-9383-4e3241436613" value="M2_IN2" />
+      <Data key="5500753d-48d4-4f1a-8404-897f3b79db02" value="blue" />
       <Data key="06558356-fdf8-4008-a956-bbdf645a3ee7" value="RX_2" />
       <Data key="9224328b-1c0f-46d5-8e08-4a551e10952e" value="MA_INV" />
       <Data key="29017152-12a1-4f98-9f2e-a92c7a5b3a0c" value="Rx_2" />
+      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="rED" />
       <Data key="79772720-a0e3-4c4c-9406-2e0ad94c56bf" value="M2_QB" />
       <Data key="a3c4ee1d-1143-4f67-9a9b-4c222ba41b9a" value="M1_IN2" />
       <Data key="a5db89f8-422e-4e1c-9c19-9200e66c9056" value="A4" />
@@ -451,6 +453,7 @@
       <Data key="ea0a1ffa-feb1-47e5-a26d-307bd8c2083f" value="MB_EN" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx_1" />
       <Data key="f192b457-d8e4-40ac-b942-0492d5d66ac3" value="DB2" />
+      <Data key="f4107ce6-df85-470a-a79a-ba3f010f3028" value="Test" />
     </Group>
   </Group>
   <Group key="EEPROM">
@@ -3720,6 +3723,11 @@
     <Group key="f192b457-d8e4-40ac-b942-0492d5d66ac3">
       <Group key="0">
         <Data key="Port Format" value="3,6" />
+      </Group>
+    </Group>
+    <Group key="f4107ce6-df85-470a-a79a-ba3f010f3028">
+      <Group key="0">
+        <Data key="Port Format" value="2,0" />
       </Group>
     </Group>
     <Group key="UnAssigned Pins" />
