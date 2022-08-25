@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=LED1 Pin=R1-2
+Removed Pin From Net: NetName=LED2 Pin=R2-2
+Removed Pin From Net: NetName=LED3 Pin=R3-1
+Added Pin To Net: NetName=+5V Pin=R1-2
+Added Pin To Net: NetName=+5V Pin=R2-2
+Added Pin To Net: NetName=+5V Pin=R3-1
+Change Room Name: Old Name=cs301_11--------------------------- New Name=cs301_YourGroupNumber---------------
