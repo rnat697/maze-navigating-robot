@@ -251,6 +251,12 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RF_BT_SELECT_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cy_em_eeprom.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cy_em_eeprom.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Export\ARM_GCC_Generic">
