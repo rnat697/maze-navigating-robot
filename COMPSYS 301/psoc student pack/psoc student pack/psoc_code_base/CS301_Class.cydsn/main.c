@@ -57,7 +57,10 @@ CY_ISR(isr_eoc_Interrupt_test)
     }
     /* `#END` */
 }
-
+void motorGoStraight(){
+    PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel
+    PWM_2_WriteCompare(162); // increase the PWM by 12 for it to be able to go straight
+}
 
 int main()
 {
@@ -67,30 +70,39 @@ int main()
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
     Timer_TS_Start();
+    Timer_Motor_Start();
+    isr_motor_Start();
     isr_eoc_StartEx(isr_eoc_Interrupt_test);
     ADC_Start();
     ADC_StartConvert();
     
     LED_Write(0);
     //VDAC8_1_Start();
-
+    
+    // Motor PWM
+    
+    PWM_1_Start();
+    PWM_2_Start();
+    motorGoStraight();
+    
+    
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
-    USBUART_Start(0,USBUART_5V_OPERATION);
+    //USBUART_Start(0,USBUART_5V_OPERATION);
 #endif        
         
     RF_BT_SELECT_Write(0);
 
-    usbPutString(displaystring);
+    //usbPutString(displaystring);
     for(;;)
     {
         /* Place your application code here. */
-        handle_usb();
+        /*handle_usb();
         if (flag_KB_string == 1)
         {
             usbPutString(line);
             flag_KB_string = 0;
-        }        
+        }   */    
     }   
 }
 //* ========================================

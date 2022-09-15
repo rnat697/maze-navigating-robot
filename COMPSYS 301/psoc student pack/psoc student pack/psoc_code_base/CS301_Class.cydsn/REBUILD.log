@@ -1,4 +1,4 @@
---------------- Rebuild Started: 08/23/2022 19:21:59 Project: CS301_Class, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 09/15/2022 15:45:32 Project: CS301_Class, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\tacho.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o"
@@ -90,6 +90,8 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_IntClock.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT_PM.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\rED.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\blue.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\CS301_Class.hex"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\CS301_Class.elf"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\CS301_Class.map"
@@ -101,12 +103,6 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
 cydsfit.exe -.appdatapath "C:\Users\smiy200\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj" -d CY8C5888LTI-LP097 -s "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
-ADD: sdb.M0065: information: Analog terminal "rED.analog_0" on TopDesign is unconnected.
- * \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch (Signal: Net_4336)
- * \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch (Shape_1159.1)
-ADD: sdb.M0065: information: Analog terminal "blue.analog_0" on TopDesign is unconnected.
- * \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch (Signal: Net_4337)
- * \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch (Shape_1160.1)
 ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is unconnected.
  * C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Signal: vdac_ref)
  * C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_798)
@@ -172,9 +168,8 @@ Info: apr.M0002: Analog signal "Net_1581" is connected to one terminal only. (Ap
 Info: apr.M0002: Analog signal "Net_1582" is connected to one terminal only. (App=cydsfit)
 Info: apr.M0002: Analog signal "Net_1583" is connected to one terminal only. (App=cydsfit)
 Info: apr.M0002: Analog signal "Net_1584" is connected to one terminal only. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 35% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 60% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 96% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 37% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 100% done. (App=cydsfit)
 Analog Routing...
 Analog Code Generation...
 Digital Placement...
@@ -286,6 +281,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CortexM3\ARM_GCC_541\Debug\CS301_Class.elf"
-Flash used: 15246 of 262144 bytes (5.8%).
-SRAM used: 3157 of 65536 bytes (4.8%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 08/23/2022 19:25:13 ---------------
+Flash used: 16046 of 262144 bytes (6.1%).
+SRAM used: 3165 of 65536 bytes (4.8%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 09/15/2022 15:48:30 ---------------

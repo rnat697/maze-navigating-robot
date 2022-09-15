@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Aug 24 14:13:56 2022
+--	Thu Sep 15 18:10:29 2022
 --
 
 USE cypress.cypress.all;
@@ -1404,6 +1404,16 @@ SIGNAL tmpFB_0__blue_net_0 : bit;
 SIGNAL tmpIO_0__blue_net_0 : bit;
 TERMINAL tmpSIOVREF__blue_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__blue_net_0 : bit;
+SIGNAL Net_4342 : bit;
+SIGNAL Net_4344 : bit;
+SIGNAL \Timer_Motor:Net_260\ : bit;
+SIGNAL \Timer_Motor:Net_266\ : bit;
+SIGNAL \Timer_Motor:Net_51\ : bit;
+SIGNAL \Timer_Motor:Net_261\ : bit;
+SIGNAL \Timer_Motor:Net_57\ : bit;
+SIGNAL Net_4345 : bit;
+SIGNAL Net_4350 : bit;
+SIGNAL \Timer_Motor:Net_102\ : bit;
 SIGNAL \QuadDec_M1:Net_1251\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:prevCapture\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\\D\ : bit;
@@ -5185,6 +5195,30 @@ blue:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__M1_IN1_net_0,
 		out_reset=>Net_2183,
 		interrupt=>tmpINTERRUPT_0__blue_net_0);
+timer_clock:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"c0fb34bd-1044-4931-9788-16b01ce89812",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"10000000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_4342,
+		dig_domain_out=>open);
+\Timer_Motor:TimerHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_4342,
+		kill=>Net_2183,
+		enable=>tmpOE__M1_IN1_net_0,
+		capture=>Net_2183,
+		timer_reset=>Net_2183,
+		tc=>\Timer_Motor:Net_51\,
+		compare=>\Timer_Motor:Net_261\,
+		interrupt=>Net_4345);
+isr_motor:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_4345);
 \QuadDec_M1:Net_1251\:cy_dff
 	PORT MAP(d=>\QuadDec_M1:Net_1251\\D\,
 		clk=>\QuadDec_M1:bQuadDec:sync_clock\,
