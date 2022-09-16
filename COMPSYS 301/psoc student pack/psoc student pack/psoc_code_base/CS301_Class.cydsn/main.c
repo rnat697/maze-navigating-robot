@@ -59,14 +59,28 @@ CY_ISR(isr_eoc_Interrupt_test)
     /* `#END` */
 }
 void motorGoStraight(){
-    PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel
-    PWM_2_WriteCompare(158); // increase the PWM by 8 for it to be able to go straight
+    PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
+    PWM_2_WriteCompare(157); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
 }
 void motorStop(){
     PWM_1_WriteCompare(0); // left wheel near power switch is stronker than right wheel
     PWM_2_WriteCompare(0);
 }
 
+void motorTurnLeft(){
+    // TO DO
+}
+
+void motorTurnRight(){
+    // TO DO
+   
+}
+
+void motorUTurn(){
+    // TO DO
+}
+// NEED TO INCREASE/DECREASE SPEED TOO
+// AND IMPLEMENT LIGHT SENSOR THINGS
 volatile static int8 count;
 CY_ISR(isr_motor_interrupt_speed)
 {
@@ -85,14 +99,6 @@ CY_ISR(isr_motor_interrupt_speed)
       prevcountMotor1 = currCountMotor1;
       prevcountMotor2 = currCountMotor2;*/
     
-    if(count >= 10){
-        isr_motor_Stop();
-            
-    }else{
-        count++;
-    }
-    LED_Write(~LED_Read());
-    isr_motor_ClearPending();
     /* `#END` */
 }
 
