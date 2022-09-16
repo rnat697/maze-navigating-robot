@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 09/16/2022 14:37:02
+-- Generated: 09/16/2022 18:56:57
 -- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
@@ -95,13 +95,13 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL Net_3437 : bit;
     SIGNAL Net_3438 : bit;
     SIGNAL Net_3438_SYNCOUT : bit;
-    SIGNAL Net_362 : bit;
-    SIGNAL Net_368 : bit;
     SIGNAL Net_4334 : bit;
     SIGNAL Net_4342 : bit;
     ATTRIBUTE global_signal OF Net_4342 : SIGNAL IS true;
     SIGNAL Net_4342_local : bit;
     SIGNAL Net_4350 : bit;
+    SIGNAL Net_4393 : bit;
+    SIGNAL Net_4394 : bit;
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -449,9 +449,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF M1_QB(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF M1_QB(0) : LABEL IS "P15[2]";
     ATTRIBUTE lib_model OF M2_QA(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF M2_QB(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P0[1]";
+    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF A0(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF A0(0) : LABEL IS "P0[5]";
     ATTRIBUTE lib_model OF A1(0) : LABEL IS "iocell11";
@@ -459,11 +459,11 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF A2(0) : LABEL IS "iocell12";
     ATTRIBUTE Location OF A2(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF A3(0) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF A3(0) : LABEL IS "P1[2]";
+    ATTRIBUTE Location OF A3(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF A4(0) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF A4(0) : LABEL IS "P1[4]";
+    ATTRIBUTE Location OF A4(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF A5(0) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF A5(0) : LABEL IS "P1[5]";
+    ATTRIBUTE Location OF A5(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF A6(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF A6(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF A7(0) : LABEL IS "iocell17";
@@ -495,8 +495,8 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell6";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_530\ : LABEL IS "macrocell7";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_611\ : LABEL IS "macrocell8";
-    ATTRIBUTE lib_model OF Net_368 : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF Net_362 : LABEL IS "macrocell10";
+    ATTRIBUTE lib_model OF Net_4393 : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF Net_4394 : LABEL IS "macrocell10";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell12";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell13";
@@ -1318,7 +1318,7 @@ BEGIN
         PORT MAP(
             pa_out => M1_IN2(0)__PA,
             oe => open,
-            pin_input => Net_362,
+            pin_input => Net_4394,
             pad_out => M1_IN2(0)_PAD,
             pad_in => M1_IN2(0)_PAD,
             in_clock => open,
@@ -1502,7 +1502,7 @@ BEGIN
         PORT MAP(
             pa_out => M2_IN2(0)__PA,
             oe => open,
-            pin_input => Net_368,
+            pin_input => Net_4393,
             pad_out => M2_IN2(0)_PAD,
             pad_in => M2_IN2(0)_PAD,
             in_clock => open,
@@ -3854,22 +3854,22 @@ BEGIN
             main_1 => \QuadDec_M1:Net_1251\,
             main_2 => \QuadDec_M1:Cnt16:CounterUDB:prevCompare\);
 
-    Net_368:macrocell
+    Net_4393:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => Net_368,
+            q => Net_4393,
             main_0 => Net_2460);
 
-    Net_362:macrocell
+    Net_4394:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => Net_362,
+            q => Net_4394,
             main_0 => Net_2404);
 
     \QuadDec_M2:Cnt16:CounterUDB:reload\:macrocell

@@ -59,12 +59,20 @@ CY_ISR(isr_eoc_Interrupt_test)
     /* `#END` */
 }
 void motorGoStraight(){
-    PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
-    PWM_2_WriteCompare(157); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
+    ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
+    //M1_IN2_Write(0);
+    PWM_1_WriteCompare(200);
+    PWM_2_WriteCompare(200); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
+}
+void motorGoBackwards(){
+    ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
+    //M1_IN2_Write(0);
+    PWM_1_WriteCompare(50);
+    PWM_2_WriteCompare(50); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
 }
 void motorStop(){
-    PWM_1_WriteCompare(0); // left wheel near power switch is stronker than right wheel
-    PWM_2_WriteCompare(0);
+    PWM_1_WriteCompare(128); // left wheel near power switch is stronker than right wheel
+    PWM_2_WriteCompare(128);
 }
 
 void motorTurnLeft(){
@@ -118,17 +126,23 @@ int main()
     ADC_StartConvert();
     QuadDec_M1_Start();
     QuadDec_M2_Start();
+    PWM_1_Start();
+    PWM_2_Start();
+    motorGoStraight();
     
     LED_Write(0);
     //VDAC8_1_Start();
+    
+   //  PWM1_CMp = 127
+    // in  = 1;
+    
     
     // Motor PWM
     //QuadDec_M2_SetCounter(0);
     //QuadDec_M1_SetCounter(0);
      CyDelay(2000); // so we have time to set the robot up
-    PWM_1_Start();
-    PWM_2_Start();
-    motorGoStraight();
+
+    motorGoBackwards();
     int16 beginningCountMotor1 = 0;
     int16 beginningCountMotor2 = 0;
     

@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 09/16/2022 at 14:35
+// 09/16/2022 at 18:55
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2321,12 +2321,12 @@ module top ;
           wire  Net_3247;
           wire  Net_3246;
           wire  Net_1849;
+          wire  Net_4394;
+          wire  Net_4393;
+          wire  Net_2404;
           wire  Net_4344;
           wire  Net_4342;
-          wire  Net_362;
-          wire  Net_368;
           wire  Net_2460;
-          wire  Net_2404;
           wire  Net_3437;
           wire  Net_3406;
           wire  Net_3349;
@@ -2502,7 +2502,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M1_IN2
 		 (.oe(tmpOE__M1_IN2_net),
-		  .y({Net_362}),
+		  .y({Net_4394}),
 		  .fb({tmpFB_0__M1_IN2_net[0:0]}),
 		  .io({tmpIO_0__M1_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M1_IN2_net),
@@ -2652,7 +2652,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M2_IN2
 		 (.oe(tmpOE__M2_IN2_net),
-		  .y({Net_368}),
+		  .y({Net_4393}),
 		  .fb({tmpFB_0__M2_IN2_net[0:0]}),
 		  .io({tmpIO_0__M2_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M2_IN2_net),
@@ -2752,10 +2752,10 @@ module top ;
 	assign tmpOE__M2_D1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
-    assign Net_368 = ~Net_2460;
+    assign Net_4393 = ~Net_2460;
 
 
-    assign Net_362 = ~Net_2404;
+    assign Net_4394 = ~Net_2404;
 
     QuadDec_v3_0_3 QuadDec_M2 (
         .quad_A(Net_729),

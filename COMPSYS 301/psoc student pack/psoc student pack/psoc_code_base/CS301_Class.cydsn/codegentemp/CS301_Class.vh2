@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Sep 16 14:35:59 2022
+--	Fri Sep 16 18:55:55 2022
 --
 
 USE cypress.cypress.all;
@@ -23,7 +23,7 @@ SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__M1_IN1_net_0 : bit;
 SIGNAL tmpOE__M1_IN2_net_0 : bit;
-SIGNAL Net_362 : bit;
+SIGNAL Net_4394 : bit;
 SIGNAL tmpFB_0__M1_IN2_net_0 : bit;
 SIGNAL tmpIO_0__M1_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M1_IN2_net_0 : bit;
@@ -35,7 +35,7 @@ SIGNAL tmpIO_0__M2_IN1_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M2_IN1_net_0 : bit;
 SIGNAL tmpOE__M2_IN2_net_0 : bit;
-SIGNAL Net_368 : bit;
+SIGNAL Net_4393 : bit;
 SIGNAL tmpFB_0__M2_IN2_net_0 : bit;
 SIGNAL tmpIO_0__M2_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN2_net_0 : bit;
@@ -1624,9 +1624,9 @@ tmpOE__M1_IN1_net_0 <=  ('1') ;
 
 \QuadDec_M1:Net_611\ <= ((not \QuadDec_M1:Net_1251\ and not \QuadDec_M1:Net_1264\ and \QuadDec_M1:Net_1275\));
 
-Net_368 <= (not Net_2460);
+Net_4393 <= (not Net_2460);
 
-Net_362 <= (not Net_2404);
+Net_4394 <= (not Net_2404);
 
 \QuadDec_M2:Cnt16:CounterUDB:reload\ <= (\QuadDec_M2:Cnt16:CounterUDB:overflow\
 	OR \QuadDec_M2:Cnt16:CounterUDB:status_1\
@@ -2188,7 +2188,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_362,
+		y=>Net_4394,
 		fb=>(tmpFB_0__M1_IN2_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M1_IN2_net_0),
@@ -2328,7 +2328,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_368,
+		y=>Net_4393,
 		fb=>(tmpFB_0__M2_IN2_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M2_IN2_net_0),
