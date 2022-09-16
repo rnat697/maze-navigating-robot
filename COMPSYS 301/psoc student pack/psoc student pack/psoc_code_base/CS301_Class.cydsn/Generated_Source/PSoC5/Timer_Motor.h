@@ -168,8 +168,8 @@ void Timer_Motor_Wakeup(void)        ;
 *    Initialial Parameter Constants
 ***************************************/
 
-#define Timer_Motor_INIT_PERIOD             99u
-#define Timer_Motor_INIT_CAPTURE_MODE       ((uint8)((uint8)1u << Timer_Motor_CTRL_CAP_MODE_SHIFT))
+#define Timer_Motor_INIT_PERIOD             19999u
+#define Timer_Motor_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << Timer_Motor_CTRL_CAP_MODE_SHIFT))
 #define Timer_Motor_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_Motor_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_Motor_UsingFixedFunction)
     #define Timer_Motor_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_Motor_STATUS_TC_INT_MASK_SHIFT)) | \

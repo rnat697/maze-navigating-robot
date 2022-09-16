@@ -1,5 +1,5 @@
 # CS301_Class
-# 2022-09-15 06:12:29Z
+# 2022-09-16 02:38:07Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -122,7 +122,7 @@ set_location "isrRF_TX" interrupt -1 -1 5
 set_location "isrRF_RX" interrupt -1 -1 4
 set_location "\RF_BT_SELECT:Sync:ctrl_reg\" 0 4 6
 set_location "\Timer_Motor:TimerHW\" timercell -1 -1 2
-set_location "isr_motor" interrupt -1 -1 19
+set_location "isr_motor" interrupt -1 -1 8
 set_location "\QuadDec_M1:Net_1251\" 2 1 1 0
 set_location "\QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\" 2 3 1 0
 set_location "\QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\" 1 3 0 3

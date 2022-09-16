@@ -12931,10 +12931,10 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1553              	/* isr_motor */
  1554              	.set isr_motor__INTC_CLR_EN_REG, CYREG_NVIC_CLRENA0
  1555              	.set isr_motor__INTC_CLR_PD_REG, CYREG_NVIC_CLRPEND0
- 1556              	.set isr_motor__INTC_MASK, 0x80000
- 1557              	.set isr_motor__INTC_NUMBER, 19
+ 1556              	.set isr_motor__INTC_MASK, 0x100
+ 1557              	.set isr_motor__INTC_NUMBER, 8
  1558              	.set isr_motor__INTC_PRIOR_NUM, 7
- 1559              	.set isr_motor__INTC_PRIOR_REG, CYREG_NVIC_PRI_19
+ 1559              	.set isr_motor__INTC_PRIOR_REG, CYREG_NVIC_PRI_8
  1560              	.set isr_motor__INTC_SET_EN_REG, CYREG_NVIC_SETENA0
  1561              	.set isr_motor__INTC_SET_PD_REG, CYREG_NVIC_SETPEND0
  1562              	
@@ -13344,7 +13344,7 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  1945              	.set CYDEV_ECC_ENABLE, 0
  1946              	.set CYDEV_HEAP_SIZE, 0x80
  1947              	.set CYDEV_INSTRUCT_CACHE_ENABLED, 1
- 1948              	.set CYDEV_INTR_RISING, 0x000000F1
+ 1948              	.set CYDEV_INTR_RISING, 0x000001F1
  1949              	.set CYDEV_IS_EXPORTING_CODE, 0
  1950              	.set CYDEV_IS_IMPORTING_CODE, 0
  1951              	.set CYDEV_PROJ_TYPE, 0

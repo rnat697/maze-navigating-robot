@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Sep 15 18:10:29 2022
+--	Fri Sep 16 14:35:59 2022
 --
 
 USE cypress.cypress.all;
@@ -5200,7 +5200,7 @@ timer_clock:cy_clock_v1_0
 		id=>"c0fb34bd-1044-4931-9788-16b01ce89812",
 		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
 		divisor=>0,
-		period=>"10000000000000",
+		period=>"10000000000",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_4342,
@@ -5212,13 +5212,13 @@ timer_clock:cy_clock_v1_0
 		enable=>tmpOE__M1_IN1_net_0,
 		capture=>Net_2183,
 		timer_reset=>Net_2183,
-		tc=>\Timer_Motor:Net_51\,
+		tc=>Net_4350,
 		compare=>\Timer_Motor:Net_261\,
-		interrupt=>Net_4345);
+		interrupt=>\Timer_Motor:Net_57\);
 isr_motor:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10",
+	GENERIC MAP(int_type=>"00",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_4345);
+	PORT MAP(int_signal=>Net_4350);
 \QuadDec_M1:Net_1251\:cy_dff
 	PORT MAP(d=>\QuadDec_M1:Net_1251\\D\,
 		clk=>\QuadDec_M1:bQuadDec:sync_clock\,

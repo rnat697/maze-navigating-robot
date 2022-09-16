@@ -29,6 +29,7 @@ void handle_usb();
 //* ========================================
 
 CY_ISR_PROTO(isr_eoc_Interrupt_test);
+CY_ISR_PROTO(isr_motor_interrupt_speed);
 
 CY_ISR(isr_eoc_Interrupt_test)
 {
@@ -59,7 +60,40 @@ CY_ISR(isr_eoc_Interrupt_test)
 }
 void motorGoStraight(){
     PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel
-    PWM_2_WriteCompare(162); // increase the PWM by 12 for it to be able to go straight
+    PWM_2_WriteCompare(158); // increase the PWM by 8 for it to be able to go straight
+}
+void motorStop(){
+    PWM_1_WriteCompare(0); // left wheel near power switch is stronker than right wheel
+    PWM_2_WriteCompare(0);
+}
+
+volatile static int8 count;
+CY_ISR(isr_motor_interrupt_speed)
+{
+    #ifdef isr_motor_INTERRUPT_INTERRUPT_CALLBACK
+        isr_motor_Interrupt_InterruptCallback();
+    #endif /* isr_motor_INTERRUPT_INTERRUPT_CALLBACK */ 
+
+    /*  Place your Interrupt code here. */
+    /* `#START isr_motor_Interrupt` */
+      /*int16 currCountMotor2 = QuadDec_M2_GetCounter();
+      int16 currCountMotor1 = QuadDec_M1_GetCounter();  
+      
+     speedMotor1 = (currCountMotor1 - prevcountMotor1) / 0.2;
+     speedMotor2 = (currCountMotor2 - prevcountMotor2) / 0.2;
+    
+      prevcountMotor1 = currCountMotor1;
+      prevcountMotor2 = currCountMotor2;*/
+    
+    if(count >= 10){
+        isr_motor_Stop();
+            
+    }else{
+        count++;
+    }
+    LED_Write(~LED_Read());
+    isr_motor_ClearPending();
+    /* `#END` */
 }
 
 int main()
@@ -69,30 +103,52 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
+    count  = 0;
     Timer_TS_Start();
     Timer_Motor_Start();
-    isr_motor_Start();
-    isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    //isr_motor_StartEx(isr_motor_interrupt_speed);
+    //isr_eoc_StartEx(isr_eoc_Interrupt_test);
     ADC_Start();
     ADC_StartConvert();
+    QuadDec_M1_Start();
+    QuadDec_M2_Start();
     
     LED_Write(0);
     //VDAC8_1_Start();
     
     // Motor PWM
-    
+    //QuadDec_M2_SetCounter(0);
+    //QuadDec_M1_SetCounter(0);
+     CyDelay(2000); // so we have time to set the robot up
     PWM_1_Start();
     PWM_2_Start();
     motorGoStraight();
+    int16 beginningCountMotor1 = 0;
+    int16 beginningCountMotor2 = 0;
     
+    CyDelay(2000);
+ 
+    motorStop();
+    int16 endCountMotor2 = QuadDec_M2_GetCounter();
+    int16 endCountMotor1 = QuadDec_M1_GetCounter();
+    char motor1String[10000]; 
+    sprintf(motor1String,"Motor 1 - start count: %d, end count: %d \n", beginningCountMotor1, endCountMotor1);
+    char motor2String[10000];
+    sprintf(motor2String,"Motor 2 - start count: %d, end count: %d \n", beginningCountMotor2 , endCountMotor2);
+    
+
+    
+
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
-    //USBUART_Start(0,USBUART_5V_OPERATION);
+    USBUART_Start(0,USBUART_5V_OPERATION);
 #endif        
         
     RF_BT_SELECT_Write(0);
-
+    
+    usbPutString(motor1String);
+    usbPutString(motor2String);
     //usbPutString(displaystring);
     for(;;)
     {
@@ -102,7 +158,11 @@ int main()
         {
             usbPutString(line);
             flag_KB_string = 0;
-        }   */    
+        }  */
+        
+
+        
+        
     }   
 }
 //* ========================================

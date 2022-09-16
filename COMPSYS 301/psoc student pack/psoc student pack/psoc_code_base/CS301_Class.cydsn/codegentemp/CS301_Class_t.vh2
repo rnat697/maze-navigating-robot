@@ -1,5 +1,5 @@
 -- Project:   \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj
--- Generated: 09/15/2022 18:12:40
+-- Generated: 09/16/2022 14:38:19
 -- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
@@ -105,7 +105,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL Net_4342 : bit;
     ATTRIBUTE global_signal OF Net_4342 : SIGNAL IS true;
     SIGNAL Net_4342_local : bit;
-    SIGNAL Net_4345 : bit;
+    SIGNAL Net_4350 : bit;
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -462,7 +462,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \RF_BT_SELECT:control_6\ : bit;
     SIGNAL \RF_BT_SELECT:control_7\ : bit;
     SIGNAL \Timer_Motor:Net_261\ : bit;
-    SIGNAL \Timer_Motor:Net_51\ : bit;
+    SIGNAL \Timer_Motor:Net_57\ : bit;
     SIGNAL \Timer_TS:Net_261\ : bit;
     SIGNAL \Timer_TS:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
@@ -797,7 +797,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "controlcell5";
     ATTRIBUTE Location OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "U(0,4)";
     ATTRIBUTE Location OF \Timer_Motor:TimerHW\ : LABEL IS "F(Timer,2)";
-    ATTRIBUTE Location OF isr_motor : LABEL IS "[IntrContainer=(0)][IntrId=(19)]";
+    ATTRIBUTE Location OF isr_motor : LABEL IS "[IntrContainer=(0)][IntrId=(8)]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1251\ : LABEL IS "macrocell41";
     ATTRIBUTE Location OF \QuadDec_M1:Net_1251\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell42";
@@ -5382,16 +5382,16 @@ BEGIN
             enable => __ONE__,
             capture => open,
             timer_reset => open,
-            tc => \Timer_Motor:Net_51\,
+            tc => Net_4350,
             cmp => \Timer_Motor:Net_261\,
-            irq => Net_4345);
+            irq => \Timer_Motor:Net_57\);
 
     isr_motor:interrupt
         GENERIC MAP(
-            int_type => "10",
+            int_type => "00",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_4345,
+            interrupt => Net_4350,
             clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell

@@ -6,7 +6,7 @@
 
 #Build Date:         Dec  5 2017 15:35:27
 
-#File Generated:     Sep 15 2022 18:11:29
+#File Generated:     Sep 16 2022 14:37:03
 
 #Purpose:            
 
@@ -93,8 +93,8 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:  41.2 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -120,8 +120,8 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:  51.2 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -170,8 +170,8 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:   6.9 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -204,8 +204,8 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:   6.5 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -231,13 +231,13 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:   6.7 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 3.3 (sec)
+D2088: Phase 7, elapsed time : 3.2 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	32
@@ -281,8 +281,8 @@ Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
 Clock: UART_IntClock        | Frequency:   7.4 MHz | Target:   0.5 MHz
-Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
-Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.1 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -293,5 +293,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 5.8 sec.
+I2076: Total run-time: 5.7 sec.
 

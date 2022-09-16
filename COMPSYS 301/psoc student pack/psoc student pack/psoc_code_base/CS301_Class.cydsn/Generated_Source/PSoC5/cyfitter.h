@@ -1553,10 +1553,10 @@
 /* isr_motor */
 #define isr_motor__INTC_CLR_EN_REG CYREG_NVIC_CLRENA0
 #define isr_motor__INTC_CLR_PD_REG CYREG_NVIC_CLRPEND0
-#define isr_motor__INTC_MASK 0x80000u
-#define isr_motor__INTC_NUMBER 19u
+#define isr_motor__INTC_MASK 0x100u
+#define isr_motor__INTC_NUMBER 8u
 #define isr_motor__INTC_PRIOR_NUM 7u
-#define isr_motor__INTC_PRIOR_REG CYREG_NVIC_PRI_19
+#define isr_motor__INTC_PRIOR_REG CYREG_NVIC_PRI_8
 #define isr_motor__INTC_SET_EN_REG CYREG_NVIC_SETENA0
 #define isr_motor__INTC_SET_PD_REG CYREG_NVIC_SETPEND0
 
@@ -1947,7 +1947,7 @@
 #define CYDEV_ECC_ENABLE 0
 #define CYDEV_HEAP_SIZE 0x80
 #define CYDEV_INSTRUCT_CACHE_ENABLED 1
-#define CYDEV_INTR_RISING 0x000000F1u
+#define CYDEV_INTR_RISING 0x000001F1u
 #define CYDEV_IS_EXPORTING_CODE 0
 #define CYDEV_IS_IMPORTING_CODE 0
 #define CYDEV_PROJ_TYPE 0

@@ -165,7 +165,16 @@ CY_ISR(isr_motor_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_motor_Interrupt` */
+      /*int16 currCountMotor2 = QuadDec_M2_GetCounter();
+      int16 currCountMotor1 = QuadDec_M1_GetCounter();  
+      
+     speedMotor1 = (currCountMotor1 - prevcountMotor1) / 0.2;
+     speedMotor2 = (currCountMotor2 - prevcountMotor2) / 0.2;
+    
+      prevcountMotor1 = currCountMotor1;
+      prevcountMotor2 = currCountMotor2;*/
 
+      
     /* `#END` */
 }
 

@@ -115,6 +115,7 @@ Stub-:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v40+:dsiswitch_bott
 :udbswitch@[UDB=(2,4)][side=top]:102,90_f
 :udbswitch@[UDB=(2,4)][side=top]:102,92_f
 Stub-:dsiswitch_bottom@[DSI=(1,4)][side=bottom]:dsihc_bottom:v45+:dsiswitch_bottom@[DSI=(1,4)][side=bottom]:dsihc_bottom:v47==>:interrupt_idmux_4.in_0
+Stub-:dsiswitch_bottom@[DSI=(1,5)][side=bottom]:dsihc_bottom:v32+:dsiswitch_bottom@[DSI=(1,5)][side=bottom]:dsihc_bottom:v34==>:interrupt_idmux_8.in_0
 :udbswitch@[UDB=(0,4)][side=top]:97,1_f
 :udbswitch@[UDB=(0,4)][side=top]:97,4_f
 :udbswitch@[UDB=(0,4)][side=top]:97,43_f
