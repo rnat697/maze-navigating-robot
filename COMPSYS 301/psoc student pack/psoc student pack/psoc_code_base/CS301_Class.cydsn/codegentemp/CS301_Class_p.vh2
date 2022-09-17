@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 09/16/2022 18:56:57
+-- Generated: 09/17/2022 15:27:08
 -- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
@@ -20,9 +20,7 @@ ENTITY CS301_Class IS
         DB0(0)_PAD : OUT std_ulogic;
         DB1(0)_PAD : OUT std_ulogic;
         DB2(0)_PAD : OUT std_ulogic;
-        Rx_2(0)_PAD : IN std_ulogic;
-        rED(0)_PAD : OUT std_ulogic;
-        blue(0)_PAD : OUT std_ulogic);
+        Rx_2(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -401,8 +399,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
-    SIGNAL blue(0)__PA : bit;
-    SIGNAL rED(0)__PA : bit;
     SIGNAL tmpOE__M1_IN1_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__M1_IN1_net_0 : SIGNAL IS true;
     SIGNAL \ClockBlock.dclk_glb_ff_2__sig\ : bit;
@@ -439,9 +435,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF M1_IN2(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF M1_IN2(0) : LABEL IS "P3[4]";
     ATTRIBUTE lib_model OF M2_IN1(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF M2_IN1(0) : LABEL IS "P12[2]";
+    ATTRIBUTE Location OF M2_IN1(0) : LABEL IS "P12[5]";
     ATTRIBUTE lib_model OF M2_IN2(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF M2_IN2(0) : LABEL IS "P12[3]";
+    ATTRIBUTE Location OF M2_IN2(0) : LABEL IS "P12[6]";
     ATTRIBUTE lib_model OF M2_D1(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF M2_D1(0) : LABEL IS "P12[4]";
     ATTRIBUTE lib_model OF M1_QA(0) : LABEL IS "iocell6";
@@ -449,15 +445,15 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF M1_QB(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF M1_QB(0) : LABEL IS "P15[2]";
     ATTRIBUTE lib_model OF M2_QA(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P1[4]";
+    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF M2_QB(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P1[5]";
+    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF A0(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF A0(0) : LABEL IS "P0[5]";
     ATTRIBUTE lib_model OF A1(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF A1(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF A2(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF A2(0) : LABEL IS "P0[7]";
+    ATTRIBUTE Location OF A2(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF A3(0) : LABEL IS "iocell13";
     ATTRIBUTE Location OF A3(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF A4(0) : LABEL IS "iocell14";
@@ -465,9 +461,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF A5(0) : LABEL IS "iocell15";
     ATTRIBUTE Location OF A5(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF A6(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF A6(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF A6(0) : LABEL IS "P15[4]";
     ATTRIBUTE lib_model OF A7(0) : LABEL IS "iocell17";
-    ATTRIBUTE Location OF A7(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF A7(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell18";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell19";
@@ -537,7 +533,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell39";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell40";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:Stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \ADC:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
+    ATTRIBUTE Location OF \ADC:SAR:ADC_SAR\ : LABEL IS "F(SAR,0)";
     ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell3";
     ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
     ATTRIBUTE lib_model OF \ADC:TempBuf\ : LABEL IS "drqcell1";
@@ -3594,186 +3590,6 @@ BEGIN
             fb => Net_3405,
             pad_in => Rx_2(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    rED:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    rED(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "rED",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => rED(0)__PA,
-            oe => open,
-            pad_in => rED(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    blue:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "5500753d-48d4-4f1a-8404-897f3b79db02",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    blue(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "blue",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => blue(0)__PA,
-            oe => open,
-            pad_in => blue(0)_PAD,
-            in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,

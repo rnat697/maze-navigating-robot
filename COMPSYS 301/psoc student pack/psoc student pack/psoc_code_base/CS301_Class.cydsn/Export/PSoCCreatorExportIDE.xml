@@ -251,12 +251,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RF_BT_SELECT_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cy_em_eeprom.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cy_em_eeprom.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\rED.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\blue.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor_PM.c</File>

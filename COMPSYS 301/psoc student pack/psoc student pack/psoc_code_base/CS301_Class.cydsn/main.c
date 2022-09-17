@@ -28,6 +28,12 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
+#define rotaSpeed 15 
+#define rota180 500 //turns
+#define rota90Left 250
+
+#define moveSlow 50
+
 CY_ISR_PROTO(isr_eoc_Interrupt_test);
 CY_ISR_PROTO(isr_motor_interrupt_speed);
 
@@ -42,41 +48,45 @@ CY_ISR(isr_eoc_Interrupt_test)
     int8 channel = 0; // connect filter output to pin 0.5 for channel 0 
     uint16 value =  ADC_GetResult16(channel);
     // get value from ADC then convert to DAC to send to external LEDs
-    if (value >= 2457) // why      4095 /5v,4095 = x / voltage we want .       4095 from (2^12-1)   2.194v
+    if (value >= 2211) // why      5v/4095 gives interval ,voltage we want *interval = adc value/ .       4095 from (2^12-1)   2.194v //old was 2457
     {
-        LED_Write(1);
-    
-        blue_Write(1); //red
-        rED_Write(0); //blue -.-
+        LED_Write(1);   
     
     }
     
     else{
         LED_Write(0);
-        blue_Write(0);
-        rED_Write(1);
+
     }
     /* `#END` */
 }
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(200);
-    PWM_2_WriteCompare(200); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
+    PWM_1_WriteCompare(202);//202
+    PWM_2_WriteCompare(52); //52
 }
 void motorGoBackwards(){
-    ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
+    
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(50);
-    PWM_2_WriteCompare(50); // increase the PWM by 7 or 8 for it to be able to go straight //157 //255
+    PWM_1_WriteCompare(55); //55
+    PWM_2_WriteCompare(201); //201
 }
 void motorStop(){
     PWM_1_WriteCompare(128); // left wheel near power switch is stronker than right wheel
-    PWM_2_WriteCompare(128);
+    PWM_2_WriteCompare(125);
 }
 
 void motorTurnLeft(){
     // TO DO
+    
+    PWM_1_WriteCompare(rotaSpeed); //55
+    PWM_2_WriteCompare(125); //201
+    CyDelay(rota90Left);
+    
+    
+    
+    //255
 }
 
 void motorTurnRight(){
@@ -84,9 +94,6 @@ void motorTurnRight(){
    
 }
 
-void motorUTurn(){
-    // TO DO
-}
 // NEED TO INCREASE/DECREASE SPEED TOO
 // AND IMPLEMENT LIGHT SENSOR THINGS
 volatile static int8 count;
@@ -109,6 +116,46 @@ CY_ISR(isr_motor_interrupt_speed)
     
     /* `#END` */
 }
+void motorCount(){
+    int16 beginningCountMotor1 = 0;
+    int16 beginningCountMotor2 = 0;
+    int16 endCountMotor2 = QuadDec_M2_GetCounter();
+    int16 endCountMotor1 = QuadDec_M1_GetCounter();
+    char motor1String[10000]; 
+    sprintf(motor1String,"Motor 1 - start count: %d, end count: %d \n", beginningCountMotor1, endCountMotor1);
+    char motor2String[10000];
+    sprintf(motor2String,"Motor 2 - start count: %d, end count: %d \n", beginningCountMotor2 , endCountMotor2);
+    
+    usbPutString(motor1String);
+    usbPutString(motor2String);
+
+}
+
+void motorRun(){
+    
+    
+    
+    PWM_1_Start();
+    PWM_2_Start();
+
+
+    motorStop();
+    CyDelay(2000); // so we have time to set the robot up
+    motorGoStraight();
+    CyDelay(2000);
+    motorStop();
+    
+    motorGoBackwards();
+
+    
+    CyDelay(2000);
+ 
+    motorStop();
+    motorCount();//checks count per second.
+
+}
+
+
 
 int main()
 {
@@ -118,43 +165,44 @@ int main()
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
     count  = 0;
+    
+   
     Timer_TS_Start();
     Timer_Motor_Start();
+   // QuadDec_M1_Start();
+    //QuadDec_M2_Start(); //init the quadencoder,
     //isr_motor_StartEx(isr_motor_interrupt_speed);
-    //isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    
+    
     ADC_Start();
     ADC_StartConvert();
-    QuadDec_M1_Start();
-    QuadDec_M2_Start();
-    PWM_1_Start();
+    
+     PWM_1_Start();
     PWM_2_Start();
-    motorGoStraight();
     
     LED_Write(0);
     //VDAC8_1_Start();
+   
+    //motorRun();
     
-   //  PWM1_CMp = 127
-    // in  = 1;
+    //motorLeft
+    //motorRu
+     
+    ///////IF NOT USINNG MOTOR RUN DO PWM START STUFF
+    // SO write compare is a measure of speed
+    // And Cy delay delays the running of the motor and duration that it travels
+    //look at motor RUn config above for more info.
     
-    
-    // Motor PWM
-    //QuadDec_M2_SetCounter(0);
-    //QuadDec_M1_SetCounter(0);
-     CyDelay(2000); // so we have time to set the robot up
 
-    motorGoBackwards();
-    int16 beginningCountMotor1 = 0;
-    int16 beginningCountMotor2 = 0;
     
-    CyDelay(2000);
- 
-    motorStop();
-    int16 endCountMotor2 = QuadDec_M2_GetCounter();
-    int16 endCountMotor1 = QuadDec_M1_GetCounter();
-    char motor1String[10000]; 
-    sprintf(motor1String,"Motor 1 - start count: %d, end count: %d \n", beginningCountMotor1, endCountMotor1);
-    char motor2String[10000];
-    sprintf(motor2String,"Motor 2 - start count: %d, end count: %d \n", beginningCountMotor2 , endCountMotor2);
+    //motorStop();
+   // CyDelay(2000); // so we have time to set the robot up
+    //motorTurnLeft();
+   motorStop();
+    //motorCount();//checks count per second.
+     
+    
     
 
     
@@ -167,10 +215,9 @@ int main()
         
     RF_BT_SELECT_Write(0);
     
-    usbPutString(motor1String);
-    usbPutString(motor2String);
+
     //usbPutString(displaystring);
-    for(;;)
+    while(1)
     {
         /* Place your application code here. */
         /*handle_usb();
