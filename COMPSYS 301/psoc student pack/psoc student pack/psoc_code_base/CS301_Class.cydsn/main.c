@@ -15,6 +15,7 @@
  * ========================================
 */
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
 #include <project.h>
@@ -28,7 +29,7 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
-#define rotaSpeed 15 
+
 #define rota180 500 //turns
 #define rota90Left 250
 
@@ -63,31 +64,30 @@ void motorStop(){
     PWM_2_WriteCompare(127);
 }
 
-void motorTurnLeft(){
+void motorTurnLeft(int x){
     // TO DO
     
-    PWM_1_WriteCompare(rotaSpeed); //55
+    PWM_1_WriteCompare(x); //55
     PWM_2_WriteCompare(125); //201
-    CyDelay(rota90Left);
     
     
     
     //255
 }
 
-void motorTurnRight(){
+void motorTurnRight(int x){
     // TO DO
     
     PWM_1_WriteCompare(127);//200
-    PWM_2_WriteCompare(rotaSpeed); //50
+    PWM_2_WriteCompare(x); //50
    CyDelay(rota90Left);
 }
 int changeMotor=0;
 int checkLight =0;
 int lightState=0;
-int lightDetectedFront[3] = {0,0,0};
-int counteoc = 0;
-int processSensors = 0;
+volatile int lightDetectedFront[3] = {0,0,0};
+volatile int counteoc = 0;
+volatile int processSensors = 0;
 CY_ISR(isr_eoc_Interrupt_test)
 {
     #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
@@ -96,36 +96,30 @@ CY_ISR(isr_eoc_Interrupt_test)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_eoc_Interrupt` */
-    uint16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
-    uint16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
-    uint16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
+    int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
+    int16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
+    int16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
     // get value from ADC then convert to DAC to send to external LEDs
-    
-    counteoc++;
-    
-     if (valueQ3 >= 2211) {
+    if (counteoc < 10) {
+        
+        if (valueQ3 >= 2211) {
         //set flag for white light detected
         lightDetectedFront[0] = 1;
-    }
-     if (valueQ4 >= 2211) {
+        }
+        if (valueQ4 >= 2211) {
         //set flag for white light detected
         lightDetectedFront[1] = 1;
-    }
+        }
     
-    if (valueQ5 >= 2211) {
+        if (valueQ5 >= 2211) {
         //set flag for white light detected
         lightDetectedFront[2] = 1;
+        }
+        
+        counteoc++;
+    } else {
+        processSensors = 1;   
     }
-    
-    
-    
-    if (counteoc >= 10) {
-       // if x10, set flag for while loop to process lightresults
-        processSensors = 1;
-           
-    }
-    
-    
     /* `#END` */
 }
 // NEED TO INCREASE/DECREASE SPEED TOO
@@ -215,7 +209,7 @@ int main()
     Timer_Motor_Start();
     QuadDec_M1_Start();
     QuadDec_M2_Start(); //init the quadencoder,
-    isr_motor_StartEx(isr_motor_interrupt_speed);
+    //isr_motor_StartEx(isr_motor_interrupt_speed);
     isr_TS_StartEx(isr_TS_Interrupt_sample);
     isr_eoc_StartEx(isr_eoc_Interrupt_test);
     
@@ -230,8 +224,8 @@ int main()
     // SO write compare is a measure of speed
     // And Cy delay delays the running of the motor and duration that it travels
     //look at motor RUn config above for more info.
-    //motorStop();
-    //CyDelay(2000); // to prep
+    motorStop();
+    CyDelay(2000); // to prep
    /* while(QuadDec_M1_GetCounter()<travelDist){
     //where counter is value we want it to stop at.
         motorGoStraight();
@@ -253,12 +247,12 @@ int main()
 
     
 // ------USB SETUP ----------------    
-#ifdef USE_USB    
-    USBUART_Start(0,USBUART_5V_OPERATION);
-#endif        
-        
-    RF_BT_SELECT_Write(0);
-    motorCount();//checks count per second.
+//#ifdef USE_USB    
+//    USBUART_Start(0,USBUART_5V_OPERATION);
+//#endif        
+//        
+//    RF_BT_SELECT_Write(0);
+//    motorCount();//checks count per second.
 
     //usbPutString(displaystring);
     while(1)
@@ -271,9 +265,63 @@ int main()
     // IF Q5 AND Q4 TURN 90 DEGREES RIGHT - intersection
        
         if (processSensors == 1) {
+            
             //make decision
+            
+            //checks intersection
+            //int leftIntersection= (lightDetectedFront[0] == 1 && lightDetectedFront[1]==1);
+            //int rightIntersection=  (lightDetectedFront[2] == 1 && lightDetectedFront[1]==1);
+            
+           //check intersectin
+            ///mazeIntersection(leftIntersection,rightIntersection);
+            
+            int noneOn = ((lightDetectedFront[0]==1) == (lightDetectedFront[2] ==1));
+            //int Q4On = ((lightDetectedFront[0]==1) == (lightDetectedFront[2] ==1));
+             if(noneOn == (lightDetectedFront[1] ==1)){
+                motorStop();
+                LED_Write(0);
+            }
+            
+            
+//            if(leftIntersection){
+//                motorTurnLeft(55);
+//            
+//            
+//                CyDelay(250);
+//            }
+//            
+//            if(rightIntersection){
+//                motorTurnRight(55);
+//                
+//                CyDelay(250);//small rotation need small time
+//            
+//            }
+            
+//            //Slight turns
+//            if(lightDetectedFront[0] == 1 && lightDetectedFront[1]==0){
+//                motorTurnRight(140);
+//                CyDelay(20);//small rotation need small time
+//            }
+//            
+//            if(lightDetectedFront[2] == 0 && lightDetectedFront[1]==1){
+//                motorTurnLeft(140);
+//                CyDelay(20);//small rotation need small time
+//            }
+            if(lightDetectedFront[1] == 0){
+                LED_Write(1);
+                motorGoStraight();
+
+            }
+           
+            //reset variable.
             processSensors = 0;
+            //reset counter
             counteoc = 0;
+            //reset flags for lightsensors
+            lightDetectedFront[0] = 0;
+            lightDetectedFront[1] = 0;
+            lightDetectedFront[2] = 0;
+            
         }
         
     }   
