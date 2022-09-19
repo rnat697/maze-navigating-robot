@@ -33,6 +33,7 @@ void handle_usb();
 #define rota90Left 250
 
 #define moveSlow 50
+#define travelDist 326 // how
 
 CY_ISR_PROTO(isr_eoc_Interrupt_test);
 CY_ISR_PROTO(isr_motor_interrupt_speed);
@@ -64,7 +65,7 @@ void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
     PWM_1_WriteCompare(200);//202
-    PWM_2_WriteCompare(51); //52
+    PWM_2_WriteCompare(50); //52
 }
 void motorGoBackwards(){
     
@@ -151,7 +152,7 @@ void motorRun(){
     //CyDelay(2000);
  
     //motorStop();
-    motorCount();//checks count per second.
+    //motorCount();//checks count per second.
 
 }
 
@@ -184,22 +185,26 @@ int main()
     LED_Write(0);
     //VDAC8_1_Start();
    
-    motorRun();
-    
-    //motorLeft
-    //motorRu
+    //motorRun();
      
     ///////IF NOT USINNG MOTOR RUN DO PWM START STUFF
     // SO write compare is a measure of speed
     // And Cy delay delays the running of the motor and duration that it travels
     //look at motor RUn config above for more info.
+    motorStop();
+    CyDelay(2000); // to prep
+    while(QuadDec_M1_GetCounter()<travelDist){
+    //where counter is value we want it to stop at.
+        motorGoStraight();
     
+    
+    }
 
     
     //motorStop();
    // CyDelay(2000); // so we have time to set the robot up
     //motorTurnLeft();
-   motorStop();
+    motorStop();
     //motorCount();//checks count per second.
      
     
@@ -214,7 +219,7 @@ int main()
 #endif        
         
     RF_BT_SELECT_Write(0);
-    
+    motorCount();//checks count per second.
 
     //usbPutString(displaystring);
     while(1)
@@ -227,7 +232,8 @@ int main()
             flag_KB_string = 0;
         }  */
         
-
+         // if counts >=120
+        //stop motor.
         
         
     }   
