@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 09/19/2022 at 11:06
+// 09/19/2022 at 17:14
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -710,7 +710,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\or_v1_0.v"
 `endif
 
-// ADC_SAR_v3_10(ADC_Clock=0, ADC_Clock_Frequency=10105264, ADC_Input_Range=1, ADC_Power=0, ADC_Reference=0, ADC_Resolution=12, ADC_SampleMode=0, Enable_next_out=true, Ref_Voltage=2.5, Ref_Voltage_mV=2500, rm_int=true, Sample_Precharge=4, Sample_Rate=0, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_v3_10, CY_CONFIG_TITLE=SAR, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC:SAR, CY_INSTANCE_SHORT_NAME=SAR, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC_SAR, )
+// ADC_SAR_v3_10(ADC_Clock=0, ADC_Clock_Frequency=10105264, ADC_Input_Range=1, ADC_Power=0, ADC_Reference=0, ADC_Resolution=12, ADC_SampleMode=1, Enable_next_out=true, Ref_Voltage=2.5, Ref_Voltage_mV=2500, rm_int=true, Sample_Precharge=4, Sample_Rate=0, Sample_Rate_def=631579, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_v3_10, CY_CONFIG_TITLE=SAR, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC:SAR, CY_INSTANCE_SHORT_NAME=SAR, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC_SAR, )
 module ADC_SAR_v3_10_4 (
     vplus,
     vminus,
@@ -868,7 +868,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v"
 `endif
 
-// ADC_SAR_SEQ_v2_10(ADC_Clock_Frequency=1023904, Adjust=0, ClockSource=0, InputRange=1, NumChannels=8, Reference=0, Resolution=12, rm_int=false, SampleMode=0, SamplePrecharge=4, SampleRate=63994, SampleRate_def=631579, VrefValue=2.5, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_SEQ_v2_10, CY_CONFIG_TITLE=ADC, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC, CY_INSTANCE_SHORT_NAME=ADC, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC, )
+// ADC_SAR_SEQ_v2_10(ADC_Clock_Frequency=1023904, Adjust=0, ClockSource=0, InputRange=1, NumChannels=8, Reference=0, Resolution=12, rm_int=false, SampleMode=1, SamplePrecharge=4, SampleRate=63994, SampleRate_def=631579, VrefValue=2.5, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_SEQ_v2_10, CY_CONFIG_TITLE=ADC, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC, CY_INSTANCE_SHORT_NAME=ADC, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC, )
 module ADC_SAR_SEQ_v2_10_5 (
     soc,
     aclk,
@@ -1175,13 +1175,13 @@ module ADC_SAR_SEQ_v2_10_5 (
           wire  nrq;
           wire  clock;
           wire  soc_out;
+          wire  Net_3905;
           wire  Net_3867;
           wire  Net_3716;
           wire  Net_3823;
           wire  Net_3822;
           wire  Net_3821;
     electrical  Net_3934;
-          wire  Net_3933;
     electrical  Net_3939;
           wire  Net_3710;
           wire  Net_3935;
@@ -1189,7 +1189,6 @@ module ADC_SAR_SEQ_v2_10_5 (
           wire  Net_3698;
           wire  Net_3874;
     electrical  Net_2803;
-          wire  Net_3905;
 
     // -- AMuxHw AMuxHw_2 start -- ***
     
@@ -1307,7 +1306,7 @@ module ADC_SAR_SEQ_v2_10_5 (
     ADC_SAR_v3_10_4 SAR (
         .vplus(Net_2803),
         .vminus(Net_3939),
-        .soc(1'b0),
+        .soc(soc_out),
         .eoc(Net_3830),
         .aclk(clock),
         .vdac_ref(Net_3934),
@@ -1328,7 +1327,7 @@ module ADC_SAR_SEQ_v2_10_5 (
         .soc_out(soc_out),
         .sar_eoc(Net_3830));
     defparam bSAR_SEQ.NumChannels = 8;
-    defparam bSAR_SEQ.SampleMode = 0;
+    defparam bSAR_SEQ.SampleMode = 1;
 
 	// VirtualMux_4 (cy_virtualmux_v1_0)
 	assign clock = Net_3874;
@@ -1398,7 +1397,7 @@ module ADC_SAR_SEQ_v2_10_5 (
 
 endmodule
 
-// Timer_v2_80(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=99, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=Timer_v2_80, CY_CONFIG_TITLE=Timer_TS, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_TS, CY_INSTANCE_SHORT_NAME=Timer_TS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=80, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=Timer_TS, )
+// Timer_v2_80(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=199, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=Timer_v2_80, CY_CONFIG_TITLE=Timer_TS, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_TS, CY_INSTANCE_SHORT_NAME=Timer_TS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=80, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=Timer_TS, )
 module Timer_v2_80_6 (
     reset,
     interrupt,
@@ -1926,7 +1925,7 @@ module UART_v2_50_8 (
 
 endmodule
 
-// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=0, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=3, DitherOffset=0, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=255, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=PWM_v3_30, CY_CONFIG_TITLE=PWM_1, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM_1, CY_INSTANCE_SHORT_NAME=PWM_1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=PWM_1, )
+// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=false, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=20, CompareValue2=63, CONTROL3=1, ControlReg=false, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=3, DitherOffset=0, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=1, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=255, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=true, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=false, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=PWM_v3_30, CY_CONFIG_TITLE=PWM_1, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=PWM_1, CY_INSTANCE_SHORT_NAME=PWM_1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=PWM_1, )
 module PWM_v3_30_9 (
     reset,
     clock,
@@ -2187,17 +2186,17 @@ module top ;
           wire  Net_3219;
           wire  Net_3218;
           wire  Net_3217;
-          wire  Net_4333;
-          wire  Net_4332;
-          wire  Net_4331;
-          wire  Net_4330;
-          wire  Net_4329;
-          wire  Net_4328;
-          wire  Net_4327;
-          wire  Net_4326;
-          wire  Net_4325;
-          wire  Net_4324;
-          wire  Net_4323;
+          wire  Net_4583;
+          wire  Net_4582;
+          wire  Net_4581;
+          wire  Net_4580;
+          wire  Net_4579;
+          wire  Net_4578;
+          wire  Net_4577;
+          wire  Net_4576;
+          wire  Net_4575;
+          wire  Net_4574;
+          wire  Net_4573;
           wire  Net_3438;
           wire  Net_3403;
           wire  Net_3402;
@@ -2220,102 +2219,102 @@ module top ;
           wire  Net_1878;
           wire  Net_4335;
           wire  Net_4334;
-          wire  Net_1618;
-          wire  Net_1617;
-          wire  Net_1616;
-          wire  Net_1615;
-          wire  Net_1614;
-    electrical  Net_1585;
-    electrical  Net_1584;
-    electrical  Net_1583;
-    electrical  Net_1582;
-    electrical  Net_1581;
-    electrical  Net_1580;
-    electrical  Net_1579;
-    electrical  Net_1578;
-    electrical  Net_1577;
-    electrical  Net_1576;
-    electrical  Net_1575;
-    electrical  Net_1574;
-    electrical  Net_1573;
-    electrical  Net_1572;
-    electrical  Net_1571;
-    electrical  Net_1570;
-    electrical  Net_1569;
-    electrical  Net_1568;
-    electrical  Net_1567;
-    electrical  Net_1566;
-    electrical  Net_1565;
-    electrical  Net_1564;
-    electrical  Net_1563;
-    electrical  Net_1562;
-    electrical  Net_1561;
-    electrical  Net_1560;
-    electrical  Net_1559;
-    electrical  Net_1558;
-    electrical  Net_1557;
-    electrical  Net_1556;
-    electrical  Net_1555;
-    electrical  Net_1554;
-    electrical  Net_1553;
-    electrical  Net_1552;
-    electrical  Net_1551;
-    electrical  Net_1550;
-    electrical  Net_1549;
-    electrical  Net_1548;
-    electrical  Net_1547;
-    electrical  Net_1546;
-    electrical  Net_1545;
-    electrical  Net_1544;
-    electrical  Net_1543;
-    electrical  Net_1542;
-    electrical  Net_1541;
-    electrical  Net_1540;
-    electrical  Net_1539;
-    electrical  Net_1538;
-    electrical  Net_1537;
-    electrical  Net_1536;
-    electrical  Net_1535;
-    electrical  Net_1534;
-    electrical  Net_1533;
-    electrical  Net_1532;
-    electrical  Net_1531;
-    electrical  Net_1530;
-    electrical  Net_1529;
-    electrical  Net_1528;
-    electrical  Net_1527;
-    electrical  Net_1526;
-    electrical  Net_1525;
-    electrical  Net_1524;
-    electrical  Net_1523;
-    electrical  Net_1522;
-    electrical  Net_1521;
-    electrical  Net_1520;
-    electrical  Net_1519;
-    electrical  Net_1518;
-    electrical  Net_1517;
-    electrical  Net_1516;
-    electrical  Net_1515;
-    electrical  Net_1514;
-    electrical  Net_1513;
-    electrical  Net_1512;
-    electrical  Net_1511;
-    electrical  Net_1510;
-    electrical  Net_1509;
-    electrical  Net_1508;
-    electrical  Net_1507;
-    electrical  Net_1506;
-    electrical  Net_1505;
-    electrical  Net_1504;
-    electrical  Net_1503;
-    electrical  Net_1502;
-    electrical  Net_1501;
-    electrical  Net_1500;
-    electrical  Net_1499;
-    electrical  Net_1498;
-          wire  Net_1496;
-          wire  Net_1495;
-          wire  Net_3444;
+          wire  Net_4404;
+          wire  Net_4403;
+          wire  Net_4402;
+          wire  Net_4401;
+          wire  Net_4400;
+    electrical  Net_4495;
+    electrical  Net_4494;
+    electrical  Net_4493;
+    electrical  Net_4492;
+    electrical  Net_4491;
+    electrical  Net_4490;
+    electrical  Net_4489;
+    electrical  Net_4488;
+    electrical  Net_4487;
+    electrical  Net_4486;
+    electrical  Net_4485;
+    electrical  Net_4484;
+    electrical  Net_4483;
+    electrical  Net_4482;
+    electrical  Net_4481;
+    electrical  Net_4480;
+    electrical  Net_4479;
+    electrical  Net_4478;
+    electrical  Net_4477;
+    electrical  Net_4476;
+    electrical  Net_4475;
+    electrical  Net_4474;
+    electrical  Net_4473;
+    electrical  Net_4472;
+    electrical  Net_4471;
+    electrical  Net_4470;
+    electrical  Net_4469;
+    electrical  Net_4468;
+    electrical  Net_4467;
+    electrical  Net_4466;
+    electrical  Net_4465;
+    electrical  Net_4464;
+    electrical  Net_4463;
+    electrical  Net_4462;
+    electrical  Net_4461;
+    electrical  Net_4460;
+    electrical  Net_4459;
+    electrical  Net_4458;
+    electrical  Net_4457;
+    electrical  Net_4456;
+    electrical  Net_4455;
+    electrical  Net_4454;
+    electrical  Net_4453;
+    electrical  Net_4452;
+    electrical  Net_4451;
+    electrical  Net_4450;
+    electrical  Net_4449;
+    electrical  Net_4448;
+    electrical  Net_4447;
+    electrical  Net_4446;
+    electrical  Net_4445;
+    electrical  Net_4444;
+    electrical  Net_4443;
+    electrical  Net_4442;
+    electrical  Net_4441;
+    electrical  Net_4440;
+    electrical  Net_4439;
+    electrical  Net_4438;
+    electrical  Net_4437;
+    electrical  Net_4436;
+    electrical  Net_4435;
+    electrical  Net_4434;
+    electrical  Net_4433;
+    electrical  Net_4432;
+    electrical  Net_4431;
+    electrical  Net_4430;
+    electrical  Net_4429;
+    electrical  Net_4428;
+    electrical  Net_4427;
+    electrical  Net_4426;
+    electrical  Net_4425;
+    electrical  Net_4424;
+    electrical  Net_4423;
+    electrical  Net_4422;
+    electrical  Net_4421;
+    electrical  Net_4420;
+    electrical  Net_4419;
+    electrical  Net_4418;
+    electrical  Net_4417;
+    electrical  Net_4416;
+    electrical  Net_4415;
+    electrical  Net_4414;
+    electrical  Net_4413;
+    electrical  Net_4412;
+    electrical  Net_4411;
+    electrical  Net_4410;
+    electrical  Net_4409;
+    electrical  Net_4408;
+          wire  Net_4407;
+          wire  Net_4406;
+          wire  Net_4405;
           wire  Net_3249;
           wire  Net_3248;
           wire  Net_3247;
@@ -3142,104 +3141,104 @@ module top ;
     ADC_SAR_SEQ_v2_10_5 ADC (
         .soc(1'b0),
         .aclk(1'b0),
-        .sdone(Net_1496),
+        .sdone(Net_4407),
         .eoc(Net_1497),
         .AIN_10(Net_1167),
         .AIN1(Net_1168),
-        .AIN_20(Net_1498),
+        .AIN_20(Net_4408),
         .AIN_21(Net_1170),
         .AIN_30(Net_1171),
-        .AIN_31(Net_1499),
+        .AIN_31(Net_4409),
         .AIN3(Net_1173),
-        .AIN_40(Net_1500),
+        .AIN_40(Net_4410),
         .AIN_41(Net_1175),
         .AIN_50(Net_1176),
-        .AIN_51(Net_1501),
+        .AIN_51(Net_4411),
         .AIN5(Net_1178),
-        .AIN_60(Net_1502),
-        .AIN_61(Net_1503),
-        .AIN_70(Net_1504),
-        .AIN_71(Net_1505),
-        .AIN7(Net_1506),
-        .AIN_80(Net_1507),
-        .AIN_81(Net_1508),
-        .AIN_90(Net_1509),
-        .AIN_91(Net_1510),
-        .AIN9(Net_1511),
-        .AIN_100(Net_1512),
-        .AIN_101(Net_1513),
-        .AIN_110(Net_1514),
-        .AIN_111(Net_1515),
-        .AIN11(Net_1516),
-        .AIN_120(Net_1517),
-        .AIN_121(Net_1518),
-        .AIN_130(Net_1519),
-        .AIN_131(Net_1520),
-        .AIN13(Net_1521),
-        .AIN_140(Net_1522),
-        .AIN_141(Net_1523),
-        .AIN_150(Net_1524),
-        .AIN_151(Net_1525),
-        .AIN15(Net_1526),
-        .AIN_160(Net_1527),
-        .AIN_161(Net_1528),
-        .AIN_170(Net_1529),
-        .AIN_171(Net_1530),
-        .AIN17(Net_1531),
-        .AIN_180(Net_1532),
-        .AIN_181(Net_1533),
-        .AIN_190(Net_1534),
-        .AIN_191(Net_1535),
-        .AIN19(Net_1536),
-        .AIN_200(Net_1537),
-        .AIN_201(Net_1538),
-        .AIN_210(Net_1539),
-        .AIN_211(Net_1540),
-        .AIN21(Net_1541),
-        .AIN_220(Net_1542),
-        .AIN_221(Net_1543),
-        .AIN_230(Net_1544),
-        .AIN_231(Net_1545),
-        .AIN23(Net_1546),
-        .AIN_240(Net_1547),
-        .AIN_241(Net_1548),
-        .AIN_250(Net_1549),
-        .AIN_251(Net_1550),
-        .AIN25(Net_1551),
-        .AIN_260(Net_1552),
-        .AIN_261(Net_1553),
-        .AIN_270(Net_1554),
-        .AIN_271(Net_1555),
-        .AIN27(Net_1556),
-        .AIN_280(Net_1557),
-        .AIN_281(Net_1558),
-        .AIN_290(Net_1559),
-        .AIN_291(Net_1560),
-        .AIN29(Net_1561),
-        .AIN_300(Net_1562),
-        .AIN_301(Net_1563),
-        .AIN_310(Net_1564),
-        .AIN_311(Net_1565),
-        .AIN31(Net_1566),
-        .AIN_320(Net_1567),
-        .AIN_321(Net_1568),
-        .AIN49(Net_1569),
-        .AIN50(Net_1570),
-        .AIN51(Net_1571),
-        .AIN52(Net_1572),
-        .AIN53(Net_1573),
-        .AIN54(Net_1574),
-        .AIN55(Net_1575),
-        .AIN56(Net_1576),
-        .AIN57(Net_1577),
-        .AIN58(Net_1578),
-        .AIN59(Net_1579),
-        .AIN60(Net_1580),
-        .AIN61(Net_1581),
-        .AIN62(Net_1582),
-        .AIN63(Net_1583),
-        .AIN64(Net_1584),
-        .vdac_ref(Net_1585));
+        .AIN_60(Net_4412),
+        .AIN_61(Net_4413),
+        .AIN_70(Net_4414),
+        .AIN_71(Net_4415),
+        .AIN7(Net_4416),
+        .AIN_80(Net_4417),
+        .AIN_81(Net_4418),
+        .AIN_90(Net_4419),
+        .AIN_91(Net_4420),
+        .AIN9(Net_4421),
+        .AIN_100(Net_4422),
+        .AIN_101(Net_4423),
+        .AIN_110(Net_4424),
+        .AIN_111(Net_4425),
+        .AIN11(Net_4426),
+        .AIN_120(Net_4427),
+        .AIN_121(Net_4428),
+        .AIN_130(Net_4429),
+        .AIN_131(Net_4430),
+        .AIN13(Net_4431),
+        .AIN_140(Net_4432),
+        .AIN_141(Net_4433),
+        .AIN_150(Net_4434),
+        .AIN_151(Net_4435),
+        .AIN15(Net_4436),
+        .AIN_160(Net_4437),
+        .AIN_161(Net_4438),
+        .AIN_170(Net_4439),
+        .AIN_171(Net_4440),
+        .AIN17(Net_4441),
+        .AIN_180(Net_4442),
+        .AIN_181(Net_4443),
+        .AIN_190(Net_4444),
+        .AIN_191(Net_4445),
+        .AIN19(Net_4446),
+        .AIN_200(Net_4447),
+        .AIN_201(Net_4448),
+        .AIN_210(Net_4449),
+        .AIN_211(Net_4450),
+        .AIN21(Net_4451),
+        .AIN_220(Net_4452),
+        .AIN_221(Net_4453),
+        .AIN_230(Net_4454),
+        .AIN_231(Net_4455),
+        .AIN23(Net_4456),
+        .AIN_240(Net_4457),
+        .AIN_241(Net_4458),
+        .AIN_250(Net_4459),
+        .AIN_251(Net_4460),
+        .AIN25(Net_4461),
+        .AIN_260(Net_4462),
+        .AIN_261(Net_4463),
+        .AIN_270(Net_4464),
+        .AIN_271(Net_4465),
+        .AIN27(Net_4466),
+        .AIN_280(Net_4467),
+        .AIN_281(Net_4468),
+        .AIN_290(Net_4469),
+        .AIN_291(Net_4470),
+        .AIN29(Net_4471),
+        .AIN_300(Net_4472),
+        .AIN_301(Net_4473),
+        .AIN_310(Net_4474),
+        .AIN_311(Net_4475),
+        .AIN31(Net_4476),
+        .AIN_320(Net_4477),
+        .AIN_321(Net_4478),
+        .AIN49(Net_4479),
+        .AIN50(Net_4480),
+        .AIN51(Net_4481),
+        .AIN52(Net_4482),
+        .AIN53(Net_4483),
+        .AIN54(Net_4484),
+        .AIN55(Net_4485),
+        .AIN56(Net_4486),
+        .AIN57(Net_4487),
+        .AIN58(Net_4488),
+        .AIN59(Net_4489),
+        .AIN60(Net_4490),
+        .AIN61(Net_4491),
+        .AIN62(Net_4492),
+        .AIN63(Net_4493),
+        .AIN64(Net_4494),
+        .vdac_ref(Net_4495));
 
 	wire [0:0] tmpOE__A1_net;
 	wire [0:0] tmpFB_0__A1_net;
@@ -3785,11 +3784,11 @@ module top ;
 
     Timer_v2_80_6 Timer_TS (
         .reset(Net_12),
-        .interrupt(Net_1614),
+        .interrupt(Net_4400),
         .enable(1'b1),
         .trigger(1'b1),
         .capture(1'b0),
-        .capture_out(Net_1618),
+        .capture_out(Net_4404),
         .tc(Net_1619),
         .clock(Net_10));
     defparam Timer_TS.CaptureCount = 2;
@@ -4102,18 +4101,18 @@ module top ;
     PWM_v3_30_9 PWM_1 (
         .reset(1'b0),
         .clock(CLK24M),
-        .tc(Net_4324),
-        .pwm1(Net_4325),
-        .pwm2(Net_4326),
-        .interrupt(Net_4327),
+        .tc(Net_4574),
+        .pwm1(Net_4575),
+        .pwm2(Net_4576),
+        .interrupt(Net_4577),
         .capture(1'b0),
         .kill(Net_2183),
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
         .pwm(Net_2404),
-        .ph1(Net_4332),
-        .ph2(Net_4333));
+        .ph1(Net_4582),
+        .ph2(Net_4583));
     defparam PWM_1.Resolution = 8;
 
     PWM_v3_30_10 PWM_2 (

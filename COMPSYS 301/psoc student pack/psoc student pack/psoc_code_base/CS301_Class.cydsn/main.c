@@ -34,38 +34,23 @@ void handle_usb();
 
 #define moveSlow 50
 #define travelDist 326 // how
+#define Q1CHANNEL 3
+#define Q2CHANNEL 5 
+#define Q3CHANNEL 0
+#define Q4CHANNEL 1
+#define Q5CHANNEL 2
+#define Q6CHANNEL 4
 
 CY_ISR_PROTO(isr_eoc_Interrupt_test);
 CY_ISR_PROTO(isr_motor_interrupt_speed);
+CY_ISR_PROTO(isr_TS_interrupt_sample);
 
-CY_ISR(isr_eoc_Interrupt_test)
-{
-    #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
-        isr_TS_Interrupt_InterruptCallback();
-    #endif /* isr_eoc_INTERRUPT_INTERRUPT_CALLBACK */ 
 
-    /*  Place your Interrupt code here. */
-    /* `#START isr_eoc_Interrupt` */
-    int8 channel = 0; // connect filter output to pin 0.5 for channel 0 
-    uint16 value =  ADC_GetResult16(channel);
-    // get value from ADC then convert to DAC to send to external LEDs
-    if (value >= 2211) // why      5v/4095 gives interval ,voltage we want *interval = adc value/ .       4095 from (2^12-1)   2.194v //old was 2457
-    {
-        LED_Write(1);   
-    
-    }
-    
-    else{
-        LED_Write(0);
-
-    }
-    /* `#END` */
-}
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(200);//202
-    PWM_2_WriteCompare(50); //52
+    PWM_1_WriteCompare(200);//200
+    PWM_2_WriteCompare(50); //50
 }
 void motorGoBackwards(){
     
@@ -74,8 +59,8 @@ void motorGoBackwards(){
     PWM_2_WriteCompare(201); //201
 }
 void motorStop(){
-    PWM_1_WriteCompare(128); // left wheel near power switch is stronker than right wheel
-    PWM_2_WriteCompare(125);
+    PWM_1_WriteCompare(127); // left wheel near power switch is stronker than right wheel
+    PWM_2_WriteCompare(127);
 }
 
 void motorTurnLeft(){
@@ -92,9 +77,57 @@ void motorTurnLeft(){
 
 void motorTurnRight(){
     // TO DO
-   
+    
+    PWM_1_WriteCompare(127);//200
+    PWM_2_WriteCompare(rotaSpeed); //50
+   CyDelay(rota90Left);
 }
+int changeMotor=0;
+int checkLight =0;
+int lightState=0;
+int lightDetectedFront[3] = {0,0,0};
+int counteoc = 0;
+int processSensors = 0;
+CY_ISR(isr_eoc_Interrupt_test)
+{
+    #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
+        isr_TS_Interrupt_InterruptCallback();
+    #endif /* isr_eoc_INTERRUPT_INTERRUPT_CALLBACK */ 
 
+    /*  Place your Interrupt code here. */
+    /* `#START isr_eoc_Interrupt` */
+    uint16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
+    uint16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
+    uint16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
+    // get value from ADC then convert to DAC to send to external LEDs
+    
+    counteoc++;
+    
+     if (valueQ3 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[0] = 1;
+    }
+     if (valueQ4 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[1] = 1;
+    }
+    
+    if (valueQ5 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[2] = 1;
+    }
+    
+    
+    
+    if (counteoc >= 10) {
+       // if x10, set flag for while loop to process lightresults
+        processSensors = 1;
+           
+    }
+    
+    
+    /* `#END` */
+}
 // NEED TO INCREASE/DECREASE SPEED TOO
 // AND IMPLEMENT LIGHT SENSOR THINGS
 volatile static int8 count;
@@ -155,7 +188,17 @@ void motorRun(){
     //motorCount();//checks count per second.
 
 }
+CY_ISR(isr_TS_Interrupt_sample)
+{
+    #ifdef isr_TS_INTERRUPT_INTERRUPT_CALLBACK
+        isr_TS_Interrupt_InterruptCallback();
+    #endif /* isr_TS_INTERRUPT_INTERRUPT_CALLBACK */ 
+        ADC_StartConvert();
+    /*  Place your Interrupt code here. */
+    /* `#START isr_TS_Interrupt` */
 
+    /* `#END` */
+}
 
 
 int main()
@@ -173,38 +216,34 @@ int main()
     QuadDec_M1_Start();
     QuadDec_M2_Start(); //init the quadencoder,
     isr_motor_StartEx(isr_motor_interrupt_speed);
+    isr_TS_StartEx(isr_TS_Interrupt_sample);
     isr_eoc_StartEx(isr_eoc_Interrupt_test);
     
-    
     ADC_Start();
-    ADC_StartConvert();
+    //ADC_StartConvert();
     
     PWM_1_Start();
     PWM_2_Start();
     
     LED_Write(0);
-    //VDAC8_1_Start();
-   
-    //motorRun();
-     
     ///////IF NOT USINNG MOTOR RUN DO PWM START STUFF
     // SO write compare is a measure of speed
     // And Cy delay delays the running of the motor and duration that it travels
     //look at motor RUn config above for more info.
-    motorStop();
-    CyDelay(2000); // to prep
-    while(QuadDec_M1_GetCounter()<travelDist){
+    //motorStop();
+    //CyDelay(2000); // to prep
+   /* while(QuadDec_M1_GetCounter()<travelDist){
     //where counter is value we want it to stop at.
         motorGoStraight();
     
     
-    }
+    }*/
 
     
     //motorStop();
    // CyDelay(2000); // so we have time to set the robot up
     //motorTurnLeft();
-    motorStop();
+    //motorStop();
     //motorCount();//checks count per second.
      
     
@@ -225,16 +264,17 @@ int main()
     while(1)
     {
         /* Place your application code here. */
-        /*handle_usb();
-        if (flag_KB_string == 1)
-        {
-            usbPutString(line);
-            flag_KB_string = 0;
-        }  */
         
-         // if counts >=120
-        //stop motor.
-        
+        //if Q3 SENSES BLACK LIGHT BUT Q4 DOES NOT SENSE THE BLACK LIGHT MOVE TOWARDS THE RIGHT TO REALIGN CENTER
+    // IF Q3 AND Q4 SENSES TURN 90 DEGREES LEFT - intersection
+    // IF Q5 BUT NOT Q4 SENSES BLACK LIGHT MOVE TOWARDS THE LEFT TO REALIGN CENTER
+    // IF Q5 AND Q4 TURN 90 DEGREES RIGHT - intersection
+       
+        if (processSensors == 1) {
+            //make decision
+            processSensors = 0;
+            counteoc = 0;
+        }
         
     }   
 }
