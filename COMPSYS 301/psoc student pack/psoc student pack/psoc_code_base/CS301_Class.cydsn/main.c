@@ -63,8 +63,8 @@ CY_ISR(isr_eoc_Interrupt_test)
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(202);//202
-    PWM_2_WriteCompare(52); //52
+    PWM_1_WriteCompare(200);//202
+    PWM_2_WriteCompare(51); //52
 }
 void motorGoBackwards(){
     
@@ -145,12 +145,12 @@ void motorRun(){
     CyDelay(2000);
     motorStop();
     
-    motorGoBackwards();
+    //motorGoBackwards();
 
     
-    CyDelay(2000);
+    //CyDelay(2000);
  
-    motorStop();
+    //motorStop();
     motorCount();//checks count per second.
 
 }
@@ -169,22 +169,22 @@ int main()
    
     Timer_TS_Start();
     Timer_Motor_Start();
-   // QuadDec_M1_Start();
-    //QuadDec_M2_Start(); //init the quadencoder,
-    //isr_motor_StartEx(isr_motor_interrupt_speed);
+    QuadDec_M1_Start();
+    QuadDec_M2_Start(); //init the quadencoder,
+    isr_motor_StartEx(isr_motor_interrupt_speed);
     isr_eoc_StartEx(isr_eoc_Interrupt_test);
     
     
     ADC_Start();
     ADC_StartConvert();
     
-     PWM_1_Start();
+    PWM_1_Start();
     PWM_2_Start();
     
     LED_Write(0);
     //VDAC8_1_Start();
    
-    //motorRun();
+    motorRun();
     
     //motorLeft
     //motorRu
