@@ -52,7 +52,7 @@ void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
     PWM_1_WriteCompare(180);//200
-    PWM_2_WriteCompare(60); //50
+    PWM_2_WriteCompare(72); //50
 }
 void motorGoBackwards(){
     
@@ -87,8 +87,10 @@ int changeMotor=0;
 int checkLight =0;
 int lightState=0;
 volatile int lightDetectedFront[3] = {0,0,0};
+volatile int lightDetectedBack[3] = {0,0,0};
 volatile int counteoc = 0;
 volatile int processSensors = 0;
+volatile int middle =0;
 CY_ISR(isr_eoc_Interrupt_test)
 {
     #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
@@ -100,6 +102,11 @@ CY_ISR(isr_eoc_Interrupt_test)
     int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
     int16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
     int16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
+    
+    int16 valueQ1 =  ADC_GetResult16(Q1CHANNEL);
+    int16 valueQ2 =  ADC_GetResult16(Q2CHANNEL);
+    int16 valueQ6 =  ADC_GetResult16(Q6CHANNEL);
+    
     // get value from ADC then convert to DAC to send to external LEDs
     if (counteoc < 10) {
         //2211
@@ -115,6 +122,11 @@ CY_ISR(isr_eoc_Interrupt_test)
         if (valueQ5 >= 2211) {
         //set flag for white light detected
         lightDetectedFront[2] = 1;
+        }
+        
+        if (valueQ1 >= 2211) {
+        //set flag for white light detected
+            middle = 1;
         }
         
         counteoc++;
@@ -285,12 +297,24 @@ int main()
               LED_Write(0);
             }
             
+
+            
+            
             switch(operation){
             //where 1 is on white, 0 is on black.
                 
-                case 0: // 000 // ALL UNDER black
+                case 7: // 111 // all under white\\
+                    
+                    if (onLine==1){
+                    
+                    motorGoStraight();
+                    break;
+                    }
+                    
+                    else{
                     motorStop();
                     break;
+                    }
                     
                 case 3:// 0 1 1 // Q3 under black
                     onLine=0;
@@ -298,31 +322,34 @@ int main()
                     LED_Write(1);
                     break;    
                     
+                case 6:// 1 1 0 // Q5 under black
+                    onLine=0;
+                    motorTurnRight(200);
+                    LED_Write(1);
+                    break;
+                    
                 case 5:// 101 // Q4 under black
                     onLine=1;
                     motorGoStraight();
                     LED_Write(0);
                     break;
                     
-                case 6:// 1 1 0 // Q5 under black
-                    onLine=0;
-                    motorTurnRight(200);
-                    LED_Write(1);
-                    break;
                 
-                case 7: // 111 // all under white
+                
+                
+                    
+                case 0: // 000 // ALL UNDER black
+                      
                     motorStop();
-                    break;
-                 
+                    break;    
 
                
                 
-                
-                default: 
-                    motorStop();
-                    break;
+               
             
             }
+            
+            
             
             
 //            if(leftIntersection){
@@ -350,10 +377,11 @@ int main()
 //                CyDelay(20);//small rotation need small time
 //            }
 
-           
+       
             //reset variable.
             processSensors = 0;
             //reset counter
+
              counteoc = 0;
             //reset flags for lightsensors because it checks every 10 iterations, adds delay/
             lightDetectedFront[0] = 0;
