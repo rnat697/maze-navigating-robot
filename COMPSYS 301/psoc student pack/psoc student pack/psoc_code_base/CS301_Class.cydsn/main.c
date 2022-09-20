@@ -64,7 +64,7 @@ void motorStop(){
     PWM_2_WriteCompare(127);
 }
 
-void motorTurnLeft(int x){
+void motorTurnLeft(uint8 x){
     // TO DO
     
     PWM_1_WriteCompare(x); //55
@@ -279,44 +279,46 @@ int main()
             int operation = convertSensorBinary();
             
             switch(operation){
-            
+            //where 1 is on white, 0 is on black.
                 case 0: // all sensors are in black
                     motorGoStraight();
                     LED_Write(1);
                     break;
                 
-                case 1:
+                case 1:// 0 0 1
                     motorStop();
                     LED_Write(0);
                     break;
                 
                 
-                case 2:
+                case 2: // 0 1 0
                     motorStop();
                     LED_Write(0);
                     break;
                 
-                case 3:
+                case 3:// 0 1 1
                     motorStop();
                     LED_Write(0);
                     break;
                 
-                case 4:
+                case 4:// 1 0 0
                     motorStop();
                     motorTurnRight(100);
                     break;
                     
-                case 5:
+                case 5:// 1 0 1
+                    motorStop();
                     LED_Write(1);
                     motorGoStraight();
                     break;
 
-                case 6:
+                case 6://1 1 0
                     motorStop();
+                    motorTurnLeft(50);
                     LED_Write(0);
                     break;
                     
-                case 7:
+                case 7:// 1 1 1
             
                     motorStop();
                     LED_Write(0);
