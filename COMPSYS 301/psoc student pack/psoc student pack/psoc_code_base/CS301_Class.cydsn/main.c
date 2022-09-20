@@ -51,8 +51,8 @@ int convertSensorBinary();
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(200);//200
-    PWM_2_WriteCompare(50); //50
+    PWM_1_WriteCompare(180);//200
+    PWM_2_WriteCompare(60); //50
 }
 void motorGoBackwards(){
     
@@ -256,7 +256,7 @@ int main()
 //        
 //    RF_BT_SELECT_Write(0);
 //    motorCount();//checks count per second.
-
+    int onLine=0; // tracks if line is between three sensors
     //usbPutString(displaystring);
     while(1)
     {
@@ -280,34 +280,44 @@ int main()
         
             int operation = convertSensorBinary();
             
+            if (onLine){
+              motorGoStraight();
+              LED_Write(0);
+            }
+            
             switch(operation){
             //where 1 is on white, 0 is on black.
-//                case 0: // all sensors are in black
-//                    motorStop();
-//                    //motorGoStraight();
-//                    //motorTurnLeft(50);
-//                    LED_Write(0);
-//                    break;
                 
+                case 0: // 000 // ALL UNDER black
+                    motorStop();
+                    break;
+                    
+                case 3:// 0 1 1 // Q3 under black
+                    onLine=0;
+                    motorTurnLeft(50);
+                    LED_Write(1);
+                    break;    
+                    
+                case 5:// 101 // Q4 under black
+                    onLine=1;
+                    motorGoStraight();
+                    LED_Write(0);
+                    break;
+                    
                 case 6:// 1 1 0 // Q5 under black
+                    onLine=0;
                     motorTurnRight(200);
                     LED_Write(1);
                     break;
                 
-               case 5:// 101 // Q4 under black
-                    motorGoStraight();
-                    LED_Write(0);
-                    break;
-               case 3:// 0 1 1 // Q3 under black
-                    motorTurnLeft(50);
-                    LED_Write(1);
-                    break;
-                case 0: // 000 // ALL UNDER black
-                    motorStop();
-                    break;
                 case 7: // 111 // all under white
                     motorStop();
                     break;
+                 
+
+               
+                
+                
                 default: 
                     motorStop();
                     break;
