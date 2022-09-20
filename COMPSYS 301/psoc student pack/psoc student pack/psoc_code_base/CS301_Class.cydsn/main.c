@@ -45,7 +45,7 @@ void handle_usb();
 CY_ISR_PROTO(isr_eoc_Interrupt_test);
 CY_ISR_PROTO(isr_motor_interrupt_speed);
 CY_ISR_PROTO(isr_TS_interrupt_sample);
-
+int convertSensorBinary();
 
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
@@ -101,7 +101,7 @@ CY_ISR(isr_eoc_Interrupt_test)
     int16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
     // get value from ADC then convert to DAC to send to external LEDs
     if (counteoc < 10) {
-        
+        //2211
         if (valueQ3 >= 2211) {
         //set flag for white light detected
         lightDetectedFront[0] = 1;
@@ -119,6 +119,7 @@ CY_ISR(isr_eoc_Interrupt_test)
         counteoc++;
     } else {
         processSensors = 1;   
+        counteoc = 0;
     }
     /* `#END` */
 }
@@ -274,15 +275,59 @@ int main()
             
            //check intersectin
             ///mazeIntersection(leftIntersection,rightIntersection);
+        
+            int operation = convertSensorBinary();
             
-            int noneOn = ((lightDetectedFront[0]==1) == (lightDetectedFront[2] ==1));
-            //int Q4On = ((lightDetectedFront[0]==1) == (lightDetectedFront[2] ==1));
-             if(noneOn == (lightDetectedFront[1] ==1)){
-                motorStop();
-                LED_Write(0);
+            switch(operation){
+            
+                case 0: // all sensors are in black
+                    motorGoStraight();
+                    LED_Write(1);
+                    break;
+                
+//                case 1:
+//                    motorStop();
+//                    LED_Write(0);
+//                    break;
+//                
+//                
+//                case 2:
+//                    motorStop();
+//                    LED_Write(0);
+//                    break;
+//                
+//                case 3:
+//                    motorStop();
+//                    LED_Write(0);
+//                    break;
+                
+                case 4:
+                    motorStop();
+                    motorTurnRight(100);
+                    break;
+                    
+                case 5:
+                    LED_Write(1);
+                    motorGoStraight();
+                    break;
+
+//                case 6:
+//                    motorStop();
+//                    LED_Write(0);
+//                    break;
+                    
+                case 7:
+            
+                    motorStop();
+                    LED_Write(0);
+                    break;
+            
+                default:
+                    motorStop();
+            
+                
+            
             }
-            
-            
 //            if(leftIntersection){
 //                motorTurnLeft(55);
 //            
@@ -307,24 +352,36 @@ int main()
 //                motorTurnLeft(140);
 //                CyDelay(20);//small rotation need small time
 //            }
-            if(lightDetectedFront[1] == 0){
-                LED_Write(1);
-                motorGoStraight();
 
-            }
            
             //reset variable.
             processSensors = 0;
             //reset counter
-            counteoc = 0;
-            //reset flags for lightsensors
+            //reset flags for lightsensors because it checks every 10 iterations, adds delay/
             lightDetectedFront[0] = 0;
             lightDetectedFront[1] = 0;
             lightDetectedFront[2] = 0;
-            
+          
         }
         
     }   
+}
+
+  
+
+
+
+int convertSensorBinary()
+{
+   int value=0;
+   int binaryIndex = 0; // index from 0 to 2 to calculate from LSB to MSB
+   for (int i=2;i>=0;i--){
+    int x=lightDetectedFront[i];
+    value = value + ((2^binaryIndex) * lightDetectedFront[i]); // eg first value, Q2 is in whitelight=1,    2^1 * 1  = 2, 
+    binaryIndex++;
+    }
+
+    return value;
 }
 //* ========================================
 void usbPutString(char *s)
