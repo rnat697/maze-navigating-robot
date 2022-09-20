@@ -51,8 +51,8 @@ int convertSensorBinary();
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(180);//200
-    PWM_2_WriteCompare(72); //50
+    PWM_1_WriteCompare(160);//200 //180 //160
+    PWM_2_WriteCompare(93); //52 //72 //93
 }
 void motorGoBackwards(){
     
@@ -333,6 +333,18 @@ int main()
                     motorGoStraight();
                     LED_Write(0);
                     break;
+                case 1: // 001 --> left intersection
+                    motorStop();
+                    CyDelay(50);
+                    motorTurnLeft(50);
+                    CyDelay(250);
+                    break;
+                case 4: // 100 --> right intersection
+                    motorStop();
+                    CyDelay(50);
+                    motorTurnRight(200);
+                    CyDelay(250);
+                    break;
                     
                 
                 
@@ -340,7 +352,7 @@ int main()
                     
                 case 0: // 000 // ALL UNDER black
                       
-                    motorStop();
+                    motorGoStraight();
                     break;    
 
                
