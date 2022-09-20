@@ -18,6 +18,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include <project.h>
 //* ========================================
 #include "defines.h"
@@ -60,15 +61,15 @@ void motorGoBackwards(){
     PWM_2_WriteCompare(201); //201
 }
 void motorStop(){
-    PWM_1_WriteCompare(127); // left wheel near power switch is stronker than right wheel
+    PWM_1_WriteCompare(127); 
     PWM_2_WriteCompare(127);
 }
 
-void motorTurnLeft(int x){
+void motorTurnLeft(uint8 x){
     // TO DO
     
-    PWM_1_WriteCompare(x); //55
-    PWM_2_WriteCompare(125); //201
+    PWM_1_WriteCompare(127); //55
+    PWM_2_WriteCompare(x); //201
     
     
     
@@ -78,8 +79,8 @@ void motorTurnLeft(int x){
 void motorTurnRight(int x){
     // TO DO
     
-    PWM_1_WriteCompare(127);//200
-    PWM_2_WriteCompare(x); //50
+    PWM_1_WriteCompare(x);//200
+    PWM_2_WriteCompare(127); //50
 
 }
 int changeMotor=0;
@@ -115,11 +116,11 @@ CY_ISR(isr_eoc_Interrupt_test)
         //set flag for white light detected
         lightDetectedFront[2] = 1;
         }
-        //Q3,Q4,Q5  in Array format.
+        
         counteoc++;
     } else {
         processSensors = 1;   
-        counteoc = 0;
+       
     }
     /* `#END` */
 }
@@ -205,16 +206,17 @@ int main()
     CYGlobalIntEnable;
     count  = 0;
     
-   
+    ADC_Start();
     Timer_TS_Start();
     Timer_Motor_Start();
     QuadDec_M1_Start();
     QuadDec_M2_Start(); //init the quadencoder,
     //isr_motor_StartEx(isr_motor_interrupt_speed);
+    
     isr_TS_StartEx(isr_TS_Interrupt_sample);
     isr_eoc_StartEx(isr_eoc_Interrupt_test);
     
-    ADC_Start();
+    
     //ADC_StartConvert();
     
     PWM_1_Start();
@@ -226,7 +228,7 @@ int main()
     // And Cy delay delays the running of the motor and duration that it travels
     //look at motor RUn config above for more info.
     motorStop();
-    CyDelay(2000); // to prep
+    CyDelay(2000); // to prep PARTY PART!! WHOOP WHOOP
    /* while(QuadDec_M1_GetCounter()<travelDist){
     //where counter is value we want it to stop at.
         motorGoStraight();
@@ -279,58 +281,40 @@ int main()
             int operation = convertSensorBinary();
             
             switch(operation){
-            
-                case 0: // all sensors are in black
-                    motorStop();
-                    LED_Write(0);
-                    break;
+            //where 1 is on white, 0 is on black.
+//                case 0: // all sensors are in black
+//                    motorStop();
+//                    //motorGoStraight();
+//                    //motorTurnLeft(50);
+//                    LED_Write(0);
+//                    break;
                 
-//                case 1: // Left intersection
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
-//                
-//                
-//                case 2: // do nothing 010
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
-//                
-//                case 3: // align right
-//                    
-//                    motorStop();
-//                    motorTurnRight(10);
-//                    LED_Write(1);
-//                    break;
-//                
-//                case 4: // right intersection
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
-//                    
-                case 5: // go straight when 101
-               
+                case 6:// 1 1 0 // Q5 under black
+                    motorTurnRight(200);
                     LED_Write(1);
-                    motorGoStraight();
                     break;
-//
-//                case 6: // Align left
-//                    motorStop();
-//                   motorTurnLeft(10);
-//                    LED_Write(1);
-//                    break;
-                    
-                case 7: // Full white, stop (uturn later?)
-                    motorStop();
+                
+               case 5:// 101 // Q4 under black
+                    motorGoStraight();
                     LED_Write(0);
                     break;
-            
-                default:
+               case 3:// 0 1 1 // Q3 under black
+                    motorTurnLeft(50);
+                    LED_Write(1);
+                    break;
+                case 0: // 000 // ALL UNDER black
                     motorStop();
-            
-                
+                    break;
+                case 7: // 111 // all under white
+                    motorStop();
+                    break;
+                default: 
+                    motorStop();
+                    break;
             
             }
+            
+            
 //            if(leftIntersection){
 //                motorTurnLeft(55);
 //            
@@ -360,6 +344,7 @@ int main()
             //reset variable.
             processSensors = 0;
             //reset counter
+             counteoc = 0;
             //reset flags for lightsensors because it checks every 10 iterations, adds delay/
             lightDetectedFront[0] = 0;
             lightDetectedFront[1] = 0;
@@ -377,12 +362,12 @@ int main()
 int convertSensorBinary()
 {
    int value=0;
-   int binaryIndex= 0;
-   for (int i=2;i>=0;i--){
-    int x=lightDetectedFront[i];
-    value = value + ((2^binaryIndex) * lightDetectedFront[i]); // eg first value, Q2 is in whitelight=1,    2^1 * 1  = 2, 
-    }
-
+  int Q3 = lightDetectedFront[0];
+  int Q4 = lightDetectedFront[1];
+   int Q5 = lightDetectedFront[2];
+  value=value + lightDetectedFront[0]*4;
+  value=value + lightDetectedFront[1]*2;
+  value=value + lightDetectedFront[2]*1;
     return value;
 }
 //* ========================================
@@ -416,7 +401,7 @@ void handle_usb()
     
     static uint8 usbStarted = FALSE;
     static uint16 usbBufCount = 0;
-    uint8 c; 
+    uint8 c = 0; 
     
 
     if (!usbStarted)
