@@ -80,7 +80,7 @@ void motorTurnRight(int x){
     
     PWM_1_WriteCompare(127);//200
     PWM_2_WriteCompare(x); //50
-
+   CyDelay(rota90Left);
 }
 int changeMotor=0;
 int checkLight =0;
@@ -115,7 +115,7 @@ CY_ISR(isr_eoc_Interrupt_test)
         //set flag for white light detected
         lightDetectedFront[2] = 1;
         }
-        //Q3,Q4,Q5  in Array format.
+        
         counteoc++;
     } else {
         processSensors = 1;   
@@ -281,46 +281,43 @@ int main()
             switch(operation){
             
                 case 0: // all sensors are in black
-                    motorStop();
-                    LED_Write(0);
+                    motorGoStraight();
+                    LED_Write(1);
                     break;
                 
-//                case 1: // Left intersection
+//                case 1:
 //                    motorStop();
 //                    LED_Write(0);
 //                    break;
 //                
 //                
-//                case 2: // do nothing 010
+//                case 2:
 //                    motorStop();
 //                    LED_Write(0);
 //                    break;
 //                
-//                case 3: // align right
-//                    
-//                    motorStop();
-//                    motorTurnRight(10);
-//                    LED_Write(1);
-//                    break;
-//                
-//                case 4: // right intersection
+//                case 3:
 //                    motorStop();
 //                    LED_Write(0);
 //                    break;
-//                    
-                case 5: // go straight when 101
-               
+                
+                case 4:
+                    motorStop();
+                    motorTurnRight(100);
+                    break;
+                    
+                case 5:
                     LED_Write(1);
                     motorGoStraight();
                     break;
-//
-//                case 6: // Align left
+
+//                case 6:
 //                    motorStop();
-//                   motorTurnLeft(10);
-//                    LED_Write(1);
+//                    LED_Write(0);
 //                    break;
                     
-                case 7: // Full white, stop (uturn later?)
+                case 7:
+            
                     motorStop();
                     LED_Write(0);
                     break;
@@ -377,10 +374,11 @@ int main()
 int convertSensorBinary()
 {
    int value=0;
-   int binaryIndex= 0;
+   int binaryIndex = 0; // index from 0 to 2 to calculate from LSB to MSB
    for (int i=2;i>=0;i--){
     int x=lightDetectedFront[i];
     value = value + ((2^binaryIndex) * lightDetectedFront[i]); // eg first value, Q2 is in whitelight=1,    2^1 * 1  = 2, 
+    binaryIndex++;
     }
 
     return value;
