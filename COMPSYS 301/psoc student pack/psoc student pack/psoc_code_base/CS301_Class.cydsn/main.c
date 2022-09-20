@@ -352,7 +352,7 @@ int main()
                     
                 case 0: // 000 // ALL UNDER black
                       
-                    motorGoStraight();
+                    motorStop();
                     break;    
 
                

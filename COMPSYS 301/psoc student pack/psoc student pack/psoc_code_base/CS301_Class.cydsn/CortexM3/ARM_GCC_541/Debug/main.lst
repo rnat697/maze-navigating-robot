@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
   55              		.type	flag_ts_update, %object
   56              		.size	flag_ts_update, 1
   57              	flag_ts_update:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 2
 
 
   58 000b 00       		.space	1
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  106              		.section	.text.motorGoStraight,"ax",%progbits
  107              		.align	2
  108              		.global	motorGoStraight
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 3
 
 
  109              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
   49:main.c        **** int convertSensorBinary();
   50:main.c        **** 
   51:main.c        **** void motorGoStraight(){
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 4
 
 
  115              		.loc 1 51 0
@@ -193,11 +193,11 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  124              		.cfi_def_cfa_register 7
   52:main.c        ****     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150
   53:main.c        ****     //M1_IN2_Write(0);
-  54:main.c        ****     PWM_1_WriteCompare(160);//200
+  54:main.c        ****     PWM_1_WriteCompare(160);//200 //180 //160
  125              		.loc 1 54 0
  126 0004 A020     		movs	r0, #160
  127 0006 FFF7FEFF 		bl	PWM_1_WriteCompare
-  55:main.c        ****     PWM_2_WriteCompare(93); //50
+  55:main.c        ****     PWM_2_WriteCompare(93); //52 //72 //93
  128              		.loc 1 55 0
  129 000a 5D20     		movs	r0, #93
  130 000c FFF7FEFF 		bl	PWM_2_WriteCompare
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  159 000a C920     		movs	r0, #201
  160 000c FFF7FEFF 		bl	PWM_2_WriteCompare
   62:main.c        **** }
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 5
 
 
  161              		.loc 1 62 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  209 0000 80B5     		push	{r7, lr}
  210              		.cfi_def_cfa_offset 8
  211              		.cfi_offset 7, -8
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 6
 
 
  212              		.cfi_offset 14, -4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  255 0004 00AF     		add	r7, sp, #0
  256              		.cfi_def_cfa_register 7
  257 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 7
 
 
   80:main.c        ****     // TO DO
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  304              		.type	lightDetectedBack, %object
  305              		.size	lightDetectedBack, 12
  306              	lightDetectedBack:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 8
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 8
 
 
  307 002c 00000000 		.space	12
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
   99:main.c        **** 
  100:main.c        ****     /*  Place your Interrupt code here. */
  101:main.c        ****     /* `#START isr_eoc_Interrupt` */
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 9
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 9
 
 
  102:main.c        ****     int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  386              		.loc 1 115 0
  387 0056 164B     		ldr	r3, .L14+4
  388 0058 0122     		movs	r2, #1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 10
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 10
 
 
  389 005a 1A60     		str	r2, [r3]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  426 009a 1360     		str	r3, [r2]
  133:main.c        ****     } else {
  134:main.c        ****         processSensors = 1;   
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 11
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 11
 
 
  135:main.c        ****        
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  471              		.cfi_offset 7, -4
  472 0002 00AF     		add	r7, sp, #0
  473              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 12
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 12
 
 
  144:main.c        ****     #ifdef isr_motor_INTERRUPT_INTERRUPT_CALLBACK
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  502              		.cfi_startproc
  503              		@ args = 0, pretend = 0, frame = 20008
  504              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 13
 
 
  505 0000 80B5     		push	{r7, lr}
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  551 006e 03F12403 		add	r3, r3, #36
  552 0072 B3F90020 		ldrsh	r2, [r3]
  553 0076 07F59C43 		add	r3, r7, #19968
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 14
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 14
 
 
  554 007a 03F12203 		add	r3, r3, #34
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  601              		.cfi_def_cfa_offset 8
  602              		.cfi_offset 7, -8
  603              		.cfi_offset 14, -4
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 15
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 15
 
 
  604 0002 00AF     		add	r7, sp, #0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  199:main.c        **** CY_ISR(isr_TS_Interrupt_sample)
  200:main.c        **** {
  636              		.loc 1 200 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 16
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 16
 
 
  637              		.cfi_startproc
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  218:main.c        ****     CYGlobalIntEnable;
  674              		.loc 1 218 0
  675              		.syntax unified
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 17
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 17
 
 
  676              	@ 218 "main.c" 1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  241:main.c        ****     //look at motor RUn config above for more info.
  242:main.c        ****     motorStop();
  708              		.loc 1 242 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 18
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 18
 
 
  709 003c FFF7FEFF 		bl	motorStop
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  283:main.c        ****             
  284:main.c        ****             //make decision
  285:main.c        ****             
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 19
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 19
 
 
  286:main.c        ****             //checks intersection
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  754              		.loc 1 308 0
  755 0098 7B68     		ldr	r3, [r7, #4]
  756 009a 012B     		cmp	r3, #1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 20
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 20
 
 
  757 009c 02D1     		bne	.L34
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  790 00cc 22E0     		b	.L25
  791              	.L31:
  330:main.c        ****                     
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 21
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 21
 
 
  331:main.c        ****                 case 5:// 101 // Q4 under black
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  829 010c 02E0     		b	.L25
  830              	.L26:
  348:main.c        ****                     
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 22
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 22
 
 
  349:main.c        ****                 
@@ -1267,9 +1267,9 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  352:main.c        ****                     
  353:main.c        ****                 case 0: // 000 // ALL UNDER black
  354:main.c        ****                       
- 355:main.c        ****                     motorGoStraight();
+ 355:main.c        ****                     motorStop();
  831              		.loc 1 355 0
- 832 010e FFF7FEFF 		bl	motorGoStraight
+ 832 010e FFF7FEFF 		bl	motorStop
  356:main.c        ****                     break;    
  833              		.loc 1 356 0
  834 0112 00BF     		nop
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  839 0118 1A60     		str	r2, [r3]
  395:main.c        ****             //reset counter
  396:main.c        **** 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 23
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 23
 
 
  397:main.c        ****              counteoc = 0;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  412:main.c        **** int convertSensorBinary()
  413:main.c        **** {
  879              		.loc 1 413 0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 24
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 24
 
 
  880              		.cfi_startproc
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  926              		.loc 1 421 0
  927 003e FB68     		ldr	r3, [r7, #12]
  422:main.c        **** }
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 25
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 25
 
 
  928              		.loc 1 422 0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  973 0010 002B     		cmp	r3, #0
  974 0012 FAD0     		beq	.L43
  432:main.c        ****     s[63]='\0';
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 26
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 26
 
 
  975              		.loc 1 432 0 is_stmt 1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1022 0004 00AF     		add	r7, sp, #0
  1023              		.cfi_def_cfa_register 7
  1024 0006 0346     		mov	r3, r0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 27
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 27
 
 
  1025 0008 FB71     		strb	r3, [r7, #7]
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  450:main.c        ****     // entered string is made available in 'line' and 'flag_KB_string' is set
  451:main.c        ****     
  452:main.c        ****     static uint8 usbStarted = FALSE;
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 28
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 28
 
 
  453:main.c        ****     static uint16 usbBufCount = 0;
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  488:main.c        ****                     {
  489:main.c        ****                        USBUART_PutChar('!');        
  490:main.c        ****                     }
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 29
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 29
 
 
  491:main.c        ****                     else
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1127 0064 1A70     		strb	r2, [r3]
  1128 0066 23E0     		b	.L49
  1129              	.L51:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 30
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 30
 
 
  483:main.c        ****                     usbBufCount--;
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1177              	.L49:
  1178              	.L55:
  1179 00b0 00BF     		nop
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 31
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 31
 
 
  1180 00b2 0837     		adds	r7, r7, #8
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1234 0035 05       		.byte	0x5
  1235 0036 8B000000 		.4byte	.LASF2
  1236 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 32
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 32
 
 
  1237 003b 02       		.byte	0x2
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1291 009e 04       		.byte	0x4
  1292 009f 29000000 		.4byte	.LASF14
  1293 00a3 02       		.uleb128 0x2
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 33
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 33
 
 
  1294 00a4 04       		.byte	0x4
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1348 0117 96050000 		.4byte	.LASF24
  1349 011b 05       		.byte	0x5
  1350 011c 2E       		.byte	0x2e
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 34
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 34
 
 
  1351 011d CE000000 		.4byte	0xce
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1405 0189 CE000000 		.4byte	0xce
  1406 018d 18       		.byte	0x18
  1407 018e 08       		.uleb128 0x8
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 35
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 35
 
 
  1408 018f B1020000 		.4byte	.LASF34
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1462 01ff 44       		.byte	0x44
  1463 0200 AA000000 		.4byte	0xaa
  1464 0204 02       		.uleb128 0x2
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 36
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 36
 
 
  1465 0205 91       		.byte	0x91
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1519 0269 0C       		.uleb128 0xc
  1520 026a 51010000 		.4byte	.LASF46
  1521 026e 01       		.byte	0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 37
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 37
 
 
  1522 026f 6A       		.byte	0x6a
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1576 02d5 74       		.sleb128 -12
  1577 02d6 0C       		.uleb128 0xc
  1578 02d7 49030000 		.4byte	.LASF51
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 38
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 38
 
 
  1579 02db 01       		.byte	0x1
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1633 0346 12       		.uleb128 0x12
  1634 0347 43010000 		.4byte	.LASF58
  1635 034b 01       		.byte	0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 39
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 39
 
 
  1636 034c D4       		.byte	0xd4
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1690 03bf 16       		.uleb128 0x16
  1691 03c0 513400   		.ascii	"Q4\000"
  1692 03c3 01       		.byte	0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 40
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 40
 
 
  1693 03c4 A001     		.2byte	0x1a0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1747 042c 00000000 		.4byte	.LFB78
  1748 0430 CC000000 		.4byte	.LFE78-.LFB78
  1749 0434 01       		.uleb128 0x1
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 41
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 41
 
 
  1750 0435 9C       		.byte	0x9c
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1804 04a8 05       		.byte	0x5
  1805 04a9 11       		.byte	0x11
  1806 04aa B6000000 		.4byte	0xb6
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 42
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 42
 
 
  1807 04ae 05       		.uleb128 0x5
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1861 0520 19       		.byte	0x19
  1862 0521 AA000000 		.4byte	0xaa
  1863 0525 05       		.uleb128 0x5
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 43
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 43
 
 
  1864 0526 03       		.byte	0x3
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1918 059b 05       		.uleb128 0x5
  1919 059c 03       		.byte	0x3
  1920 059d 00000000 		.4byte	displaystring
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 44
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 44
 
 
  1921 05a1 1D       		.uleb128 0x1d
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  1975 0613 00000000 		.4byte	checkLight
  1976 0617 1D       		.uleb128 0x1d
  1977 0618 81010000 		.4byte	.LASF91
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 45
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 45
 
 
  1978 061c 01       		.byte	0x1
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2032 0691 5D       		.byte	0x5d
  2033 0692 38060000 		.4byte	0x638
  2034 0696 05       		.uleb128 0x5
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 46
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 46
 
 
  2035 0697 03       		.byte	0x3
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2089 0031 0B       		.uleb128 0xb
  2090 0032 03       		.uleb128 0x3
  2091 0033 08       		.uleb128 0x8
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 47
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 47
 
 
  2092 0034 00       		.byte	0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2146 006a 09       		.uleb128 0x9
  2147 006b 2E       		.uleb128 0x2e
  2148 006c 00       		.byte	0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 48
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 48
 
 
  2149 006d 3F       		.uleb128 0x3f
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2203 00a5 02       		.uleb128 0x2
  2204 00a6 18       		.uleb128 0x18
  2205 00a7 00       		.byte	0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 49
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 49
 
 
  2206 00a8 00       		.byte	0
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2260 00df 40       		.uleb128 0x40
  2261 00e0 18       		.uleb128 0x18
  2262 00e1 9642     		.uleb128 0x2116
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 50
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 50
 
 
  2263 00e3 19       		.uleb128 0x19
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2317 011a 0B       		.uleb128 0xb
  2318 011b 3B       		.uleb128 0x3b
  2319 011c 0B       		.uleb128 0xb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 51
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 51
 
 
  2320 011d 49       		.uleb128 0x49
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2374 0154 06       		.uleb128 0x6
  2375 0155 40       		.uleb128 0x40
  2376 0156 18       		.uleb128 0x18
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 52
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 52
 
 
  2377 0157 9742     		.uleb128 0x2117
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2431 018f 05       		.uleb128 0x5
  2432 0190 49       		.uleb128 0x49
  2433 0191 13       		.uleb128 0x13
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 53
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 53
 
 
  2434 0192 02       		.uleb128 0x2
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2488 01c9 03       		.uleb128 0x3
  2489 01ca 08       		.uleb128 0x8
  2490 01cb 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 54
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 54
 
 
  2491 01cc 0B       		.uleb128 0xb
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2545 0030 00000000 		.4byte	.LFB68
  2546 0034 20000000 		.4byte	.LFE68-.LFB68
  2547 0038 00000000 		.4byte	.LFB69
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 55
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 55
 
 
  2548 003c BC000000 		.4byte	.LFE69-.LFB69
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2602 007c 00000000 		.4byte	0
  2603              		.section	.debug_line,"",%progbits
  2604              	.Ldebug_line0:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 56
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 56
 
 
  2605 0000 10030000 		.section	.debug_str,"MS",%progbits,1
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2629      7420696E 
  2629      7400
  2630              	.LASF88:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 57
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 57
 
 
  2631 0095 73797374 		.ascii	"system_state\000"
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2657 0181 6C696768 		.ascii	"lightState\000"
  2657      74537461 
  2657      746500
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 58
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 58
 
 
  2658              	.LASF54:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2680      206C6F6E 
  2680      6720696E 
  2680      7400
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 59
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 59
 
 
  2681              	.LASF63:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2706 0322 666C6167 		.ascii	"flag_ts_display\000"
  2706      5F74735F 
  2706      64697370 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 60
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 60
 
 
  2706      6C617900 
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2730      20696E74 
  2730      00
  2731              	.LASF81:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 61
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 61
 
 
  2732 03d3 666C6167 		.ascii	"flag_KB_string\000"
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2758      7472696E 
  2758      6700
  2759              	.LASF77:
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 62
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 62
 
 
  2760 046a 666C6167 		.ascii	"flag_ts_speed\000"
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2784      6E7400
  2785              	.LASF26:
  2786 0505 67305F79 		.ascii	"g0_ypos\000"
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 63
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 63
 
 
  2786      706F7300 
@@ -3778,6 +3778,6 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 1
  2812      6174696F 
  2812      6E00
  2813              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cccmaJSh.s 			page 64
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccYaaSWy.s 			page 64
 
 
