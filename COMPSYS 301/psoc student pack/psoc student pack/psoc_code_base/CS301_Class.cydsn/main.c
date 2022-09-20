@@ -285,21 +285,21 @@ int main()
                     LED_Write(1);
                     break;
                 
-//                case 1:
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
-//                
-//                
-//                case 2:
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
-//                
-//                case 3:
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
+                case 1:
+                    motorStop();
+                    LED_Write(0);
+                    break;
+                
+                
+                case 2:
+                    motorStop();
+                    LED_Write(0);
+                    break;
+                
+                case 3:
+                    motorStop();
+                    LED_Write(0);
+                    break;
                 
                 case 4:
                     motorStop();
@@ -311,10 +311,10 @@ int main()
                     motorGoStraight();
                     break;
 
-//                case 6:
-//                    motorStop();
-//                    LED_Write(0);
-//                    break;
+                case 6:
+                    motorStop();
+                    LED_Write(0);
+                    break;
                     
                 case 7:
             
