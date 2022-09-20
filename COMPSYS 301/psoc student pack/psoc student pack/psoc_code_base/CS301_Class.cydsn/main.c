@@ -362,6 +362,9 @@ int main()
 int convertSensorBinary()
 {
    int value=0;
+  int Q3 = lightDetectedFront[0];
+  int Q4 = lightDetectedFront[1];
+   int Q5 = lightDetectedFront[2];
   value=value + lightDetectedFront[0]*4;
   value=value + lightDetectedFront[1]*2;
   value=value + lightDetectedFront[2]*1;

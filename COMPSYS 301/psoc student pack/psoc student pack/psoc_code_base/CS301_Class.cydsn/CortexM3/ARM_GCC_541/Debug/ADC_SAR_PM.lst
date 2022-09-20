@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
   24:Generated_Source\PSoC5/ADC_SAR_PM.c **** static ADC_SAR_BACKUP_STRUCT  ADC_SAR_backup =
   25:Generated_Source\PSoC5/ADC_SAR_PM.c **** {
   26:Generated_Source\PSoC5/ADC_SAR_PM.c ****     ADC_SAR_DISABLED
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 2
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 2
 
 
   27:Generated_Source\PSoC5/ADC_SAR_PM.c **** };
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
   51:Generated_Source\PSoC5/ADC_SAR_PM.c **** * Function Name: ADC_SAR_RestoreConfig
   52:Generated_Source\PSoC5/ADC_SAR_PM.c **** ********************************************************************************
   53:Generated_Source\PSoC5/ADC_SAR_PM.c **** *
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 3
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 3
 
 
   54:Generated_Source\PSoC5/ADC_SAR_PM.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
   78:Generated_Source\PSoC5/ADC_SAR_PM.c **** *
   79:Generated_Source\PSoC5/ADC_SAR_PM.c **** * Parameters:
   80:Generated_Source\PSoC5/ADC_SAR_PM.c **** *  None.
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 4
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 4
 
 
   81:Generated_Source\PSoC5/ADC_SAR_PM.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  126              	.L6:
  101:Generated_Source\PSoC5/ADC_SAR_PM.c ****         }
  102:Generated_Source\PSoC5/ADC_SAR_PM.c ****         ADC_SAR_Stop();
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 5
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 5
 
 
  127              		.loc 1 102 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  126:Generated_Source\PSoC5/ADC_SAR_PM.c **** *
  127:Generated_Source\PSoC5/ADC_SAR_PM.c **** * Global Variables:
  128:Generated_Source\PSoC5/ADC_SAR_PM.c **** *  ADC_SAR_backup - The structure field 'enableState' is used to
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 6
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 6
 
 
  129:Generated_Source\PSoC5/ADC_SAR_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  195              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
  196              		.file 3 "Generated_Source\\PSoC5\\ADC_SAR.h"
  197              		.section	.debug_info,"",%progbits
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 7
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 7
 
 
  198              	.Ldebug_info0:
@@ -370,14 +370,14 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  204 000c 00000000 		.4byte	.LASF19
  205 0010 0C       		.byte	0xc
  206 0011 F1000000 		.4byte	.LASF20
- 207 0015 86010000 		.4byte	.LASF21
+ 207 0015 99010000 		.4byte	.LASF21
  208 0019 00000000 		.4byte	.Ldebug_ranges0+0
  209 001d 00000000 		.4byte	0
  210 0021 00000000 		.4byte	.Ldebug_line0
  211 0025 02       		.uleb128 0x2
  212 0026 01       		.byte	0x1
  213 0027 06       		.byte	0x6
- 214 0028 57020000 		.4byte	.LASF0
+ 214 0028 48020000 		.4byte	.LASF0
  215 002c 02       		.uleb128 0x2
  216 002d 01       		.byte	0x1
  217 002e 08       		.byte	0x8
@@ -385,7 +385,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  219 0033 02       		.uleb128 0x2
  220 0034 02       		.byte	0x2
  221 0035 05       		.byte	0x5
- 222 0036 32020000 		.4byte	.LASF2
+ 222 0036 23020000 		.4byte	.LASF2
  223 003a 02       		.uleb128 0x2
  224 003b 02       		.byte	0x2
  225 003c 07       		.byte	0x7
@@ -393,7 +393,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  227 0041 02       		.uleb128 0x2
  228 0042 04       		.byte	0x4
  229 0043 05       		.byte	0x5
- 230 0044 42020000 		.4byte	.LASF4
+ 230 0044 33020000 		.4byte	.LASF4
  231 0048 02       		.uleb128 0x2
  232 0049 04       		.byte	0x4
  233 004a 07       		.byte	0x7
@@ -401,7 +401,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  235 004f 02       		.uleb128 0x2
  236 0050 08       		.byte	0x8
  237 0051 05       		.byte	0x5
- 238 0052 1F020000 		.4byte	.LASF6
+ 238 0052 86010000 		.4byte	.LASF6
  239 0056 02       		.uleb128 0x2
  240 0057 08       		.byte	0x8
  241 0058 07       		.byte	0x7
@@ -415,10 +415,10 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  249 0066 07       		.byte	0x7
  250 0067 62010000 		.4byte	.LASF8
  251 006b 04       		.uleb128 0x4
- 252 006c 3C020000 		.4byte	.LASF12
+ 252 006c 2D020000 		.4byte	.LASF12
  253 0070 02       		.byte	0x2
  254 0071 E401     		.2byte	0x1e4
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 8
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 8
 
 
  255 0073 2C000000 		.4byte	0x2c
@@ -433,7 +433,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  264 0085 02       		.uleb128 0x2
  265 0086 01       		.byte	0x1
  266 0087 08       		.byte	0x8
- 267 0088 2D020000 		.4byte	.LASF11
+ 267 0088 94010000 		.4byte	.LASF11
  268 008c 04       		.uleb128 0x4
  269 008d EC000000 		.4byte	.LASF13
  270 0091 02       		.byte	0x2
@@ -447,7 +447,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  278 00a0 2A       		.byte	0x2a
  279 00a1 B2000000 		.4byte	0xb2
  280 00a5 07       		.uleb128 0x7
- 281 00a6 4B020000 		.4byte	.LASF22
+ 281 00a6 3C020000 		.4byte	.LASF22
  282 00aa 03       		.byte	0x3
  283 00ab 2C       		.byte	0x2c
  284 00ac 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  309 00e0 3A010000 		.4byte	.LASF17
  310 00e4 01       		.byte	0x1
  311 00e5 5A       		.byte	0x5a
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 9
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 9
 
 
  312 00e6 00000000 		.4byte	.LFB2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  366 001f 24       		.uleb128 0x24
  367 0020 00       		.byte	0
  368 0021 0B       		.uleb128 0xb
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 10
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 10
 
 
  369 0022 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  423 0058 00       		.byte	0
  424 0059 08       		.uleb128 0x8
  425 005a 16       		.uleb128 0x16
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 11
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 11
 
 
  426 005b 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  480 0093 19       		.uleb128 0x19
  481 0094 00       		.byte	0
  482 0095 00       		.byte	0
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 12
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 12
 
 
  483 0096 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  533 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  533      43313120 
  533      352E342E 
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 13
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 13
 
 
  533      31203230 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  553      69676E65 
  553      6420696E 
  553      7400
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 14
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 14
 
 
  554              	.LASF3:
@@ -812,53 +812,50 @@ ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 1
  565      6720756E 
  565      7369676E 
  565      65642069 
- 566              	.LASF21:
- 567 0186 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
- 567      6C65732E 
- 567      6175636B 
- 567      6C616E64 
- 567      2E61632E 
- 568 01b4 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
- 568      6A656374 
- 568      2D70726F 
- 568      6A656374 
- 568      5F67726F 
- 569 01e4 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
- 569      61636B5C 
- 569      70736F63 
- 569      20737475 
- 569      64656E74 
- 570 0214 6C617373 		.ascii	"lass.cydsn\000"
- 570      2E637964 
- 570      736E00
- 571              	.LASF6:
- 572 021f 6C6F6E67 		.ascii	"long long int\000"
- 572      206C6F6E 
- 572      6720696E 
- 572      7400
- 573              	.LASF11:
- 574 022d 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\smiy200\AppData\Local\Temp\cc0dgty1.s 			page 15
+ 566              	.LASF6:
+ 567 0186 6C6F6E67 		.ascii	"long long int\000"
+ 567      206C6F6E 
+ 567      6720696E 
+ 567      7400
+ 568              	.LASF11:
+ 569 0194 63686172 		.ascii	"char\000"
+ 569      00
+ 570              	.LASF21:
+ 571 0199 433A5C55 		.ascii	"C:\\Users\\rnata\\Documents\\GitHub\\project-projec"
+ 571      73657273 
+ 571      5C726E61 
+ 571      74615C44 
+ 571      6F63756D 
+ 572 01c7 745F6772 		.ascii	"t_group_11\\COMPSYS 301\\psoc student pack\\psoc st"
+ 572      6F75705F 
+ 572      31315C43 
+ 572      4F4D5053 
+ 572      59532033 
+ 573 01f7 7564656E 		.ascii	"udent pack\\psoc_code_base\\CS301_Class.cydsn\000"
+ 573      74207061 
+ 573      636B5C70 
+ 573      736F635F 
+ 573      636F6465 
+ 574              	.LASF2:
+ 575 0223 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccN19eD8.s 			page 15
 
 
- 574      00
- 575              	.LASF2:
- 576 0232 73686F72 		.ascii	"short int\000"
- 576      7420696E 
- 576      7400
- 577              	.LASF12:
- 578 023c 75696E74 		.ascii	"uint8\000"
- 578      3800
- 579              	.LASF4:
- 580 0242 6C6F6E67 		.ascii	"long int\000"
- 580      20696E74 
- 580      00
- 581              	.LASF22:
- 582 024b 656E6162 		.ascii	"enableState\000"
- 582      6C655374 
- 582      61746500 
- 583              	.LASF0:
- 584 0257 7369676E 		.ascii	"signed char\000"
- 584      65642063 
- 584      68617200 
- 585              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 575      7420696E 
+ 575      7400
+ 576              	.LASF12:
+ 577 022d 75696E74 		.ascii	"uint8\000"
+ 577      3800
+ 578              	.LASF4:
+ 579 0233 6C6F6E67 		.ascii	"long int\000"
+ 579      20696E74 
+ 579      00
+ 580              	.LASF22:
+ 581 023c 656E6162 		.ascii	"enableState\000"
+ 581      6C655374 
+ 581      61746500 
+ 582              	.LASF0:
+ 583 0248 7369676E 		.ascii	"signed char\000"
+ 583      65642063 
+ 583      68617200 
+ 584              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

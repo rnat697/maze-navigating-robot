@@ -1,5 +1,5 @@
 # CS301_Class
-# 2022-09-19 05:15:17Z
+# 2022-09-20 20:59:49Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -18,7 +18,7 @@ set_io "M2_QA(0)" iocell 1 7
 set_io "M2_QB(0)" iocell 1 6
 set_io "A0(0)" iocell 0 5
 set_io "A1(0)" iocell 0 6
-set_io "A2(0)" iocell 0 2
+set_io "A2(0)" iocell 0 7
 set_io "A3(0)" iocell 0 0
 set_io "A4(0)" iocell 1 2
 set_io "A5(0)" iocell 0 1

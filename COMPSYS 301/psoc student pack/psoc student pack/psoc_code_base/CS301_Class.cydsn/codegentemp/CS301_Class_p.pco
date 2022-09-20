@@ -248,5 +248,5 @@ set_io "A6(0)" iocell 15 4
 # Note: port 15 is the logical name for port 8
 set_io "A7(0)" iocell 15 5
 set_io "A0(0)" iocell 0 5
-set_io "A2(0)" iocell 0 2
+set_io "A2(0)" iocell 0 7
 set_io "A3(0)" iocell 0 0

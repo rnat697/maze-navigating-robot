@@ -1,5 +1,5 @@
--- Project:   \\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj
--- Generated: 09/19/2022 17:16:24
+-- Project:   C:\Users\rnata\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj
+-- Generated: 09/21/2022 09:00:05
 -- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
@@ -618,7 +618,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF A1(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF A1(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF A2(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF A2(0) : LABEL IS "P0[2]";
+    ATTRIBUTE Location OF A2(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF A3(0) : LABEL IS "iocell13";
     ATTRIBUTE Location OF A3(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF A4(0) : LABEL IS "iocell14";
