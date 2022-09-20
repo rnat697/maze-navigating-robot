@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
   24:Generated_Source\PSoC5/CONTROL_PM.c **** 
   25:Generated_Source\PSoC5/CONTROL_PM.c ****     
   26:Generated_Source\PSoC5/CONTROL_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 2
 
 
   27:Generated_Source\PSoC5/CONTROL_PM.c **** * Function Name: CONTROL_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
   69              		.thumb_func
   70              		.type	CONTROL_RestoreConfig, %function
   71              	CONTROL_RestoreConfig:
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 3
 
 
   72              	.LFB1:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  105              		.section	.text.CONTROL_Sleep,"ax",%progbits
  106              		.align	2
  107              		.global	CONTROL_Sleep
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 4
 
 
  108              		.thumb
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
   88:Generated_Source\PSoC5/CONTROL_PM.c **** * Function Name: CONTROL_Wakeup
   89:Generated_Source\PSoC5/CONTROL_PM.c **** ********************************************************************************
   90:Generated_Source\PSoC5/CONTROL_PM.c **** *
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 5
 
 
   91:Generated_Source\PSoC5/CONTROL_PM.c **** * Summary:
@@ -287,25 +287,25 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  168 000c 00000000 		.4byte	.LASF19
  169 0010 0C       		.byte	0xc
  170 0011 3A010000 		.4byte	.LASF20
- 171 0015 97010000 		.4byte	.LASF21
+ 171 0015 75010000 		.4byte	.LASF21
  172 0019 00000000 		.4byte	.Ldebug_ranges0+0
  173 001d 00000000 		.4byte	0
  174 0021 00000000 		.4byte	.Ldebug_line0
  175 0025 02       		.uleb128 0x2
  176 0026 01       		.byte	0x1
  177 0027 06       		.byte	0x6
- 178 0028 49020000 		.4byte	.LASF0
+ 178 0028 58020000 		.4byte	.LASF0
  179 002c 02       		.uleb128 0x2
  180 002d 01       		.byte	0x1
  181 002e 08       		.byte	0x8
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 6
 
 
  182 002f CB000000 		.4byte	.LASF1
  183 0033 02       		.uleb128 0x2
  184 0034 02       		.byte	0x2
  185 0035 05       		.byte	0x5
- 186 0036 21020000 		.4byte	.LASF2
+ 186 0036 3F020000 		.4byte	.LASF2
  187 003a 02       		.uleb128 0x2
  188 003b 02       		.byte	0x2
  189 003c 07       		.byte	0x7
@@ -313,7 +313,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  191 0041 02       		.uleb128 0x2
  192 0042 04       		.byte	0x4
  193 0043 05       		.byte	0x5
- 194 0044 40020000 		.4byte	.LASF4
+ 194 0044 4F020000 		.4byte	.LASF4
  195 0048 02       		.uleb128 0x2
  196 0049 04       		.byte	0x4
  197 004a 07       		.byte	0x7
@@ -321,7 +321,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  199 004f 02       		.uleb128 0x2
  200 0050 08       		.byte	0x8
  201 0051 05       		.byte	0x5
- 202 0052 84010000 		.4byte	.LASF6
+ 202 0052 1D020000 		.4byte	.LASF6
  203 0056 02       		.uleb128 0x2
  204 0057 08       		.byte	0x8
  205 0058 07       		.byte	0x7
@@ -335,7 +335,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  213 0066 07       		.byte	0x7
  214 0067 2D010000 		.4byte	.LASF8
  215 006b 04       		.uleb128 0x4
- 216 006c 2B020000 		.4byte	.LASF12
+ 216 006c 49020000 		.4byte	.LASF12
  217 0070 02       		.byte	0x2
  218 0071 E401     		.2byte	0x1e4
  219 0073 2C000000 		.4byte	0x2c
@@ -350,7 +350,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  228 0085 02       		.uleb128 0x2
  229 0086 01       		.byte	0x1
  230 0087 08       		.byte	0x8
- 231 0088 92010000 		.4byte	.LASF11
+ 231 0088 2B020000 		.4byte	.LASF11
  232 008c 04       		.uleb128 0x4
  233 008d D9000000 		.4byte	.LASF13
  234 0091 02       		.byte	0x2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  236 0094 98000000 		.4byte	0x98
  237 0098 05       		.uleb128 0x5
  238 0099 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 7
 
 
  239 009d 06       		.uleb128 0x6
@@ -403,7 +403,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  278 00ee 01       		.uleb128 0x1
  279 00ef 9C       		.byte	0x9c
  280 00f0 0A       		.uleb128 0xa
- 281 00f1 31020000 		.4byte	.LASF18
+ 281 00f1 30020000 		.4byte	.LASF18
  282 00f5 01       		.byte	0x1
  283 00f6 65       		.byte	0x65
  284 00f7 00000000 		.4byte	.LFB3
@@ -411,14 +411,14 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  286 00ff 01       		.uleb128 0x1
  287 0100 9C       		.byte	0x9c
  288 0101 0B       		.uleb128 0xb
- 289 0102 75010000 		.4byte	.LASF23
+ 289 0102 0E020000 		.4byte	.LASF23
  290 0106 01       		.byte	0x1
  291 0107 17       		.byte	0x17
  292 0108 B2000000 		.4byte	0xb2
  293 010c 05       		.uleb128 0x5
  294 010d 03       		.byte	0x3
  295 010e 00000000 		.4byte	CONTROL_backup
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 8
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 8
 
 
  296 0112 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  350 0033 13       		.uleb128 0x13
  351 0034 00       		.byte	0
  352 0035 00       		.byte	0
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 9
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 9
 
 
  353 0036 05       		.uleb128 0x5
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  407 006c 0E       		.uleb128 0xe
  408 006d 3A       		.uleb128 0x3a
  409 006e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 10
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 10
 
 
  410 006f 3B       		.uleb128 0x3b
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  464 0000 34000000 		.4byte	0x34
  465 0004 0200     		.2byte	0x2
  466 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 11
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 11
 
 
  467 000a 04       		.byte	0x4
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  502              	.LASF14:
  503 009c 434F4E54 		.ascii	"CONTROL_BACKUP_STRUCT\000"
  503      524F4C5F 
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 12
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 12
 
 
  503      4241434B 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  525      645F536F 
  525      75726365 
  525      5C50536F 
-ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 13
 
 
  526              	.LASF7:
@@ -727,53 +727,59 @@ ARM GAS  C:\Users\rnata\AppData\Local\Temp\ccLsOnuA.s 			page 1
  527      6720756E 
  527      7369676E 
  527      65642069 
- 528              	.LASF23:
- 529 0175 434F4E54 		.ascii	"CONTROL_backup\000"
- 529      524F4C5F 
- 529      6261636B 
- 529      757000
- 530              	.LASF6:
- 531 0184 6C6F6E67 		.ascii	"long long int\000"
- 531      206C6F6E 
- 531      6720696E 
- 531      7400
- 532              	.LASF11:
- 533 0192 63686172 		.ascii	"char\000"
- 533      00
- 534              	.LASF21:
- 535 0197 433A5C55 		.ascii	"C:\\Users\\rnata\\Documents\\GitHub\\project-projec"
- 535      73657273 
- 535      5C726E61 
- 535      74615C44 
- 535      6F63756D 
- 536 01c5 745F6772 		.ascii	"t_group_11\\COMPSYS 301\\psoc student pack\\psoc st"
- 536      6F75705F 
- 536      31315C43 
- 536      4F4D5053 
- 536      59532033 
- 537 01f5 7564656E 		.ascii	"udent pack\\psoc_code_base\\CS301_Class.cydsn\000"
- 537      74207061 
- 537      636B5C70 
- 537      736F635F 
- 537      636F6465 
- 538              	.LASF2:
- 539 0221 73686F72 		.ascii	"short int\000"
- 539      7420696E 
- 539      7400
- 540              	.LASF12:
- 541 022b 75696E74 		.ascii	"uint8\000"
- 541      3800
- 542              	.LASF18:
- 543 0231 434F4E54 		.ascii	"CONTROL_Wakeup\000"
- 543      524F4C5F 
- 543      57616B65 
- 543      757000
- 544              	.LASF4:
- 545 0240 6C6F6E67 		.ascii	"long int\000"
- 545      20696E74 
- 545      00
- 546              	.LASF0:
- 547 0249 7369676E 		.ascii	"signed char\000"
- 547      65642063 
- 547      68617200 
- 548              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 528              	.LASF21:
+ 529 0175 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 529      6C65732E 
+ 529      6175636B 
+ 529      6C616E64 
+ 529      2E61632E 
+ 530 01a3 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 530      6A656374 
+ 530      2D70726F 
+ 530      6A656374 
+ 530      5F67726F 
+ 531 01d3 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
+ 531      61636B5C 
+ 531      70736F63 
+ 531      20737475 
+ 531      64656E74 
+ 532 0203 6C617373 		.ascii	"lass.cydsn\000"
+ 532      2E637964 
+ 532      736E00
+ 533              	.LASF23:
+ 534 020e 434F4E54 		.ascii	"CONTROL_backup\000"
+ 534      524F4C5F 
+ 534      6261636B 
+ 534      757000
+ 535              	.LASF6:
+ 536 021d 6C6F6E67 		.ascii	"long long int\000"
+ 536      206C6F6E 
+ 536      6720696E 
+ 536      7400
+ 537              	.LASF11:
+ 538 022b 63686172 		.ascii	"char\000"
+ 538      00
+ 539              	.LASF18:
+ 540 0230 434F4E54 		.ascii	"CONTROL_Wakeup\000"
+ 540      524F4C5F 
+ 540      57616B65 
+ 540      757000
+ 541              	.LASF2:
+ 542 023f 73686F72 		.ascii	"short int\000"
+ 542      7420696E 
+ 542      7400
+ 543              	.LASF12:
+ 544 0249 75696E74 		.ascii	"uint8\000"
+ 544      3800
+ 545              	.LASF4:
+ 546 024f 6C6F6E67 		.ascii	"long int\000"
+ 546      20696E74 
+ 546      00
+ 547              	.LASF0:
+ 548 0258 7369676E 		.ascii	"signed char\000"
+ 548      65642063 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccAdkrj7.s 			page 14
+
+
+ 548      68617200 
+ 549              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -68,8 +68,8 @@ void motorStop(){
 void motorTurnLeft(uint8 x){
     // TO DO
     
-    PWM_1_WriteCompare(x); //55
-    PWM_2_WriteCompare(125); //201
+    PWM_1_WriteCompare(127); //55
+    PWM_2_WriteCompare(x); //201
     
     
     
@@ -79,8 +79,8 @@ void motorTurnLeft(uint8 x){
 void motorTurnRight(int x){
     // TO DO
     
-    PWM_1_WriteCompare(127);//200
-    PWM_2_WriteCompare(x); //50
+    PWM_1_WriteCompare(x);//200
+    PWM_2_WriteCompare(127); //50
 
 }
 int changeMotor=0;
@@ -290,7 +290,7 @@ int main()
 //                    break;
                 
                 case 6:// 1 1 0 // Q5 under black
-                    motorTurnRight(50);
+                    motorTurnRight(200);
                     LED_Write(1);
                     break;
                 

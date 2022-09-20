@@ -1,6 +1,6 @@
-C:\Users\rnata\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj|3612cb06-6ae4-46b7-9211-f9008473e960
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|66f367ca-fe9e-4b85-b478-22e7199d5f4f
-C:\Users\rnata\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|6ec21091-fd25-4205-a120-9fb1b4214591
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|251934b5-df05-4c00-816b-02f7b670278a
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ea9e2ac1-6eb1-4a35-ae86-2d4ea1dca460
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ebf38c15-986b-4958-8813-c221dcda3e36
+\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj|107e5f4c-2d5a-418b-92d4-8f689e01f6af
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|97ace8b3-b902-49e3-b792-ba6795516d6d
+\\files.auckland.ac.nz\myhome\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|1ce6a063-87f0-498b-8d33-6d932d6819dc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|2a4e8adb-dd1d-4a2d-940b-2716ad65e912
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c2f39869-6599-4fb1-ac71-bd025cb6eded
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b4800ff8-e329-4540-ba47-8b238b3d1a38
