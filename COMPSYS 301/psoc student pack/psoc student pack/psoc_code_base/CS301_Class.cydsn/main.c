@@ -55,6 +55,14 @@ void motorGoStraight(){
     PWM_1_WriteCompare(160);//200 //180 //160
     PWM_2_WriteCompare(93); //52 //72 //93
 }
+void motorSetSpeed(int x){
+    ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
+    //M1_IN2_Write(0);
+    
+    //fastest speed
+    PWM_1_WriteCompare(200+x);//200 //180 //160
+    PWM_2_WriteCompare(52-x); //52 //72 //93
+}
 void motorGoBackwards(){
     
     //M1_IN2_Write(0);
@@ -198,18 +206,18 @@ void motorCount(){
 
 }
 
-void motorRun(){
+void motorRun(int x,int time){
     
     
     
-    PWM_1_Start();
-    PWM_2_Start();
+    //PWM_1_Start();
+    //PWM_2_Start();
 
 
     motorStop();
-    CyDelay(2000); // so we have time to set the robot up
-    motorGoStraight();
-    CyDelay(2000);
+    CyDelay(time); // so we have time to set the robot up
+    motorSetSpeed(x);
+    CyDelay(time);
     motorStop();
     
     //motorGoBackwards();
@@ -259,44 +267,75 @@ int main()
     
     PWM_1_Start();
     PWM_2_Start();
-    
     LED_Write(0);
-    ///////IF NOT USINNG MOTOR RUN DO PWM START STUFF
-    // SO write compare is a measure of speed
-    // And Cy delay delays the running of the motor and duration that it travels
-    //look at motor RUn config above for more info.
-    motorStop();
-    CyDelay(2000); // to prep PARTY PART!! WHOOP WHOOP
-  /*  while(QuadDec_M1_GetCounter()<travelDist){
-   // where counter is value we want it to stop at.
-        motorGoStraight();
+    USBUART_Start(0,USBUART_5V_OPERATION)   ; 
+    ////////////////////////////////
     
-    
-    }*/
+    // Speed//
+//    int speed = -33;
+//    int time = 2000;
+//    motorRun(speed,time);
 
-    
-    //motorStop();
-   // CyDelay(2000); // so we have time to set the robot up
-    //motorTurnLeft();
-    //motorStop();
-    //motorCount();//checks count per second.
-     
-    
-    
-
-    
-
-    
-// ------USB SETUP ----------------    
-//#ifdef USE_USB    
-//    USBUART_Start(0,USBUART_5V_OPERATION);
-//#endif        
-//        
-//    RF_BT_SELECT_Write(0);
-//    motorCount();//checks count per second.
- 
+    /////////////////////////////////////////////
     int lastState=0;
     //usbPutString(displaystring);
+     //87cm motor 1 945, motor2 -958. 2seconds.
+    //10.8 counts per cm for distance.
+   //for speed,43.5cm/s 
+    
+//    
+       //distance
+//    int travelDis = 945;//10.8 * travelDis
+//    while(QuadDec_M1_GetCounter()<travelDis){
+//        if (processSensors == 1) {
+//    
+//            int operation = convertSensorBinary();
+//            
+//    
+//            switch(operation){
+//                case 3:// 0 1 1 // Q3 under black
+//                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
+//                    LED_Write(1);
+//                    break;    
+//                    
+//                case 6:// 1 1 0 // Q5 under black  
+//                    motorTurnRight(200);//increase 200 by 6
+//                    LED_Write(1);
+//                    break;
+//                    
+//                case 5:// 101 // Q4 under black
+//                    motorSetSpeed(0); //-40 is original
+//                    LED_Write(0);
+//                    break;
+//    
+//             processSensors = 0;
+//            //reset counter
+//
+//             counteoc = 0;
+//            //reset flags for lightsensors because it checks every 10 iterations, adds delay/
+//            lightDetectedFront[0] = 0;
+//            lightDetectedFront[1] = 0;
+//            lightDetectedFront[2] = 0;
+//            lightDetectedBack[0] = 0;
+//            lightDetectedBack[1] = 0;
+//            lightDetectedBack[2] = 0;
+//          
+//            }
+//    
+//        }
+//    }
+//    motorStop();
+//    motorCount();
+//    
+    /// End here
+    
+    
+    
+    
+    
+    
+    
+   ///////////////////////////////////////// MOTOR RUN////////
     
     while(1)
     {
@@ -313,22 +352,7 @@ int main()
                 case 7: // 111 // all under white\\
                     
                 
-                    //check switch all back
-                   //if line not in back rotate and go crazy
-                    //check all leftback right back.
-                    
-                    
-                        //if(backOps == 3){//011
-                        //    motorTurnLeft(50);//decrease go fast used to be 50 by 6
-                            
-                            
-                        //}
-                        
-                        //else if(backOps == 6){//110
-                        //    motorTurnRight(200);//decrease go fast used to be 50 by 6
-                            
-                           
-                        //}else 
+              
                         if(backOps == 7){
                             
                              motorCircle(40);
@@ -385,33 +409,7 @@ int main()
             
             }
             
-            
-            
-            
-//            if(leftIntersection){
-//                motorTurnLeft(55);
-//            
-//            
-//                CyDelay(250);
-//            }
-//            
-//            if(rightIntersection){
-//                motorTurnRight(55);
-//                
-//                CyDelay(250);//small rotation need small time
-//            
-//            }
-            
-//            //Slight turns
-//            if(lightDetectedFront[0] == 1 && lightDetectedFront[1]==0){
-//                motorTurnRight(140);
-//                CyDelay(20);//small rotation need small time
-//            }
-//            
-//            if(lightDetectedFront[2] == 0 && lightDetectedFront[1]==1){
-//                motorTurnLeft(140);
-//                CyDelay(20);//small rotation need small time
-//            }
+        
 
        
             //reset variable.
@@ -430,6 +428,8 @@ int main()
         }
         
     }   
+    
+//////////////////////////////////////
 }
 
   
