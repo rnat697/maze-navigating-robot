@@ -108,7 +108,7 @@ CY_ISR(isr_eoc_Interrupt_test)
     int16 valueQ6 =  ADC_GetResult16(Q6CHANNEL);
     
     // get value from ADC then convert to DAC to send to external LEDs
-    if (counteoc < 10) {
+    if (counteoc < 8) {
         //2211
         if (valueQ3 >= 2211) {
         //set flag for white light detected
@@ -296,6 +296,7 @@ int main()
               motorGoStraight();
               LED_Write(0);
             }
+           
             
 
             
@@ -318,13 +319,13 @@ int main()
                     
                 case 3:// 0 1 1 // Q3 under black
                     onLine=0;
-                    motorTurnLeft(50);
+                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
                     LED_Write(1);
                     break;    
                     
                 case 6:// 1 1 0 // Q5 under black
                     onLine=0;
-                    motorTurnRight(200);
+                    motorTurnRight(200);//increase 200 by 6
                     LED_Write(1);
                     break;
                     
@@ -334,16 +335,18 @@ int main()
                     LED_Write(0);
                     break;
                 case 1: // 001 --> left intersection
+                    onLine=0;
                     motorStop();
                     CyDelay(50);
-                    motorTurnLeft(50);
-                    CyDelay(250);
+                    motorTurnLeft(44);
+                    CyDelay(350);
                     break;
                 case 4: // 100 --> right intersection
+                    onLine=0;
                     motorStop();
                     CyDelay(50);
-                    motorTurnRight(200);
-                    CyDelay(250);
+                    motorTurnRight(206);
+                    CyDelay(350);
                     break;
                     
                 
