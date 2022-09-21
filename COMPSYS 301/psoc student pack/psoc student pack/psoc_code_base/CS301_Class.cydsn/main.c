@@ -47,6 +47,7 @@ CY_ISR_PROTO(isr_eoc_Interrupt_test);
 CY_ISR_PROTO(isr_motor_interrupt_speed);
 CY_ISR_PROTO(isr_TS_interrupt_sample);
 int convertSensorBinary();
+int convertBackBinary();
 
 void motorGoStraight(){
     ////PWM_1_WriteCompare(150); // left wheel near power switch is stronker than right wheel //150 //250 
@@ -83,6 +84,19 @@ void motorTurnRight(int x){
     PWM_2_WriteCompare(127); //50
 
 }
+
+
+void motorCircle(uint8 x){
+    // TO DO
+    //positive value turns left
+    //negative value turns right
+    PWM_1_WriteCompare(127+x); //147
+    PWM_2_WriteCompare(127+x); //
+    
+    
+    
+    //255
+}
 int changeMotor=0;
 int checkLight =0;
 int lightState=0;
@@ -108,7 +122,7 @@ CY_ISR(isr_eoc_Interrupt_test)
     int16 valueQ6 =  ADC_GetResult16(Q6CHANNEL);
     
     // get value from ADC then convert to DAC to send to external LEDs
-    if (counteoc < 8) {
+    if (counteoc < 10) {
         //2211
         if (valueQ3 >= 2211) {
         //set flag for white light detected
@@ -126,7 +140,18 @@ CY_ISR(isr_eoc_Interrupt_test)
         
         if (valueQ1 >= 2211) {
         //set flag for white light detected
-            middle = 1;
+            lightDetectedBack[1] = 1;
+        }
+        
+        if (valueQ2 >= 2211) {
+        //set flag for white light detected
+            lightDetectedBack[2] = 1;
+        }
+                
+                
+        if (valueQ6 >= 2211) {
+        //set flag for white light detected
+            lightDetectedBack[0] = 1;
         }
         
         counteoc++;
@@ -195,6 +220,7 @@ void motorRun(){
     //motorStop();
     //motorCount();//checks count per second.
 
+    
 }
 CY_ISR(isr_TS_Interrupt_sample)
 {
@@ -241,8 +267,8 @@ int main()
     //look at motor RUn config above for more info.
     motorStop();
     CyDelay(2000); // to prep PARTY PART!! WHOOP WHOOP
-   /* while(QuadDec_M1_GetCounter()<travelDist){
-    //where counter is value we want it to stop at.
+  /*  while(QuadDec_M1_GetCounter()<travelDist){
+   // where counter is value we want it to stop at.
         motorGoStraight();
     
     
@@ -268,81 +294,76 @@ int main()
 //        
 //    RF_BT_SELECT_Write(0);
 //    motorCount();//checks count per second.
-    int onLine=0; // tracks if line is between three sensors
+ 
+    int lastState=0;
     //usbPutString(displaystring);
+    
     while(1)
     {
         /* Place your application code here. */
-        
-        //if Q3 SENSES BLACK LIGHT BUT Q4 DOES NOT SENSE THE BLACK LIGHT MOVE TOWARDS THE RIGHT TO REALIGN CENTER
-    // IF Q3 AND Q4 SENSES TURN 90 DEGREES LEFT - intersection
-    // IF Q5 BUT NOT Q4 SENSES BLACK LIGHT MOVE TOWARDS THE LEFT TO REALIGN CENTER
-    // IF Q5 AND Q4 TURN 90 DEGREES RIGHT - intersection
        
         if (processSensors == 1) {
-            
-            //make decision
-            
-            //checks intersection
-            //int leftIntersection= (lightDetectedFront[0] == 1 && lightDetectedFront[1]==1);
-            //int rightIntersection=  (lightDetectedFront[2] == 1 && lightDetectedFront[1]==1);
-            
-           //check intersectin
-            ///mazeIntersection(leftIntersection,rightIntersection);
-        
+                   
             int operation = convertSensorBinary();
-            
-            if (onLine){
-              motorGoStraight();
-              LED_Write(0);
-            }
-           
-            
+            int backOps = convertBackBinary();
 
-            
-            
             switch(operation){
             //where 1 is on white, 0 is on black.
                 
                 case 7: // 111 // all under white\\
                     
-                    if (onLine==1){
+                
+                    //check switch all back
+                   //if line not in back rotate and go crazy
+                    //check all leftback right back.
                     
-                    motorGoStraight();
-                    break;
-                    }
                     
-                    else{
-                    motorStop();
-                    break;
-                    }
+                        //if(backOps == 3){//011
+                        //    motorTurnLeft(50);//decrease go fast used to be 50 by 6
+                            
+                            
+                        //}
+                        
+                        //else if(backOps == 6){//110
+                        //    motorTurnRight(200);//decrease go fast used to be 50 by 6
+                            
+                           
+                        //}else 
+                        if(backOps == 7){
+                            
+                             motorCircle(40);
+                            
+                        }
+                        
+                    
+                        else if(backOps == 5){
+                            motorGoStraight();
+                        }   
+                        break;
                     
                 case 3:// 0 1 1 // Q3 under black
-                    onLine=0;
                     motorTurnLeft(50);//decrease go fast used to be 50 by 6
                     LED_Write(1);
                     break;    
                     
-                case 6:// 1 1 0 // Q5 under black
-                    onLine=0;
+                case 6:// 1 1 0 // Q5 under black  
                     motorTurnRight(200);//increase 200 by 6
                     LED_Write(1);
                     break;
                     
                 case 5:// 101 // Q4 under black
-                    onLine=1;
                     motorGoStraight();
                     LED_Write(0);
                     break;
                 case 1: // 001 --> left intersection
-                    onLine=0;
+                    lastState=1;
                     motorStop();
                     CyDelay(50);
                     motorTurnLeft(44);
                     CyDelay(350);
                     break;
                 case 4: // 100 --> right intersection
-                    onLine=0;
+                    lastState=2;
                     motorStop();
                     CyDelay(50);
                     motorTurnRight(206);
@@ -402,6 +423,9 @@ int main()
             lightDetectedFront[0] = 0;
             lightDetectedFront[1] = 0;
             lightDetectedFront[2] = 0;
+            lightDetectedBack[0] = 0;
+            lightDetectedBack[1] = 0;
+            lightDetectedBack[2] = 0;
           
         }
         
@@ -410,7 +434,19 @@ int main()
 
   
 
+int convertBackBinary(){
 
+    int value1=0;
+    int Q1 = lightDetectedBack[1] ;
+    int Q2 = lightDetectedBack[2];
+    int Q6 =lightDetectedBack[0];
+    value1 =  value1 + lightDetectedBack[1] *2;
+    value1 = value1 +  lightDetectedBack[2] *4;
+    value1 = value1 + lightDetectedBack[0] *1;
+
+
+
+}
 
 int convertSensorBinary()
 {
