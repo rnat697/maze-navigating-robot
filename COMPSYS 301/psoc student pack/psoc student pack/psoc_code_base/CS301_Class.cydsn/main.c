@@ -206,7 +206,7 @@ void motorCount(){
 
 }
 
-void motorRun(int x,int time){
+void motorRun(int x){
     
     
     
@@ -214,10 +214,10 @@ void motorRun(int x,int time){
     //PWM_2_Start();
 
 
-    motorStop();
-    CyDelay(time); // so we have time to set the robot up
+    //motorStop();
+    //CyDelay(time); // so we have time to set the robot up
     motorSetSpeed(x);
-    CyDelay(time);
+    //CyDelay(time);
     motorStop();
     
     //motorGoBackwards();
@@ -268,13 +268,14 @@ int main()
     PWM_1_Start();
     PWM_2_Start();
     LED_Write(0);
+    motorStop();
     USBUART_Start(0,USBUART_5V_OPERATION)   ; 
     ////////////////////////////////
     
     // Speed//
-//    int speed = -33;
-//    int time = 2000;
-//    motorRun(speed,time);
+    //int speed = -33;
+    //int time = 2000;
+   // motorRun(speed,time);
 
     /////////////////////////////////////////////
     int lastState=0;
@@ -284,87 +285,15 @@ int main()
    //for speed,43.5cm/s 
     
 //    
-       //distance
-//    int travelDis = 945;//10.8 * travelDis
-//    while(QuadDec_M1_GetCounter()<travelDis){
-//        if (processSensors == 1) {
-//    
-//            int operation = convertSensorBinary();
-//            
-//    
-//            switch(operation){
-//                case 3:// 0 1 1 // Q3 under black
-//                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
-//                    LED_Write(1);
-//                    break;    
-//                    
-//                case 6:// 1 1 0 // Q5 under black  
-//                    motorTurnRight(200);//increase 200 by 6
-//                    LED_Write(1);
-//                    break;
-//                    
-//                case 5:// 101 // Q4 under black
-//                    motorSetSpeed(0); //-40 is original
-//                    LED_Write(0);
-//                    break;
-//    
-//             processSensors = 0;
-//            //reset counter
-//
-//             counteoc = 0;
-//            //reset flags for lightsensors because it checks every 10 iterations, adds delay/
-//            lightDetectedFront[0] = 0;
-//            lightDetectedFront[1] = 0;
-//            lightDetectedFront[2] = 0;
-//            lightDetectedBack[0] = 0;
-//            lightDetectedBack[1] = 0;
-//            lightDetectedBack[2] = 0;
-//          
-//            }
-//    
-//        }
-//    }
-//    motorStop();
-//    motorCount();
-//    
-    /// End here
-    
-    
-    
-    
-    
-    
-    
-   ///////////////////////////////////////// MOTOR RUN////////
-    
-    while(1)
-    {
-        /* Place your application code here. */
-       
+// ----------      //distance ---------
+ int travelDis = 1740;//10.8 * travelDis
+  while(QuadDec_M1_GetCounter()<travelDis){
         if (processSensors == 1) {
-                   
+    
             int operation = convertSensorBinary();
-            int backOps = convertBackBinary();
-
+            
+    
             switch(operation){
-            //where 1 is on white, 0 is on black.
-                
-                case 7: // 111 // all under white\\
-                    
-                
-              
-                        if(backOps == 7){
-                            
-                             motorCircle(40);
-                            
-                        }
-                        
-                    
-                        else if(backOps == 5){
-                            motorGoStraight();
-                        }   
-                        break;
-                    
                 case 3:// 0 1 1 // Q3 under black
                     motorTurnLeft(50);//decrease go fast used to be 50 by 6
                     LED_Write(1);
@@ -376,47 +305,15 @@ int main()
                     break;
                     
                 case 5:// 101 // Q4 under black
-                    motorGoStraight();
+                    motorSetSpeed(-7); //-40 is original
                     LED_Write(0);
                     break;
-                case 1: // 001 --> left intersection
-                    lastState=1;
-                    motorStop();
-                    CyDelay(50);
-                    motorTurnLeft(44);
-                    CyDelay(350);
-                    break;
-                case 4: // 100 --> right intersection
-                    lastState=2;
-                    motorStop();
-                    CyDelay(50);
-                    motorTurnRight(206);
-                    CyDelay(350);
-                    break;
-                    
-                
-                
-                
-                    
-                case 0: // 000 // ALL UNDER black
-                      
-                    motorStop();
-                    break;    
-
-               
-                
-               
-            
             }
             
-        
-
-       
-            //reset variable.
-            processSensors = 0;
+             processSensors = 0;
             //reset counter
 
-             counteoc = 0;
+            counteoc = 0;
             //reset flags for lightsensors because it checks every 10 iterations, adds delay/
             lightDetectedFront[0] = 0;
             lightDetectedFront[1] = 0;
@@ -425,9 +322,114 @@ int main()
             lightDetectedBack[1] = 0;
             lightDetectedBack[2] = 0;
           
+            
+    
         }
-        
-    }   
+    }
+    motorStop();
+    motorCount();
+    
+    /// ---------End here----------
+    
+    
+    
+    
+    
+    
+    
+   ///////////////////////////////////////// LINE TRACKING////////
+    
+//    while(1)
+//    {
+//        /* Place your application code here. */
+//       
+//        if (processSensors == 1) {
+//                   
+//            int operation = convertSensorBinary();
+//            int backOps = convertBackBinary();
+//
+//            switch(operation){
+//            //where 1 is on white, 0 is on black.
+//                
+//                case 7: // 111 // all under white\\
+//                    
+//                
+//              
+//                        if(backOps == 7){
+//                            
+//                             motorCircle(40);
+//                            
+//                        }
+//                        
+//                    
+//                        else if(backOps == 5){
+//                            motorGoStraight();
+//                        }   
+//                        break;
+//                    
+//                case 3:// 0 1 1 // Q3 under black
+//                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
+//                    LED_Write(1);
+//                    break;    
+//                    
+//                case 6:// 1 1 0 // Q5 under black  
+//                    motorTurnRight(200);//increase 200 by 6
+//                    LED_Write(1);
+//                    break;
+//                    
+//                case 5:// 101 // Q4 under black
+//                    motorGoStraight();
+//                    LED_Write(0);
+//                    break;
+//                case 1: // 001 --> left intersection
+//                    //lastState=1;
+//                    motorStop();
+//                    CyDelay(50);
+//                    motorTurnLeft(44);
+//                    CyDelay(350);
+//                    break;
+//                case 4: // 100 --> right intersection
+//                   // lastState=2;
+//                    motorStop();
+//                    CyDelay(50);
+//                    motorTurnRight(206);
+//                    CyDelay(350);
+//                    break;
+//                    
+//                
+//                
+//                
+//                    
+//                case 0: // 000 // ALL UNDER black
+//                      
+//                    motorStop();
+//                    break;    
+//
+//               
+//                
+//               
+//            
+//            }
+//            
+//        
+//
+//       
+//            //reset variable.
+//            processSensors = 0;
+//            //reset counter
+//
+//             counteoc = 0;
+//            //reset flags for lightsensors because it checks every 10 iterations, adds delay/
+//            lightDetectedFront[0] = 0;
+//            lightDetectedFront[1] = 0;
+//            lightDetectedFront[2] = 0;
+//            lightDetectedBack[0] = 0;
+//            lightDetectedBack[1] = 0;
+//            lightDetectedBack[2] = 0;
+//          
+//        }
+//        
+//    }   
     
 //////////////////////////////////////
 }
@@ -444,7 +446,7 @@ int convertBackBinary(){
     value1 = value1 +  lightDetectedBack[2] *4;
     value1 = value1 + lightDetectedBack[0] *1;
 
-
+    return value1;
 
 }
 
