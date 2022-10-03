@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Sep 29 17:20:55 2022
+--	Mon Oct 03 13:28:28 2022
 --
 
 USE cypress.cypress.all;
@@ -901,7 +901,7 @@ SIGNAL \Timer_TS:Net_266\ : bit;
 SIGNAL \Timer_TS:Net_51\ : bit;
 SIGNAL \Timer_TS:Net_261\ : bit;
 SIGNAL \Timer_TS:Net_57\ : bit;
-SIGNAL Net_4400 : bit;
+SIGNAL Net_4584 : bit;
 SIGNAL \Timer_TS:Net_102\ : bit;
 SIGNAL \USBUART:Net_1010\ : bit;
 SIGNAL \USBUART:tmpOE__Dm_net_0\ : bit;
