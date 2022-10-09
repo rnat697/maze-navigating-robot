@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 
-#define MAP_ROWS 15
-#define MAP_COLS 19
+#define MAP_ColS 15
+#define MAP_ROWS 19
 void printEmtpyMaze();
 void combinePathWithMaze(int *map[][19], int *steps[]);
 void printMazeWithPath(int *mapWithPath[][19]);
@@ -25,19 +25,19 @@ void printEmtpyMaze(){
    }
 }
 
-void combinePathWithMaze(int *map[][MAP_COLS], int *steps[]){
-   for(int i=0; i<sizeof(*steps); i++){
-      int pathLocation[2];
-      pathLocation[0] = *steps[i]; // idk
-      *map[pathLocation[0]][pathLocation[1]] = i;
-   }
-}
+// void combinePathWithMaze(int *map[][MAP_ROWS], int *steps[]){
+//    for(int i=0; i<sizeof(*steps); i++){
+//       int pathLocation[2];
+//       pathLocation[0] = *steps[i]; // idk
+//       *map[pathLocation[0]][pathLocation[1]] = i;
+//    }
+// }
 
-void printMazeWithPath(int *mapWithPath[][MAP_COLS]){
+void printMazeWithPath(int *mapWithPath[][MAP_ROWS]){
    printf("\n");
    for ( int row = 0; row < MAP_ROWS; row++ ) { // assume this is the same
       for ( int col = 0; col < MAP_COLS; col++ ) {
-         int location = *mapWithPath[row][col];
+         int location = *mapWithPath[col][row];
          if(location == -1){
             printf( "%c", '#');
          }else if(location == 0){
@@ -69,7 +69,8 @@ void printEmtpyMazeWith(int mapa[MAP_ROWS][MAP_COLS]){
 int main(){
    //printEmtpyMaze();
    //intialiseNodes(map);
-   int a = astar(map,1,15, 2,18);
+   // in the format of  map [col][row]
+   int a = astar(map,2,2, 14,8);
    //printEmtpyMazeWith(map);
   
 
