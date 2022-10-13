@@ -1,4 +1,4 @@
---------------- Rebuild Started: 09/17/2022 15:26:02 Project: CS301_Class, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 10/13/2022 16:34:45 Project: CS301_Class, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\tacho.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o"
@@ -90,8 +90,6 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_IntClock.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\RF_BT_SELECT_PM.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o"
-Deleting file ".\CortexM3\ARM_GCC_541\Debug\rED.o"
-Deleting file ".\CortexM3\ARM_GCC_541\Debug\blue.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timer_Motor.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Timer_Motor_PM.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_motor.o"
@@ -105,7 +103,7 @@ Deleting file ".\CS301_Class.rpt"
 Deleting file ".\CS301_Class_timing.html"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
-cydsfit.exe -.appdatapath "C:\Users\rnat697\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj" -d CY8C5888LTI-LP097 -s "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit.exe -.appdatapath "C:\Users\amul339\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj" -d CY8C5888LTI-LP097 -s "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is unconnected.
  * C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Signal: vdac_ref)
@@ -115,63 +113,63 @@ HDL Generation...
 Synthesis...
 Tech Mapping...
 Analog Placement...
-Info: apr.M0002: Analog signal "Net_1503" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1504" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1506" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1508" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1509" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1511" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1513" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1514" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1516" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1518" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1519" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1521" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1523" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1524" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1526" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1528" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1529" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1531" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1533" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1534" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1536" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1538" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1539" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1541" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1543" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1544" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1546" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1548" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1549" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1551" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1553" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1554" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1556" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1558" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1559" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1561" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1563" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1564" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1566" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1568" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1569" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1570" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1571" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1572" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1573" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1574" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1575" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1576" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1577" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1578" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1579" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1580" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1581" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1582" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1583" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1584" is connected to one terminal only. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 67% done. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4413" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4414" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4416" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4418" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4419" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4421" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4423" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4424" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4426" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4428" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4429" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4431" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4433" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4434" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4436" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4438" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4439" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4441" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4443" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4444" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4446" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4448" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4449" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4451" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4453" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4454" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4456" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4458" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4459" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4461" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4463" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4464" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4466" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4468" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4469" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4471" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4473" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4474" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4476" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4478" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4479" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4480" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4481" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4482" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4483" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4484" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4485" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4486" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4487" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4488" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4489" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4490" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4491" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4492" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4493" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_4494" is connected to one terminal only. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 46% done. (App=cydsfit)
 Analog Routing...
 Analog Code Generation...
 Digital Placement...
@@ -183,6 +181,33 @@ API Generation...
 Dependency Generation...
 Cleanup...
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'main':
+main.c:354:1: warning: multi-line comment [-Wcomment]
+ //                case 7: // 111 // all under white\\
+ ^
+main.c:281:9: warning: unused variable 'lastState' [-Wunused-variable]
+     int lastState=0;
+         ^
+main.c: In function 'convertBackBinary':
+main.c:444:9: warning: unused variable 'Q6' [-Wunused-variable]
+     int Q6 =lightDetectedBack[0];
+         ^
+main.c:443:9: warning: unused variable 'Q2' [-Wunused-variable]
+     int Q2 = lightDetectedBack[2];
+         ^
+main.c:442:9: warning: unused variable 'Q1' [-Wunused-variable]
+     int Q1 = lightDetectedBack[1] ;
+         ^
+main.c: In function 'convertSensorBinary':
+main.c:458:8: warning: unused variable 'Q5' [-Wunused-variable]
+    int Q5 = lightDetectedFront[2];
+        ^
+main.c:457:7: warning: unused variable 'Q4' [-Wunused-variable]
+   int Q4 = lightDetectedFront[1];
+       ^
+main.c:456:7: warning: unused variable 'Q3' [-Wunused-variable]
+   int Q3 = lightDetectedFront[0];
+       ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/tacho.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c tacho.c -o .\CortexM3\ARM_GCC_541\Debug\tacho.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cymetadata.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -285,6 +310,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CortexM3\ARM_GCC_541\Debug\CS301_Class.elf"
-Flash used: 19168 of 262144 bytes (7.3%).
-SRAM used: 2893 of 65536 bytes (4.4%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 09/17/2022 15:28:45 ---------------
+Flash used: 19840 of 262144 bytes (7.6%).
+SRAM used: 2941 of 65536 bytes (4.5%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 10/13/2022 16:37:46 ---------------
