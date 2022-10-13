@@ -1,0 +1,105 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+typedef Struct {
+    int pairRow;
+    int pairCol;
+} Pair;
+
+typedef Struct {
+    struct Pair pair;
+} Array[100];
+
+int main()
+{
+    enum direction{NORTH, SOUTH, WEST, EAST};
+    Array finalArray;
+    
+    
+    // Pair coordinate;
+    // coordinate.pairRow = 9;
+    // coordinate.pairCol = 0;
+    // finalArray[2]= coordinate;
+    
+    int cols[20] = [0,1,1,1,2, 3, 3, 4, 5, 5, 5, 5]
+    int rows[20] = [0,0,1,2,4, 4, 3, 1, 1, 2, 3, 4]
+    
+    //column == x, row == y
+    //for loop
+    for (int i=0;i<5;i++) {
+        finalArray[index].pairRow =cols[index]
+        finalArray[index].pairCol = rows[index]
+    }
+    
+    
+    //direction dir = WEST;
+    //set default direction
+    direction dir = NORTH;
+    
+    //current position coordinates
+    int currentCol = finalArray[0].pairCol;
+    int currentRow = finalArray[0].pairRow;
+    
+    //look at first two array coordinates
+    
+    if ((finalArray[1].pairCol == currentCol + 1) && (finalArray[1]).pairRow == currentRow) {
+        //must be going EAST
+        dir = EAST;
+    } else if ((finalArray[1].pairCol == currentCol - 1) && (finalArray[1]).pairRow == currentRow) {
+        //must be going WEST
+        dir = WEST;
+    } else if ((finalArray[1].pairCol == currentCol) && (finalArray[1]).pairRow == currentRow + 1) {
+        //must be going NORTH
+        dir = NORTH;
+    } else if ((finalArray[1].pairCol == currentCol) && (finalArray[1]).pairRow == currentRow - 1) {
+        //must be going SOUTH
+        dir = SOUTH;
+    }
+    
+    //currentCol = finalArray[1].pairCol;
+    //currentRow = finalArray[1].pairRow;
+    
+    
+    currentRo
+    
+    if (dir == NORTH) {
+        //if col change postively turn right, if row change negatively turn left.
+        if currentCol[i]
+        //if row changes at all, recalculate direction vector
+        
+        
+    } else if (dir == SOUTH) {
+        //if col change postively turn left, if row change negatively turn right.
+        //if row changes at all, recalculate direction vector
+    } else if (dir == WEST) {
+        //if row change negatively turn right, if row change positively turn left.
+        //if col changes at all, recalculate direction vector
+    } else {
+        //direction is EAST
+        //if row change negatively turn left, if row change positively turn right.
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
