@@ -113,46 +113,6 @@ volatile int lightDetectedBack[3] = {0,0,0};
 volatile int counteoc = 0;
 volatile int processSensors = 0;
 volatile int middle =0;
-volatile int16 sumvalueQ3 =  0;
-volatile int16 sumvalueQ4 =  0;
-volatile int16 sumvalueQ5 =  0;
-
-volatile int16 sumvalueQ1 =  0;
-volatile int16 sumvalueQ2 =  0;
-volatile int16 sumvalueQ6 =  0;
-
-
-void calculateLight(int q3,int q4,int q5){
-    int averageQ3 = 0, averageQ4 = 0,averageQ5 = 0;
-    averageQ3 = q3/10;
-    averageQ4 = q4/10;
-    averageQ5 = q5/10;
-    
-    
-    if (averageQ3>=2211){  //2211 2400
-    
-       lightDetectedFront[0]=1;
-    
-    
-    }
-    if (averageQ4>=2211){
-    
-       lightDetectedFront[1]=1;
-    
-    
-    }
-
-    if (averageQ5>=2211){
-    
-       lightDetectedFront[2]=1;
-    
-    
-    }
-
-    sumvalueQ3=0;
-    sumvalueQ4=0;
-    sumvalueQ5=0;
-} 
 CY_ISR(isr_eoc_Interrupt_test)
 {
     #ifdef isr_test_INTERRUPT_INTERRUPT_CALLBACK
@@ -172,41 +132,38 @@ CY_ISR(isr_eoc_Interrupt_test)
     // get value from ADC then convert to DAC to send to external LEDs
     if (counteoc < 10) {
         //2211
-//        if (valueQ3 >= 2211) {
-//        //set flag for white light detected
-//        lightDetectedFront[0] = 1;
-//        }
-//        if (valueQ4 >= 2211) {
-//        //set flag for white light detected
-//        lightDetectedFront[1] = 1;
-//        }
-//    
-//        if (valueQ5 >= 2211) {
-//        //set flag for white light detected
-//        lightDetectedFront[2] = 1;
-//        }
-//        
-//        if (valueQ1 >= 2211) {
-//        //set flag for white light detected
-//            lightDetectedBack[1] = 1;
-//        }
-//        
-//        if (valueQ2 >= 2211) {
-//        //set flag for white light detected
-//            lightDetectedBack[2] = 1;
-//        }
-//                
-//                
-//        if (valueQ6 >= 2211) {
-//        //set flag for white light detected
-//            lightDetectedBack[0] = 1;
-//        }
-        sumvalueQ3+= valueQ3;
-        sumvalueQ4+= valueQ4;
-        sumvalueQ5+= valueQ5;
+        if (valueQ3 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[0] = 1;
+        }
+        if (valueQ4 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[1] = 1;
+        }
+    
+        if (valueQ5 >= 2211) {
+        //set flag for white light detected
+        lightDetectedFront[2] = 1;
+        }
+        
+        if (valueQ1 >= 2211) {
+        //set flag for white light detected
+            lightDetectedBack[1] = 1;
+        }
+        
+        if (valueQ2 >= 2211) {
+        //set flag for white light detected
+            lightDetectedBack[2] = 1;
+        }
+                
+                
+        if (valueQ6 >= 2211) {
+        //set flag for white light detected
+            lightDetectedBack[0] = 1;
+        }
+        
         counteoc++;
     } else {
-        calculateLight(sumvalueQ3,sumvalueQ4,sumvalueQ5);
         processSensors = 1;   
        
     }
