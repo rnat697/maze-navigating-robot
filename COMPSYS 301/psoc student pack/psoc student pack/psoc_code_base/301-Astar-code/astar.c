@@ -1,6 +1,5 @@
 #include "astar.h"
 
-
 // --- Priority queue implementation modified from https://www.programiz.com/dsa/priority-queue
 int size = 0;
 void swap(Pairs*a, Pairs *b) {
@@ -26,23 +25,26 @@ void heapify(Paths array, int size, int i) {
     int small_col = array[smallest].pair.pairCol;
     int r_row = array[r].pair.pairRow;
     int r_col = array[r].pair.pairCol;
+    
+    if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row > MAP_ROWS && r_col > MAP_COLS){
 
-    // Find Fscores
-    int l_fscore = nodesArray[l_col][l_row].fScore;
-    int r_fscore = nodesArray[r_col][r_row].fScore;
-    int small_fscore = nodesArray[small_col][small_row].fScore;
+      // Find Fscores
+      int l_fscore = nodesArray[l_col][l_row].fScore;
+      int r_fscore = nodesArray[r_col][r_row].fScore;
+      int small_fscore = nodesArray[small_col][small_row].fScore;
 
-    // Compare Fscores to find smallest
-    if (l < size && l_fscore < small_fscore)
-      smallest = l;
-    if (r < size && r_fscore < small_fscore)
-      smallest = r;
+      // Compare Fscores to find smallest
+      if (l < size && l_fscore < small_fscore)
+        smallest = l;
+      if (r < size && r_fscore < small_fscore)
+        smallest = r;
 
 
-    // Swap and continue heapifying if root is not smallest
-    if (smallest != i) {
-      swap(&array[i].pair, &array[smallest].pair);
-      heapify(array, size, smallest);
+      // Swap and continue heapifying if root is not smallest
+      if (smallest != i) {
+        swap(&array[i].pair, &array[smallest].pair);
+        heapify(array, size, smallest);
+      }
     }
   }
 }
@@ -52,7 +54,11 @@ void enqueue(Paths array, Pairs newLoc) {
   if (size == 0) {
     array[0].pair = newLoc;
     size += 1;
-  } else {
+  } else if(size < 0){
+    array[0].pair = newLoc;
+    size = 0;
+  }
+  else {
     array[size].pair = newLoc;
     size += 1;
     for (int i = size / 2 - 1; i >= 0; i--) {
@@ -61,22 +67,26 @@ void enqueue(Paths array, Pairs newLoc) {
   }
 }
 
-// Function to remove first element of the queue
+// Function to remove first element of the queues
 Pairs dequeue(Paths array) {
     Pairs locAtTop;
     locAtTop.pairRow = array[0].pair.pairRow;
     locAtTop.pairCol = array[0].pair.pairCol;
+    printf("Top of queue: %d, %d \n", locAtTop.pairRow, locAtTop.pairCol);
 
     swap(&array[0].pair, &array[size - 1].pair);
     size -= 1;
+    // if (size < 0){
+    //   size = 0;
+    // }
     for (int i = size / 2 - 1; i >= 0; i--) {
-    heapify(array, size, i);
+      heapify(array, size, i);
     }
 
     return locAtTop;
 }
 //--- End of priority queue ---
-void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]){
+void intialiseNodes(int mazeMap[MAP_COLS][MAP_ROWS]){
     for(int row=0; row<MAP_ROWS; row++){
         for(int col=0; col<MAP_COLS; col++){
             nodesArray[col][row].parents.pairRow = -1;
@@ -112,11 +122,12 @@ void calculateGScore(Pairs currentpos,int currentcost){
     nodesArray[yloc][xloc].gScore = currentcost +1;
 }
 
-int astar(int map[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
+int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
     Paths queue;
     Paths visitedList;
     Paths steps;
-    intialiseNodes(map);
+
+    intialiseNodes(mapmaze);
     Pairs target;
     target.pairRow = endLocRow-1;
     target.pairCol = endLocCol-1;
@@ -131,9 +142,11 @@ int astar(int map[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endL
     int currentVisitedIndex = 0;
     int currentRow, currentCol;
 
-   while(visiting.pairRow != endLocRow && visiting.pairCol != endLocCol){
+   while(!((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol))){
+      printf("Size of queue: %d \n", size);
       visiting =  dequeue(queue);
-      printf("visiting: %d,%d\n",visiting.pairRow, visiting.pairCol);
+      printf("Size of queue after dequeue: %d \n", size);
+      printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pairRow+1);
       stepNum += 1;
       // Append to visitied list
       visitedList[currentVisitedIndex].pair.pairRow = visiting.pairRow;
@@ -167,13 +180,13 @@ int astar(int map[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endL
         int newFscore = 0;
         int oldFscore;
         int currentGScore = nodesArray[col][row].gScore;
-        printf("Adjacent: %d,%d\n",adjacentPos.pairRow, adjacentPos.pairCol);
+        printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
         
         //not a wall and has not been visited
-        if((row > 0)&&(col>0)&&(nodesArray[col][row].traversable == 1) && (nodesArray[col][row].inVisited) == 0){
+        if((row > 0)&&(col>0) && (row < MAP_ROWS) && (col<MAP_COLS)&&(nodesArray[col][row].traversable == 1) && (nodesArray[col][row].inVisited == 0)){
           // check if open list (queue) does not contain current neighbouring position
           if(nodesArray[col][row].inQueue == 0){
-            printf("Enqueuing: %d,%d\n",row,col );
+            printf("Enqueuing: %d,%d\n",col,row);
             //calculate Fscore, Gscore and Hscore
             // Fscore = Gscore + Hscore
             calculateHScore(adjacentPos,target);
@@ -199,5 +212,7 @@ int astar(int map[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endL
         }
       }
    }
+
+    Pair currentNode = target;
     return 0;
 }
