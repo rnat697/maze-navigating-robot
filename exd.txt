@@ -38,13 +38,8 @@ enum direction{NORTH, SOUTH, WEST, EAST};
         finalArray[i].pair.pairCol = rows[i];
     }
     
-enum direction calculateDirection(int arrayPointer) {
+enum direction calculateDirection(int currentCol, int currentRow, int nextCol, int nextRow) {
     
-    int currentCol = finalArray[arrayPointer].pair.pairCol;
-    int currentRow = finalArray[arrayPointer].pair.pairRow;
-    
-    int nextCol = finalArray[arrayPointer + 1].pair.pairCol;
-    int nextRow = finalArray[arrayPointer + 1].pair.pairRow;
     
     if ((nextCol == currentCol + 1) && (nextRow == currentRow) {
         //must be going EAST
@@ -67,30 +62,67 @@ int main()
 {
     //declare arraypointer
     int arrayPointer = 0;
+    
+    
 
     //calculate initial direction
-    enum direction dir = calculateDirection(int currentCol, int currentRow);
+    enum direction dir = calculateDirection(int currentCol, int currentRow, int nextCol, int nextRow);
     
     
-    //calculate direction based off 
+    for(int i = 0;i<size;i++) {
+        
+        //current coordinate
+        int currentCol = finalArray[arrayPointer].pair.pairCol;
+        int currentRow = finalArray[arrayPointer].pair.pairRow;
     
-    if (dir == NORTH) {
-        //if col change postively turn right, if row change negatively turn left.
-        //if row changes at all, recalculate direction vector
+        //next coordinate
+        int nextCol = finalArray[arrayPointer + 1].pair.pairCol;
+        int nextRow = finalArray[arrayPointer + 1].pair.pairRow;
         
+        if (dir == NORTH) {
+        //if col change postively turn right, if col change negatively turn left.
+            if (nextCol > currentCol) {
+                //record right turn
+                
+            } else if (nextCol < currentCol) {
+                //record left turn
+            }
+            
+        } else if (dir == SOUTH) {
+            //if col change postively turn left, if col change negatively turn right.
+            if (nextCol > currentCol) {
+                //record left turn
+                
+            } else if (nextCol < currentCol) {
+                //record right turn
+            }
+            
+        } else if (dir == WEST) {
+            //if row change negatively turn right, if row change positively turn left.
+            if (nextRow > currentRow) {
+                //record left turn
+                
+            } else if (nextRow < currentRow) {
+                //record right turn
+            }
+        } else {
+            //if row change negatively turn left, if row change positively turn right.
+            if (nextRow > currentRow) {
+                //record right turn
+                
+            } else if (nextRow < currentRow) {
+                //record left turn
+            }
+        }
         
-    } else if (dir == SOUTH) {
-        //if col change postively turn left, if row change negatively turn right.
-        //if row changes at all, recalculate direction vector
-    } else if (dir == WEST) {
-        //if row change negatively turn right, if row change positively turn left.
-        //if col changes at all, recalculate direction vector
-    } else {
-        //direction is EAST
-        //if row change negatively turn left, if row change positively turn right.
+        //recalculate direction vector
+        dir = calculateDirection(int currentCol, int currentRow, int nextCol, int nextRow);
         
+        arrayPointer++;
         
     }
+    
+
     
     return 0;
 }
