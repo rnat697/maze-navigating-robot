@@ -8,70 +8,74 @@ Code, Compile, Run and Debug online from anywhere in world.
 *******************************************************************************/
 #include <stdio.h>
 
-typedef Struct {
+typedef struct {
     int pairRow;
     int pairCol;
 } Pair;
 
-typedef Struct {
-    struct Pair pair;
+typedef struct {
+    Pair pair;
 } Array[100];
 
-int main()
-{
-    enum direction{NORTH, SOUTH, WEST, EAST};
-    Array finalArray;
-    
+enum direction{NORTH, SOUTH, WEST, EAST};
+
+ Array finalArray;
     
     // Pair coordinate;
     // coordinate.pairRow = 9;
     // coordinate.pairCol = 0;
     // finalArray[2]= coordinate;
     
-    int cols[20] = [0,1,1,1,2, 3, 3, 4, 5, 5, 5, 5]
-    int rows[20] = [0,0,1,2,4, 4, 3, 1, 1, 2, 3, 4]
+    int cols[20] = {0,1,1,1,2, 3, 3, 4, 5, 5, 5, 5};
+    int rows[20] = {0,0,1,2,4, 4, 3, 1, 1, 2, 3, 4};
+    
+    int size = 12;
     
     //column == x, row == y
     //for loop
-    for (int i=0;i<5;i++) {
-        finalArray[index].pairRow =cols[index]
-        finalArray[index].pairCol = rows[index]
+    for (int i=0;i<size;i++) {
+        finalArray[i].pair.pairRow =cols[i];
+        finalArray[i].pair.pairCol = rows[i];
     }
     
+enum direction calculateDirection(int arrayPointer) {
     
-    //direction dir = WEST;
-    //set default direction
-    direction dir = NORTH;
+    int currentCol = finalArray[arrayPointer].pair.pairCol;
+    int currentRow = finalArray[arrayPointer].pair.pairRow;
     
-    //current position coordinates
-    int currentCol = finalArray[0].pairCol;
-    int currentRow = finalArray[0].pairRow;
+    int nextCol = finalArray[arrayPointer + 1].pair.pairCol;
+    int nextRow = finalArray[arrayPointer + 1].pair.pairRow;
     
-    //look at first two array coordinates
-    
-    if ((finalArray[1].pairCol == currentCol + 1) && (finalArray[1]).pairRow == currentRow) {
+    if ((nextCol == currentCol + 1) && (nextRow == currentRow) {
         //must be going EAST
-        dir = EAST;
-    } else if ((finalArray[1].pairCol == currentCol - 1) && (finalArray[1]).pairRow == currentRow) {
+        return EAST;
+    } else if ((nextCol == currentCol - 1) && (nextRow == currentRow) {
         //must be going WEST
-        dir = WEST;
-    } else if ((finalArray[1].pairCol == currentCol) && (finalArray[1]).pairRow == currentRow + 1) {
+        return WEST;
+    } else if ((nextCol == currentCol) && (nextRow == currentRow + 1) {
         //must be going NORTH
-        dir = NORTH;
-    } else if ((finalArray[1].pairCol == currentCol) && (finalArray[1]).pairRow == currentRow - 1) {
+        return NORTH;
+    } else if ((nextCol == currentCol) && (nextRow == currentRow - 1) {
         //must be going SOUTH
-        dir = SOUTH;
+        return SOUTH;
     }
     
-    //currentCol = finalArray[1].pairCol;
-    //currentRow = finalArray[1].pairRow;
+    return 0;
+}
+
+int main()
+{
+    //declare arraypointer
+    int arrayPointer = 0;
+
+    //calculate initial direction
+    enum direction dir = calculateDirection(int currentCol, int currentRow);
     
     
-    currentRo
+    //calculate direction based off 
     
     if (dir == NORTH) {
         //if col change postively turn right, if row change negatively turn left.
-        if currentCol[i]
         //if row changes at all, recalculate direction vector
         
         
@@ -88,18 +92,7 @@ int main()
         
     }
     
+    return 0;
+}
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
