@@ -333,10 +333,18 @@ int main()
     /// ---------End here----------
     
     
-    
-    
+        
+   
     
     */
+    int decision =0;
+    
+    int prices[5] = { 1, 2, 3, 4, 5 };
+    int size;
+    
+    // 0 go straight
+    // 1 go right
+    //5 is die
     
    ///////////////////////////////////////// LINE TRACKING////////
     
@@ -382,39 +390,40 @@ int main()
                     motorGoStraight();
                     LED_Write(0);
                     break;
-                case 1: // 001 --> left intersection
+                
+                case 0:  // 000 // ALL UNDER black
+                    motorStop();
+                    decision =1;
+                    break;
+                case 1: // 001 --> left intersection # 65 turn for 500s
                     //lastState=1;
                     motorStop();
-                    CyDelay(200);
-                    motorTurnLeft(65);
-                    CyDelay(500);
+                    decision =1;
                     break;
-                case 4: // 100 --> right intersection
+                case 4: // 100 --> right intersection #180 turn for 500s
                    // lastState=2;
                     motorStop();
-                    CyDelay(200);
-                    motorTurnRight(180);
-                    CyDelay(500);
+                    decision =1;
                     break;
                     
-                
-                
-                
-                    
-                case 0: // 000 // ALL UNDER black
-                      
-                    motorStop();
-                    break;    
-
-               
                 
                
             
             }
             
-        
+            //make decision at intersection 
+            if (decision==1){
+                decision=0;
+                size = sizeof prices / sizeof prices[0];  
+                
+                //case statement for first index of array
+                // 0  got straight
+                //1 go left
+                //-1 go right
+                
+           //renable interrupt
 
-       
+            }
             //reset variable.
             processSensors = 0;
             //reset counter
@@ -429,6 +438,7 @@ int main()
             lightDetectedBack[2] = 0;
           
         }
+        
         
     }   
     
