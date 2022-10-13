@@ -195,7 +195,7 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
 
             enqueue(queue,adjacentPos);
             
-            nodesArray[col][row].parents = adjacentPos; // add parent for the neighbouring node
+            nodesArray[col][row].parents = visiting; // add parent for the neighbouring node
 
           }else{// if it is already in open list update fscore if needed and update parent
             oldFscore = nodesArray[col][row].fScore;
@@ -206,13 +206,58 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
             //check if new Fscore is smaller than old Fscore, iif so update Fscore value
             if(newFscore < oldFscore){
                 nodesArray[col][row].fScore = newFscore;
-                nodesArray[col][row].parents = adjacentPos; // update parent node of neighbour to current node
+                nodesArray[col][row].parents = visiting; // update parent node of neighbour to current node
             }
           }
         }
       }
    }
 
-    Pair currentNode = target;
+    
+    struct Pair currentNode;
+    struct Pair parentNode;
+    Paths reversedArray;
+    int index = 0;
+    currentNode.pairCol = target.pairCol;
+    currentNode.pairRow = target.pairRow;
+    
+
+    while(!(currentNode.pairRow == startLocRow && currentNode.pairCol == startLocCol)){
+      printf("reversed Nodes: (%d,%d)\n", currentNode.pairCol,currentNode.pairRow);
+      parentNode = nodesArray[currentNode.pairCol][currentNode.pairRow].parents;
+
+      reversedArray[index].pair = parentNode;
+      currentNode.pairCol = parentNode.pairCol;
+      currentNode.pairRow = parentNode.pairRow;
+      index++;
+
+    }
+
+    Paths finalPath;
+    int i = 0;
+    printf("Final Path");
+    for(int j=index; i--; i>0){
+      Pairs node = reversedArray[j].pair;
+      finalPath[i].pair = node;
+      printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
+      i++;
+    }
+
+
+      
+    // currentNode = targetlocation;
+    // parentNode = [-1,-1]; % initialised parent node
+    // reversedPath = {};
+    // checkStart = 0;
+    // reversedPath = append(reversedPath,currentNode); % add target to reversed path list
+    
+    // while(checkStart ~= 1)
+    //     parentNode = parents{currentNode(1),currentNode(2)}; % find parent node associated with current node
+    //     reversedPath = append(reversedPath,parentNode); % add to reversed path list
+    //     currentNode = parentNode; % for next iteration
+    //     checkStart = (currentNode(1) == startlocation(1) && currentNode(2)== startlocation(2));
+    // end
+    // retsteps = flip(reversedPath); % flips order of elements to make a path to go from start to target. 
+    
     return 0;
 }
