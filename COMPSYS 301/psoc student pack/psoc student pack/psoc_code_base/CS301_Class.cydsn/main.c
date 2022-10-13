@@ -339,12 +339,15 @@ int main()
     */
     int decision =0;
     
-    int prices[5] = { 1, 2, 3, 4, 5 };
-    int size;
-    
     // 0 go straight
     // 1 go right
     //5 is die
+    
+    int queue[5] = { 1, 2, 3, 4, 5 };
+            
+    int *qptr;
+    qptr = &queue[5];
+            
     
    ///////////////////////////////////////// LINE TRACKING////////
     
@@ -411,10 +414,48 @@ int main()
             
             }
             
+            
+            
+            
             //make decision at intersection 
-            if (decision==1){
-                decision=0;
-                size = sizeof prices / sizeof prices[0];  
+            if (decision == 1){
+                //reset decision
+                decision = 0;
+                //get overall size of array
+                int size = sizeof *qptr / sizeof *qptr[0];
+                
+                //remove first element in array
+                //create new queue to size
+                int newQueue[size-1];
+                
+                //recreate new queue
+                for (int i=1;i<size-1;i++) {
+                    newQueue[i-1] = queue[i];   
+                }
+                
+//                 int queue[5] = { 1, 2, 3, 3, 5 };
+//            
+//    int *qptr;
+//    qptr = queue;
+//    
+//    while(1) {
+//    
+//    
+//    //int size = sizeof *qptr  / sizeof (int)*qptr[3];
+//    int size = (&queue)[1] - queue;
+//                
+//                //remove first element in array
+//                //create new queue to size
+//                int newQueue[size-1];
+//                
+//                //recreate new queue
+//                for (int i=1;i<size;i++) {
+//                    newQueue[i-1] = queue[i];   
+//                }
+//                
+//                *qptr = newQueue;
+                
+                
                 
                 //case statement for first index of array
                 // 0  got straight
