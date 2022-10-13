@@ -1067,8 +1067,8 @@
   </block>
   <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_motor" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RF_BT_SELECT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="RF_BT_SELECT_CONTROL_REG" address="0x40006479" bitWidth="8" desc="" hidden="false" />
