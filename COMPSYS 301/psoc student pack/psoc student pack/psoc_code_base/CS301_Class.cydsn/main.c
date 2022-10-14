@@ -385,14 +385,14 @@ int main()
                 case 1: // 001 --> left intersection
                     //lastState=1;
                     motorStop();
-                    CyDelay(200);
+                    CyDelay(400);
                     motorTurnLeft(65);
                     CyDelay(500);
                     break;
                 case 4: // 100 --> right intersection
                    // lastState=2;
                     motorStop();
-                    CyDelay(200);
+                    CyDelay(400);
                     motorTurnRight(180);
                     CyDelay(500);
                     break;
