@@ -69,6 +69,7 @@ int main(){
    //intialiseNodes(map);
    // in the format of  map [col][row]
    
+   // map file, start row, start col, endrow, end col
    int a = astar(map,2,2, 14,8);
    //printEmtpyMazeWith(map);
   

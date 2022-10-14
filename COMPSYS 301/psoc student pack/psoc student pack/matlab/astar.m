@@ -143,7 +143,8 @@ function [Hmaps] = calculateHScore(Hmap,current, target)
     xloc = current(1);
     yloc = current(2);
     Hmaps = Hmap;
-    Hmaps(xloc,yloc) = sqrt((xloc-target(1))^2 + (yloc-target(2))^2);
+    %Hmaps(xloc,yloc) = sqrt((xloc-target(1))^2 + (yloc-target(2))^2);
+    Hmaps(xloc,yloc) = abs(xloc-target(1)) + abs(yloc-target(2));
     
     
 end

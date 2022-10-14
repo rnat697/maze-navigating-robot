@@ -26,12 +26,12 @@ void heapify(Paths array, int size, int i) {
     int r_row = array[r].pair.pairRow;
     int r_col = array[r].pair.pairCol;
     
-    if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row > MAP_ROWS && r_col > MAP_COLS){
+    if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row < MAP_ROWS && r_col < MAP_COLS && l_row > 0 && l_col >0 && r_col>0 && r_row>0){
 
       // Find Fscores
-      int l_fscore = nodesArray[l_col][l_row].fScore;
-      int r_fscore = nodesArray[r_col][r_row].fScore;
-      int small_fscore = nodesArray[small_col][small_row].fScore;
+      int l_fscore = nodesArray[l_row][l_col].fScore;
+      int r_fscore = nodesArray[r_row][r_col].fScore;
+      int small_fscore = nodesArray[small_row][small_col].fScore;
 
       // Compare Fscores to find smallest
       if (l < size && l_fscore < small_fscore)
@@ -76,9 +76,9 @@ Pairs dequeue(Paths array) {
 
     swap(&array[0].pair, &array[size - 1].pair);
     size -= 1;
-    // if (size < 0){
-    //   size = 0;
-    // }
+    if (size < 0){
+      size = 0;
+    }
     for (int i = size / 2 - 1; i >= 0; i--) {
       heapify(array, size, i);
     }
@@ -86,30 +86,30 @@ Pairs dequeue(Paths array) {
     return locAtTop;
 }
 //--- End of priority queue ---
-void intialiseNodes(int mazeMap[MAP_COLS][MAP_ROWS]){
+void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]){
     for(int row=0; row<MAP_ROWS; row++){
         for(int col=0; col<MAP_COLS; col++){
-            nodesArray[col][row].parents.pairRow = -1;
-            nodesArray[col][row].parents.pairCol = -1;
+            nodesArray[row][col].parents.pairRow = -1;
+            nodesArray[row][col].parents.pairCol = -1;
 
-            if(mazeMap[col][row] == 1){ // Wall
-                nodesArray[col][row].traversable = 0;
+            if(mazeMap[row][col] == 1){ // Wall
+                nodesArray[row][col].traversable = 0;
             }else{
-                nodesArray[col][row].traversable = 1; // traversable path
+                nodesArray[row][col].traversable = 1; // traversable path
             }
-            nodesArray[col][row].inVisited =  0;
-            nodesArray[col][row].inQueue =  0;
-            nodesArray[col][row].fScore = 2000;
-            nodesArray[col][row].gScore = 0;
-            nodesArray[col][row].hScore = 0;
+            nodesArray[row][col].inVisited =  0;
+            nodesArray[row][col].inQueue =  0;
+            nodesArray[row][col].fScore = 2000;
+            nodesArray[row][col].gScore = 0;
+            nodesArray[row][col].hScore = 0;
         }
     }
 }
 
 // calculating H score using Manhattan Distance 
 void calculateHScore(Pairs current, Pairs target){
-    int xloc = current.pairRow;
-    int yloc = current.pairCol;
+    int xloc = current.pairCol;
+    int yloc = current.pairRow;
     nodesArray[yloc][xloc].hScore = abs(xloc-target.pairRow) + abs(yloc-target.pairCol);
 }
 
@@ -117,20 +117,22 @@ void calculateHScore(Pairs current, Pairs target){
 // G score is the movement score from the start point to current point. We
 // add to the current cost by one each time we move away from start point.
 void calculateGScore(Pairs currentpos,int currentcost){
-    int xloc = currentpos.pairRow;
-    int yloc = currentpos.pairCol;
+    int xloc = currentpos.pairCol;
+    int yloc = currentpos.pairRow;
     nodesArray[yloc][xloc].gScore = currentcost +1;
 }
 
-int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
+int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
     Paths queue;
     Paths visitedList;
     Paths steps;
 
     intialiseNodes(mapmaze);
-    Pairs target;
+    Pairs target, start;
     target.pairRow = endLocRow-1;
     target.pairCol = endLocCol-1;
+    start.pairCol = startLocRow-1;
+    start.pairRow = startLocRow-1;
     
     queue[0].pair.pairRow = startLocRow-1;
     queue[0].pair.pairCol = startLocCol-1;
@@ -151,21 +153,21 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
       // Append to visitied list
       visitedList[currentVisitedIndex].pair.pairRow = visiting.pairRow;
       visitedList[currentVisitedIndex].pair.pairCol = visiting.pairCol;
-      nodesArray[visiting.pairCol][visiting.pairRow].inVisited = 1; // set flag for being in visited list
+      nodesArray[visiting.pairRow][visiting.pairCol].inVisited = 1; // set flag for being in visited list
       currentVisitedIndex++;
       
       // determine neighbours of visiting node and caluclate Fscore
       currentCol = visiting.pairCol;
       currentRow = visiting.pairRow;
 
-      northNeigh.pairRow = currentRow;
-      northNeigh.pairCol = currentCol-1;
-      southNeigh.pairRow = currentRow;
-      southNeigh.pairCol= currentCol+1;
-      eastNeigh.pairRow = currentRow+1;
-      eastNeigh.pairCol = currentCol;
-      westNeigh.pairRow = currentRow-1;
-      westNeigh.pairCol = currentCol;
+      northNeigh.pairRow = currentRow-1;
+      northNeigh.pairCol = currentCol;
+      southNeigh.pairRow = currentRow+1;
+      southNeigh.pairCol= currentCol;
+      eastNeigh.pairRow = currentRow;
+      eastNeigh.pairCol = currentCol+1;
+      westNeigh.pairRow = currentRow;
+      westNeigh.pairCol = currentCol-1;
       
       // Neighbours are S, N,E, W from the current location
       Paths neighbours = {southNeigh,northNeigh,eastNeigh,westNeigh};
@@ -178,36 +180,42 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
         int row = adjacentPos.pairRow;
         int col = adjacentPos.pairCol;
         int newFscore = 0;
-        int oldFscore;
-        int currentGScore = nodesArray[col][row].gScore;
-        printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
+        int oldFscore = 2000;
+        int currentGScore = nodesArray[row][col].gScore;
+        //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
         
         //not a wall and has not been visited
-        if((row > 0)&&(col>0) && (row < MAP_ROWS) && (col<MAP_COLS)&&(nodesArray[col][row].traversable == 1) && (nodesArray[col][row].inVisited == 0)){
-          // check if open list (queue) does not contain current neighbouring position
-          if(nodesArray[col][row].inQueue == 0){
-            printf("Enqueuing: %d,%d\n",col,row);
-            //calculate Fscore, Gscore and Hscore
-            // Fscore = Gscore + Hscore
-            calculateHScore(adjacentPos,target);
-            calculateGScore(adjacentPos,currentGcost);
-            nodesArray[col][row].fScore = nodesArray[col][row].gScore + nodesArray[col][row].hScore;
+        if((row > 0)&&(col>0) && (row < MAP_ROWS) && (col<MAP_COLS)){
+          if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+            // check if open list (queue) does not contain current neighbouring position
+            if(nodesArray[row][col].inQueue == 0){
+              printf("Enqueuing: %d,%d\n",col,row);
+              //calculate Fscore, Gscore and Hscore
+              // Fscore = Gscore + Hscore
+              calculateHScore(adjacentPos,target);
+              calculateGScore(adjacentPos,currentGcost);
+              nodesArray[row][col].fScore = nodesArray[row][col].gScore + nodesArray[row][col].hScore;
 
-            enqueue(queue,adjacentPos);
-            
-            nodesArray[col][row].parents = visiting; // add parent for the neighbouring node
+              enqueue(queue,adjacentPos);
+              nodesArray[row][col].inQueue == 1;
+              
+              nodesArray[row][col].parents.pairRow = visiting.pairRow; // add parent for the neighbouring node
+              nodesArray[row][col].parents.pairCol = visiting.pairCol;
 
-          }else{// if it is already in open list update fscore if needed and update parent
-            oldFscore = nodesArray[col][row].fScore;
-            calculateHScore(adjacentPos,target);
-            calculateGScore(adjacentPos,currentGcost);
-            newFscore = nodesArray[col][row].gScore + nodesArray[col][row].hScore;
+            }else{// if it is already in open list update fscore if needed and update parent
+              oldFscore = nodesArray[row][col].fScore;
+              calculateHScore(adjacentPos,target);
+              calculateGScore(adjacentPos,currentGcost);
+              newFscore = nodesArray[row][col].gScore + nodesArray[row][col].hScore;
 
-            //check if new Fscore is smaller than old Fscore, iif so update Fscore value
-            if(newFscore < oldFscore){
-                nodesArray[col][row].fScore = newFscore;
-                nodesArray[col][row].parents = visiting; // update parent node of neighbour to current node
+              //check if new Fscore is smaller than old Fscore, iif so update Fscore value
+              if(newFscore < oldFscore){
+                  nodesArray[row][col].fScore = newFscore;
+                  nodesArray[row][col].parents.pairCol = visiting.pairCol; // update parent node of neighbour to current node
+                  nodesArray[row][col].parents.pairRow = visiting.pairRow;
+              }
             }
+            printf("Adjacent: (%d,%d), Parents: (%d,%d)\n", adjacentPos.pairCol+1,adjacentPos.pairRow+1,nodesArray[row][col].parents.pairCol+1,nodesArray[row][col].parents.pairRow+1);
           }
         }
       }
@@ -220,11 +228,13 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
     int index = 0;
     currentNode.pairCol = target.pairCol;
     currentNode.pairRow = target.pairRow;
-    
+    reversedArray[index].pair = target;
+    index = 1;
 
-    while(!(currentNode.pairRow == startLocRow && currentNode.pairCol == startLocCol)){
-      printf("reversed Nodes: (%d,%d)\n", currentNode.pairCol,currentNode.pairRow);
-      parentNode = nodesArray[currentNode.pairCol][currentNode.pairRow].parents;
+    while(!(currentNode.pairRow == start.pairRow && currentNode.pairCol == start.pairCol)){
+      //printf("current reversed Nodes: (%d,%d)\n", currentNode.pairCol+1,currentNode.pairRow+1);
+      parentNode = nodesArray[currentNode.pairRow][currentNode.pairCol].parents;
+      //printf("parent Node: (%d,%d)\n",parentNode.pairCol+1,parentNode.pairRow+1);
 
       reversedArray[index].pair = parentNode;
       currentNode.pairCol = parentNode.pairCol;
@@ -235,13 +245,14 @@ int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int 
 
     Paths finalPath;
     int i = 0;
-    printf("Final Path");
-    for(int j=index; i--; i>0){
+    printf("Final Path\n");
+    for(int j=index; j--; j>=0){
       Pairs node = reversedArray[j].pair;
       finalPath[i].pair = node;
       printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
       i++;
     }
+
 
 
       

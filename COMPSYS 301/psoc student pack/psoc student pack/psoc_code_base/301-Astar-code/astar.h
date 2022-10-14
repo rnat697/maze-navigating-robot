@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAP_COLS 15
-#define MAP_ROWS 19
+#define MAP_ROWS 15
+#define MAP_COLS 19
 
 typedef struct Pair{
     int pairRow;
@@ -23,10 +23,10 @@ typedef struct Nodes{
 typedef struct Path{
     struct Pair pair;
 }Paths[100];
-volatile static Nodes nodesArray[MAP_COLS][MAP_ROWS];
+volatile static Nodes nodesArray[MAP_ROWS][MAP_COLS];
 
 void swap(Pairs*a, Pairs *b);
 
-void intialiseNodes(int mazeMap[MAP_COLS][MAP_ROWS]);
-int astar(int mapmaze[MAP_COLS][MAP_ROWS], int startLocRow,int startLocCol, int endLocRow, int endLocCol);
+void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]);
+int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol);
 #endif
