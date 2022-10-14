@@ -337,16 +337,16 @@ int main()
    
     
     */
-    int decision =0;
+    int decisionflag =0;
     
     // 0 go straight
     // 1 go right
     //5 is die
     
-    int queue[5] = { 1, 2, 3, 4, 5 };
-            
-    int *qptr;
-    qptr = &queue[5];
+    int queue[1000] = { 1, 2, 3, 4, 5 };
+    int indexPointer = 0;
+    int queueSize = 5;
+    
             
     
    ///////////////////////////////////////// LINE TRACKING////////
@@ -360,101 +360,98 @@ int main()
             int operation = convertSensorBinary();
             int backOps = convertBackBinary();
 
-            switch(operation){
-            //where 1 is on white, 0 is on black.
-                
-                case 7: // 111 // all under white\\
+                switch(operation){
+                //where 1 is on white, 0 is on black.
                     
-                
-              
-                        if(backOps == 7){
-                            
-                             motorCircle(40);
-                            
-                        }
+                    case 7: // 111 // all under white\\
                         
                     
-                        else if(backOps == 5){
-                            motorGoStraight();
-                        }   
+                  
+                            if(backOps == 7){
+                                
+                                 motorCircle(40);
+                                
+                            }
+                            
+                        
+                            else if(backOps == 5){
+                                motorGoStraight();
+                            }   
+                            break;
+                        
+                    case 3:// 0 1 1 // Q3 under black
+                        motorTurnLeft(50);//decrease go fast used to be 50 by 6
+                        LED_Write(1);
+                        break;    
+                        
+                    case 6:// 1 1 0 // Q5 under black  
+                        motorTurnRight(200);//increase 200 by 6``
+                        LED_Write(1);
+                        break;
+                        
+                    case 5:// 101 // Q4 under black
+                        motorGoStraight();
+                        LED_Write(0);
                         break;
                     
-                case 3:// 0 1 1 // Q3 under black
-                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
-                    LED_Write(1);
-                    break;    
+                    case 0:  // 000 // ALL UNDER black
+                        motorStop();
+                        decisionflag = 1;
+                        break;
+                    case 1: // 001 --> left intersection # 65 turn for 500s
+                        //lastState=1;
+                        motorStop();
+                        decisionflag = 1;
+                        break;
+                    case 4: // 100 --> right intersection #180 turn for 500s
+                       // lastState=2;
+                        motorStop();
+                        decisionflag = 1;
+                        break;
+                        
                     
-                case 6:// 1 1 0 // Q5 under black  
-                    motorTurnRight(200);//increase 200 by 6``
-                    LED_Write(1);
-                    break;
-                    
-                case 5:// 101 // Q4 under black
-                    motorGoStraight();
-                    LED_Write(0);
-                    break;
+                   
                 
-                case 0:  // 000 // ALL UNDER black
-                    motorStop();
-                    decision =1;
-                    break;
-                case 1: // 001 --> left intersection # 65 turn for 500s
-                    //lastState=1;
-                    motorStop();
-                    decision =1;
-                    break;
-                case 4: // 100 --> right intersection #180 turn for 500s
-                   // lastState=2;
-                    motorStop();
-                    decision =1;
-                    break;
-                    
-                
-               
-            
-            }
-            
-            
-            
-            
-            //make decision at intersection 
-            if (decision == 1){
-                //reset decision
-                decision = 0;
-                //get overall size of array
-                int size = sizeof *qptr / sizeof *qptr[0];
-                
-                //remove first element in array
-                //create new queue to size
-                int newQueue[size-1];
-                
-                //recreate new queue
-                for (int i=1;i<size-1;i++) {
-                    newQueue[i-1] = queue[i];   
                 }
                 
-//                 int queue[5] = { 1, 2, 3, 3, 5 };
-//            
-//    int *qptr;
-//    qptr = queue;
-//    
-//    while(1) {
-//    
-//    
-//    //int size = sizeof *qptr  / sizeof (int)*qptr[3];
-//    int size = (&queue)[1] - queue;
-//                
-//                //remove first element in array
-//                //create new queue to size
-//                int newQueue[size-1];
-//                
-//                //recreate new queue
-//                for (int i=1;i<size;i++) {
-//                    newQueue[i-1] = queue[i];   
-//                }
-//                
-//                *qptr = newQueue;
                 
+                
+                
+                //make decision at intersection 
+                if (decisionflag == 1){
+                    CYGlobalIntDisable;
+        
+                    //reset decision
+                    decisionflag = 0;
+                    //get overall size of array
+                    
+                    //0 - left, 1 -right, 2 - straight
+                    
+                    int decision = queue[indexPointer];
+                    
+                    switch(decision) {
+                      case 0:
+                        //turn left
+                        
+                        break;
+                      case 1:
+                        //turn right
+                        
+                        break;
+                      case 2:
+                        //go straight
+                        
+                        break;
+                    }
+                    
+                    indexPointer++;
+                    
+                    if (indexPointer >= size ) {
+                        while(1);   
+                    }
+                
+                }
+          
                 
                 
                 //case statement for first index of array
@@ -463,7 +460,7 @@ int main()
                 //-1 go right
                 
            //renable interrupt
-
+                CYGlobalIntEnable;
             }
             //reset variable.
             processSensors = 0;
