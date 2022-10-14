@@ -8,13 +8,13 @@ Code, Compile, Run and Debug online from anywhere in world.
 *******************************************************************************/
 #include <stdio.h>
 
-typedef struct {
+typedef struct Pair {
     int pairRow;
     int pairCol;
 } Pair;
 
-typedef struct {
-    Pair pair;
+typedef struct Arraye {
+    struct Pair pair;
 } Array[100];
 
 enum direction{NORTH, SOUTH, WEST, EAST};
@@ -27,7 +27,7 @@ enum direction{NORTH, SOUTH, WEST, EAST};
     // finalArray[2]= coordinate;
     
     int cols[20] = {0,1,1,1,2, 3, 3, 4, 5, 5, 5, 5};
-    int rows[20] = {0,0,1,2,4, 4, 3, 1, 1, 2, 3, 4};
+    int rows[20] = {0,0,1,2,2, 2, 1, 1, 1, 2, 3, 4};
     
     int size = 12;
     
@@ -37,8 +37,9 @@ enum direction{NORTH, SOUTH, WEST, EAST};
 void initializeFinalArray() {
      //for loop
     for (int i=0;i<size;i++) {
-        finalArray[i].pair.pairRow =cols[i];
-        finalArray[i].pair.pairCol = rows[i];
+        finalArray[i].pair.pairCol = cols[i];
+        finalArray[i].pair.pairRow =rows[i];
+        
     }
     
 }
@@ -55,10 +56,10 @@ enum direction calculateDirection(int currentCol, int currentRow, int nextCol, i
         return WEST;
     } else if ((nextCol == currentCol) && (nextRow == currentRow + 1)) {
         //must be going NORTH
-        return NORTH;
+        return SOUTH;
     } else if ((nextCol == currentCol) && (nextRow == currentRow - 1)) {
         //must be going SOUTH
-        return SOUTH;
+        return NORTH;
     }
 }
 
@@ -68,6 +69,8 @@ int main()
     int arrayPointer = 0;
     //declare result array
     int result[size];
+    //initializeFinalArray
+    initializeFinalArray();
     
     //current coordinate
         int currentCol = finalArray[arrayPointer].pair.pairCol;
@@ -82,7 +85,7 @@ int main()
     //calculate initial direction
     enum direction dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
     
-    for (int i = 0;i<size;i++) {
+    for (int i = 0;i<size-1;i++) {
         
         currentCol = finalArray[arrayPointer].pair.pairCol;
         currentRow = finalArray[arrayPointer].pair.pairRow;
@@ -96,12 +99,14 @@ int main()
         //if col change postively turn right, if col change negatively turn left.
             if (nextCol > currentCol) {
                 //record right turn
+                result[arrayPointer] = 2;
                 
             } else if (nextCol < currentCol) {
                 //record left turn
+                result[arrayPointer] = 0;
             } else {
                 //record straight
-                
+                result[arrayPointer] = 1;
             }
             
         } else if (dir == SOUTH) {
@@ -149,11 +154,13 @@ int main()
         //recalculate direction vector for future coordinate
         dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
         
+        
         arrayPointer++;
         
     }
     
-    for (int i=0;i<size;i++) {
+    for (int i=0;i<size-1;i++) {
+        //0 - left, 1 - straight, 2- right
         printf("%d", result[i]);
     }
     
