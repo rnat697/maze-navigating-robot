@@ -343,10 +343,10 @@ int main()
     // 1 go right
     //5 is die
     
-    int queue[1000] = { 1, 2, 3, 4, 5 };
+    int queue[1000] = { 2, 0, 2, 0, 0, 2, 2, 1, 2, 1, 0, 0, 0};
     int indexPointer = 0;
-    int queueSize = 5;
-    
+    int queueSize = 13;
+    int motoerFlagSTOP=0;
             
     
    ///////////////////////////////////////// LINE TRACKING////////
@@ -356,6 +356,7 @@ int main()
         /* Place your application code here. */
        
         if (processSensors == 1) {
+            CYGlobalIntDisable;
                    
             int operation = convertSensorBinary();
             int backOps = convertBackBinary();
@@ -380,12 +381,12 @@ int main()
                             break;
                         
                     case 3:// 0 1 1 // Q3 under black
-                        motorTurnLeft(50);//decrease go fast used to be 50 by 6
+                        motorTurnLeft(70);//decrease go fast used to be 50 by 6
                         LED_Write(1);
                         break;    
                         
                     case 6:// 1 1 0 // Q5 under black  
-                        motorTurnRight(200);//increase 200 by 6``
+                        motorTurnRight(180);//increase 200 by 6``
                         LED_Write(1);
                         break;
                         
@@ -418,49 +419,55 @@ int main()
                 
                 
                 //make decision at intersection 
-                if (decisionflag == 1){
-                    CYGlobalIntDisable;
+                if ((decisionflag == 1) && (motoerFlagSTOP == 0)){
+                    //CYGlobalIntDisable;
         
-                    //reset decision
-                    decisionflag = 0;
+                    
                     //get overall size of array
                     
-                    //0 - left, 1 -right, 2 - straight
+                    //0 - left, 1 -straight, 2 - right 
                     
                     int decision = queue[indexPointer];
                     
                     switch(decision) {
                       case 0:
                         //turn left
+                        motorStop();
+                        CyDelay(400);
+                        motorTurnLeft(65);
+                        CyDelay(500);
                         
                         break;
                       case 1:
-                        //turn right
+                        //go straight
+                        motorGoStraight();
+                        CyDelay(200);
                         
                         break;
                       case 2:
-                        //go straight
+                        //turn right
+                        motorStop();
+                        CyDelay(400);
+                        motorTurnRight(180);
+                        CyDelay(500);
                         
                         break;
                     }
                     
                     indexPointer++;
                     
-                    if (indexPointer >= size ) {
-                        while(1);   
+                    if (indexPointer >= queueSize ) {
+                        motorStop();
+                        motoerFlagSTOP = 1;
+                        //while(1){};   
                     }
-                
-                }
-          
-                
-                
-                //case statement for first index of array
-                // 0  got straight
-                //1 go left
-                //-1 go right
+                    
+                    //reset decision
+                    decisionflag = 0;
+        
                 
            //renable interrupt
-                CYGlobalIntEnable;
+                //CYGlobalIntEnable;
             }
             //reset variable.
             processSensors = 0;
@@ -474,6 +481,8 @@ int main()
             lightDetectedBack[0] = 0;
             lightDetectedBack[1] = 0;
             lightDetectedBack[2] = 0;
+            
+            CYGlobalIntEnable;
           
         }
         
