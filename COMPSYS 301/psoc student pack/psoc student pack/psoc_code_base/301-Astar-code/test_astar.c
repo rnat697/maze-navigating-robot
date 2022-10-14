@@ -70,7 +70,7 @@ int main(){
    // in the format of  map [col][row]
    
    // map file, start row, start col, endrow, end col
-   astar(map,2,2, 14,8);
+   astar(map,1,1, 13,7);
    //printEmtpyMazeWith(map);
   
 

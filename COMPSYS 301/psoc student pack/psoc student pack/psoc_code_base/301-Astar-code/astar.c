@@ -128,13 +128,13 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
 
     intialiseNodes(mapmaze);
     Pairs target, start;
-    target.pairRow = endLocRow-1;
-    target.pairCol = endLocCol-1;
-    start.pairCol = startLocRow-1;
-    start.pairRow = startLocRow-1;
+    target.pairRow = endLocRow;
+    target.pairCol = endLocCol;
+    start.pairCol = startLocRow;
+    start.pairRow = startLocRow;
     
-    queue[0].pair.pairRow = startLocRow-1;
-    queue[0].pair.pairCol = startLocCol-1;
+    queue[0].pair.pairRow = startLocRow;
+    queue[0].pair.pairCol = startLocCol;
     int currentGcost = 0;
     int stepNum = 0;
     Pairs visiting, northNeigh,eastNeigh,southNeigh,westNeigh;
