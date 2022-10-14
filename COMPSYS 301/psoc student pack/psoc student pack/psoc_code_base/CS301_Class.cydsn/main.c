@@ -121,16 +121,20 @@ CY_ISR(isr_eoc_Interrupt_test)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_eoc_Interrupt` */
-    int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
-    int16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
-    int16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
     
-    int16 valueQ1 =  ADC_GetResult16(Q1CHANNEL);
-    int16 valueQ2 =  ADC_GetResult16(Q2CHANNEL);
-    int16 valueQ6 =  ADC_GetResult16(Q6CHANNEL);
     
     // get value from ADC then convert to DAC to send to external LEDs
-    if (counteoc < 10) {
+    if (counteoc < 20){//10
+        
+        int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
+        int16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
+        int16 valueQ5 =  ADC_GetResult16(Q5CHANNEL);
+    
+        int16 valueQ1 =  ADC_GetResult16(Q1CHANNEL);
+        int16 valueQ2 =  ADC_GetResult16(Q2CHANNEL);
+        int16 valueQ6 =  ADC_GetResult16(Q6CHANNEL);
+        
+        
         //2211
         if (valueQ3 >= 2211) {
         //set flag for white light detected
