@@ -23,10 +23,18 @@ typedef struct Nodes{
 typedef struct Path{
     struct Pair pair;
 }Paths[100];
+
 volatile static Nodes nodesArray[MAP_ROWS][MAP_COLS];
+volatile static Paths finalPath;
+volatile static int size = 0;
 
 void swap(Pairs*a, Pairs *b);
-
+void heapify(Paths array, int size, int i);
+void enqueue(Paths array, Pairs newLoc);
+Pairs dequeue(Paths array);
 void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]);
-int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol);
+void calculateHScore(Pairs current, Pairs target);
+void calculateGScore(Pairs currentpos,int currentcost);
+void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]);
+void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol);
 #endif

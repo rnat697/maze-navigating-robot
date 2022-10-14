@@ -1,7 +1,6 @@
 #include "astar.h"
 
 // --- Priority queue implementation modified from https://www.programiz.com/dsa/priority-queue
-int size = 0;
 void swap(Pairs*a, Pairs *b) {
   Pairs temp = *b;
   *b = *a;
@@ -122,7 +121,7 @@ void calculateGScore(Pairs currentpos,int currentcost){
     nodesArray[yloc][xloc].gScore = currentcost +1;
 }
 
-int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
+void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
     Paths queue;
     Paths visitedList;
     Paths steps;
@@ -243,7 +242,7 @@ int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int 
 
     }
 
-    Paths finalPath;
+    
     int i = 0;
     printf("Final Path\n");
     for(int j=index; j--; j>=0){
@@ -270,5 +269,5 @@ int astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int 
     // end
     // retsteps = flip(reversedPath); % flips order of elements to make a path to go from start to target. 
     
-    return 0;
+    
 }
