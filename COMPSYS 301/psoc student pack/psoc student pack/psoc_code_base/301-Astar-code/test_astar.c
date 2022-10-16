@@ -122,7 +122,7 @@ int main(){
    for(int j = 0; j<=finalArrayIndex; j++){
       finalRow = finalPath[j].pair.pairRow;
       finalCol = finalPath[j].pair.pairCol;
-      printf("(%d,%d)\n", finalRow,finalCol);
+      printf("(%d,%d)\n", finalRow+1,finalCol+1); // formatting to reference matlab maze
    }
    // astar(map,1,17, 13,7);
    // printEmtpyMazeWith(map);

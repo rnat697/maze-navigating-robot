@@ -148,9 +148,12 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
     int currentVisitedIndex = 0;
     int currentRow, currentCol;
 
-   while(!((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol))){
+   while(1){
       // printf("Size of queue: %d \n", size);
       visiting =  dequeue(queue);
+      if((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol)){
+        break;
+      }
       // printf("Size of queue after dequeue: %d \n", size);
       // printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pairRow+1);
       stepNum += 1;
@@ -201,7 +204,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
               nodesArray[row][col].fScore = nodesArray[row][col].gScore + nodesArray[row][col].hScore;
 
               enqueue(queue,adjacentPos);
-              nodesArray[row][col].inQueue == 1;
+              nodesArray[row][col].inQueue = 1;
               
               nodesArray[row][col].parents.pairRow = visiting.pairRow; // add parent for the neighbouring node
               nodesArray[row][col].parents.pairCol = visiting.pairCol;
