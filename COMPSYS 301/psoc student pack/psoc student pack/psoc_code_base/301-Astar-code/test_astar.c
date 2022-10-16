@@ -1,75 +1,137 @@
 #include "map_2.h"
 #include "astar.h"
-#include <stdio.h>
 
+int arrayPointer;
+volatile static int size;
+int result[10000];
 
-// void printEmtpyMaze();
-// void combinePathWithMaze(int *map[][19], int *steps[]);
-// void printMazeWithPath(int *mapWithPath[][19]);
+enum direction{NORTH, SOUTH, WEST, EAST};
 
-// void printEmtpyMaze(){
-//    int row, col;
-//    printf("\n");
-//    for ( row = 0; row < MAP_ROWS; row++ ) { // assume this is the same
-//       for ( col = 0; col < MAP_COLS; col++ ) {
-//          int location = map[row][col];
-//          if(location == 1){
-//             printf( "%c", '#');
-//          }else{
-//             printf(" ");
-//          }
-//       }
-//       printf( "\n" );
-//    }
-// }
+    
+enum direction calculateDirection(int currentCol, int currentRow, int nextCol, int nextRow) {
+    
+    
+    if ((nextCol == currentCol + 1) && (nextRow == currentRow)) {
+        //must be going EAST
+        return EAST;
+    } else if ((nextCol == currentCol - 1) && (nextRow == currentRow)) {
+        //must be going WEST
+        return WEST;
+    } else if ((nextCol == currentCol) && (nextRow == currentRow + 1)) {
+        //must be going NORTH
+        return SOUTH;
+    } else if ((nextCol == currentCol) && (nextRow == currentRow - 1)) {
+        //must be going SOUTH
+        return NORTH;
+    }
+}
 
-// // void combinePathWithMaze(int *map[][MAP_ROWS], int *steps[]){
-// //    for(int i=0; i<sizeof(*steps); i++){
-// //       int pathLocation[2];
-// //       pathLocation[0] = *steps[i]; // idk
-// //       *map[pathLocation[0]][pathLocation[1]] = i;
-// //    }
-// // }
+void findDirections()
+{
+    //declare arraypointer
+    arrayPointer = 0;
+    size = finalArrayIndex;
+    //declare result array
+    //result[size];
+    //initializeFinalArray
+    //initializeFinalArray();
+    
+    //current coordinate
+        int currentCol = finalPath[arrayPointer].pair.pairCol;
+        int currentRow = finalPath[arrayPointer].pair.pairRow;
+    
+     //next coordinate
+        int nextCol = finalPath[arrayPointer + 1].pair.pairCol;
+        int nextRow = finalPath[arrayPointer + 1].pair.pairRow;
+    
+    
 
-// void printMazeWithPath(int *mapWithPath[][MAP_ROWS]){
-//    printf("\n");
-//    for ( int row = 0; row < MAP_ROWS; row++ ) { // assume this is the same
-//       for ( int col = 0; col < MAP_COLS; col++ ) {
-//          int location = *mapWithPath[col][row];
-//          if(location == -1){
-//             printf( "%c", '#');
-//          }else if(location == 0){
-//              printf(" ");
-//          }
-//          else{
-//             printf("%d",location); // Found path 
-//          }
-//       }
-//       printf( "\n" );
-//    }
-// }
+    //calculate initial direction
+    enum direction dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
+    
+    for (int i = 0;i<size-1;i++) {
+        
+        currentCol = finalPath[arrayPointer].pair.pairCol;
+        currentRow = finalPath[arrayPointer].pair.pairRow;
+    
+     //next coordinate
+        nextCol = finalPath[arrayPointer + 1].pair.pairCol;
+        nextRow = finalPath[arrayPointer + 1].pair.pairRow;
+        
+        
+        if (dir == NORTH) {
+        //if col change postively turn right, if col change negatively turn left.
+            if (nextCol > currentCol) {
+                //record right turn
+                result[arrayPointer] = 2;
+                
+            } else if (nextCol < currentCol) {
+                //record left turn
+                result[arrayPointer] = 0;
+            } else {
+                //record straight
+                result[arrayPointer] = 1;
+            }
+            
+        } else if (dir == SOUTH) {
+            //if col change postively turn left, if col change negatively turn right.
+            if (nextCol > currentCol) {
+                //record left turn
+                result[arrayPointer] = 0;
+                
+            } else if (nextCol < currentCol) {
+                //record right turn
+                result[arrayPointer] = 2;
+            } else {
+                //record straight
+                result[arrayPointer] = 1;
+            }
+            
+        } else if (dir == WEST) {
+            //if row change negatively turn right, if row change positively turn left.
+            if (nextRow > currentRow) {
+                //record left turn
+                result[arrayPointer] = 0;
+                
+            } else if (nextRow < currentRow) {
+                //record right turn
+                result[arrayPointer] = 2;
+            } else {
+                //record straight
+                result[arrayPointer] = 1;
+            }
+        } else {
+            //if row change negatively turn left, if row change positively turn right.
+            if (nextRow > currentRow) {
+                //record right turn
+                result[arrayPointer] = 2;
+                
+            } else if (nextRow < currentRow) {
+                //record left turn
+                result[arrayPointer] = 0;
+            } else {
+                //record straight
+                result[arrayPointer] = 1;
+            }
+        }
+        
+        //recalculate direction vector for future coordinate
+        dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
+        
+        
+        arrayPointer++;
+        
+    }
+    
+    for (int i=0;i<size-1;i++) {
+        //0 - left, 1 - straight, 2- right
+        printf("%d", result[i]);
+    }
+    
+}
 
-// void printEmtpyMazeWith(int mapa[MAP_ROWS][MAP_COLS]){
-//    int row, col;
-//    printf("\n");
-//    for ( row = 0; row < MAP_ROWS; row++ ) { // assume this is the same
-//       for ( col = 0; col < MAP_COLS; col++ ) {
-//          int location = mapa[col][row];
-//          if(location == 1){
-//             printf( "%c", '#');
-
-//          }else{
-//             printf(" ");
-//          }
-//       }
-//       printf( "\n" );
-//    }
-// }
-//volatile extern int finalArrayIndex;
-// volatile Paths finalPath;
 int main(){
-   //printEmtpyMaze();
-   //intialiseNodes(map);
+   
    // in the format of  map [col][row]
    
    // map file, start row, start col, endrow, end col
@@ -124,10 +186,14 @@ int main(){
       finalCol = finalPath[j].pair.pairCol;
       printf("(%d,%d)\n", finalRow+1,finalCol+1); // formatting to reference matlab maze
    }
-   // astar(map,1,17, 13,7);
-   // printEmtpyMazeWith(map);
+
+
+findDirections();
+
   
 
 
    return 0;
 }
+
+
