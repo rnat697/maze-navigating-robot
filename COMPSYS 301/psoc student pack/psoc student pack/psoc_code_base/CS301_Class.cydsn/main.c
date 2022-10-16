@@ -124,7 +124,7 @@ CY_ISR(isr_eoc_Interrupt_test)
     
     
     // get value from ADC then convert to DAC to send to external LEDs
-    if (counteoc < 20){//10
+    if (counteoc < 13){//10
         
         int16 valueQ3 =  ADC_GetResult16(Q3CHANNEL);
         int16 valueQ4 =  ADC_GetResult16(Q4CHANNEL);
@@ -347,9 +347,9 @@ int main()
     // 1 go right
     //5 is die
     
-    int queue[1000] = { 2, 0, 2, 0, 0, 2, 2, 1, 2, 1, 0, 0, 0};
+    int queue[1000] = { 2, 0, 2, 0, 0, 2, 2, 1, 2, 1, 0, 0};
     int indexPointer = 0;
-    int queueSize = 13;
+    int queueSize = 12;
     int motoerFlagSTOP=0;
             
     
@@ -444,8 +444,10 @@ int main()
                         break;
                       case 1:
                         //go straight
+                        motorStop();
+                        CyDelay(400);
                         motorGoStraight();
-                        CyDelay(200);
+                        CyDelay(400);
                         
                         break;
                       case 2:
@@ -460,7 +462,7 @@ int main()
                     
                     indexPointer++;
                     
-                    if (indexPointer >= queueSize ) {
+                    if (indexPointer+1 > queueSize ) {
                         motorStop();
                         motoerFlagSTOP = 1;
                         //while(1){};   
