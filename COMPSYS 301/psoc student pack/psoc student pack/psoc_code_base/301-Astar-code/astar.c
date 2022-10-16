@@ -9,9 +9,9 @@ void swap(Pairs*a, Pairs *b) {
 
 // Heapify the queue in order of minimum at the top of queue
 void heapify(Paths array, int size, int i) {
-//  if (size == 1) {
-//    printf("Single element in the heap");
-   if(size!= 1){
+  if (size == 1) {
+    printf("Single element in the heap");
+  } else {
     // Find the smallest value
     int smallest = i;
     int l = 2 * i + 1;
@@ -29,25 +29,24 @@ void heapify(Paths array, int size, int i) {
         && r_col < MAP_COLS && l_row > 0 && l_col >0 && r_col>0 
         && r_row>0 && small_row < MAP_ROWS && small_row > 0
         && small_col <MAP_COLS && small_col >0){
-        if(nodesArray[l_row][l_col].inVisited == 0 && nodesArray[r_row][r_col].inVisited == 0 && nodesArray[small_row][small_col].inVisited ==0){
-          // Find Fscores
-          int l_fscore = nodesArray[l_row][l_col].fScore;
-          int r_fscore = nodesArray[r_row][r_col].fScore;
-          int small_fscore = nodesArray[small_row][small_col].fScore;
 
-          // Compare Fscores to find smallest
-          if (l < size && l_fscore < small_fscore)
-            smallest = l;
-          if (r < size && r_fscore < small_fscore)
-            smallest = r;
+      // Find Fscores
+      int l_fscore = nodesArray[l_row][l_col].fScore;
+      int r_fscore = nodesArray[r_row][r_col].fScore;
+      int small_fscore = nodesArray[small_row][small_col].fScore;
+
+      // Compare Fscores to find smallest
+      if (l < size && l_fscore < small_fscore)
+        smallest = l;
+      if (r < size && r_fscore < small_fscore)
+        smallest = r;
 
 
-          // Swap and continue heapifying if root is not smallest
-          if (smallest != i) {
-            swap(&array[i].pair, &array[smallest].pair);
-            heapify(array, size, smallest);
-          }
-        }
+      // Swap and continue heapifying if root is not smallest
+      if (smallest != i) {
+        swap(&array[i].pair, &array[smallest].pair);
+        heapify(array, size, smallest);
+      }
     }
   }
 }
@@ -152,15 +151,9 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
    while(1){
       // printf("Size of queue: %d \n", size);
       visiting =  dequeue(queue);
-<<<<<<< Updated upstream
       if((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol)){
         break;
       }
-=======
-      if(((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol))){
-            break; 
-       }
->>>>>>> Stashed changes
       // printf("Size of queue after dequeue: %d \n", size);
       // printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pairRow+1);
       stepNum += 1;
@@ -195,7 +188,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
         int col = adjacentPos.pairCol;
         int newFscore = 0;
         int oldFscore = 2000;
-        currentGcost = nodesArray[row][col].gScore;
+        int currentGScore = nodesArray[row][col].gScore;
         //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
         
         //not a wall and has not been visited
@@ -265,13 +258,13 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
     for(int j=index;j>=0; j--){
       Pairs node = reversedArray[j].pair;
       finalPath[finalArrayIndex].pair = node;
-//      printf("%d",finalPath[finalArrayIndex].pair.pairRow);
-//      printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
+      printf("%d",finalPath[finalArrayIndex].pair.pairRow);
+      printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
       finalArrayIndex++;
     }
 
     finalArrayIndex--; // to allow for the addition of start location for next iteration
-//    printf("Final path index: %d", finalArrayIndex);
+    printf("Final path index: %d", finalArrayIndex);
 
   // Paths* returnPointer(){
   //   Paths *arraypointer;

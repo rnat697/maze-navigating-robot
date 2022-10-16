@@ -29,14 +29,9 @@
 <v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Flash Security</v>
 <v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\EEPROM</v>
 <v>CS301_Class-000\CS301_Class\Header Files</v>
-<v>CS301_Class-000\CS301_Class\Header Files\astar.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\bigBrainMovement.h</v>
 <v>CS301_Class-000\CS301_Class\Header Files\defines.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\map_2.h</v>
 <v>CS301_Class-000\CS301_Class\Header Files\vars.h</v>
 <v>CS301_Class-000\CS301_Class\Source Files</v>
-<v>CS301_Class-000\CS301_Class\Source Files\astar.c</v>
-<v>CS301_Class-000\CS301_Class\Source Files\bigBrainMovement.c</v>
 <v>CS301_Class-000\CS301_Class\Source Files\main.c</v>
 <v>CS301_Class-000\CS301_Class\Source Files\tacho.c</v>
 <v>CS301_Class-000\CS301_Class\commands</v>
@@ -44,53 +39,6 @@
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>CS301_Class-000</v>
-<v>CS301_Class-000\CS301_Class</v>
-<v>CS301_Class-000\CS301_Class\TopDesign</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Pins</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Analog</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Clocks</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Interrupts</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\DMA</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\System</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Directives</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\Flash Security</v>
-<v>CS301_Class-000\CS301_Class\CS301_Class.cydwr\EEPROM</v>
-<v>CS301_Class-000\CS301_Class\Header Files</v>
-<v>CS301_Class-000\CS301_Class\Header Files\astar.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\bigBrainMovement.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\defines.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\map_2.h</v>
-<v>CS301_Class-000\CS301_Class\Header Files\vars.h</v>
-<v>CS301_Class-000\CS301_Class\Source Files</v>
-<v>CS301_Class-000\CS301_Class\Source Files\astar.c</v>
-<v>CS301_Class-000\CS301_Class\Source Files\bigBrainMovement.c</v>
-<v>CS301_Class-000\CS301_Class\Source Files\main.c</v>
-<v>CS301_Class-000\CS301_Class\Source Files\tacho.c</v>
-<v>CS301_Class-000\CS301_Class\commands</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A0</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A1</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A2</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A3</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A4</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A5</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A6</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\A7</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC_FinalBuf</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC_IntClock</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC_IRQ</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC_SAR</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\ADC_TempBuf</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Clock_PWM</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Clock_QENC</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Clock2</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\CONTROL</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cy_boot</v>
-<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\DB0</v>
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\DB1</v>
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\DB2</v>
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
@@ -98,6 +46,53 @@
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\isr_motor</v>
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\isr_TS</v>
 <v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\isrRF_RX</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\isrRF_TX</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\LED</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M1_D1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M1_IN1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M1_IN2</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M1_QA</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M1_QB</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M2_D1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M2_IN1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M2_IN2</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M2_QA</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\M2_QB</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\PWM_1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\PWM_2</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\QuadDec_M1</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\QuadDec_M1_Cnt16</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\QuadDec_M2</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\QuadDec_M2_Cnt16</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\RF_BT_SELECT</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\timer_clock</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Timer_Motor</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\Timer_TS</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\UART</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\UART_IntClock</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\USBUART</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\USBUART_Dm</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\USBUART_Dp</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevice.h</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfitter.h</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\cymetadata.c</v>
+<v>CS301_Class-000\CS301_Class\Generated_Source\PSoC5\project.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -367,7 +362,6 @@
 <name v=".\Generated_Source\PSoC5\isr_motor.c" />
 <name v=".\Generated_Source\PSoC5\isr_TS.c" />
 <name v=".\tacho.c" />
-<name v="${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -375,7 +369,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="783, 428" SelectedTabbedMdiWindow="b6171f34-b5bd-4abe-8eb0-e1ba0e1ea6fe"><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\main.c" Guid="d13f8d77-0ae7-471a-8f0e-da2abe6434df" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch" Guid="65b81906-fa66-4bcb-8288-f69ac1ffeb6c" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cydwr" Guid="96db5808-4f94-42e1-9814-24e3a85709b0" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\ADC.c" Guid="1451da4b-0078-42c6-8c02-5ca813529d5b" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_eoc.c" Guid="5fd6b29a-6ab7-44c2-b584-d99224687e77" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\DB0.c" Guid="3a706883-9da9-43f9-ace3-1beb3981262b" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\PWM_1.c" Guid="688e7620-5bb5-4591-9765-71e25043b1c4" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_motor.c" Guid="63148ce5-3664-4b15-8835-c582be88c1e4" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_TS.c" Guid="9f44eefe-fe10-49f2-ad0b-ffb58cb02ac2" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\tacho.c" Guid="1eb2f054-25b1-4544-afaa-1d88c1be4d4f" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="9c3f7861-b4bd-4881-bc3f-03b15bcfb22a" /><DocumentWindow Key="C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch" Guid="b6171f34-b5bd-4abe-8eb0-e1ba0e1ea6fe" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1439, 831" SelectedTabbedMdiWindow="d13f8d77-0ae7-471a-8f0e-da2abe6434df"><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\main.c" Guid="d13f8d77-0ae7-471a-8f0e-da2abe6434df" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch" Guid="65b81906-fa66-4bcb-8288-f69ac1ffeb6c" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cydwr" Guid="96db5808-4f94-42e1-9814-24e3a85709b0" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\ADC.c" Guid="1451da4b-0078-42c6-8c02-5ca813529d5b" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_eoc.c" Guid="5fd6b29a-6ab7-44c2-b584-d99224687e77" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\DB0.c" Guid="3a706883-9da9-43f9-ace3-1beb3981262b" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\PWM_1.c" Guid="688e7620-5bb5-4591-9765-71e25043b1c4" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_motor.c" Guid="63148ce5-3664-4b15-8835-c582be88c1e4" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_TS.c" Guid="9f44eefe-fe10-49f2-ad0b-ffb58cb02ac2" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\tacho.c" Guid="1eb2f054-25b1-4544-afaa-1d88c1be4d4f" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="9c3f7861-b4bd-4881-bc3f-03b15bcfb22a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

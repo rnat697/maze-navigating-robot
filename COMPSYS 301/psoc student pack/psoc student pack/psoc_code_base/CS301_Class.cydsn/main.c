@@ -24,20 +24,11 @@
 #include "defines.h"
 #include "vars.h"
 #include "isr_eoc.h"
-#include "astar.h"
-#include "map_2.h" ///  TO CHANGE DURING DEMO WITH NEW MAP FILE
-#include "bigBrainMovement.h"
 //* ========================================
 void usbPutString(char *s);
 void usbPutChar(char c);
 void handle_usb();
 //* ========================================
-
-/// ------ TO MODIFY DURING DEMO WITH START AND END LOCATIONS -------
-#define STARTROW 1
-#define STARTCOL 16
-#define TARGETROW 1
-#define TARGETCOL 1
 
 
 #define rota180 500 //turns
@@ -261,10 +252,28 @@ int main()
     
 
 // --------------------------------    
-    LED_Write(1);
+// ----- INITIALIZATIONS ----------
+    CYGlobalIntEnable;
+    count  = 0;
+    
+    ADC_Start();
+    Timer_TS_Start();
+    Timer_Motor_Start();
+    QuadDec_M1_Start();
+    QuadDec_M2_Start(); //init the quadencoder,
+    //isr_motor_StartEx(isr_motor_interrupt_speed);
+    
+    isr_TS_StartEx(isr_TS_Interrupt_sample);
+    isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    
+    
+    //ADC_StartConvert();
+    
     PWM_1_Start();
     PWM_2_Start();
+    LED_Write(0);
     motorStop();
+    USBUART_Start(0,USBUART_5V_OPERATION)   ; 
     ////////////////////////////////
     
     // Speed//
@@ -279,71 +288,70 @@ int main()
     //10.8 counts per cm for distance.
    //for speed,43.5cm/s 
     
-    //motorCircle(40);
-/////////////////////////////////////////////////    
-// ---- find path to travel using AStar ------
-    volatile int currentStartRow, currentStartCol,currentEndCol,currentEndRow,row,col;
-    currentStartRow = STARTROW;
-    currentStartCol = STARTCOL;
+//    
+// ----------      //distance ---------
+ int travelDis = 1740;//10.8 * travelDis
+    /*
+  while(QuadDec_M1_GetCounter()<travelDis){
+        if (processSensors == 1) {
     
+            int operation = convertSensorBinary();
+            
     
-    // Goes through food list and finds path to the food location
-    for(int i=0;i<5; i++){
-        row = food_list[i][0];
-        col = food_list[i][1];
-        
-        // update current end node with the one in the food list
-        currentEndRow = row;
-        currentEndCol = col;
-        
-        // call Astar function
-        //astar(map,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
-        LED_Write(0);
-        // update start node with the one in the food list
-        currentStartCol = col;
-        currentStartRow = row;
-        
+            switch(operation){
+                case 3:// 0 1 1 // Q3 under black
+                    motorTurnLeft(50);//decrease go fast used to be 50 by 6
+                    LED_Write(1);
+                    break;    
+                    
+                case 6:// 1 1 0 // Q5 under black  
+                    motorTurnRight(200);//increase 200 by 6
+                    LED_Write(1);
+                    break;
+                    
+                case 5:// 101 // Q4 under black
+                    motorSetSpeed(-7); //-40 is original
+                    LED_Write(0);
+                    break;
+            }
+            
+             processSensors = 0;
+            //reset counter
+
+            counteoc = 0;
+            //reset flags for lightsensors because it checks every 10 iterations, adds delay/
+            lightDetectedFront[0] = 0;
+            lightDetectedFront[1] = 0;
+            lightDetectedFront[2] = 0;
+            lightDetectedBack[0] = 0;
+            lightDetectedBack[1] = 0;
+            lightDetectedBack[2] = 0;
+          
+            
+    
+        }
     }
+    motorStop();
+    motorCount();
     
-    // update currernt end node with target
-    
-    currentEndCol = TARGETCOL;
-    currentEndRow = TARGETROW;
-    //astar(map,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
-    motorCircle(40);
-    findDirections();
-    //finalArrayIndex
-    //finalPath
-    
-    // ----- INITIALIZATIONS ----------
-    CYGlobalIntEnable;
-    count  = 0;
-    
-    ADC_Start();
-    Timer_TS_Start();
-    Timer_Motor_Start();
-    QuadDec_M1_Start();
-    QuadDec_M2_Start(); //init the quadencoder,
-    
-    isr_TS_StartEx(isr_TS_Interrupt_sample);
-    isr_eoc_StartEx(isr_eoc_Interrupt_test);
+    /// ---------End here----------
     
     
-    USBUART_Start(0,USBUART_5V_OPERATION)   ; 
+        
+   
     
-  
+    */
     int decisionflag =0;
     
     // 0 go straight
     // 1 go right
     //5 is die
     
-    
-    int queueSize = arrayPointer;
+    int queue[1000] = { 2, 0, 2, 0, 0, 2, 2, 1, 2, 1, 0, 0};
     int indexPointer = 0;
-    
+    int queueSize = 12;
     int motoerFlagSTOP=0;
-    motorCircle(40);
+            
     
    ///////////////////////////////////////// LINE TRACKING////////
     
@@ -427,7 +435,7 @@ int main()
                     
                     //0 - left, 1 -straight, 2 - right 
                     
-                    int decision = result[indexPointer];
+                    int decision = queue[indexPointer];
                     
                     switch(decision) {
                       case 0:
