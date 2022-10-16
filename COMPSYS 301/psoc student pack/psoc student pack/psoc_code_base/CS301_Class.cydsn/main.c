@@ -66,8 +66,8 @@ void motorSetSpeed(int x){
 void motorGoBackwards(){
     
     //M1_IN2_Write(0);
-    PWM_1_WriteCompare(55); //55
-    PWM_2_WriteCompare(201); //201
+    PWM_1_WriteCompare(93); //55
+    PWM_2_WriteCompare(160); //201
 }
 void motorStop(){
     PWM_1_WriteCompare(127); 
@@ -350,13 +350,15 @@ int main()
     */
     int decisionflag =0;
     
-    // 0 go straight
-    // 1 go right
-    //5 is die
+    /// 1 go straight
+    // 2 go right
+    // 0 go left
+    //3 is uturn
     
-    int queue[1000] = {5};
+                     
+    int queue[1000] = {1,0,2,1,0,0,2,2,3,0,0,2,2,1,1,2,2,0,1,2,0,0,2,2,1,2,0,0,0,2,1,0,1,2,0};
     int indexPointer = 0;
-    int queueSize = 1;
+    int queueSize = 36;
     int motoerFlagSTOP=0;
             
     
@@ -385,7 +387,10 @@ int main()
                                     motorStop();
                                 }
                                 else{
-                                motorCircle(40);
+                                    //motorStop();
+//                                    motorGoBackwards();
+//                                    CyDelay(100);
+                                    motorCircle(40);
                                 }
                             }
                             
@@ -470,7 +475,7 @@ int main()
                         
                         break;
                         
-                        case 5:
+                        case 3:
                         motorStop();
                         CyDelay(400);
                         motorBeyblade(170);

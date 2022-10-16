@@ -228,58 +228,6 @@
 <VisibleNodeIds>
 <v>CS301_Class-000</v>
 <v>CS301_Class-000\CS301_Class</v>
-<v>CS301_Class-000\CS301_Class\CortexM3</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A0.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A3.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A4.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A5.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A6.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\A7.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_FinalBuf_dma.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_INT.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IntClock.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IRQ.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_INT.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_PM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_TempBuf_dma.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_PWM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_QENC.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CONTROL.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CONTROL_PM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\DB0.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\DB1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\DB2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_eoc.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_motor.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_TS.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\isrRF_RX.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\isrRF_TX.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\LED.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_D1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_IN1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_IN2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_QA.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_541\Debug\Listing Files\M1_QB.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -366,6 +314,8 @@
 <name v=".\Generated_Source\PSoC5\Timer_Motor.h" />
 <name v=".\Generated_Source\PSoC5\USBUART.c" />
 <name v=".\Generated_Source\PSoC5\isrRF_RX.c" />
+<name v=".\Generated_Source\PSoC5\PWM_2.h" />
+<name v=".\tacho.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -373,7 +323,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1391, 831" SelectedTabbedMdiWindow="bdbcfdd3-ea40-4a9b-891a-333f15180768"><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\main.c" Guid="bdbcfdd3-ea40-4a9b-891a-333f15180768" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cydwr" Guid="c07dc8d4-702b-4fa8-bab9-49f7d920044a" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch" Guid="dcce7ffc-48e8-4e4a-bcab-86d8c6a52619" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\QuadDec_M1.c" Guid="3b372214-9921-4605-8ce5-54ca32b0e2f6" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_motor.c" Guid="fca31ae8-e516-4f05-ac09-0997d4773ea1" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\Timer_Motor.h" Guid="129554da-43db-4b5d-9c24-bf91a0724558" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\USBUART.c" Guid="bcebd497-144d-49d1-b7e1-a0a8e66230bb" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isrRF_RX.c" Guid="a3d38adc-db67-4414-a06b-9131fd02ee21" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="82ca7633-f84f-4ecd-9b03-1c6d0cf76160" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="783, 822" SelectedTabbedMdiWindow="bdbcfdd3-ea40-4a9b-891a-333f15180768"><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\main.c" Guid="bdbcfdd3-ea40-4a9b-891a-333f15180768" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cydwr" Guid="c07dc8d4-702b-4fa8-bab9-49f7d920044a" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\TopDesign\TopDesign.cysch" Guid="dcce7ffc-48e8-4e4a-bcab-86d8c6a52619" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\QuadDec_M1.c" Guid="3b372214-9921-4605-8ce5-54ca32b0e2f6" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isr_motor.c" Guid="fca31ae8-e516-4f05-ac09-0997d4773ea1" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\Timer_Motor.h" Guid="129554da-43db-4b5d-9c24-bf91a0724558" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\USBUART.c" Guid="bcebd497-144d-49d1-b7e1-a0a8e66230bb" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\isrRF_RX.c" Guid="a3d38adc-db67-4414-a06b-9131fd02ee21" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="82ca7633-f84f-4ecd-9b03-1c6d0cf76160" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\Generated_Source\PSoC5\PWM_2.h" Guid="08f51363-3376-4004-a78b-702c06dba1d3" /><DocumentWindow Key="\\files.auckland.ac.nz\myhome\Documents\GitHub\project-project_group_11\COMPSYS 301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\tacho.c" Guid="a33b6a76-d9e8-477f-935b-f55a8dbec6b0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
