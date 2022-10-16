@@ -1,0 +1,4276 @@
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"astar.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.bss
+  20              		.align	2
+  21              	nodesArray:
+  22 0000 00000000 		.space	9120
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  23              		.align	2
+  24              	size:
+  25 23a0 00000000 		.space	4
+  26              		.section	.text.swap,"ax",%progbits
+  27              		.align	2
+  28              		.global	swap
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	swap, %function
+  32              	swap:
+  33              	.LFB1:
+  34              		.file 1 "..\\301-Astar-code\\astar.c"
+   1:..\301-Astar-code/astar.c **** #include "astar.h"
+   2:..\301-Astar-code/astar.c **** 
+   3:..\301-Astar-code/astar.c **** // --- Priority queue implementation modified from https://www.programiz.com/dsa/priority-queue
+   4:..\301-Astar-code/astar.c **** void swap(Pairs*a, Pairs *b) {
+  35              		.loc 1 4 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 16
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 80B4     		push	{r7}
+  41              		.cfi_def_cfa_offset 4
+  42              		.cfi_offset 7, -4
+  43 0002 85B0     		sub	sp, sp, #20
+  44              		.cfi_def_cfa_offset 24
+  45 0004 00AF     		add	r7, sp, #0
+  46              		.cfi_def_cfa_register 7
+  47 0006 7860     		str	r0, [r7, #4]
+  48 0008 3960     		str	r1, [r7]
+   5:..\301-Astar-code/astar.c ****   Pairs temp = *b;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 2
+
+
+  49              		.loc 1 5 0
+  50 000a 3A68     		ldr	r2, [r7]
+  51 000c 07F10803 		add	r3, r7, #8
+  52 0010 92E80300 		ldmia	r2, {r0, r1}
+  53 0014 83E80300 		stmia	r3, {r0, r1}
+   6:..\301-Astar-code/astar.c ****   *b = *a;
+  54              		.loc 1 6 0
+  55 0018 3B68     		ldr	r3, [r7]
+  56 001a 7A68     		ldr	r2, [r7, #4]
+  57 001c 92E80300 		ldmia	r2, {r0, r1}
+  58 0020 83E80300 		stmia	r3, {r0, r1}
+   7:..\301-Astar-code/astar.c ****   *a = temp;
+  59              		.loc 1 7 0
+  60 0024 7B68     		ldr	r3, [r7, #4]
+  61 0026 1A46     		mov	r2, r3
+  62 0028 07F10803 		add	r3, r7, #8
+  63 002c 93E80300 		ldmia	r3, {r0, r1}
+  64 0030 82E80300 		stmia	r2, {r0, r1}
+   8:..\301-Astar-code/astar.c **** }
+  65              		.loc 1 8 0
+  66 0034 00BF     		nop
+  67 0036 1437     		adds	r7, r7, #20
+  68              		.cfi_def_cfa_offset 4
+  69 0038 BD46     		mov	sp, r7
+  70              		.cfi_def_cfa_register 13
+  71              		@ sp needed
+  72 003a 80BC     		pop	{r7}
+  73              		.cfi_restore 7
+  74              		.cfi_def_cfa_offset 0
+  75 003c 7047     		bx	lr
+  76              		.cfi_endproc
+  77              	.LFE1:
+  78              		.size	swap, .-swap
+  79 003e 00BF     		.section	.text.heapify,"ax",%progbits
+  80              		.align	2
+  81              		.global	heapify
+  82              		.thumb
+  83              		.thumb_func
+  84              		.type	heapify, %function
+  85              	heapify:
+  86              	.LFB2:
+   9:..\301-Astar-code/astar.c **** 
+  10:..\301-Astar-code/astar.c **** // Heapify the queue in order of minimum at the top of queue
+  11:..\301-Astar-code/astar.c **** void heapify(Paths array, int size, int i) {
+  87              		.loc 1 11 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 64
+  90              		@ frame_needed = 1, uses_anonymous_args = 0
+  91 0000 80B5     		push	{r7, lr}
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 7, -8
+  94              		.cfi_offset 14, -4
+  95 0002 90B0     		sub	sp, sp, #64
+  96              		.cfi_def_cfa_offset 72
+  97 0004 00AF     		add	r7, sp, #0
+  98              		.cfi_def_cfa_register 7
+  99 0006 F860     		str	r0, [r7, #12]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 3
+
+
+ 100 0008 B960     		str	r1, [r7, #8]
+ 101 000a 7A60     		str	r2, [r7, #4]
+  12:..\301-Astar-code/astar.c **** //  if (size == 1) {
+  13:..\301-Astar-code/astar.c **** //    printf("Single element in the heap");
+  14:..\301-Astar-code/astar.c ****    if(size!= 1){
+ 102              		.loc 1 14 0
+ 103 000c BB68     		ldr	r3, [r7, #8]
+ 104 000e 012B     		cmp	r3, #1
+ 105 0010 00F0DD80 		beq	.L6
+ 106              	.LBB2:
+  15:..\301-Astar-code/astar.c ****     // Find the smallest value
+  16:..\301-Astar-code/astar.c ****     int smallest = i;
+ 107              		.loc 1 16 0
+ 108 0014 7B68     		ldr	r3, [r7, #4]
+ 109 0016 FB63     		str	r3, [r7, #60]
+  17:..\301-Astar-code/astar.c ****     int l = 2 * i + 1;
+ 110              		.loc 1 17 0
+ 111 0018 7B68     		ldr	r3, [r7, #4]
+ 112 001a 5B00     		lsls	r3, r3, #1
+ 113 001c 0133     		adds	r3, r3, #1
+ 114 001e BB63     		str	r3, [r7, #56]
+  18:..\301-Astar-code/astar.c ****     int r = 2 * i + 2;
+ 115              		.loc 1 18 0
+ 116 0020 7B68     		ldr	r3, [r7, #4]
+ 117 0022 0133     		adds	r3, r3, #1
+ 118 0024 5B00     		lsls	r3, r3, #1
+ 119 0026 7B63     		str	r3, [r7, #52]
+  19:..\301-Astar-code/astar.c **** 
+  20:..\301-Astar-code/astar.c ****     // Use locations at smallest, L and R to find smallest Fscore in nodesArray
+  21:..\301-Astar-code/astar.c ****     int l_row = array[l].pair.pairRow;
+ 120              		.loc 1 21 0
+ 121 0028 BB6B     		ldr	r3, [r7, #56]
+ 122 002a DB00     		lsls	r3, r3, #3
+ 123 002c FA68     		ldr	r2, [r7, #12]
+ 124 002e 1344     		add	r3, r3, r2
+ 125 0030 1B68     		ldr	r3, [r3]
+ 126 0032 3B63     		str	r3, [r7, #48]
+  22:..\301-Astar-code/astar.c ****     int l_col = array[l].pair.pairCol;
+ 127              		.loc 1 22 0
+ 128 0034 BB6B     		ldr	r3, [r7, #56]
+ 129 0036 DB00     		lsls	r3, r3, #3
+ 130 0038 FA68     		ldr	r2, [r7, #12]
+ 131 003a 1344     		add	r3, r3, r2
+ 132 003c 5B68     		ldr	r3, [r3, #4]
+ 133 003e FB62     		str	r3, [r7, #44]
+  23:..\301-Astar-code/astar.c ****     int small_row = array[smallest].pair.pairRow;
+ 134              		.loc 1 23 0
+ 135 0040 FB6B     		ldr	r3, [r7, #60]
+ 136 0042 DB00     		lsls	r3, r3, #3
+ 137 0044 FA68     		ldr	r2, [r7, #12]
+ 138 0046 1344     		add	r3, r3, r2
+ 139 0048 1B68     		ldr	r3, [r3]
+ 140 004a BB62     		str	r3, [r7, #40]
+  24:..\301-Astar-code/astar.c ****     int small_col = array[smallest].pair.pairCol;
+ 141              		.loc 1 24 0
+ 142 004c FB6B     		ldr	r3, [r7, #60]
+ 143 004e DB00     		lsls	r3, r3, #3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 4
+
+
+ 144 0050 FA68     		ldr	r2, [r7, #12]
+ 145 0052 1344     		add	r3, r3, r2
+ 146 0054 5B68     		ldr	r3, [r3, #4]
+ 147 0056 7B62     		str	r3, [r7, #36]
+  25:..\301-Astar-code/astar.c ****     int r_row = array[r].pair.pairRow;
+ 148              		.loc 1 25 0
+ 149 0058 7B6B     		ldr	r3, [r7, #52]
+ 150 005a DB00     		lsls	r3, r3, #3
+ 151 005c FA68     		ldr	r2, [r7, #12]
+ 152 005e 1344     		add	r3, r3, r2
+ 153 0060 1B68     		ldr	r3, [r3]
+ 154 0062 3B62     		str	r3, [r7, #32]
+  26:..\301-Astar-code/astar.c ****     int r_col = array[r].pair.pairCol;
+ 155              		.loc 1 26 0
+ 156 0064 7B6B     		ldr	r3, [r7, #52]
+ 157 0066 DB00     		lsls	r3, r3, #3
+ 158 0068 FA68     		ldr	r2, [r7, #12]
+ 159 006a 1344     		add	r3, r3, r2
+ 160 006c 5B68     		ldr	r3, [r3, #4]
+ 161 006e FB61     		str	r3, [r7, #28]
+  27:..\301-Astar-code/astar.c ****     
+  28:..\301-Astar-code/astar.c ****     if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row < MAP_ROWS 
+ 162              		.loc 1 28 0
+ 163 0070 3B6B     		ldr	r3, [r7, #48]
+ 164 0072 0E2B     		cmp	r3, #14
+ 165 0074 00F3AB80 		bgt	.L6
+ 166              		.loc 1 28 0 is_stmt 0 discriminator 1
+ 167 0078 FB6A     		ldr	r3, [r7, #44]
+ 168 007a 122B     		cmp	r3, #18
+ 169 007c 00F3A780 		bgt	.L6
+ 170              		.loc 1 28 0 discriminator 2
+ 171 0080 3B6A     		ldr	r3, [r7, #32]
+ 172 0082 0E2B     		cmp	r3, #14
+ 173 0084 00F3A380 		bgt	.L6
+  29:..\301-Astar-code/astar.c ****         && r_col < MAP_COLS && l_row > 0 && l_col >0 && r_col>0 
+ 174              		.loc 1 29 0 is_stmt 1
+ 175 0088 FB69     		ldr	r3, [r7, #28]
+ 176 008a 122B     		cmp	r3, #18
+ 177 008c 00F39F80 		bgt	.L6
+ 178              		.loc 1 29 0 is_stmt 0 discriminator 1
+ 179 0090 3B6B     		ldr	r3, [r7, #48]
+ 180 0092 002B     		cmp	r3, #0
+ 181 0094 40F39B80 		ble	.L6
+ 182              		.loc 1 29 0 discriminator 2
+ 183 0098 FB6A     		ldr	r3, [r7, #44]
+ 184 009a 002B     		cmp	r3, #0
+ 185 009c 40F39780 		ble	.L6
+ 186              		.loc 1 29 0 discriminator 3
+ 187 00a0 FB69     		ldr	r3, [r7, #28]
+ 188 00a2 002B     		cmp	r3, #0
+ 189 00a4 40F39380 		ble	.L6
+  30:..\301-Astar-code/astar.c ****         && r_row>0 && small_row < MAP_ROWS && small_row > 0
+ 190              		.loc 1 30 0 is_stmt 1
+ 191 00a8 3B6A     		ldr	r3, [r7, #32]
+ 192 00aa 002B     		cmp	r3, #0
+ 193 00ac 40F38F80 		ble	.L6
+ 194              		.loc 1 30 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 5
+
+
+ 195 00b0 BB6A     		ldr	r3, [r7, #40]
+ 196 00b2 0E2B     		cmp	r3, #14
+ 197 00b4 00F38B80 		bgt	.L6
+ 198              		.loc 1 30 0 discriminator 2
+ 199 00b8 BB6A     		ldr	r3, [r7, #40]
+ 200 00ba 002B     		cmp	r3, #0
+ 201 00bc 40F38780 		ble	.L6
+  31:..\301-Astar-code/astar.c ****         && small_col <MAP_COLS && small_col >0){
+ 202              		.loc 1 31 0 is_stmt 1
+ 203 00c0 7B6A     		ldr	r3, [r7, #36]
+ 204 00c2 122B     		cmp	r3, #18
+ 205 00c4 00F38380 		bgt	.L6
+ 206              		.loc 1 31 0 is_stmt 0 discriminator 1
+ 207 00c8 7B6A     		ldr	r3, [r7, #36]
+ 208 00ca 002B     		cmp	r3, #0
+ 209 00cc 7FDD     		ble	.L6
+  32:..\301-Astar-code/astar.c ****         if(nodesArray[l_row][l_col].inVisited == 0 && nodesArray[r_row][r_col].inVisited == 0 && no
+ 210              		.loc 1 32 0 is_stmt 1
+ 211 00ce 4249     		ldr	r1, .L7
+ 212 00d0 3A6B     		ldr	r2, [r7, #48]
+ 213 00d2 1346     		mov	r3, r2
+ 214 00d4 DB00     		lsls	r3, r3, #3
+ 215 00d6 1344     		add	r3, r3, r2
+ 216 00d8 5B00     		lsls	r3, r3, #1
+ 217 00da 1344     		add	r3, r3, r2
+ 218 00dc FA6A     		ldr	r2, [r7, #44]
+ 219 00de 1344     		add	r3, r3, r2
+ 220 00e0 5B01     		lsls	r3, r3, #5
+ 221 00e2 0B44     		add	r3, r3, r1
+ 222 00e4 0C33     		adds	r3, r3, #12
+ 223 00e6 1B68     		ldr	r3, [r3]
+ 224 00e8 002B     		cmp	r3, #0
+ 225 00ea 70D1     		bne	.L6
+ 226              		.loc 1 32 0 is_stmt 0 discriminator 1
+ 227 00ec 3A49     		ldr	r1, .L7
+ 228 00ee 3A6A     		ldr	r2, [r7, #32]
+ 229 00f0 1346     		mov	r3, r2
+ 230 00f2 DB00     		lsls	r3, r3, #3
+ 231 00f4 1344     		add	r3, r3, r2
+ 232 00f6 5B00     		lsls	r3, r3, #1
+ 233 00f8 1344     		add	r3, r3, r2
+ 234 00fa FA69     		ldr	r2, [r7, #28]
+ 235 00fc 1344     		add	r3, r3, r2
+ 236 00fe 5B01     		lsls	r3, r3, #5
+ 237 0100 0B44     		add	r3, r3, r1
+ 238 0102 0C33     		adds	r3, r3, #12
+ 239 0104 1B68     		ldr	r3, [r3]
+ 240 0106 002B     		cmp	r3, #0
+ 241 0108 61D1     		bne	.L6
+ 242              		.loc 1 32 0 discriminator 2
+ 243 010a 3349     		ldr	r1, .L7
+ 244 010c BA6A     		ldr	r2, [r7, #40]
+ 245 010e 1346     		mov	r3, r2
+ 246 0110 DB00     		lsls	r3, r3, #3
+ 247 0112 1344     		add	r3, r3, r2
+ 248 0114 5B00     		lsls	r3, r3, #1
+ 249 0116 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 6
+
+
+ 250 0118 7A6A     		ldr	r2, [r7, #36]
+ 251 011a 1344     		add	r3, r3, r2
+ 252 011c 5B01     		lsls	r3, r3, #5
+ 253 011e 0B44     		add	r3, r3, r1
+ 254 0120 0C33     		adds	r3, r3, #12
+ 255 0122 1B68     		ldr	r3, [r3]
+ 256 0124 002B     		cmp	r3, #0
+ 257 0126 52D1     		bne	.L6
+ 258              	.LBB3:
+  33:..\301-Astar-code/astar.c ****           // Find Fscores
+  34:..\301-Astar-code/astar.c ****           int l_fscore = nodesArray[l_row][l_col].fScore;
+ 259              		.loc 1 34 0 is_stmt 1
+ 260 0128 2B49     		ldr	r1, .L7
+ 261 012a 3A6B     		ldr	r2, [r7, #48]
+ 262 012c 1346     		mov	r3, r2
+ 263 012e DB00     		lsls	r3, r3, #3
+ 264 0130 1344     		add	r3, r3, r2
+ 265 0132 5B00     		lsls	r3, r3, #1
+ 266 0134 1344     		add	r3, r3, r2
+ 267 0136 FA6A     		ldr	r2, [r7, #44]
+ 268 0138 1344     		add	r3, r3, r2
+ 269 013a 5B01     		lsls	r3, r3, #5
+ 270 013c 0B44     		add	r3, r3, r1
+ 271 013e 1433     		adds	r3, r3, #20
+ 272 0140 1B68     		ldr	r3, [r3]
+ 273 0142 BB61     		str	r3, [r7, #24]
+  35:..\301-Astar-code/astar.c ****           int r_fscore = nodesArray[r_row][r_col].fScore;
+ 274              		.loc 1 35 0
+ 275 0144 2449     		ldr	r1, .L7
+ 276 0146 3A6A     		ldr	r2, [r7, #32]
+ 277 0148 1346     		mov	r3, r2
+ 278 014a DB00     		lsls	r3, r3, #3
+ 279 014c 1344     		add	r3, r3, r2
+ 280 014e 5B00     		lsls	r3, r3, #1
+ 281 0150 1344     		add	r3, r3, r2
+ 282 0152 FA69     		ldr	r2, [r7, #28]
+ 283 0154 1344     		add	r3, r3, r2
+ 284 0156 5B01     		lsls	r3, r3, #5
+ 285 0158 0B44     		add	r3, r3, r1
+ 286 015a 1433     		adds	r3, r3, #20
+ 287 015c 1B68     		ldr	r3, [r3]
+ 288 015e 7B61     		str	r3, [r7, #20]
+  36:..\301-Astar-code/astar.c ****           int small_fscore = nodesArray[small_row][small_col].fScore;
+ 289              		.loc 1 36 0
+ 290 0160 1D49     		ldr	r1, .L7
+ 291 0162 BA6A     		ldr	r2, [r7, #40]
+ 292 0164 1346     		mov	r3, r2
+ 293 0166 DB00     		lsls	r3, r3, #3
+ 294 0168 1344     		add	r3, r3, r2
+ 295 016a 5B00     		lsls	r3, r3, #1
+ 296 016c 1344     		add	r3, r3, r2
+ 297 016e 7A6A     		ldr	r2, [r7, #36]
+ 298 0170 1344     		add	r3, r3, r2
+ 299 0172 5B01     		lsls	r3, r3, #5
+ 300 0174 0B44     		add	r3, r3, r1
+ 301 0176 1433     		adds	r3, r3, #20
+ 302 0178 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 7
+
+
+ 303 017a 3B61     		str	r3, [r7, #16]
+  37:..\301-Astar-code/astar.c **** 
+  38:..\301-Astar-code/astar.c ****           // Compare Fscores to find smallest
+  39:..\301-Astar-code/astar.c ****           if (l < size && l_fscore < small_fscore)
+ 304              		.loc 1 39 0
+ 305 017c BA6B     		ldr	r2, [r7, #56]
+ 306 017e BB68     		ldr	r3, [r7, #8]
+ 307 0180 9A42     		cmp	r2, r3
+ 308 0182 05DA     		bge	.L4
+ 309              		.loc 1 39 0 is_stmt 0 discriminator 1
+ 310 0184 BA69     		ldr	r2, [r7, #24]
+ 311 0186 3B69     		ldr	r3, [r7, #16]
+ 312 0188 9A42     		cmp	r2, r3
+ 313 018a 01DA     		bge	.L4
+  40:..\301-Astar-code/astar.c ****             smallest = l;
+ 314              		.loc 1 40 0 is_stmt 1
+ 315 018c BB6B     		ldr	r3, [r7, #56]
+ 316 018e FB63     		str	r3, [r7, #60]
+ 317              	.L4:
+  41:..\301-Astar-code/astar.c ****           if (r < size && r_fscore < small_fscore)
+ 318              		.loc 1 41 0
+ 319 0190 7A6B     		ldr	r2, [r7, #52]
+ 320 0192 BB68     		ldr	r3, [r7, #8]
+ 321 0194 9A42     		cmp	r2, r3
+ 322 0196 05DA     		bge	.L5
+ 323              		.loc 1 41 0 is_stmt 0 discriminator 1
+ 324 0198 7A69     		ldr	r2, [r7, #20]
+ 325 019a 3B69     		ldr	r3, [r7, #16]
+ 326 019c 9A42     		cmp	r2, r3
+ 327 019e 01DA     		bge	.L5
+  42:..\301-Astar-code/astar.c ****             smallest = r;
+ 328              		.loc 1 42 0 is_stmt 1
+ 329 01a0 7B6B     		ldr	r3, [r7, #52]
+ 330 01a2 FB63     		str	r3, [r7, #60]
+ 331              	.L5:
+  43:..\301-Astar-code/astar.c **** 
+  44:..\301-Astar-code/astar.c **** 
+  45:..\301-Astar-code/astar.c ****           // Swap and continue heapifying if root is not smallest
+  46:..\301-Astar-code/astar.c ****           if (smallest != i) {
+ 332              		.loc 1 46 0
+ 333 01a4 FA6B     		ldr	r2, [r7, #60]
+ 334 01a6 7B68     		ldr	r3, [r7, #4]
+ 335 01a8 9A42     		cmp	r2, r3
+ 336 01aa 10D0     		beq	.L6
+  47:..\301-Astar-code/astar.c ****             swap(&array[i].pair, &array[smallest].pair);
+ 337              		.loc 1 47 0
+ 338 01ac 7B68     		ldr	r3, [r7, #4]
+ 339 01ae DB00     		lsls	r3, r3, #3
+ 340 01b0 FA68     		ldr	r2, [r7, #12]
+ 341 01b2 1344     		add	r3, r3, r2
+ 342 01b4 1846     		mov	r0, r3
+ 343 01b6 FB6B     		ldr	r3, [r7, #60]
+ 344 01b8 DB00     		lsls	r3, r3, #3
+ 345 01ba FA68     		ldr	r2, [r7, #12]
+ 346 01bc 1344     		add	r3, r3, r2
+ 347 01be 1946     		mov	r1, r3
+ 348 01c0 FFF7FEFF 		bl	swap
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 8
+
+
+  48:..\301-Astar-code/astar.c ****             heapify(array, size, smallest);
+ 349              		.loc 1 48 0
+ 350 01c4 FA6B     		ldr	r2, [r7, #60]
+ 351 01c6 B968     		ldr	r1, [r7, #8]
+ 352 01c8 F868     		ldr	r0, [r7, #12]
+ 353 01ca FFF7FEFF 		bl	heapify
+ 354              	.L6:
+ 355              	.LBE3:
+ 356              	.LBE2:
+  49:..\301-Astar-code/astar.c ****           }
+  50:..\301-Astar-code/astar.c ****         }
+  51:..\301-Astar-code/astar.c ****     }
+  52:..\301-Astar-code/astar.c ****   }
+  53:..\301-Astar-code/astar.c **** }
+ 357              		.loc 1 53 0
+ 358 01ce 00BF     		nop
+ 359 01d0 4037     		adds	r7, r7, #64
+ 360              		.cfi_def_cfa_offset 8
+ 361 01d2 BD46     		mov	sp, r7
+ 362              		.cfi_def_cfa_register 13
+ 363              		@ sp needed
+ 364 01d4 80BD     		pop	{r7, pc}
+ 365              	.L8:
+ 366 01d6 00BF     		.align	2
+ 367              	.L7:
+ 368 01d8 00000000 		.word	nodesArray
+ 369              		.cfi_endproc
+ 370              	.LFE2:
+ 371              		.size	heapify, .-heapify
+ 372              		.section	.text.enqueue,"ax",%progbits
+ 373              		.align	2
+ 374              		.global	enqueue
+ 375              		.thumb
+ 376              		.thumb_func
+ 377              		.type	enqueue, %function
+ 378              	enqueue:
+ 379              	.LFB3:
+  54:..\301-Astar-code/astar.c **** 
+  55:..\301-Astar-code/astar.c **** // Function to insert an element into the tree
+  56:..\301-Astar-code/astar.c **** void enqueue(Paths array, Pairs newLoc) {
+ 380              		.loc 1 56 0
+ 381              		.cfi_startproc
+ 382              		@ args = 0, pretend = 0, frame = 24
+ 383              		@ frame_needed = 1, uses_anonymous_args = 0
+ 384 0000 80B5     		push	{r7, lr}
+ 385              		.cfi_def_cfa_offset 8
+ 386              		.cfi_offset 7, -8
+ 387              		.cfi_offset 14, -4
+ 388 0002 86B0     		sub	sp, sp, #24
+ 389              		.cfi_def_cfa_offset 32
+ 390 0004 00AF     		add	r7, sp, #0
+ 391              		.cfi_def_cfa_register 7
+ 392 0006 F860     		str	r0, [r7, #12]
+ 393 0008 3B1D     		adds	r3, r7, #4
+ 394 000a 83E80600 		stmia	r3, {r1, r2}
+  57:..\301-Astar-code/astar.c ****   if (size == 0) {
+ 395              		.loc 1 57 0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 9
+
+
+ 396 000e 244B     		ldr	r3, .L16
+ 397 0010 1B68     		ldr	r3, [r3]
+ 398 0012 002B     		cmp	r3, #0
+ 399 0014 0CD1     		bne	.L10
+  58:..\301-Astar-code/astar.c ****     array[0].pair = newLoc;
+ 400              		.loc 1 58 0
+ 401 0016 FB68     		ldr	r3, [r7, #12]
+ 402 0018 1A46     		mov	r2, r3
+ 403 001a 3B1D     		adds	r3, r7, #4
+ 404 001c 93E80300 		ldmia	r3, {r0, r1}
+ 405 0020 82E80300 		stmia	r2, {r0, r1}
+  59:..\301-Astar-code/astar.c ****     size += 1;
+ 406              		.loc 1 59 0
+ 407 0024 1E4B     		ldr	r3, .L16
+ 408 0026 1B68     		ldr	r3, [r3]
+ 409 0028 0133     		adds	r3, r3, #1
+ 410 002a 1D4A     		ldr	r2, .L16
+ 411 002c 1360     		str	r3, [r2]
+  60:..\301-Astar-code/astar.c ****   } else if(size < 0){
+  61:..\301-Astar-code/astar.c ****     array[0].pair = newLoc;
+  62:..\301-Astar-code/astar.c ****     size = 0;
+  63:..\301-Astar-code/astar.c ****   }
+  64:..\301-Astar-code/astar.c ****   else {
+  65:..\301-Astar-code/astar.c ****     array[size].pair = newLoc;
+  66:..\301-Astar-code/astar.c ****     size += 1;
+  67:..\301-Astar-code/astar.c ****     for (int i = size / 2 - 1; i >= 0; i--) {
+  68:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+  69:..\301-Astar-code/astar.c ****     }
+  70:..\301-Astar-code/astar.c ****   }
+  71:..\301-Astar-code/astar.c **** }
+ 412              		.loc 1 71 0
+ 413 002e 33E0     		b	.L15
+ 414              	.L10:
+  60:..\301-Astar-code/astar.c ****   } else if(size < 0){
+ 415              		.loc 1 60 0
+ 416 0030 1B4B     		ldr	r3, .L16
+ 417 0032 1B68     		ldr	r3, [r3]
+ 418 0034 002B     		cmp	r3, #0
+ 419 0036 0ADA     		bge	.L12
+  61:..\301-Astar-code/astar.c ****     size = 0;
+ 420              		.loc 1 61 0
+ 421 0038 FB68     		ldr	r3, [r7, #12]
+ 422 003a 1A46     		mov	r2, r3
+ 423 003c 3B1D     		adds	r3, r7, #4
+ 424 003e 93E80300 		ldmia	r3, {r0, r1}
+ 425 0042 82E80300 		stmia	r2, {r0, r1}
+  62:..\301-Astar-code/astar.c ****   }
+ 426              		.loc 1 62 0
+ 427 0046 164B     		ldr	r3, .L16
+ 428 0048 0022     		movs	r2, #0
+ 429 004a 1A60     		str	r2, [r3]
+ 430              		.loc 1 71 0
+ 431 004c 24E0     		b	.L15
+ 432              	.L12:
+  65:..\301-Astar-code/astar.c ****     size += 1;
+ 433              		.loc 1 65 0
+ 434 004e 144B     		ldr	r3, .L16
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 10
+
+
+ 435 0050 1B68     		ldr	r3, [r3]
+ 436 0052 DB00     		lsls	r3, r3, #3
+ 437 0054 FA68     		ldr	r2, [r7, #12]
+ 438 0056 1344     		add	r3, r3, r2
+ 439 0058 1A46     		mov	r2, r3
+ 440 005a 3B1D     		adds	r3, r7, #4
+ 441 005c 93E80300 		ldmia	r3, {r0, r1}
+ 442 0060 82E80300 		stmia	r2, {r0, r1}
+  66:..\301-Astar-code/astar.c ****     for (int i = size / 2 - 1; i >= 0; i--) {
+ 443              		.loc 1 66 0
+ 444 0064 0E4B     		ldr	r3, .L16
+ 445 0066 1B68     		ldr	r3, [r3]
+ 446 0068 0133     		adds	r3, r3, #1
+ 447 006a 0D4A     		ldr	r2, .L16
+ 448 006c 1360     		str	r3, [r2]
+ 449              	.LBB4:
+  67:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 450              		.loc 1 67 0
+ 451 006e 0C4B     		ldr	r3, .L16
+ 452 0070 1B68     		ldr	r3, [r3]
+ 453 0072 DA0F     		lsrs	r2, r3, #31
+ 454 0074 1344     		add	r3, r3, r2
+ 455 0076 5B10     		asrs	r3, r3, #1
+ 456 0078 013B     		subs	r3, r3, #1
+ 457 007a 7B61     		str	r3, [r7, #20]
+ 458 007c 09E0     		b	.L13
+ 459              	.L14:
+  68:..\301-Astar-code/astar.c ****     }
+ 460              		.loc 1 68 0 discriminator 3
+ 461 007e 084B     		ldr	r3, .L16
+ 462 0080 1B68     		ldr	r3, [r3]
+ 463 0082 7A69     		ldr	r2, [r7, #20]
+ 464 0084 1946     		mov	r1, r3
+ 465 0086 F868     		ldr	r0, [r7, #12]
+ 466 0088 FFF7FEFF 		bl	heapify
+  67:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 467              		.loc 1 67 0 discriminator 3
+ 468 008c 7B69     		ldr	r3, [r7, #20]
+ 469 008e 013B     		subs	r3, r3, #1
+ 470 0090 7B61     		str	r3, [r7, #20]
+ 471              	.L13:
+  67:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 472              		.loc 1 67 0 is_stmt 0 discriminator 1
+ 473 0092 7B69     		ldr	r3, [r7, #20]
+ 474 0094 002B     		cmp	r3, #0
+ 475 0096 F2DA     		bge	.L14
+ 476              	.L15:
+ 477              	.LBE4:
+ 478              		.loc 1 71 0 is_stmt 1
+ 479 0098 00BF     		nop
+ 480 009a 1837     		adds	r7, r7, #24
+ 481              		.cfi_def_cfa_offset 8
+ 482 009c BD46     		mov	sp, r7
+ 483              		.cfi_def_cfa_register 13
+ 484              		@ sp needed
+ 485 009e 80BD     		pop	{r7, pc}
+ 486              	.L17:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 11
+
+
+ 487              		.align	2
+ 488              	.L16:
+ 489 00a0 A0230000 		.word	size
+ 490              		.cfi_endproc
+ 491              	.LFE3:
+ 492              		.size	enqueue, .-enqueue
+ 493              		.section	.text.dequeue,"ax",%progbits
+ 494              		.align	2
+ 495              		.global	dequeue
+ 496              		.thumb
+ 497              		.thumb_func
+ 498              		.type	dequeue, %function
+ 499              	dequeue:
+ 500              	.LFB4:
+  72:..\301-Astar-code/astar.c **** 
+  73:..\301-Astar-code/astar.c **** // Function to remove first element of the queues
+  74:..\301-Astar-code/astar.c **** Pairs dequeue(Paths array) {
+ 501              		.loc 1 74 0
+ 502              		.cfi_startproc
+ 503              		@ args = 0, pretend = 0, frame = 24
+ 504              		@ frame_needed = 1, uses_anonymous_args = 0
+ 505 0000 80B5     		push	{r7, lr}
+ 506              		.cfi_def_cfa_offset 8
+ 507              		.cfi_offset 7, -8
+ 508              		.cfi_offset 14, -4
+ 509 0002 86B0     		sub	sp, sp, #24
+ 510              		.cfi_def_cfa_offset 32
+ 511 0004 00AF     		add	r7, sp, #0
+ 512              		.cfi_def_cfa_register 7
+ 513 0006 7860     		str	r0, [r7, #4]
+ 514 0008 3960     		str	r1, [r7]
+  75:..\301-Astar-code/astar.c ****     Pairs locAtTop;
+  76:..\301-Astar-code/astar.c ****     locAtTop.pairRow = array[0].pair.pairRow;
+ 515              		.loc 1 76 0
+ 516 000a 3B68     		ldr	r3, [r7]
+ 517 000c 1B68     		ldr	r3, [r3]
+ 518 000e FB60     		str	r3, [r7, #12]
+  77:..\301-Astar-code/astar.c ****     locAtTop.pairCol = array[0].pair.pairCol;
+ 519              		.loc 1 77 0
+ 520 0010 3B68     		ldr	r3, [r7]
+ 521 0012 5B68     		ldr	r3, [r3, #4]
+ 522 0014 3B61     		str	r3, [r7, #16]
+  78:..\301-Astar-code/astar.c ****     // printf("Top of queue: %d, %d \n", locAtTop.pairRow, locAtTop.pairCol);
+  79:..\301-Astar-code/astar.c **** 
+  80:..\301-Astar-code/astar.c ****     swap(&array[0].pair, &array[size - 1].pair);
+ 523              		.loc 1 80 0
+ 524 0016 3868     		ldr	r0, [r7]
+ 525 0018 1B4B     		ldr	r3, .L23
+ 526 001a 1B68     		ldr	r3, [r3]
+ 527 001c 03F10053 		add	r3, r3, #536870912
+ 528 0020 013B     		subs	r3, r3, #1
+ 529 0022 DB00     		lsls	r3, r3, #3
+ 530 0024 3A68     		ldr	r2, [r7]
+ 531 0026 1344     		add	r3, r3, r2
+ 532 0028 1946     		mov	r1, r3
+ 533 002a FFF7FEFF 		bl	swap
+  81:..\301-Astar-code/astar.c ****     size -= 1;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 12
+
+
+ 534              		.loc 1 81 0
+ 535 002e 164B     		ldr	r3, .L23
+ 536 0030 1B68     		ldr	r3, [r3]
+ 537 0032 013B     		subs	r3, r3, #1
+ 538 0034 144A     		ldr	r2, .L23
+ 539 0036 1360     		str	r3, [r2]
+  82:..\301-Astar-code/astar.c ****     if (size < 0){
+ 540              		.loc 1 82 0
+ 541 0038 134B     		ldr	r3, .L23
+ 542 003a 1B68     		ldr	r3, [r3]
+ 543 003c 002B     		cmp	r3, #0
+ 544 003e 02DA     		bge	.L19
+  83:..\301-Astar-code/astar.c ****       size = 0;
+ 545              		.loc 1 83 0
+ 546 0040 114B     		ldr	r3, .L23
+ 547 0042 0022     		movs	r2, #0
+ 548 0044 1A60     		str	r2, [r3]
+ 549              	.L19:
+ 550              	.LBB5:
+  84:..\301-Astar-code/astar.c ****     }
+  85:..\301-Astar-code/astar.c ****     for (int i = size / 2 - 1; i >= 0; i--) {
+ 551              		.loc 1 85 0
+ 552 0046 104B     		ldr	r3, .L23
+ 553 0048 1B68     		ldr	r3, [r3]
+ 554 004a DA0F     		lsrs	r2, r3, #31
+ 555 004c 1344     		add	r3, r3, r2
+ 556 004e 5B10     		asrs	r3, r3, #1
+ 557 0050 013B     		subs	r3, r3, #1
+ 558 0052 7B61     		str	r3, [r7, #20]
+ 559 0054 09E0     		b	.L20
+ 560              	.L21:
+  86:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 561              		.loc 1 86 0 discriminator 3
+ 562 0056 0C4B     		ldr	r3, .L23
+ 563 0058 1B68     		ldr	r3, [r3]
+ 564 005a 7A69     		ldr	r2, [r7, #20]
+ 565 005c 1946     		mov	r1, r3
+ 566 005e 3868     		ldr	r0, [r7]
+ 567 0060 FFF7FEFF 		bl	heapify
+  85:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 568              		.loc 1 85 0 discriminator 3
+ 569 0064 7B69     		ldr	r3, [r7, #20]
+ 570 0066 013B     		subs	r3, r3, #1
+ 571 0068 7B61     		str	r3, [r7, #20]
+ 572              	.L20:
+  85:..\301-Astar-code/astar.c ****       heapify(array, size, i);
+ 573              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 574 006a 7B69     		ldr	r3, [r7, #20]
+ 575 006c 002B     		cmp	r3, #0
+ 576 006e F2DA     		bge	.L21
+ 577              	.LBE5:
+  87:..\301-Astar-code/astar.c ****     }
+  88:..\301-Astar-code/astar.c **** 
+  89:..\301-Astar-code/astar.c ****     return locAtTop;
+ 578              		.loc 1 89 0 is_stmt 1
+ 579 0070 7B68     		ldr	r3, [r7, #4]
+ 580 0072 1A46     		mov	r2, r3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 13
+
+
+ 581 0074 07F10C03 		add	r3, r7, #12
+ 582 0078 93E80300 		ldmia	r3, {r0, r1}
+ 583 007c 82E80300 		stmia	r2, {r0, r1}
+  90:..\301-Astar-code/astar.c **** }
+ 584              		.loc 1 90 0
+ 585 0080 7868     		ldr	r0, [r7, #4]
+ 586 0082 1837     		adds	r7, r7, #24
+ 587              		.cfi_def_cfa_offset 8
+ 588 0084 BD46     		mov	sp, r7
+ 589              		.cfi_def_cfa_register 13
+ 590              		@ sp needed
+ 591 0086 80BD     		pop	{r7, pc}
+ 592              	.L24:
+ 593              		.align	2
+ 594              	.L23:
+ 595 0088 A0230000 		.word	size
+ 596              		.cfi_endproc
+ 597              	.LFE4:
+ 598              		.size	dequeue, .-dequeue
+ 599              		.section	.text.intialiseNodes,"ax",%progbits
+ 600              		.align	2
+ 601              		.global	intialiseNodes
+ 602              		.thumb
+ 603              		.thumb_func
+ 604              		.type	intialiseNodes, %function
+ 605              	intialiseNodes:
+ 606              	.LFB5:
+  91:..\301-Astar-code/astar.c **** //--- End of priority queue ---
+  92:..\301-Astar-code/astar.c **** void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]){
+ 607              		.loc 1 92 0
+ 608              		.cfi_startproc
+ 609              		@ args = 0, pretend = 0, frame = 16
+ 610              		@ frame_needed = 1, uses_anonymous_args = 0
+ 611              		@ link register save eliminated.
+ 612 0000 80B4     		push	{r7}
+ 613              		.cfi_def_cfa_offset 4
+ 614              		.cfi_offset 7, -4
+ 615 0002 85B0     		sub	sp, sp, #20
+ 616              		.cfi_def_cfa_offset 24
+ 617 0004 00AF     		add	r7, sp, #0
+ 618              		.cfi_def_cfa_register 7
+ 619 0006 7860     		str	r0, [r7, #4]
+ 620              	.LBB6:
+  93:..\301-Astar-code/astar.c ****     for(int row=0; row<MAP_ROWS; row++){
+ 621              		.loc 1 93 0
+ 622 0008 0023     		movs	r3, #0
+ 623 000a FB60     		str	r3, [r7, #12]
+ 624 000c 98E0     		b	.L26
+ 625              	.L31:
+ 626              	.LBB7:
+  94:..\301-Astar-code/astar.c ****         for(int col=0; col<MAP_COLS; col++){
+ 627              		.loc 1 94 0
+ 628 000e 0023     		movs	r3, #0
+ 629 0010 BB60     		str	r3, [r7, #8]
+ 630 0012 8EE0     		b	.L27
+ 631              	.L30:
+  95:..\301-Astar-code/astar.c ****             nodesArray[row][col].parents.pairRow = -1;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 14
+
+
+ 632              		.loc 1 95 0
+ 633 0014 4F49     		ldr	r1, .L32
+ 634 0016 FA68     		ldr	r2, [r7, #12]
+ 635 0018 1346     		mov	r3, r2
+ 636 001a DB00     		lsls	r3, r3, #3
+ 637 001c 1344     		add	r3, r3, r2
+ 638 001e 5B00     		lsls	r3, r3, #1
+ 639 0020 1344     		add	r3, r3, r2
+ 640 0022 BA68     		ldr	r2, [r7, #8]
+ 641 0024 1344     		add	r3, r3, r2
+ 642 0026 5B01     		lsls	r3, r3, #5
+ 643 0028 0B44     		add	r3, r3, r1
+ 644 002a 4FF0FF32 		mov	r2, #-1
+ 645 002e 1A60     		str	r2, [r3]
+  96:..\301-Astar-code/astar.c ****             nodesArray[row][col].parents.pairCol = -1;
+ 646              		.loc 1 96 0
+ 647 0030 4849     		ldr	r1, .L32
+ 648 0032 FA68     		ldr	r2, [r7, #12]
+ 649 0034 1346     		mov	r3, r2
+ 650 0036 DB00     		lsls	r3, r3, #3
+ 651 0038 1344     		add	r3, r3, r2
+ 652 003a 5B00     		lsls	r3, r3, #1
+ 653 003c 1344     		add	r3, r3, r2
+ 654 003e BA68     		ldr	r2, [r7, #8]
+ 655 0040 1344     		add	r3, r3, r2
+ 656 0042 5B01     		lsls	r3, r3, #5
+ 657 0044 0B44     		add	r3, r3, r1
+ 658 0046 0433     		adds	r3, r3, #4
+ 659 0048 4FF0FF32 		mov	r2, #-1
+ 660 004c 1A60     		str	r2, [r3]
+  97:..\301-Astar-code/astar.c **** 
+  98:..\301-Astar-code/astar.c ****             if(mazeMap[row][col] == 1){ // Wall
+ 661              		.loc 1 98 0
+ 662 004e FB68     		ldr	r3, [r7, #12]
+ 663 0050 4C22     		movs	r2, #76
+ 664 0052 02FB03F3 		mul	r3, r2, r3
+ 665 0056 7A68     		ldr	r2, [r7, #4]
+ 666 0058 1344     		add	r3, r3, r2
+ 667 005a BA68     		ldr	r2, [r7, #8]
+ 668 005c 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 669 0060 012B     		cmp	r3, #1
+ 670 0062 0ED1     		bne	.L28
+  99:..\301-Astar-code/astar.c ****                 nodesArray[row][col].traversable = 0;
+ 671              		.loc 1 99 0
+ 672 0064 3B49     		ldr	r1, .L32
+ 673 0066 FA68     		ldr	r2, [r7, #12]
+ 674 0068 1346     		mov	r3, r2
+ 675 006a DB00     		lsls	r3, r3, #3
+ 676 006c 1344     		add	r3, r3, r2
+ 677 006e 5B00     		lsls	r3, r3, #1
+ 678 0070 1344     		add	r3, r3, r2
+ 679 0072 BA68     		ldr	r2, [r7, #8]
+ 680 0074 1344     		add	r3, r3, r2
+ 681 0076 5B01     		lsls	r3, r3, #5
+ 682 0078 0B44     		add	r3, r3, r1
+ 683 007a 0833     		adds	r3, r3, #8
+ 684 007c 0022     		movs	r2, #0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 15
+
+
+ 685 007e 1A60     		str	r2, [r3]
+ 686 0080 0DE0     		b	.L29
+ 687              	.L28:
+ 100:..\301-Astar-code/astar.c ****             }else{
+ 101:..\301-Astar-code/astar.c ****                 nodesArray[row][col].traversable = 1; // traversable path
+ 688              		.loc 1 101 0
+ 689 0082 3449     		ldr	r1, .L32
+ 690 0084 FA68     		ldr	r2, [r7, #12]
+ 691 0086 1346     		mov	r3, r2
+ 692 0088 DB00     		lsls	r3, r3, #3
+ 693 008a 1344     		add	r3, r3, r2
+ 694 008c 5B00     		lsls	r3, r3, #1
+ 695 008e 1344     		add	r3, r3, r2
+ 696 0090 BA68     		ldr	r2, [r7, #8]
+ 697 0092 1344     		add	r3, r3, r2
+ 698 0094 5B01     		lsls	r3, r3, #5
+ 699 0096 0B44     		add	r3, r3, r1
+ 700 0098 0833     		adds	r3, r3, #8
+ 701 009a 0122     		movs	r2, #1
+ 702 009c 1A60     		str	r2, [r3]
+ 703              	.L29:
+ 102:..\301-Astar-code/astar.c ****             }
+ 103:..\301-Astar-code/astar.c ****             nodesArray[row][col].inVisited =  0;
+ 704              		.loc 1 103 0 discriminator 2
+ 705 009e 2D49     		ldr	r1, .L32
+ 706 00a0 FA68     		ldr	r2, [r7, #12]
+ 707 00a2 1346     		mov	r3, r2
+ 708 00a4 DB00     		lsls	r3, r3, #3
+ 709 00a6 1344     		add	r3, r3, r2
+ 710 00a8 5B00     		lsls	r3, r3, #1
+ 711 00aa 1344     		add	r3, r3, r2
+ 712 00ac BA68     		ldr	r2, [r7, #8]
+ 713 00ae 1344     		add	r3, r3, r2
+ 714 00b0 5B01     		lsls	r3, r3, #5
+ 715 00b2 0B44     		add	r3, r3, r1
+ 716 00b4 0C33     		adds	r3, r3, #12
+ 717 00b6 0022     		movs	r2, #0
+ 718 00b8 1A60     		str	r2, [r3]
+ 104:..\301-Astar-code/astar.c ****             nodesArray[row][col].inQueue =  0;
+ 719              		.loc 1 104 0 discriminator 2
+ 720 00ba 2649     		ldr	r1, .L32
+ 721 00bc FA68     		ldr	r2, [r7, #12]
+ 722 00be 1346     		mov	r3, r2
+ 723 00c0 DB00     		lsls	r3, r3, #3
+ 724 00c2 1344     		add	r3, r3, r2
+ 725 00c4 5B00     		lsls	r3, r3, #1
+ 726 00c6 1344     		add	r3, r3, r2
+ 727 00c8 BA68     		ldr	r2, [r7, #8]
+ 728 00ca 1344     		add	r3, r3, r2
+ 729 00cc 5B01     		lsls	r3, r3, #5
+ 730 00ce 0B44     		add	r3, r3, r1
+ 731 00d0 1033     		adds	r3, r3, #16
+ 732 00d2 0022     		movs	r2, #0
+ 733 00d4 1A60     		str	r2, [r3]
+ 105:..\301-Astar-code/astar.c ****             nodesArray[row][col].fScore = 2000;
+ 734              		.loc 1 105 0 discriminator 2
+ 735 00d6 1F49     		ldr	r1, .L32
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 16
+
+
+ 736 00d8 FA68     		ldr	r2, [r7, #12]
+ 737 00da 1346     		mov	r3, r2
+ 738 00dc DB00     		lsls	r3, r3, #3
+ 739 00de 1344     		add	r3, r3, r2
+ 740 00e0 5B00     		lsls	r3, r3, #1
+ 741 00e2 1344     		add	r3, r3, r2
+ 742 00e4 BA68     		ldr	r2, [r7, #8]
+ 743 00e6 1344     		add	r3, r3, r2
+ 744 00e8 5B01     		lsls	r3, r3, #5
+ 745 00ea 0B44     		add	r3, r3, r1
+ 746 00ec 1433     		adds	r3, r3, #20
+ 747 00ee 4FF4FA62 		mov	r2, #2000
+ 748 00f2 1A60     		str	r2, [r3]
+ 106:..\301-Astar-code/astar.c ****             nodesArray[row][col].gScore = 0;
+ 749              		.loc 1 106 0 discriminator 2
+ 750 00f4 1749     		ldr	r1, .L32
+ 751 00f6 FA68     		ldr	r2, [r7, #12]
+ 752 00f8 1346     		mov	r3, r2
+ 753 00fa DB00     		lsls	r3, r3, #3
+ 754 00fc 1344     		add	r3, r3, r2
+ 755 00fe 5B00     		lsls	r3, r3, #1
+ 756 0100 1344     		add	r3, r3, r2
+ 757 0102 BA68     		ldr	r2, [r7, #8]
+ 758 0104 1344     		add	r3, r3, r2
+ 759 0106 5B01     		lsls	r3, r3, #5
+ 760 0108 0B44     		add	r3, r3, r1
+ 761 010a 1833     		adds	r3, r3, #24
+ 762 010c 0022     		movs	r2, #0
+ 763 010e 1A60     		str	r2, [r3]
+ 107:..\301-Astar-code/astar.c ****             nodesArray[row][col].hScore = 0;
+ 764              		.loc 1 107 0 discriminator 2
+ 765 0110 1049     		ldr	r1, .L32
+ 766 0112 FA68     		ldr	r2, [r7, #12]
+ 767 0114 1346     		mov	r3, r2
+ 768 0116 DB00     		lsls	r3, r3, #3
+ 769 0118 1344     		add	r3, r3, r2
+ 770 011a 5B00     		lsls	r3, r3, #1
+ 771 011c 1344     		add	r3, r3, r2
+ 772 011e BA68     		ldr	r2, [r7, #8]
+ 773 0120 1344     		add	r3, r3, r2
+ 774 0122 5B01     		lsls	r3, r3, #5
+ 775 0124 0B44     		add	r3, r3, r1
+ 776 0126 1C33     		adds	r3, r3, #28
+ 777 0128 0022     		movs	r2, #0
+ 778 012a 1A60     		str	r2, [r3]
+  94:..\301-Astar-code/astar.c ****             nodesArray[row][col].parents.pairRow = -1;
+ 779              		.loc 1 94 0 discriminator 2
+ 780 012c BB68     		ldr	r3, [r7, #8]
+ 781 012e 0133     		adds	r3, r3, #1
+ 782 0130 BB60     		str	r3, [r7, #8]
+ 783              	.L27:
+  94:..\301-Astar-code/astar.c ****             nodesArray[row][col].parents.pairRow = -1;
+ 784              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 785 0132 BB68     		ldr	r3, [r7, #8]
+ 786 0134 122B     		cmp	r3, #18
+ 787 0136 7FF76DAF 		ble	.L30
+ 788              	.LBE7:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 17
+
+
+  93:..\301-Astar-code/astar.c ****         for(int col=0; col<MAP_COLS; col++){
+ 789              		.loc 1 93 0 is_stmt 1 discriminator 2
+ 790 013a FB68     		ldr	r3, [r7, #12]
+ 791 013c 0133     		adds	r3, r3, #1
+ 792 013e FB60     		str	r3, [r7, #12]
+ 793              	.L26:
+  93:..\301-Astar-code/astar.c ****         for(int col=0; col<MAP_COLS; col++){
+ 794              		.loc 1 93 0 is_stmt 0 discriminator 1
+ 795 0140 FB68     		ldr	r3, [r7, #12]
+ 796 0142 0E2B     		cmp	r3, #14
+ 797 0144 7FF763AF 		ble	.L31
+ 798              	.LBE6:
+ 108:..\301-Astar-code/astar.c ****         }
+ 109:..\301-Astar-code/astar.c ****     }
+ 110:..\301-Astar-code/astar.c **** }
+ 799              		.loc 1 110 0 is_stmt 1
+ 800 0148 00BF     		nop
+ 801 014a 1437     		adds	r7, r7, #20
+ 802              		.cfi_def_cfa_offset 4
+ 803 014c BD46     		mov	sp, r7
+ 804              		.cfi_def_cfa_register 13
+ 805              		@ sp needed
+ 806 014e 80BC     		pop	{r7}
+ 807              		.cfi_restore 7
+ 808              		.cfi_def_cfa_offset 0
+ 809 0150 7047     		bx	lr
+ 810              	.L33:
+ 811 0152 00BF     		.align	2
+ 812              	.L32:
+ 813 0154 00000000 		.word	nodesArray
+ 814              		.cfi_endproc
+ 815              	.LFE5:
+ 816              		.size	intialiseNodes, .-intialiseNodes
+ 817              		.section	.text.calculateHScore,"ax",%progbits
+ 818              		.align	2
+ 819              		.global	calculateHScore
+ 820              		.thumb
+ 821              		.thumb_func
+ 822              		.type	calculateHScore, %function
+ 823              	calculateHScore:
+ 824              	.LFB6:
+ 111:..\301-Astar-code/astar.c **** 
+ 112:..\301-Astar-code/astar.c **** // calculating H score using Manhattan Distance 
+ 113:..\301-Astar-code/astar.c **** void calculateHScore(Pairs current, Pairs target){
+ 825              		.loc 1 113 0
+ 826              		.cfi_startproc
+ 827              		@ args = 0, pretend = 0, frame = 24
+ 828              		@ frame_needed = 1, uses_anonymous_args = 0
+ 829              		@ link register save eliminated.
+ 830 0000 90B4     		push	{r4, r7}
+ 831              		.cfi_def_cfa_offset 8
+ 832              		.cfi_offset 4, -8
+ 833              		.cfi_offset 7, -4
+ 834 0002 86B0     		sub	sp, sp, #24
+ 835              		.cfi_def_cfa_offset 32
+ 836 0004 00AF     		add	r7, sp, #0
+ 837              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 18
+
+
+ 838 0006 07F10804 		add	r4, r7, #8
+ 839 000a 84E80300 		stmia	r4, {r0, r1}
+ 840 000e 3946     		mov	r1, r7
+ 841 0010 81E80C00 		stmia	r1, {r2, r3}
+ 114:..\301-Astar-code/astar.c ****     int xloc = current.pairCol;
+ 842              		.loc 1 114 0
+ 843 0014 FB68     		ldr	r3, [r7, #12]
+ 844 0016 7B61     		str	r3, [r7, #20]
+ 115:..\301-Astar-code/astar.c ****     int yloc = current.pairRow;
+ 845              		.loc 1 115 0
+ 846 0018 BB68     		ldr	r3, [r7, #8]
+ 847 001a 3B61     		str	r3, [r7, #16]
+ 116:..\301-Astar-code/astar.c ****     nodesArray[yloc][xloc].hScore = abs(xloc-target.pairRow) + abs(yloc-target.pairCol);
+ 848              		.loc 1 116 0
+ 849 001c 3B68     		ldr	r3, [r7]
+ 850 001e 7A69     		ldr	r2, [r7, #20]
+ 851 0020 D31A     		subs	r3, r2, r3
+ 852 0022 83EAE372 		eor	r2, r3, r3, asr #31
+ 853 0026 A2EBE372 		sub	r2, r2, r3, asr #31
+ 854 002a 7B68     		ldr	r3, [r7, #4]
+ 855 002c 3969     		ldr	r1, [r7, #16]
+ 856 002e CB1A     		subs	r3, r1, r3
+ 857 0030 002B     		cmp	r3, #0
+ 858 0032 B8BF     		it	lt
+ 859 0034 5B42     		rsblt	r3, r3, #0
+ 860 0036 D118     		adds	r1, r2, r3
+ 861 0038 0848     		ldr	r0, .L35
+ 862 003a 3A69     		ldr	r2, [r7, #16]
+ 863 003c 1346     		mov	r3, r2
+ 864 003e DB00     		lsls	r3, r3, #3
+ 865 0040 1344     		add	r3, r3, r2
+ 866 0042 5B00     		lsls	r3, r3, #1
+ 867 0044 1344     		add	r3, r3, r2
+ 868 0046 7A69     		ldr	r2, [r7, #20]
+ 869 0048 1344     		add	r3, r3, r2
+ 870 004a 5B01     		lsls	r3, r3, #5
+ 871 004c 0344     		add	r3, r3, r0
+ 872 004e 1C33     		adds	r3, r3, #28
+ 873 0050 1960     		str	r1, [r3]
+ 117:..\301-Astar-code/astar.c **** }
+ 874              		.loc 1 117 0
+ 875 0052 00BF     		nop
+ 876 0054 1837     		adds	r7, r7, #24
+ 877              		.cfi_def_cfa_offset 8
+ 878 0056 BD46     		mov	sp, r7
+ 879              		.cfi_def_cfa_register 13
+ 880              		@ sp needed
+ 881 0058 90BC     		pop	{r4, r7}
+ 882              		.cfi_restore 7
+ 883              		.cfi_restore 4
+ 884              		.cfi_def_cfa_offset 0
+ 885 005a 7047     		bx	lr
+ 886              	.L36:
+ 887              		.align	2
+ 888              	.L35:
+ 889 005c 00000000 		.word	nodesArray
+ 890              		.cfi_endproc
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 19
+
+
+ 891              	.LFE6:
+ 892              		.size	calculateHScore, .-calculateHScore
+ 893              		.section	.text.calculateGScore,"ax",%progbits
+ 894              		.align	2
+ 895              		.global	calculateGScore
+ 896              		.thumb
+ 897              		.thumb_func
+ 898              		.type	calculateGScore, %function
+ 899              	calculateGScore:
+ 900              	.LFB7:
+ 118:..\301-Astar-code/astar.c **** 
+ 119:..\301-Astar-code/astar.c **** // Calculating G score  
+ 120:..\301-Astar-code/astar.c **** // G score is the movement score from the start point to current point. We
+ 121:..\301-Astar-code/astar.c **** // add to the current cost by one each time we move away from start point.
+ 122:..\301-Astar-code/astar.c **** void calculateGScore(Pairs currentpos,int currentcost){
+ 901              		.loc 1 122 0
+ 902              		.cfi_startproc
+ 903              		@ args = 0, pretend = 0, frame = 24
+ 904              		@ frame_needed = 1, uses_anonymous_args = 0
+ 905              		@ link register save eliminated.
+ 906 0000 80B4     		push	{r7}
+ 907              		.cfi_def_cfa_offset 4
+ 908              		.cfi_offset 7, -4
+ 909 0002 87B0     		sub	sp, sp, #28
+ 910              		.cfi_def_cfa_offset 32
+ 911 0004 00AF     		add	r7, sp, #0
+ 912              		.cfi_def_cfa_register 7
+ 913 0006 07F10803 		add	r3, r7, #8
+ 914 000a 83E80300 		stmia	r3, {r0, r1}
+ 915 000e 7A60     		str	r2, [r7, #4]
+ 123:..\301-Astar-code/astar.c ****     int xloc = currentpos.pairCol;
+ 916              		.loc 1 123 0
+ 917 0010 FB68     		ldr	r3, [r7, #12]
+ 918 0012 7B61     		str	r3, [r7, #20]
+ 124:..\301-Astar-code/astar.c ****     int yloc = currentpos.pairRow;
+ 919              		.loc 1 124 0
+ 920 0014 BB68     		ldr	r3, [r7, #8]
+ 921 0016 3B61     		str	r3, [r7, #16]
+ 125:..\301-Astar-code/astar.c ****     nodesArray[yloc][xloc].gScore = currentcost +1;
+ 922              		.loc 1 125 0
+ 923 0018 7B68     		ldr	r3, [r7, #4]
+ 924 001a 591C     		adds	r1, r3, #1
+ 925 001c 0848     		ldr	r0, .L38
+ 926 001e 3A69     		ldr	r2, [r7, #16]
+ 927 0020 1346     		mov	r3, r2
+ 928 0022 DB00     		lsls	r3, r3, #3
+ 929 0024 1344     		add	r3, r3, r2
+ 930 0026 5B00     		lsls	r3, r3, #1
+ 931 0028 1344     		add	r3, r3, r2
+ 932 002a 7A69     		ldr	r2, [r7, #20]
+ 933 002c 1344     		add	r3, r3, r2
+ 934 002e 5B01     		lsls	r3, r3, #5
+ 935 0030 0344     		add	r3, r3, r0
+ 936 0032 1833     		adds	r3, r3, #24
+ 937 0034 1960     		str	r1, [r3]
+ 126:..\301-Astar-code/astar.c **** }
+ 938              		.loc 1 126 0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 20
+
+
+ 939 0036 00BF     		nop
+ 940 0038 1C37     		adds	r7, r7, #28
+ 941              		.cfi_def_cfa_offset 4
+ 942 003a BD46     		mov	sp, r7
+ 943              		.cfi_def_cfa_register 13
+ 944              		@ sp needed
+ 945 003c 80BC     		pop	{r7}
+ 946              		.cfi_restore 7
+ 947              		.cfi_def_cfa_offset 0
+ 948 003e 7047     		bx	lr
+ 949              	.L39:
+ 950              		.align	2
+ 951              	.L38:
+ 952 0040 00000000 		.word	nodesArray
+ 953              		.cfi_endproc
+ 954              	.LFE7:
+ 955              		.size	calculateGScore, .-calculateGScore
+ 956              		.comm	finalPath,8000,4
+ 957              		.global	finalArrayIndex
+ 958              		.bss
+ 959              		.align	2
+ 960              		.type	finalArrayIndex, %object
+ 961              		.size	finalArrayIndex, 4
+ 962              	finalArrayIndex:
+ 963 23a4 00000000 		.space	4
+ 964              		.section	.text.astar,"ax",%progbits
+ 965              		.align	2
+ 966              		.global	astar
+ 967              		.thumb
+ 968              		.thumb_func
+ 969              		.type	astar, %function
+ 970              	astar:
+ 971              	.LFB8:
+ 127:..\301-Astar-code/astar.c **** 
+ 128:..\301-Astar-code/astar.c **** volatile Paths finalPath;
+ 129:..\301-Astar-code/astar.c **** volatile int finalArrayIndex = 0;
+ 130:..\301-Astar-code/astar.c **** void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int end
+ 972              		.loc 1 130 0
+ 973              		.cfi_startproc
+ 974              		@ args = 4, pretend = 0, frame = 40152
+ 975              		@ frame_needed = 1, uses_anonymous_args = 0
+ 976 0000 90B5     		push	{r4, r7, lr}
+ 977              		.cfi_def_cfa_offset 12
+ 978              		.cfi_offset 4, -12
+ 979              		.cfi_offset 7, -8
+ 980              		.cfi_offset 14, -4
+ 981 0002 ADF51C4D 		sub	sp, sp, #39936
+ 982              		.cfi_def_cfa_offset 39948
+ 983 0006 B7B0     		sub	sp, sp, #220
+ 984              		.cfi_def_cfa_offset 40168
+ 985 0008 00AF     		add	r7, sp, #0
+ 986              		.cfi_def_cfa_register 7
+ 987 000a 07F1D804 		add	r4, r7, #216
+ 988 000e CC3C     		subs	r4, r4, #204
+ 989 0010 2060     		str	r0, [r4]
+ 990 0012 07F1D800 		add	r0, r7, #216
+ 991 0016 D038     		subs	r0, r0, #208
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 21
+
+
+ 992 0018 0160     		str	r1, [r0]
+ 993 001a 07F1D801 		add	r1, r7, #216
+ 994 001e D439     		subs	r1, r1, #212
+ 995 0020 0A60     		str	r2, [r1]
+ 996 0022 07F1D802 		add	r2, r7, #216
+ 997 0026 D83A     		subs	r2, r2, #216
+ 998 0028 1360     		str	r3, [r2]
+ 131:..\301-Astar-code/astar.c ****     Paths queue;
+ 132:..\301-Astar-code/astar.c ****     Paths visitedList;
+ 133:..\301-Astar-code/astar.c ****     Paths steps;
+ 134:..\301-Astar-code/astar.c **** 
+ 135:..\301-Astar-code/astar.c ****     intialiseNodes(mapmaze);
+ 999              		.loc 1 135 0
+ 1000 002a 07F1D803 		add	r3, r7, #216
+ 1001 002e CC3B     		subs	r3, r3, #204
+ 1002 0030 1868     		ldr	r0, [r3]
+ 1003 0032 FFF7FEFF 		bl	intialiseNodes
+ 136:..\301-Astar-code/astar.c ****     Pairs target, start;
+ 137:..\301-Astar-code/astar.c ****     target.pairRow = endLocRow;
+ 1004              		.loc 1 137 0
+ 1005 0036 07F57D53 		add	r3, r7, #16192
+ 1006 003a 03F11803 		add	r3, r3, #24
+ 1007 003e 783B     		subs	r3, r3, #120
+ 1008 0040 07F1D802 		add	r2, r7, #216
+ 1009 0044 D83A     		subs	r2, r2, #216
+ 1010 0046 1268     		ldr	r2, [r2]
+ 1011 0048 1A60     		str	r2, [r3]
+ 138:..\301-Astar-code/astar.c ****     target.pairCol = endLocCol;
+ 1012              		.loc 1 138 0
+ 1013 004a 07F57D53 		add	r3, r7, #16192
+ 1014 004e 03F11803 		add	r3, r3, #24
+ 1015 0052 783B     		subs	r3, r3, #120
+ 1016 0054 07F51C42 		add	r2, r7, #39936
+ 1017 0058 02F1E802 		add	r2, r2, #232
+ 1018 005c 1268     		ldr	r2, [r2]
+ 1019 005e 5A60     		str	r2, [r3, #4]
+ 139:..\301-Astar-code/astar.c ****     start.pairCol = startLocCol;
+ 1020              		.loc 1 139 0
+ 1021 0060 07F57B52 		add	r2, r7, #16064
+ 1022 0064 02F11802 		add	r2, r2, #24
+ 1023 0068 07F1D803 		add	r3, r7, #216
+ 1024 006c D43B     		subs	r3, r3, #212
+ 1025 006e 1B68     		ldr	r3, [r3]
+ 1026 0070 5360     		str	r3, [r2, #4]
+ 140:..\301-Astar-code/astar.c ****     start.pairRow = startLocRow;
+ 1027              		.loc 1 140 0
+ 1028 0072 07F57B52 		add	r2, r7, #16064
+ 1029 0076 02F11802 		add	r2, r2, #24
+ 1030 007a 07F1D803 		add	r3, r7, #216
+ 1031 007e D03B     		subs	r3, r3, #208
+ 1032 0080 1B68     		ldr	r3, [r3]
+ 1033 0082 1360     		str	r3, [r2]
+ 141:..\301-Astar-code/astar.c ****     
+ 142:..\301-Astar-code/astar.c ****     queue[0].pair.pairRow = startLocRow;
+ 1034              		.loc 1 142 0
+ 1035 0084 07F5FA43 		add	r3, r7, #32000
+ 1036 0088 03F17803 		add	r3, r3, #120
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 22
+
+
+ 1037 008c 103B     		subs	r3, r3, #16
+ 1038 008e 07F1D802 		add	r2, r7, #216
+ 1039 0092 D03A     		subs	r2, r2, #208
+ 1040 0094 1268     		ldr	r2, [r2]
+ 1041 0096 1A60     		str	r2, [r3]
+ 143:..\301-Astar-code/astar.c ****     queue[0].pair.pairCol = startLocCol;
+ 1042              		.loc 1 143 0
+ 1043 0098 07F5FA43 		add	r3, r7, #32000
+ 1044 009c 03F17803 		add	r3, r3, #120
+ 1045 00a0 103B     		subs	r3, r3, #16
+ 1046 00a2 07F1D802 		add	r2, r7, #216
+ 1047 00a6 D43A     		subs	r2, r2, #212
+ 1048 00a8 1268     		ldr	r2, [r2]
+ 1049 00aa 5A60     		str	r2, [r3, #4]
+ 144:..\301-Astar-code/astar.c ****     int currentGcost = 0;
+ 1050              		.loc 1 144 0
+ 1051 00ac 0023     		movs	r3, #0
+ 1052 00ae 07F51C42 		add	r2, r7, #39936
+ 1053 00b2 02F1C002 		add	r2, r2, #192
+ 1054 00b6 1360     		str	r3, [r2]
+ 145:..\301-Astar-code/astar.c ****     int stepNum = 0;
+ 1055              		.loc 1 145 0
+ 1056 00b8 0023     		movs	r3, #0
+ 1057 00ba 07F51C42 		add	r2, r7, #39936
+ 1058 00be 02F1D402 		add	r2, r2, #212
+ 1059 00c2 1360     		str	r3, [r2]
+ 146:..\301-Astar-code/astar.c ****     Pairs visiting, northNeigh,eastNeigh,southNeigh,westNeigh;
+ 147:..\301-Astar-code/astar.c ****     visiting.pairRow = -1;
+ 1060              		.loc 1 147 0
+ 1061 00c4 07F57B53 		add	r3, r7, #16064
+ 1062 00c8 03F11803 		add	r3, r3, #24
+ 1063 00cc 083B     		subs	r3, r3, #8
+ 1064 00ce 4FF0FF32 		mov	r2, #-1
+ 1065 00d2 1A60     		str	r2, [r3]
+ 148:..\301-Astar-code/astar.c ****     visiting.pairCol = -1;
+ 1066              		.loc 1 148 0
+ 1067 00d4 07F57B53 		add	r3, r7, #16064
+ 1068 00d8 03F11803 		add	r3, r3, #24
+ 1069 00dc 083B     		subs	r3, r3, #8
+ 1070 00de 4FF0FF32 		mov	r2, #-1
+ 1071 00e2 5A60     		str	r2, [r3, #4]
+ 149:..\301-Astar-code/astar.c ****     int currentVisitedIndex = 0;
+ 1072              		.loc 1 149 0
+ 1073 00e4 0023     		movs	r3, #0
+ 1074 00e6 07F51C42 		add	r2, r7, #39936
+ 1075 00ea 02F1D002 		add	r2, r2, #208
+ 1076 00ee 1360     		str	r3, [r2]
+ 1077              	.L47:
+ 1078              	.LBB8:
+ 150:..\301-Astar-code/astar.c ****     int currentRow, currentCol;
+ 151:..\301-Astar-code/astar.c **** 
+ 152:..\301-Astar-code/astar.c ****    while(1){
+ 153:..\301-Astar-code/astar.c ****       // printf("Size of queue: %d \n", size);
+ 154:..\301-Astar-code/astar.c ****       visiting =  dequeue(queue);
+ 1079              		.loc 1 154 0
+ 1080 00f0 07F57B53 		add	r3, r7, #16064
+ 1081 00f4 03F11803 		add	r3, r3, #24
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 23
+
+
+ 1082 00f8 083B     		subs	r3, r3, #8
+ 1083 00fa 07F5FA42 		add	r2, r7, #32000
+ 1084 00fe 02F17802 		add	r2, r2, #120
+ 1085 0102 103A     		subs	r2, r2, #16
+ 1086 0104 1146     		mov	r1, r2
+ 1087 0106 1846     		mov	r0, r3
+ 1088 0108 FFF7FEFF 		bl	dequeue
+ 155:..\301-Astar-code/astar.c ****       if(((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol))){
+ 1089              		.loc 1 155 0
+ 1090 010c 07F57B53 		add	r3, r7, #16064
+ 1091 0110 03F11803 		add	r3, r3, #24
+ 1092 0114 083B     		subs	r3, r3, #8
+ 1093 0116 1A68     		ldr	r2, [r3]
+ 1094 0118 07F57D53 		add	r3, r7, #16192
+ 1095 011c 03F11803 		add	r3, r3, #24
+ 1096 0120 783B     		subs	r3, r3, #120
+ 1097 0122 1B68     		ldr	r3, [r3]
+ 1098 0124 9A42     		cmp	r2, r3
+ 1099 0126 48D1     		bne	.L41
+ 1100              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 1101 0128 07F57B53 		add	r3, r7, #16064
+ 1102 012c 03F11803 		add	r3, r3, #24
+ 1103 0130 083B     		subs	r3, r3, #8
+ 1104 0132 5A68     		ldr	r2, [r3, #4]
+ 1105 0134 07F57D53 		add	r3, r7, #16192
+ 1106 0138 03F11803 		add	r3, r3, #24
+ 1107 013c 783B     		subs	r3, r3, #120
+ 1108 013e 5B68     		ldr	r3, [r3, #4]
+ 1109 0140 9A42     		cmp	r2, r3
+ 1110 0142 3AD1     		bne	.L41
+ 1111              	.LBE8:
+ 156:..\301-Astar-code/astar.c ****             break; 
+ 157:..\301-Astar-code/astar.c ****        }
+ 158:..\301-Astar-code/astar.c ****       // printf("Size of queue after dequeue: %d \n", size);
+ 159:..\301-Astar-code/astar.c ****       // printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pair
+ 160:..\301-Astar-code/astar.c ****       stepNum += 1;
+ 161:..\301-Astar-code/astar.c ****       // Append to visitied list
+ 162:..\301-Astar-code/astar.c ****       visitedList[currentVisitedIndex].pair.pairRow = visiting.pairRow;
+ 163:..\301-Astar-code/astar.c ****       visitedList[currentVisitedIndex].pair.pairCol = visiting.pairCol;
+ 164:..\301-Astar-code/astar.c ****       nodesArray[visiting.pairRow][visiting.pairCol].inVisited = 1; // set flag for being in visite
+ 165:..\301-Astar-code/astar.c ****       currentVisitedIndex++;
+ 166:..\301-Astar-code/astar.c ****       
+ 167:..\301-Astar-code/astar.c ****       // determine neighbours of visiting node and caluclate Fscore
+ 168:..\301-Astar-code/astar.c ****       currentCol = visiting.pairCol;
+ 169:..\301-Astar-code/astar.c ****       currentRow = visiting.pairRow;
+ 170:..\301-Astar-code/astar.c **** 
+ 171:..\301-Astar-code/astar.c ****       northNeigh.pairRow = currentRow-1;
+ 172:..\301-Astar-code/astar.c ****       northNeigh.pairCol = currentCol;
+ 173:..\301-Astar-code/astar.c ****       southNeigh.pairRow = currentRow+1;
+ 174:..\301-Astar-code/astar.c ****       southNeigh.pairCol= currentCol;
+ 175:..\301-Astar-code/astar.c ****       eastNeigh.pairRow = currentRow;
+ 176:..\301-Astar-code/astar.c ****       eastNeigh.pairCol = currentCol+1;
+ 177:..\301-Astar-code/astar.c ****       westNeigh.pairRow = currentRow;
+ 178:..\301-Astar-code/astar.c ****       westNeigh.pairCol = currentCol-1;
+ 179:..\301-Astar-code/astar.c ****       
+ 180:..\301-Astar-code/astar.c ****       // Neighbours are S, N,E, W from the current location
+ 181:..\301-Astar-code/astar.c ****       Paths neighbours = {southNeigh,northNeigh,eastNeigh,westNeigh};
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 24
+
+
+ 182:..\301-Astar-code/astar.c **** 
+ 183:..\301-Astar-code/astar.c ****       //calculate Fscore if neighbour is not in closed list (visitedList --> ie visted array)
+ 184:..\301-Astar-code/astar.c ****       // and not in open list (queue) and is not a wall
+ 185:..\301-Astar-code/astar.c ****       for(int i=0; i<4;i++){
+ 186:..\301-Astar-code/astar.c ****         Pairs adjacentPos; 
+ 187:..\301-Astar-code/astar.c ****         adjacentPos = neighbours[i].pair;
+ 188:..\301-Astar-code/astar.c ****         int row = adjacentPos.pairRow;
+ 189:..\301-Astar-code/astar.c ****         int col = adjacentPos.pairCol;
+ 190:..\301-Astar-code/astar.c ****         int newFscore = 0;
+ 191:..\301-Astar-code/astar.c ****         int oldFscore = 2000;
+ 192:..\301-Astar-code/astar.c ****         currentGcost = nodesArray[row][col].gScore;
+ 193:..\301-Astar-code/astar.c ****         //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
+ 194:..\301-Astar-code/astar.c ****         
+ 195:..\301-Astar-code/astar.c ****         //not a wall and has not been visited
+ 196:..\301-Astar-code/astar.c ****         if((row > 0)&&(col>0) && (row < MAP_ROWS) && (col<MAP_COLS)){
+ 197:..\301-Astar-code/astar.c ****           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+ 198:..\301-Astar-code/astar.c ****             // check if open list (queue) does not contain current neighbouring position
+ 199:..\301-Astar-code/astar.c ****             if(nodesArray[row][col].inQueue == 0){
+ 200:..\301-Astar-code/astar.c ****               // printf("Enqueuing: %d,%d\n",col,row);
+ 201:..\301-Astar-code/astar.c ****               //calculate Fscore, Gscore and Hscore
+ 202:..\301-Astar-code/astar.c ****               // Fscore = Gscore + Hscore
+ 203:..\301-Astar-code/astar.c ****               calculateHScore(adjacentPos,target);
+ 204:..\301-Astar-code/astar.c ****               calculateGScore(adjacentPos,currentGcost);
+ 205:..\301-Astar-code/astar.c ****               nodesArray[row][col].fScore = nodesArray[row][col].gScore + nodesArray[row][col].hSco
+ 206:..\301-Astar-code/astar.c **** 
+ 207:..\301-Astar-code/astar.c ****               enqueue(queue,adjacentPos);
+ 208:..\301-Astar-code/astar.c ****               nodesArray[row][col].inQueue = 1;
+ 209:..\301-Astar-code/astar.c ****               
+ 210:..\301-Astar-code/astar.c ****               nodesArray[row][col].parents.pairRow = visiting.pairRow; // add parent for the neighb
+ 211:..\301-Astar-code/astar.c ****               nodesArray[row][col].parents.pairCol = visiting.pairCol;
+ 212:..\301-Astar-code/astar.c **** 
+ 213:..\301-Astar-code/astar.c ****             }else{// if it is already in open list update fscore if needed and update parent
+ 214:..\301-Astar-code/astar.c ****               oldFscore = nodesArray[row][col].fScore;
+ 215:..\301-Astar-code/astar.c ****               calculateHScore(adjacentPos,target);
+ 216:..\301-Astar-code/astar.c ****               calculateGScore(adjacentPos,currentGcost);
+ 217:..\301-Astar-code/astar.c ****               newFscore = nodesArray[row][col].gScore + nodesArray[row][col].hScore;
+ 218:..\301-Astar-code/astar.c **** 
+ 219:..\301-Astar-code/astar.c ****               //check if new Fscore is smaller than old Fscore, iif so update Fscore value
+ 220:..\301-Astar-code/astar.c ****               if(newFscore < oldFscore){
+ 221:..\301-Astar-code/astar.c ****                   nodesArray[row][col].fScore = newFscore;
+ 222:..\301-Astar-code/astar.c ****                   nodesArray[row][col].parents.pairCol = visiting.pairCol; // update parent node of
+ 223:..\301-Astar-code/astar.c ****                   nodesArray[row][col].parents.pairRow = visiting.pairRow;
+ 224:..\301-Astar-code/astar.c ****               }
+ 225:..\301-Astar-code/astar.c ****             }
+ 226:..\301-Astar-code/astar.c ****             // printf("Adjacent: (%d,%d), Parents: (%d,%d)\n", adjacentPos.pairCol+1,adjacentPos.pa
+ 227:..\301-Astar-code/astar.c ****           }
+ 228:..\301-Astar-code/astar.c ****         }
+ 229:..\301-Astar-code/astar.c ****       }
+ 230:..\301-Astar-code/astar.c ****    }
+ 231:..\301-Astar-code/astar.c **** 
+ 232:..\301-Astar-code/astar.c ****     
+ 233:..\301-Astar-code/astar.c ****     struct Pair currentNode;
+ 234:..\301-Astar-code/astar.c ****     struct Pair parentNode;
+ 235:..\301-Astar-code/astar.c ****     Paths reversedArray;
+ 236:..\301-Astar-code/astar.c ****     int index = 0;
+ 1112              		.loc 1 236 0 is_stmt 1
+ 1113 0144 0023     		movs	r3, #0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 25
+
+
+ 1114 0146 07F51C42 		add	r2, r7, #39936
+ 1115 014a 02F1C802 		add	r2, r2, #200
+ 1116 014e 1360     		str	r3, [r2]
+ 237:..\301-Astar-code/astar.c ****     currentNode.pairCol = target.pairCol;
+ 1117              		.loc 1 237 0
+ 1118 0150 07F57D53 		add	r3, r7, #16192
+ 1119 0154 03F11803 		add	r3, r3, #24
+ 1120 0158 783B     		subs	r3, r3, #120
+ 1121 015a 5A68     		ldr	r2, [r3, #4]
+ 1122 015c 07F57B53 		add	r3, r7, #16064
+ 1123 0160 03F11803 		add	r3, r3, #24
+ 1124 0164 303B     		subs	r3, r3, #48
+ 1125 0166 5A60     		str	r2, [r3, #4]
+ 238:..\301-Astar-code/astar.c ****     currentNode.pairRow = target.pairRow;
+ 1126              		.loc 1 238 0
+ 1127 0168 07F57D53 		add	r3, r7, #16192
+ 1128 016c 03F11803 		add	r3, r3, #24
+ 1129 0170 783B     		subs	r3, r3, #120
+ 1130 0172 1A68     		ldr	r2, [r3]
+ 1131 0174 07F57B53 		add	r3, r7, #16064
+ 1132 0178 03F11803 		add	r3, r3, #24
+ 1133 017c 303B     		subs	r3, r3, #48
+ 1134 017e 1A60     		str	r2, [r3]
+ 239:..\301-Astar-code/astar.c ****     reversedArray[index].pair = target;
+ 1135              		.loc 1 239 0
+ 1136 0180 07F5FE52 		add	r2, r7, #8128
+ 1137 0184 02F11802 		add	r2, r2, #24
+ 1138 0188 783A     		subs	r2, r2, #120
+ 1139 018a 07F51C43 		add	r3, r7, #39936
+ 1140 018e 03F1C803 		add	r3, r3, #200
+ 1141 0192 1B68     		ldr	r3, [r3]
+ 1142 0194 07F57D51 		add	r1, r7, #16192
+ 1143 0198 01F11801 		add	r1, r1, #24
+ 1144 019c 7839     		subs	r1, r1, #120
+ 1145 019e DB00     		lsls	r3, r3, #3
+ 1146 01a0 1344     		add	r3, r3, r2
+ 1147 01a2 0A46     		mov	r2, r1
+ 1148 01a4 92E80300 		ldmia	r2, {r0, r1}
+ 1149 01a8 83E80300 		stmia	r3, {r0, r1}
+ 240:..\301-Astar-code/astar.c ****     index = 1;
+ 1150              		.loc 1 240 0
+ 1151 01ac 0123     		movs	r3, #1
+ 1152 01ae 07F51C42 		add	r2, r7, #39936
+ 1153 01b2 02F1C802 		add	r2, r2, #200
+ 1154 01b6 1360     		str	r3, [r2]
+ 1155 01b8 49E3     		b	.L42
+ 1156              	.L41:
+ 1157              	.LBB11:
+ 160:..\301-Astar-code/astar.c ****       // Append to visitied list
+ 1158              		.loc 1 160 0
+ 1159 01ba 07F51C43 		add	r3, r7, #39936
+ 1160 01be 03F1D403 		add	r3, r3, #212
+ 1161 01c2 1B68     		ldr	r3, [r3]
+ 1162 01c4 0133     		adds	r3, r3, #1
+ 1163 01c6 07F51C42 		add	r2, r7, #39936
+ 1164 01ca 02F1D402 		add	r2, r2, #212
+ 1165 01ce 1360     		str	r3, [r2]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 26
+
+
+ 162:..\301-Astar-code/astar.c ****       visitedList[currentVisitedIndex].pair.pairCol = visiting.pairCol;
+ 1166              		.loc 1 162 0
+ 1167 01d0 07F57B53 		add	r3, r7, #16064
+ 1168 01d4 03F11803 		add	r3, r3, #24
+ 1169 01d8 083B     		subs	r3, r3, #8
+ 1170 01da 1968     		ldr	r1, [r3]
+ 1171 01dc 07F5BC43 		add	r3, r7, #24064
+ 1172 01e0 03F15803 		add	r3, r3, #88
+ 1173 01e4 303B     		subs	r3, r3, #48
+ 1174 01e6 07F51C42 		add	r2, r7, #39936
+ 1175 01ea 02F1D002 		add	r2, r2, #208
+ 1176 01ee 1268     		ldr	r2, [r2]
+ 1177 01f0 43F83210 		str	r1, [r3, r2, lsl #3]
+ 163:..\301-Astar-code/astar.c ****       nodesArray[visiting.pairRow][visiting.pairCol].inVisited = 1; // set flag for being in visite
+ 1178              		.loc 1 163 0
+ 1179 01f4 07F57B53 		add	r3, r7, #16064
+ 1180 01f8 03F11803 		add	r3, r3, #24
+ 1181 01fc 083B     		subs	r3, r3, #8
+ 1182 01fe 5968     		ldr	r1, [r3, #4]
+ 1183 0200 07F5BC42 		add	r2, r7, #24064
+ 1184 0204 02F15802 		add	r2, r2, #88
+ 1185 0208 303A     		subs	r2, r2, #48
+ 1186 020a 07F51C43 		add	r3, r7, #39936
+ 1187 020e 03F1D003 		add	r3, r3, #208
+ 1188 0212 1B68     		ldr	r3, [r3]
+ 1189 0214 DB00     		lsls	r3, r3, #3
+ 1190 0216 1344     		add	r3, r3, r2
+ 1191 0218 5960     		str	r1, [r3, #4]
+ 164:..\301-Astar-code/astar.c ****       currentVisitedIndex++;
+ 1192              		.loc 1 164 0
+ 1193 021a 07F57B53 		add	r3, r7, #16064
+ 1194 021e 03F11803 		add	r3, r3, #24
+ 1195 0222 083B     		subs	r3, r3, #8
+ 1196 0224 1A68     		ldr	r2, [r3]
+ 1197 0226 07F57B53 		add	r3, r7, #16064
+ 1198 022a 03F11803 		add	r3, r3, #24
+ 1199 022e 083B     		subs	r3, r3, #8
+ 1200 0230 5968     		ldr	r1, [r3, #4]
+ 1201 0232 6648     		ldr	r0, .L52
+ 1202 0234 1346     		mov	r3, r2
+ 1203 0236 DB00     		lsls	r3, r3, #3
+ 1204 0238 1344     		add	r3, r3, r2
+ 1205 023a 5B00     		lsls	r3, r3, #1
+ 1206 023c 1344     		add	r3, r3, r2
+ 1207 023e 0B44     		add	r3, r3, r1
+ 1208 0240 5B01     		lsls	r3, r3, #5
+ 1209 0242 0344     		add	r3, r3, r0
+ 1210 0244 0C33     		adds	r3, r3, #12
+ 1211 0246 0122     		movs	r2, #1
+ 1212 0248 1A60     		str	r2, [r3]
+ 165:..\301-Astar-code/astar.c ****       
+ 1213              		.loc 1 165 0
+ 1214 024a 07F51C43 		add	r3, r7, #39936
+ 1215 024e 03F1D003 		add	r3, r3, #208
+ 1216 0252 1B68     		ldr	r3, [r3]
+ 1217 0254 0133     		adds	r3, r3, #1
+ 1218 0256 07F51C42 		add	r2, r7, #39936
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 27
+
+
+ 1219 025a 02F1D002 		add	r2, r2, #208
+ 1220 025e 1360     		str	r3, [r2]
+ 168:..\301-Astar-code/astar.c ****       currentRow = visiting.pairRow;
+ 1221              		.loc 1 168 0
+ 1222 0260 07F57B53 		add	r3, r7, #16064
+ 1223 0264 03F11803 		add	r3, r3, #24
+ 1224 0268 083B     		subs	r3, r3, #8
+ 1225 026a 5B68     		ldr	r3, [r3, #4]
+ 1226 026c 07F51C42 		add	r2, r7, #39936
+ 1227 0270 02F1BC02 		add	r2, r2, #188
+ 1228 0274 1360     		str	r3, [r2]
+ 169:..\301-Astar-code/astar.c **** 
+ 1229              		.loc 1 169 0
+ 1230 0276 07F57B53 		add	r3, r7, #16064
+ 1231 027a 03F11803 		add	r3, r3, #24
+ 1232 027e 083B     		subs	r3, r3, #8
+ 1233 0280 1B68     		ldr	r3, [r3]
+ 1234 0282 07F51C42 		add	r2, r7, #39936
+ 1235 0286 02F1B802 		add	r2, r2, #184
+ 1236 028a 1360     		str	r3, [r2]
+ 171:..\301-Astar-code/astar.c ****       northNeigh.pairCol = currentCol;
+ 1237              		.loc 1 171 0
+ 1238 028c 07F51C43 		add	r3, r7, #39936
+ 1239 0290 03F1B803 		add	r3, r3, #184
+ 1240 0294 1B68     		ldr	r3, [r3]
+ 1241 0296 5A1E     		subs	r2, r3, #1
+ 1242 0298 07F57B53 		add	r3, r7, #16064
+ 1243 029c 03F11803 		add	r3, r3, #24
+ 1244 02a0 103B     		subs	r3, r3, #16
+ 1245 02a2 1A60     		str	r2, [r3]
+ 172:..\301-Astar-code/astar.c ****       southNeigh.pairRow = currentRow+1;
+ 1246              		.loc 1 172 0
+ 1247 02a4 07F57B53 		add	r3, r7, #16064
+ 1248 02a8 03F11803 		add	r3, r3, #24
+ 1249 02ac 103B     		subs	r3, r3, #16
+ 1250 02ae 07F51C42 		add	r2, r7, #39936
+ 1251 02b2 02F1BC02 		add	r2, r2, #188
+ 1252 02b6 1268     		ldr	r2, [r2]
+ 1253 02b8 5A60     		str	r2, [r3, #4]
+ 173:..\301-Astar-code/astar.c ****       southNeigh.pairCol= currentCol;
+ 1254              		.loc 1 173 0
+ 1255 02ba 07F51C43 		add	r3, r7, #39936
+ 1256 02be 03F1B803 		add	r3, r3, #184
+ 1257 02c2 1B68     		ldr	r3, [r3]
+ 1258 02c4 5A1C     		adds	r2, r3, #1
+ 1259 02c6 07F57B53 		add	r3, r7, #16064
+ 1260 02ca 03F11803 		add	r3, r3, #24
+ 1261 02ce 203B     		subs	r3, r3, #32
+ 1262 02d0 1A60     		str	r2, [r3]
+ 174:..\301-Astar-code/astar.c ****       eastNeigh.pairRow = currentRow;
+ 1263              		.loc 1 174 0
+ 1264 02d2 07F57B53 		add	r3, r7, #16064
+ 1265 02d6 03F11803 		add	r3, r3, #24
+ 1266 02da 203B     		subs	r3, r3, #32
+ 1267 02dc 07F51C42 		add	r2, r7, #39936
+ 1268 02e0 02F1BC02 		add	r2, r2, #188
+ 1269 02e4 1268     		ldr	r2, [r2]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 28
+
+
+ 1270 02e6 5A60     		str	r2, [r3, #4]
+ 175:..\301-Astar-code/astar.c ****       eastNeigh.pairCol = currentCol+1;
+ 1271              		.loc 1 175 0
+ 1272 02e8 07F57B53 		add	r3, r7, #16064
+ 1273 02ec 03F11803 		add	r3, r3, #24
+ 1274 02f0 183B     		subs	r3, r3, #24
+ 1275 02f2 07F51C42 		add	r2, r7, #39936
+ 1276 02f6 02F1B802 		add	r2, r2, #184
+ 1277 02fa 1268     		ldr	r2, [r2]
+ 1278 02fc 1A60     		str	r2, [r3]
+ 176:..\301-Astar-code/astar.c ****       westNeigh.pairRow = currentRow;
+ 1279              		.loc 1 176 0
+ 1280 02fe 07F51C43 		add	r3, r7, #39936
+ 1281 0302 03F1BC03 		add	r3, r3, #188
+ 1282 0306 1B68     		ldr	r3, [r3]
+ 1283 0308 5A1C     		adds	r2, r3, #1
+ 1284 030a 07F57B53 		add	r3, r7, #16064
+ 1285 030e 03F11803 		add	r3, r3, #24
+ 1286 0312 183B     		subs	r3, r3, #24
+ 1287 0314 5A60     		str	r2, [r3, #4]
+ 177:..\301-Astar-code/astar.c ****       westNeigh.pairCol = currentCol-1;
+ 1288              		.loc 1 177 0
+ 1289 0316 07F57B53 		add	r3, r7, #16064
+ 1290 031a 03F11803 		add	r3, r3, #24
+ 1291 031e 283B     		subs	r3, r3, #40
+ 1292 0320 07F51C42 		add	r2, r7, #39936
+ 1293 0324 02F1B802 		add	r2, r2, #184
+ 1294 0328 1268     		ldr	r2, [r2]
+ 1295 032a 1A60     		str	r2, [r3]
+ 178:..\301-Astar-code/astar.c ****       
+ 1296              		.loc 1 178 0
+ 1297 032c 07F51C43 		add	r3, r7, #39936
+ 1298 0330 03F1BC03 		add	r3, r3, #188
+ 1299 0334 1B68     		ldr	r3, [r3]
+ 1300 0336 5A1E     		subs	r2, r3, #1
+ 1301 0338 07F57B53 		add	r3, r7, #16064
+ 1302 033c 03F11803 		add	r3, r3, #24
+ 1303 0340 283B     		subs	r3, r3, #40
+ 1304 0342 5A60     		str	r2, [r3, #4]
+ 181:..\301-Astar-code/astar.c **** 
+ 1305              		.loc 1 181 0
+ 1306 0344 07F1D803 		add	r3, r7, #216
+ 1307 0348 C83B     		subs	r3, r3, #200
+ 1308 034a 1846     		mov	r0, r3
+ 1309 034c 4FF4FA53 		mov	r3, #8000
+ 1310 0350 1A46     		mov	r2, r3
+ 1311 0352 0021     		movs	r1, #0
+ 1312 0354 FFF7FEFF 		bl	memset
+ 1313 0358 07F1D802 		add	r2, r7, #216
+ 1314 035c C83A     		subs	r2, r2, #200
+ 1315 035e 07F57B53 		add	r3, r7, #16064
+ 1316 0362 03F11803 		add	r3, r3, #24
+ 1317 0366 203B     		subs	r3, r3, #32
+ 1318 0368 93E80300 		ldmia	r3, {r0, r1}
+ 1319 036c 82E80300 		stmia	r2, {r0, r1}
+ 1320 0370 07F1D803 		add	r3, r7, #216
+ 1321 0374 C83B     		subs	r3, r3, #200
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 29
+
+
+ 1322 0376 07F57B52 		add	r2, r7, #16064
+ 1323 037a 02F11802 		add	r2, r2, #24
+ 1324 037e 103A     		subs	r2, r2, #16
+ 1325 0380 0833     		adds	r3, r3, #8
+ 1326 0382 92E80300 		ldmia	r2, {r0, r1}
+ 1327 0386 83E80300 		stmia	r3, {r0, r1}
+ 1328 038a 07F1D803 		add	r3, r7, #216
+ 1329 038e C83B     		subs	r3, r3, #200
+ 1330 0390 07F57B52 		add	r2, r7, #16064
+ 1331 0394 02F11802 		add	r2, r2, #24
+ 1332 0398 183A     		subs	r2, r2, #24
+ 1333 039a 1033     		adds	r3, r3, #16
+ 1334 039c 92E80300 		ldmia	r2, {r0, r1}
+ 1335 03a0 83E80300 		stmia	r3, {r0, r1}
+ 1336 03a4 07F1D803 		add	r3, r7, #216
+ 1337 03a8 C83B     		subs	r3, r3, #200
+ 1338 03aa 07F57B52 		add	r2, r7, #16064
+ 1339 03ae 02F11802 		add	r2, r2, #24
+ 1340 03b2 283A     		subs	r2, r2, #40
+ 1341 03b4 1833     		adds	r3, r3, #24
+ 1342 03b6 92E80300 		ldmia	r2, {r0, r1}
+ 1343 03ba 83E80300 		stmia	r3, {r0, r1}
+ 1344              	.LBB9:
+ 185:..\301-Astar-code/astar.c ****         Pairs adjacentPos; 
+ 1345              		.loc 1 185 0
+ 1346 03be 0023     		movs	r3, #0
+ 1347 03c0 07F51C42 		add	r2, r7, #39936
+ 1348 03c4 02F1CC02 		add	r2, r2, #204
+ 1349 03c8 1360     		str	r3, [r2]
+ 1350 03ca 37E2     		b	.L43
+ 1351              	.L53:
+ 1352              		.align	2
+ 1353              	.L52:
+ 1354 03cc 00000000 		.word	nodesArray
+ 1355              	.L46:
+ 1356              	.LBB10:
+ 187:..\301-Astar-code/astar.c ****         int row = adjacentPos.pairRow;
+ 1357              		.loc 1 187 0
+ 1358 03d0 07F5FA51 		add	r1, r7, #8000
+ 1359 03d4 01F11801 		add	r1, r1, #24
+ 1360 03d8 07F1D802 		add	r2, r7, #216
+ 1361 03dc C83A     		subs	r2, r2, #200
+ 1362 03de 07F51C43 		add	r3, r7, #39936
+ 1363 03e2 03F1CC03 		add	r3, r3, #204
+ 1364 03e6 1B68     		ldr	r3, [r3]
+ 1365 03e8 0C46     		mov	r4, r1
+ 1366 03ea DB00     		lsls	r3, r3, #3
+ 1367 03ec 1344     		add	r3, r3, r2
+ 1368 03ee 93E80300 		ldmia	r3, {r0, r1}
+ 1369 03f2 84E80300 		stmia	r4, {r0, r1}
+ 188:..\301-Astar-code/astar.c ****         int col = adjacentPos.pairCol;
+ 1370              		.loc 1 188 0
+ 1371 03f6 07F5FA53 		add	r3, r7, #8000
+ 1372 03fa 03F11803 		add	r3, r3, #24
+ 1373 03fe 1B68     		ldr	r3, [r3]
+ 1374 0400 07F51C42 		add	r2, r7, #39936
+ 1375 0404 02F1B402 		add	r2, r2, #180
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 30
+
+
+ 1376 0408 1360     		str	r3, [r2]
+ 189:..\301-Astar-code/astar.c ****         int newFscore = 0;
+ 1377              		.loc 1 189 0
+ 1378 040a 07F5FA53 		add	r3, r7, #8000
+ 1379 040e 03F11803 		add	r3, r3, #24
+ 1380 0412 5B68     		ldr	r3, [r3, #4]
+ 1381 0414 07F51C42 		add	r2, r7, #39936
+ 1382 0418 02F1B002 		add	r2, r2, #176
+ 1383 041c 1360     		str	r3, [r2]
+ 190:..\301-Astar-code/astar.c ****         int oldFscore = 2000;
+ 1384              		.loc 1 190 0
+ 1385 041e 0023     		movs	r3, #0
+ 1386 0420 07F51C42 		add	r2, r7, #39936
+ 1387 0424 02F1AC02 		add	r2, r2, #172
+ 1388 0428 1360     		str	r3, [r2]
+ 191:..\301-Astar-code/astar.c ****         currentGcost = nodesArray[row][col].gScore;
+ 1389              		.loc 1 191 0
+ 1390 042a 4FF4FA63 		mov	r3, #2000
+ 1391 042e 07F51C42 		add	r2, r7, #39936
+ 1392 0432 02F1A802 		add	r2, r2, #168
+ 1393 0436 1360     		str	r3, [r2]
+ 192:..\301-Astar-code/astar.c ****         //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
+ 1394              		.loc 1 192 0
+ 1395 0438 9A49     		ldr	r1, .L54
+ 1396 043a 07F51C43 		add	r3, r7, #39936
+ 1397 043e 03F1B403 		add	r3, r3, #180
+ 1398 0442 1A68     		ldr	r2, [r3]
+ 1399 0444 1346     		mov	r3, r2
+ 1400 0446 DB00     		lsls	r3, r3, #3
+ 1401 0448 1344     		add	r3, r3, r2
+ 1402 044a 5B00     		lsls	r3, r3, #1
+ 1403 044c 1344     		add	r3, r3, r2
+ 1404 044e 07F51C42 		add	r2, r7, #39936
+ 1405 0452 02F1B002 		add	r2, r2, #176
+ 1406 0456 1268     		ldr	r2, [r2]
+ 1407 0458 1344     		add	r3, r3, r2
+ 1408 045a 5B01     		lsls	r3, r3, #5
+ 1409 045c 0B44     		add	r3, r3, r1
+ 1410 045e 1833     		adds	r3, r3, #24
+ 1411 0460 1B68     		ldr	r3, [r3]
+ 1412 0462 07F51C42 		add	r2, r7, #39936
+ 1413 0466 02F1C002 		add	r2, r2, #192
+ 1414 046a 1360     		str	r3, [r2]
+ 196:..\301-Astar-code/astar.c ****           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+ 1415              		.loc 1 196 0
+ 1416 046c 07F51C43 		add	r3, r7, #39936
+ 1417 0470 03F1B403 		add	r3, r3, #180
+ 1418 0474 1B68     		ldr	r3, [r3]
+ 1419 0476 002B     		cmp	r3, #0
+ 1420 0478 40F3D581 		ble	.L44
+ 196:..\301-Astar-code/astar.c ****           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+ 1421              		.loc 1 196 0 is_stmt 0 discriminator 1
+ 1422 047c 07F51C43 		add	r3, r7, #39936
+ 1423 0480 03F1B003 		add	r3, r3, #176
+ 1424 0484 1B68     		ldr	r3, [r3]
+ 1425 0486 002B     		cmp	r3, #0
+ 1426 0488 40F3CD81 		ble	.L44
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 31
+
+
+ 196:..\301-Astar-code/astar.c ****           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+ 1427              		.loc 1 196 0 discriminator 2
+ 1428 048c 07F51C43 		add	r3, r7, #39936
+ 1429 0490 03F1B403 		add	r3, r3, #180
+ 1430 0494 1B68     		ldr	r3, [r3]
+ 1431 0496 0E2B     		cmp	r3, #14
+ 1432 0498 00F3C581 		bgt	.L44
+ 196:..\301-Astar-code/astar.c ****           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
+ 1433              		.loc 1 196 0 discriminator 3
+ 1434 049c 07F51C43 		add	r3, r7, #39936
+ 1435 04a0 03F1B003 		add	r3, r3, #176
+ 1436 04a4 1B68     		ldr	r3, [r3]
+ 1437 04a6 122B     		cmp	r3, #18
+ 1438 04a8 00F3BD81 		bgt	.L44
+ 197:..\301-Astar-code/astar.c ****             // check if open list (queue) does not contain current neighbouring position
+ 1439              		.loc 1 197 0 is_stmt 1
+ 1440 04ac 7D49     		ldr	r1, .L54
+ 1441 04ae 07F51C43 		add	r3, r7, #39936
+ 1442 04b2 03F1B403 		add	r3, r3, #180
+ 1443 04b6 1A68     		ldr	r2, [r3]
+ 1444 04b8 1346     		mov	r3, r2
+ 1445 04ba DB00     		lsls	r3, r3, #3
+ 1446 04bc 1344     		add	r3, r3, r2
+ 1447 04be 5B00     		lsls	r3, r3, #1
+ 1448 04c0 1344     		add	r3, r3, r2
+ 1449 04c2 07F51C42 		add	r2, r7, #39936
+ 1450 04c6 02F1B002 		add	r2, r2, #176
+ 1451 04ca 1268     		ldr	r2, [r2]
+ 1452 04cc 1344     		add	r3, r3, r2
+ 1453 04ce 5B01     		lsls	r3, r3, #5
+ 1454 04d0 0B44     		add	r3, r3, r1
+ 1455 04d2 0833     		adds	r3, r3, #8
+ 1456 04d4 1B68     		ldr	r3, [r3]
+ 1457 04d6 012B     		cmp	r3, #1
+ 1458 04d8 40F0A581 		bne	.L44
+ 197:..\301-Astar-code/astar.c ****             // check if open list (queue) does not contain current neighbouring position
+ 1459              		.loc 1 197 0 is_stmt 0 discriminator 1
+ 1460 04dc 7149     		ldr	r1, .L54
+ 1461 04de 07F51C43 		add	r3, r7, #39936
+ 1462 04e2 03F1B403 		add	r3, r3, #180
+ 1463 04e6 1A68     		ldr	r2, [r3]
+ 1464 04e8 1346     		mov	r3, r2
+ 1465 04ea DB00     		lsls	r3, r3, #3
+ 1466 04ec 1344     		add	r3, r3, r2
+ 1467 04ee 5B00     		lsls	r3, r3, #1
+ 1468 04f0 1344     		add	r3, r3, r2
+ 1469 04f2 07F51C42 		add	r2, r7, #39936
+ 1470 04f6 02F1B002 		add	r2, r2, #176
+ 1471 04fa 1268     		ldr	r2, [r2]
+ 1472 04fc 1344     		add	r3, r3, r2
+ 1473 04fe 5B01     		lsls	r3, r3, #5
+ 1474 0500 0B44     		add	r3, r3, r1
+ 1475 0502 0C33     		adds	r3, r3, #12
+ 1476 0504 1B68     		ldr	r3, [r3]
+ 1477 0506 002B     		cmp	r3, #0
+ 1478 0508 40F08D81 		bne	.L44
+ 199:..\301-Astar-code/astar.c ****               // printf("Enqueuing: %d,%d\n",col,row);
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 32
+
+
+ 1479              		.loc 1 199 0 is_stmt 1
+ 1480 050c 6549     		ldr	r1, .L54
+ 1481 050e 07F51C43 		add	r3, r7, #39936
+ 1482 0512 03F1B403 		add	r3, r3, #180
+ 1483 0516 1A68     		ldr	r2, [r3]
+ 1484 0518 1346     		mov	r3, r2
+ 1485 051a DB00     		lsls	r3, r3, #3
+ 1486 051c 1344     		add	r3, r3, r2
+ 1487 051e 5B00     		lsls	r3, r3, #1
+ 1488 0520 1344     		add	r3, r3, r2
+ 1489 0522 07F51C42 		add	r2, r7, #39936
+ 1490 0526 02F1B002 		add	r2, r2, #176
+ 1491 052a 1268     		ldr	r2, [r2]
+ 1492 052c 1344     		add	r3, r3, r2
+ 1493 052e 5B01     		lsls	r3, r3, #5
+ 1494 0530 0B44     		add	r3, r3, r1
+ 1495 0532 1033     		adds	r3, r3, #16
+ 1496 0534 1B68     		ldr	r3, [r3]
+ 1497 0536 002B     		cmp	r3, #0
+ 1498 0538 40F0B680 		bne	.L45
+ 203:..\301-Astar-code/astar.c ****               calculateGScore(adjacentPos,currentGcost);
+ 1499              		.loc 1 203 0
+ 1500 053c 07F57D53 		add	r3, r7, #16192
+ 1501 0540 03F11803 		add	r3, r3, #24
+ 1502 0544 783B     		subs	r3, r3, #120
+ 1503 0546 07F5FA51 		add	r1, r7, #8000
+ 1504 054a 01F11801 		add	r1, r1, #24
+ 1505 054e 0CCB     		ldmia	r3, {r2, r3}
+ 1506 0550 03C9     		ldmia	r1, {r0, r1}
+ 1507 0552 FFF7FEFF 		bl	calculateHScore
+ 204:..\301-Astar-code/astar.c ****               nodesArray[row][col].fScore = nodesArray[row][col].gScore + nodesArray[row][col].hSco
+ 1508              		.loc 1 204 0
+ 1509 0556 07F5FA53 		add	r3, r7, #8000
+ 1510 055a 03F11803 		add	r3, r3, #24
+ 1511 055e 07F51C42 		add	r2, r7, #39936
+ 1512 0562 02F1C002 		add	r2, r2, #192
+ 1513 0566 1268     		ldr	r2, [r2]
+ 1514 0568 93E80300 		ldmia	r3, {r0, r1}
+ 1515 056c FFF7FEFF 		bl	calculateGScore
+ 205:..\301-Astar-code/astar.c **** 
+ 1516              		.loc 1 205 0
+ 1517 0570 4C49     		ldr	r1, .L54
+ 1518 0572 07F51C43 		add	r3, r7, #39936
+ 1519 0576 03F1B403 		add	r3, r3, #180
+ 1520 057a 1A68     		ldr	r2, [r3]
+ 1521 057c 1346     		mov	r3, r2
+ 1522 057e DB00     		lsls	r3, r3, #3
+ 1523 0580 1344     		add	r3, r3, r2
+ 1524 0582 5B00     		lsls	r3, r3, #1
+ 1525 0584 1344     		add	r3, r3, r2
+ 1526 0586 07F51C42 		add	r2, r7, #39936
+ 1527 058a 02F1B002 		add	r2, r2, #176
+ 1528 058e 1268     		ldr	r2, [r2]
+ 1529 0590 1344     		add	r3, r3, r2
+ 1530 0592 5B01     		lsls	r3, r3, #5
+ 1531 0594 0B44     		add	r3, r3, r1
+ 1532 0596 1833     		adds	r3, r3, #24
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 33
+
+
+ 1533 0598 1968     		ldr	r1, [r3]
+ 1534 059a 4248     		ldr	r0, .L54
+ 1535 059c 07F51C43 		add	r3, r7, #39936
+ 1536 05a0 03F1B403 		add	r3, r3, #180
+ 1537 05a4 1A68     		ldr	r2, [r3]
+ 1538 05a6 1346     		mov	r3, r2
+ 1539 05a8 DB00     		lsls	r3, r3, #3
+ 1540 05aa 1344     		add	r3, r3, r2
+ 1541 05ac 5B00     		lsls	r3, r3, #1
+ 1542 05ae 1344     		add	r3, r3, r2
+ 1543 05b0 07F51C42 		add	r2, r7, #39936
+ 1544 05b4 02F1B002 		add	r2, r2, #176
+ 1545 05b8 1268     		ldr	r2, [r2]
+ 1546 05ba 1344     		add	r3, r3, r2
+ 1547 05bc 5B01     		lsls	r3, r3, #5
+ 1548 05be 0344     		add	r3, r3, r0
+ 1549 05c0 1C33     		adds	r3, r3, #28
+ 1550 05c2 1B68     		ldr	r3, [r3]
+ 1551 05c4 1944     		add	r1, r1, r3
+ 1552 05c6 3748     		ldr	r0, .L54
+ 1553 05c8 07F51C43 		add	r3, r7, #39936
+ 1554 05cc 03F1B403 		add	r3, r3, #180
+ 1555 05d0 1A68     		ldr	r2, [r3]
+ 1556 05d2 1346     		mov	r3, r2
+ 1557 05d4 DB00     		lsls	r3, r3, #3
+ 1558 05d6 1344     		add	r3, r3, r2
+ 1559 05d8 5B00     		lsls	r3, r3, #1
+ 1560 05da 1344     		add	r3, r3, r2
+ 1561 05dc 07F51C42 		add	r2, r7, #39936
+ 1562 05e0 02F1B002 		add	r2, r2, #176
+ 1563 05e4 1268     		ldr	r2, [r2]
+ 1564 05e6 1344     		add	r3, r3, r2
+ 1565 05e8 5B01     		lsls	r3, r3, #5
+ 1566 05ea 0344     		add	r3, r3, r0
+ 1567 05ec 1433     		adds	r3, r3, #20
+ 1568 05ee 1960     		str	r1, [r3]
+ 207:..\301-Astar-code/astar.c ****               nodesArray[row][col].inQueue = 1;
+ 1569              		.loc 1 207 0
+ 1570 05f0 07F5FA52 		add	r2, r7, #8000
+ 1571 05f4 02F11802 		add	r2, r2, #24
+ 1572 05f8 07F5FA43 		add	r3, r7, #32000
+ 1573 05fc 03F17803 		add	r3, r3, #120
+ 1574 0600 103B     		subs	r3, r3, #16
+ 1575 0602 06CA     		ldmia	r2, {r1, r2}
+ 1576 0604 1846     		mov	r0, r3
+ 1577 0606 FFF7FEFF 		bl	enqueue
+ 208:..\301-Astar-code/astar.c ****               
+ 1578              		.loc 1 208 0
+ 1579 060a 2649     		ldr	r1, .L54
+ 1580 060c 07F51C43 		add	r3, r7, #39936
+ 1581 0610 03F1B403 		add	r3, r3, #180
+ 1582 0614 1A68     		ldr	r2, [r3]
+ 1583 0616 1346     		mov	r3, r2
+ 1584 0618 DB00     		lsls	r3, r3, #3
+ 1585 061a 1344     		add	r3, r3, r2
+ 1586 061c 5B00     		lsls	r3, r3, #1
+ 1587 061e 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 34
+
+
+ 1588 0620 07F51C42 		add	r2, r7, #39936
+ 1589 0624 02F1B002 		add	r2, r2, #176
+ 1590 0628 1268     		ldr	r2, [r2]
+ 1591 062a 1344     		add	r3, r3, r2
+ 1592 062c 5B01     		lsls	r3, r3, #5
+ 1593 062e 0B44     		add	r3, r3, r1
+ 1594 0630 1033     		adds	r3, r3, #16
+ 1595 0632 0122     		movs	r2, #1
+ 1596 0634 1A60     		str	r2, [r3]
+ 210:..\301-Astar-code/astar.c ****               nodesArray[row][col].parents.pairCol = visiting.pairCol;
+ 1597              		.loc 1 210 0
+ 1598 0636 07F57B53 		add	r3, r7, #16064
+ 1599 063a 03F11803 		add	r3, r3, #24
+ 1600 063e 083B     		subs	r3, r3, #8
+ 1601 0640 1968     		ldr	r1, [r3]
+ 1602 0642 1848     		ldr	r0, .L54
+ 1603 0644 07F51C43 		add	r3, r7, #39936
+ 1604 0648 03F1B403 		add	r3, r3, #180
+ 1605 064c 1A68     		ldr	r2, [r3]
+ 1606 064e 1346     		mov	r3, r2
+ 1607 0650 DB00     		lsls	r3, r3, #3
+ 1608 0652 1344     		add	r3, r3, r2
+ 1609 0654 5B00     		lsls	r3, r3, #1
+ 1610 0656 1344     		add	r3, r3, r2
+ 1611 0658 07F51C42 		add	r2, r7, #39936
+ 1612 065c 02F1B002 		add	r2, r2, #176
+ 1613 0660 1268     		ldr	r2, [r2]
+ 1614 0662 1344     		add	r3, r3, r2
+ 1615 0664 5B01     		lsls	r3, r3, #5
+ 1616 0666 0344     		add	r3, r3, r0
+ 1617 0668 1960     		str	r1, [r3]
+ 211:..\301-Astar-code/astar.c **** 
+ 1618              		.loc 1 211 0
+ 1619 066a 07F57B53 		add	r3, r7, #16064
+ 1620 066e 03F11803 		add	r3, r3, #24
+ 1621 0672 083B     		subs	r3, r3, #8
+ 1622 0674 5968     		ldr	r1, [r3, #4]
+ 1623 0676 0B48     		ldr	r0, .L54
+ 1624 0678 07F51C43 		add	r3, r7, #39936
+ 1625 067c 03F1B403 		add	r3, r3, #180
+ 1626 0680 1A68     		ldr	r2, [r3]
+ 1627 0682 1346     		mov	r3, r2
+ 1628 0684 DB00     		lsls	r3, r3, #3
+ 1629 0686 1344     		add	r3, r3, r2
+ 1630 0688 5B00     		lsls	r3, r3, #1
+ 1631 068a 1344     		add	r3, r3, r2
+ 1632 068c 07F51C42 		add	r2, r7, #39936
+ 1633 0690 02F1B002 		add	r2, r2, #176
+ 1634 0694 1268     		ldr	r2, [r2]
+ 1635 0696 1344     		add	r3, r3, r2
+ 1636 0698 5B01     		lsls	r3, r3, #5
+ 1637 069a 0344     		add	r3, r3, r0
+ 1638 069c 0433     		adds	r3, r3, #4
+ 1639 069e 1960     		str	r1, [r3]
+ 1640 06a0 C1E0     		b	.L44
+ 1641              	.L55:
+ 1642 06a2 00BF     		.align	2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 35
+
+
+ 1643              	.L54:
+ 1644 06a4 00000000 		.word	nodesArray
+ 1645              	.L45:
+ 214:..\301-Astar-code/astar.c ****               calculateHScore(adjacentPos,target);
+ 1646              		.loc 1 214 0
+ 1647 06a8 D749     		ldr	r1, .L56
+ 1648 06aa 07F51C43 		add	r3, r7, #39936
+ 1649 06ae 03F1B403 		add	r3, r3, #180
+ 1650 06b2 1A68     		ldr	r2, [r3]
+ 1651 06b4 1346     		mov	r3, r2
+ 1652 06b6 DB00     		lsls	r3, r3, #3
+ 1653 06b8 1344     		add	r3, r3, r2
+ 1654 06ba 5B00     		lsls	r3, r3, #1
+ 1655 06bc 1344     		add	r3, r3, r2
+ 1656 06be 07F51C42 		add	r2, r7, #39936
+ 1657 06c2 02F1B002 		add	r2, r2, #176
+ 1658 06c6 1268     		ldr	r2, [r2]
+ 1659 06c8 1344     		add	r3, r3, r2
+ 1660 06ca 5B01     		lsls	r3, r3, #5
+ 1661 06cc 0B44     		add	r3, r3, r1
+ 1662 06ce 1433     		adds	r3, r3, #20
+ 1663 06d0 1B68     		ldr	r3, [r3]
+ 1664 06d2 07F51C42 		add	r2, r7, #39936
+ 1665 06d6 02F1A802 		add	r2, r2, #168
+ 1666 06da 1360     		str	r3, [r2]
+ 215:..\301-Astar-code/astar.c ****               calculateGScore(adjacentPos,currentGcost);
+ 1667              		.loc 1 215 0
+ 1668 06dc 07F57D53 		add	r3, r7, #16192
+ 1669 06e0 03F11803 		add	r3, r3, #24
+ 1670 06e4 783B     		subs	r3, r3, #120
+ 1671 06e6 07F5FA51 		add	r1, r7, #8000
+ 1672 06ea 01F11801 		add	r1, r1, #24
+ 1673 06ee 0CCB     		ldmia	r3, {r2, r3}
+ 1674 06f0 03C9     		ldmia	r1, {r0, r1}
+ 1675 06f2 FFF7FEFF 		bl	calculateHScore
+ 216:..\301-Astar-code/astar.c ****               newFscore = nodesArray[row][col].gScore + nodesArray[row][col].hScore;
+ 1676              		.loc 1 216 0
+ 1677 06f6 07F5FA53 		add	r3, r7, #8000
+ 1678 06fa 03F11803 		add	r3, r3, #24
+ 1679 06fe 07F51C42 		add	r2, r7, #39936
+ 1680 0702 02F1C002 		add	r2, r2, #192
+ 1681 0706 1268     		ldr	r2, [r2]
+ 1682 0708 93E80300 		ldmia	r3, {r0, r1}
+ 1683 070c FFF7FEFF 		bl	calculateGScore
+ 217:..\301-Astar-code/astar.c **** 
+ 1684              		.loc 1 217 0
+ 1685 0710 BD49     		ldr	r1, .L56
+ 1686 0712 07F51C43 		add	r3, r7, #39936
+ 1687 0716 03F1B403 		add	r3, r3, #180
+ 1688 071a 1A68     		ldr	r2, [r3]
+ 1689 071c 1346     		mov	r3, r2
+ 1690 071e DB00     		lsls	r3, r3, #3
+ 1691 0720 1344     		add	r3, r3, r2
+ 1692 0722 5B00     		lsls	r3, r3, #1
+ 1693 0724 1344     		add	r3, r3, r2
+ 1694 0726 07F51C42 		add	r2, r7, #39936
+ 1695 072a 02F1B002 		add	r2, r2, #176
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 36
+
+
+ 1696 072e 1268     		ldr	r2, [r2]
+ 1697 0730 1344     		add	r3, r3, r2
+ 1698 0732 5B01     		lsls	r3, r3, #5
+ 1699 0734 0B44     		add	r3, r3, r1
+ 1700 0736 1833     		adds	r3, r3, #24
+ 1701 0738 1968     		ldr	r1, [r3]
+ 1702 073a B348     		ldr	r0, .L56
+ 1703 073c 07F51C43 		add	r3, r7, #39936
+ 1704 0740 03F1B403 		add	r3, r3, #180
+ 1705 0744 1A68     		ldr	r2, [r3]
+ 1706 0746 1346     		mov	r3, r2
+ 1707 0748 DB00     		lsls	r3, r3, #3
+ 1708 074a 1344     		add	r3, r3, r2
+ 1709 074c 5B00     		lsls	r3, r3, #1
+ 1710 074e 1344     		add	r3, r3, r2
+ 1711 0750 07F51C42 		add	r2, r7, #39936
+ 1712 0754 02F1B002 		add	r2, r2, #176
+ 1713 0758 1268     		ldr	r2, [r2]
+ 1714 075a 1344     		add	r3, r3, r2
+ 1715 075c 5B01     		lsls	r3, r3, #5
+ 1716 075e 0344     		add	r3, r3, r0
+ 1717 0760 1C33     		adds	r3, r3, #28
+ 1718 0762 1B68     		ldr	r3, [r3]
+ 1719 0764 0B44     		add	r3, r3, r1
+ 1720 0766 07F51C42 		add	r2, r7, #39936
+ 1721 076a 02F1AC02 		add	r2, r2, #172
+ 1722 076e 1360     		str	r3, [r2]
+ 220:..\301-Astar-code/astar.c ****                   nodesArray[row][col].fScore = newFscore;
+ 1723              		.loc 1 220 0
+ 1724 0770 07F51C43 		add	r3, r7, #39936
+ 1725 0774 03F1AC03 		add	r3, r3, #172
+ 1726 0778 1A68     		ldr	r2, [r3]
+ 1727 077a 07F51C43 		add	r3, r7, #39936
+ 1728 077e 03F1A803 		add	r3, r3, #168
+ 1729 0782 1B68     		ldr	r3, [r3]
+ 1730 0784 9A42     		cmp	r2, r3
+ 1731 0786 4EDA     		bge	.L44
+ 221:..\301-Astar-code/astar.c ****                   nodesArray[row][col].parents.pairCol = visiting.pairCol; // update parent node of
+ 1732              		.loc 1 221 0
+ 1733 0788 9F49     		ldr	r1, .L56
+ 1734 078a 07F51C43 		add	r3, r7, #39936
+ 1735 078e 03F1B403 		add	r3, r3, #180
+ 1736 0792 1A68     		ldr	r2, [r3]
+ 1737 0794 1346     		mov	r3, r2
+ 1738 0796 DB00     		lsls	r3, r3, #3
+ 1739 0798 1344     		add	r3, r3, r2
+ 1740 079a 5B00     		lsls	r3, r3, #1
+ 1741 079c 1344     		add	r3, r3, r2
+ 1742 079e 07F51C42 		add	r2, r7, #39936
+ 1743 07a2 02F1B002 		add	r2, r2, #176
+ 1744 07a6 1268     		ldr	r2, [r2]
+ 1745 07a8 1344     		add	r3, r3, r2
+ 1746 07aa 5B01     		lsls	r3, r3, #5
+ 1747 07ac 0B44     		add	r3, r3, r1
+ 1748 07ae 1433     		adds	r3, r3, #20
+ 1749 07b0 07F51C42 		add	r2, r7, #39936
+ 1750 07b4 02F1AC02 		add	r2, r2, #172
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 37
+
+
+ 1751 07b8 1268     		ldr	r2, [r2]
+ 1752 07ba 1A60     		str	r2, [r3]
+ 222:..\301-Astar-code/astar.c ****                   nodesArray[row][col].parents.pairRow = visiting.pairRow;
+ 1753              		.loc 1 222 0
+ 1754 07bc 07F57B53 		add	r3, r7, #16064
+ 1755 07c0 03F11803 		add	r3, r3, #24
+ 1756 07c4 083B     		subs	r3, r3, #8
+ 1757 07c6 5968     		ldr	r1, [r3, #4]
+ 1758 07c8 8F48     		ldr	r0, .L56
+ 1759 07ca 07F51C43 		add	r3, r7, #39936
+ 1760 07ce 03F1B403 		add	r3, r3, #180
+ 1761 07d2 1A68     		ldr	r2, [r3]
+ 1762 07d4 1346     		mov	r3, r2
+ 1763 07d6 DB00     		lsls	r3, r3, #3
+ 1764 07d8 1344     		add	r3, r3, r2
+ 1765 07da 5B00     		lsls	r3, r3, #1
+ 1766 07dc 1344     		add	r3, r3, r2
+ 1767 07de 07F51C42 		add	r2, r7, #39936
+ 1768 07e2 02F1B002 		add	r2, r2, #176
+ 1769 07e6 1268     		ldr	r2, [r2]
+ 1770 07e8 1344     		add	r3, r3, r2
+ 1771 07ea 5B01     		lsls	r3, r3, #5
+ 1772 07ec 0344     		add	r3, r3, r0
+ 1773 07ee 0433     		adds	r3, r3, #4
+ 1774 07f0 1960     		str	r1, [r3]
+ 223:..\301-Astar-code/astar.c ****               }
+ 1775              		.loc 1 223 0
+ 1776 07f2 07F57B53 		add	r3, r7, #16064
+ 1777 07f6 03F11803 		add	r3, r3, #24
+ 1778 07fa 083B     		subs	r3, r3, #8
+ 1779 07fc 1968     		ldr	r1, [r3]
+ 1780 07fe 8248     		ldr	r0, .L56
+ 1781 0800 07F51C43 		add	r3, r7, #39936
+ 1782 0804 03F1B403 		add	r3, r3, #180
+ 1783 0808 1A68     		ldr	r2, [r3]
+ 1784 080a 1346     		mov	r3, r2
+ 1785 080c DB00     		lsls	r3, r3, #3
+ 1786 080e 1344     		add	r3, r3, r2
+ 1787 0810 5B00     		lsls	r3, r3, #1
+ 1788 0812 1344     		add	r3, r3, r2
+ 1789 0814 07F51C42 		add	r2, r7, #39936
+ 1790 0818 02F1B002 		add	r2, r2, #176
+ 1791 081c 1268     		ldr	r2, [r2]
+ 1792 081e 1344     		add	r3, r3, r2
+ 1793 0820 5B01     		lsls	r3, r3, #5
+ 1794 0822 0344     		add	r3, r3, r0
+ 1795 0824 1960     		str	r1, [r3]
+ 1796              	.L44:
+ 1797              	.LBE10:
+ 185:..\301-Astar-code/astar.c ****         Pairs adjacentPos; 
+ 1798              		.loc 1 185 0 discriminator 2
+ 1799 0826 07F51C43 		add	r3, r7, #39936
+ 1800 082a 03F1CC03 		add	r3, r3, #204
+ 1801 082e 1B68     		ldr	r3, [r3]
+ 1802 0830 0133     		adds	r3, r3, #1
+ 1803 0832 07F51C42 		add	r2, r7, #39936
+ 1804 0836 02F1CC02 		add	r2, r2, #204
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 38
+
+
+ 1805 083a 1360     		str	r3, [r2]
+ 1806              	.L43:
+ 185:..\301-Astar-code/astar.c ****         Pairs adjacentPos; 
+ 1807              		.loc 1 185 0 is_stmt 0 discriminator 1
+ 1808 083c 07F51C43 		add	r3, r7, #39936
+ 1809 0840 03F1CC03 		add	r3, r3, #204
+ 1810 0844 1B68     		ldr	r3, [r3]
+ 1811 0846 032B     		cmp	r3, #3
+ 1812 0848 7FF7C2AD 		ble	.L46
+ 1813              	.LBE9:
+ 1814              	.LBE11:
+ 230:..\301-Astar-code/astar.c **** 
+ 1815              		.loc 1 230 0 is_stmt 1
+ 1816 084c 50E4     		b	.L47
+ 1817              	.L42:
+ 241:..\301-Astar-code/astar.c **** 
+ 242:..\301-Astar-code/astar.c ****     while(1){
+ 243:..\301-Astar-code/astar.c ****       // printf("current reversed Nodes: (%d,%d)\n", currentNode.pairCol+1,currentNode.pairRow+1);
+ 244:..\301-Astar-code/astar.c ****       parentNode = nodesArray[currentNode.pairRow][currentNode.pairCol].parents;
+ 1818              		.loc 1 244 0
+ 1819 084e 07F57B53 		add	r3, r7, #16064
+ 1820 0852 03F11803 		add	r3, r3, #24
+ 1821 0856 303B     		subs	r3, r3, #48
+ 1822 0858 1968     		ldr	r1, [r3]
+ 1823 085a 07F57B53 		add	r3, r7, #16064
+ 1824 085e 03F11803 		add	r3, r3, #24
+ 1825 0862 303B     		subs	r3, r3, #48
+ 1826 0864 5868     		ldr	r0, [r3, #4]
+ 1827 0866 07F57B52 		add	r2, r7, #16064
+ 1828 086a 02F11802 		add	r2, r2, #24
+ 1829 086e 383A     		subs	r2, r2, #56
+ 1830 0870 654C     		ldr	r4, .L56
+ 1831 0872 0B46     		mov	r3, r1
+ 1832 0874 DB00     		lsls	r3, r3, #3
+ 1833 0876 0B44     		add	r3, r3, r1
+ 1834 0878 5B00     		lsls	r3, r3, #1
+ 1835 087a 0B44     		add	r3, r3, r1
+ 1836 087c 0344     		add	r3, r3, r0
+ 1837 087e 5B01     		lsls	r3, r3, #5
+ 1838 0880 E118     		adds	r1, r4, r3
+ 1839 0882 1346     		mov	r3, r2
+ 1840 0884 0A46     		mov	r2, r1
+ 1841 0886 92E80300 		ldmia	r2, {r0, r1}
+ 1842 088a 83E80300 		stmia	r3, {r0, r1}
+ 245:..\301-Astar-code/astar.c ****       // printf("parent Node: (%d,%d)\n",parentNode.pairCol+1,parentNode.pairRow+1);
+ 246:..\301-Astar-code/astar.c ****       if(parentNode.pairRow == start.pairRow && parentNode.pairCol == start.pairCol){
+ 1843              		.loc 1 246 0
+ 1844 088e 07F57B53 		add	r3, r7, #16064
+ 1845 0892 03F11803 		add	r3, r3, #24
+ 1846 0896 383B     		subs	r3, r3, #56
+ 1847 0898 1A68     		ldr	r2, [r3]
+ 1848 089a 07F57B53 		add	r3, r7, #16064
+ 1849 089e 03F11803 		add	r3, r3, #24
+ 1850 08a2 1B68     		ldr	r3, [r3]
+ 1851 08a4 9A42     		cmp	r2, r3
+ 1852 08a6 2ED1     		bne	.L48
+ 1853              		.loc 1 246 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 39
+
+
+ 1854 08a8 07F57B53 		add	r3, r7, #16064
+ 1855 08ac 03F11803 		add	r3, r3, #24
+ 1856 08b0 383B     		subs	r3, r3, #56
+ 1857 08b2 5A68     		ldr	r2, [r3, #4]
+ 1858 08b4 07F57B53 		add	r3, r7, #16064
+ 1859 08b8 03F11803 		add	r3, r3, #24
+ 1860 08bc 5B68     		ldr	r3, [r3, #4]
+ 1861 08be 9A42     		cmp	r2, r3
+ 1862 08c0 21D1     		bne	.L48
+ 247:..\301-Astar-code/astar.c ****         reversedArray[index].pair = parentNode;
+ 1863              		.loc 1 247 0 is_stmt 1
+ 1864 08c2 07F5FE52 		add	r2, r7, #8128
+ 1865 08c6 02F11802 		add	r2, r2, #24
+ 1866 08ca 783A     		subs	r2, r2, #120
+ 1867 08cc 07F51C43 		add	r3, r7, #39936
+ 1868 08d0 03F1C803 		add	r3, r3, #200
+ 1869 08d4 1B68     		ldr	r3, [r3]
+ 1870 08d6 07F57B51 		add	r1, r7, #16064
+ 1871 08da 01F11801 		add	r1, r1, #24
+ 1872 08de 3839     		subs	r1, r1, #56
+ 1873 08e0 DB00     		lsls	r3, r3, #3
+ 1874 08e2 1344     		add	r3, r3, r2
+ 1875 08e4 0A46     		mov	r2, r1
+ 1876 08e6 92E80300 		ldmia	r2, {r0, r1}
+ 1877 08ea 83E80300 		stmia	r3, {r0, r1}
+ 248:..\301-Astar-code/astar.c ****         break;
+ 1878              		.loc 1 248 0
+ 1879 08ee 00BF     		nop
+ 1880              	.LBB12:
+ 249:..\301-Astar-code/astar.c ****       }
+ 250:..\301-Astar-code/astar.c ****       reversedArray[index].pair = parentNode;
+ 251:..\301-Astar-code/astar.c ****       currentNode.pairCol = parentNode.pairCol;
+ 252:..\301-Astar-code/astar.c ****       currentNode.pairRow = parentNode.pairRow;
+ 253:..\301-Astar-code/astar.c ****       index++;
+ 254:..\301-Astar-code/astar.c **** 
+ 255:..\301-Astar-code/astar.c ****     }
+ 256:..\301-Astar-code/astar.c ****     // printf("Final path index: %d", finalArrayIndex);
+ 257:..\301-Astar-code/astar.c ****     // printf("Final Path\n");
+ 258:..\301-Astar-code/astar.c ****     // finalpath should have at lest 117 in the thing but idk man
+ 259:..\301-Astar-code/astar.c ****     for(int j=index;j>=0; j--){
+ 1881              		.loc 1 259 0
+ 1882 08f0 07F51C43 		add	r3, r7, #39936
+ 1883 08f4 03F1C803 		add	r3, r3, #200
+ 1884 08f8 1B68     		ldr	r3, [r3]
+ 1885 08fa 07F51C42 		add	r2, r7, #39936
+ 1886 08fe 02F1C402 		add	r2, r2, #196
+ 1887 0902 1360     		str	r3, [r2]
+ 1888 0904 6DE0     		b	.L50
+ 1889              	.L48:
+ 1890              	.LBE12:
+ 250:..\301-Astar-code/astar.c ****       currentNode.pairCol = parentNode.pairCol;
+ 1891              		.loc 1 250 0
+ 1892 0906 07F5FE52 		add	r2, r7, #8128
+ 1893 090a 02F11802 		add	r2, r2, #24
+ 1894 090e 783A     		subs	r2, r2, #120
+ 1895 0910 07F51C43 		add	r3, r7, #39936
+ 1896 0914 03F1C803 		add	r3, r3, #200
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 40
+
+
+ 1897 0918 1B68     		ldr	r3, [r3]
+ 1898 091a 07F57B51 		add	r1, r7, #16064
+ 1899 091e 01F11801 		add	r1, r1, #24
+ 1900 0922 3839     		subs	r1, r1, #56
+ 1901 0924 DB00     		lsls	r3, r3, #3
+ 1902 0926 1344     		add	r3, r3, r2
+ 1903 0928 0A46     		mov	r2, r1
+ 1904 092a 92E80300 		ldmia	r2, {r0, r1}
+ 1905 092e 83E80300 		stmia	r3, {r0, r1}
+ 251:..\301-Astar-code/astar.c ****       currentNode.pairRow = parentNode.pairRow;
+ 1906              		.loc 1 251 0
+ 1907 0932 07F57B53 		add	r3, r7, #16064
+ 1908 0936 03F11803 		add	r3, r3, #24
+ 1909 093a 383B     		subs	r3, r3, #56
+ 1910 093c 5A68     		ldr	r2, [r3, #4]
+ 1911 093e 07F57B53 		add	r3, r7, #16064
+ 1912 0942 03F11803 		add	r3, r3, #24
+ 1913 0946 303B     		subs	r3, r3, #48
+ 1914 0948 5A60     		str	r2, [r3, #4]
+ 252:..\301-Astar-code/astar.c ****       index++;
+ 1915              		.loc 1 252 0
+ 1916 094a 07F57B53 		add	r3, r7, #16064
+ 1917 094e 03F11803 		add	r3, r3, #24
+ 1918 0952 383B     		subs	r3, r3, #56
+ 1919 0954 1A68     		ldr	r2, [r3]
+ 1920 0956 07F57B53 		add	r3, r7, #16064
+ 1921 095a 03F11803 		add	r3, r3, #24
+ 1922 095e 303B     		subs	r3, r3, #48
+ 1923 0960 1A60     		str	r2, [r3]
+ 253:..\301-Astar-code/astar.c **** 
+ 1924              		.loc 1 253 0
+ 1925 0962 07F51C43 		add	r3, r7, #39936
+ 1926 0966 03F1C803 		add	r3, r3, #200
+ 1927 096a 1B68     		ldr	r3, [r3]
+ 1928 096c 0133     		adds	r3, r3, #1
+ 1929 096e 07F51C42 		add	r2, r7, #39936
+ 1930 0972 02F1C802 		add	r2, r2, #200
+ 1931 0976 1360     		str	r3, [r2]
+ 255:..\301-Astar-code/astar.c ****     // printf("Final path index: %d", finalArrayIndex);
+ 1932              		.loc 1 255 0
+ 1933 0978 69E7     		b	.L42
+ 1934              	.L51:
+ 1935              	.LBB14:
+ 1936              	.LBB13:
+ 260:..\301-Astar-code/astar.c ****       Pairs node = reversedArray[j].pair;
+ 1937              		.loc 1 260 0 discriminator 3
+ 1938 097a 07F5FA53 		add	r3, r7, #8000
+ 1939 097e 03F11803 		add	r3, r3, #24
+ 1940 0982 083B     		subs	r3, r3, #8
+ 1941 0984 07F5FE52 		add	r2, r7, #8128
+ 1942 0988 02F11802 		add	r2, r2, #24
+ 1943 098c 783A     		subs	r2, r2, #120
+ 1944 098e 07F51C41 		add	r1, r7, #39936
+ 1945 0992 01F1C401 		add	r1, r1, #196
+ 1946 0996 0968     		ldr	r1, [r1]
+ 1947 0998 1C46     		mov	r4, r3
+ 1948 099a CB00     		lsls	r3, r1, #3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 41
+
+
+ 1949 099c 1344     		add	r3, r3, r2
+ 1950 099e 93E80300 		ldmia	r3, {r0, r1}
+ 1951 09a2 84E80300 		stmia	r4, {r0, r1}
+ 261:..\301-Astar-code/astar.c ****       finalPath[finalArrayIndex].pair = node;
+ 1952              		.loc 1 261 0 discriminator 3
+ 1953 09a6 194B     		ldr	r3, .L56+4
+ 1954 09a8 1B68     		ldr	r3, [r3]
+ 1955 09aa 1949     		ldr	r1, .L56+8
+ 1956 09ac 07F5FA52 		add	r2, r7, #8000
+ 1957 09b0 02F11802 		add	r2, r2, #24
+ 1958 09b4 083A     		subs	r2, r2, #8
+ 1959 09b6 DB00     		lsls	r3, r3, #3
+ 1960 09b8 0B44     		add	r3, r3, r1
+ 1961 09ba 92E80300 		ldmia	r2, {r0, r1}
+ 1962 09be 83E80300 		stmia	r3, {r0, r1}
+ 262:..\301-Astar-code/astar.c **** //      printf("%d",finalPath[finalArrayIndex].pair.pairRow);
+ 263:..\301-Astar-code/astar.c **** //      printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
+ 264:..\301-Astar-code/astar.c ****       finalArrayIndex++;
+ 1963              		.loc 1 264 0 discriminator 3
+ 1964 09c2 124B     		ldr	r3, .L56+4
+ 1965 09c4 1B68     		ldr	r3, [r3]
+ 1966 09c6 0133     		adds	r3, r3, #1
+ 1967 09c8 104A     		ldr	r2, .L56+4
+ 1968 09ca 1360     		str	r3, [r2]
+ 1969              	.LBE13:
+ 259:..\301-Astar-code/astar.c ****       Pairs node = reversedArray[j].pair;
+ 1970              		.loc 1 259 0 discriminator 3
+ 1971 09cc 07F51C43 		add	r3, r7, #39936
+ 1972 09d0 03F1C403 		add	r3, r3, #196
+ 1973 09d4 1B68     		ldr	r3, [r3]
+ 1974 09d6 013B     		subs	r3, r3, #1
+ 1975 09d8 07F51C42 		add	r2, r7, #39936
+ 1976 09dc 02F1C402 		add	r2, r2, #196
+ 1977 09e0 1360     		str	r3, [r2]
+ 1978              	.L50:
+ 259:..\301-Astar-code/astar.c ****       Pairs node = reversedArray[j].pair;
+ 1979              		.loc 1 259 0 is_stmt 0 discriminator 1
+ 1980 09e2 07F51C43 		add	r3, r7, #39936
+ 1981 09e6 03F1C403 		add	r3, r3, #196
+ 1982 09ea 1B68     		ldr	r3, [r3]
+ 1983 09ec 002B     		cmp	r3, #0
+ 1984 09ee C4DA     		bge	.L51
+ 1985              	.LBE14:
+ 265:..\301-Astar-code/astar.c ****     }
+ 266:..\301-Astar-code/astar.c **** 
+ 267:..\301-Astar-code/astar.c ****     finalArrayIndex--; // to allow for the addition of start location for next iteration
+ 1986              		.loc 1 267 0 is_stmt 1
+ 1987 09f0 064B     		ldr	r3, .L56+4
+ 1988 09f2 1B68     		ldr	r3, [r3]
+ 1989 09f4 013B     		subs	r3, r3, #1
+ 1990 09f6 054A     		ldr	r2, .L56+4
+ 1991 09f8 1360     		str	r3, [r2]
+ 268:..\301-Astar-code/astar.c **** //    printf("Final path index: %d", finalArrayIndex);
+ 269:..\301-Astar-code/astar.c **** 
+ 270:..\301-Astar-code/astar.c ****   // Paths* returnPointer(){
+ 271:..\301-Astar-code/astar.c ****   //   Paths *arraypointer;
+ 272:..\301-Astar-code/astar.c ****   //   arraypointer = &finalPath;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 42
+
+
+ 273:..\301-Astar-code/astar.c ****   //   return arraypointer;
+ 274:..\301-Astar-code/astar.c **** 
+ 275:..\301-Astar-code/astar.c ****   // }
+ 276:..\301-Astar-code/astar.c **** 
+ 277:..\301-Astar-code/astar.c ****       
+ 278:..\301-Astar-code/astar.c ****     // currentNode = targetlocation;
+ 279:..\301-Astar-code/astar.c ****     // parentNode = [-1,-1]; % initialised parent node
+ 280:..\301-Astar-code/astar.c ****     // reversedPath = {};
+ 281:..\301-Astar-code/astar.c ****     // checkStart = 0;
+ 282:..\301-Astar-code/astar.c ****     // reversedPath = append(reversedPath,currentNode); % add target to reversed path list
+ 283:..\301-Astar-code/astar.c ****     
+ 284:..\301-Astar-code/astar.c ****     // while(checkStart ~= 1)
+ 285:..\301-Astar-code/astar.c ****     //     parentNode = parents{currentNode(1),currentNode(2)}; % find parent node associated with 
+ 286:..\301-Astar-code/astar.c ****     //     reversedPath = append(reversedPath,parentNode); % add to reversed path list
+ 287:..\301-Astar-code/astar.c ****     //     currentNode = parentNode; % for next iteration
+ 288:..\301-Astar-code/astar.c ****     //     checkStart = (currentNode(1) == startlocation(1) && currentNode(2)== startlocation(2));
+ 289:..\301-Astar-code/astar.c ****     // end
+ 290:..\301-Astar-code/astar.c ****     // retsteps = flip(reversedPath); % flips order of elements to make a path to go from start to 
+ 291:..\301-Astar-code/astar.c ****     
+ 292:..\301-Astar-code/astar.c ****     
+ 293:..\301-Astar-code/astar.c **** }
+ 1992              		.loc 1 293 0
+ 1993 09fa 00BF     		nop
+ 1994 09fc 07F51C47 		add	r7, r7, #39936
+ 1995 0a00 DC37     		adds	r7, r7, #220
+ 1996              		.cfi_def_cfa_offset 12
+ 1997 0a02 BD46     		mov	sp, r7
+ 1998              		.cfi_def_cfa_register 13
+ 1999              		@ sp needed
+ 2000 0a04 90BD     		pop	{r4, r7, pc}
+ 2001              	.L57:
+ 2002 0a06 00BF     		.align	2
+ 2003              	.L56:
+ 2004 0a08 00000000 		.word	nodesArray
+ 2005 0a0c 00000000 		.word	finalArrayIndex
+ 2006 0a10 00000000 		.word	finalPath
+ 2007              		.cfi_endproc
+ 2008              	.LFE8:
+ 2009              		.size	astar, .-astar
+ 2010              		.text
+ 2011              	.Letext0:
+ 2012              		.file 2 "..\\301-Astar-code\\astar.h"
+ 2013              		.section	.debug_info,"",%progbits
+ 2014              	.Ldebug_info0:
+ 2015 0000 CC060000 		.4byte	0x6cc
+ 2016 0004 0400     		.2byte	0x4
+ 2017 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 2018 000a 04       		.byte	0x4
+ 2019 000b 01       		.uleb128 0x1
+ 2020 000c 2F000000 		.4byte	.LASF87
+ 2021 0010 0C       		.byte	0xc
+ 2022 0011 50010000 		.4byte	.LASF88
+ 2023 0015 54030000 		.4byte	.LASF89
+ 2024 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 2025 001d 00000000 		.4byte	0
+ 2026 0021 00000000 		.4byte	.Ldebug_line0
+ 2027 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 43
+
+
+ 2028 0026 01       		.byte	0x1
+ 2029 0027 06       		.byte	0x6
+ 2030 0028 F8000000 		.4byte	.LASF0
+ 2031 002c 02       		.uleb128 0x2
+ 2032 002d 01       		.byte	0x1
+ 2033 002e 08       		.byte	0x8
+ 2034 002f 19030000 		.4byte	.LASF1
+ 2035 0033 02       		.uleb128 0x2
+ 2036 0034 02       		.byte	0x2
+ 2037 0035 05       		.byte	0x5
+ 2038 0036 31030000 		.4byte	.LASF2
+ 2039 003a 02       		.uleb128 0x2
+ 2040 003b 02       		.byte	0x2
+ 2041 003c 07       		.byte	0x7
+ 2042 003d 15020000 		.4byte	.LASF3
+ 2043 0041 02       		.uleb128 0x2
+ 2044 0042 04       		.byte	0x4
+ 2045 0043 05       		.byte	0x5
+ 2046 0044 0F010000 		.4byte	.LASF4
+ 2047 0048 02       		.uleb128 0x2
+ 2048 0049 04       		.byte	0x4
+ 2049 004a 07       		.byte	0x7
+ 2050 004b DA010000 		.4byte	.LASF5
+ 2051 004f 02       		.uleb128 0x2
+ 2052 0050 08       		.byte	0x8
+ 2053 0051 05       		.byte	0x5
+ 2054 0052 EA000000 		.4byte	.LASF6
+ 2055 0056 02       		.uleb128 0x2
+ 2056 0057 08       		.byte	0x8
+ 2057 0058 07       		.byte	0x7
+ 2058 0059 C5000000 		.4byte	.LASF7
+ 2059 005d 03       		.uleb128 0x3
+ 2060 005e 04       		.byte	0x4
+ 2061 005f 05       		.byte	0x5
+ 2062 0060 696E7400 		.ascii	"int\000"
+ 2063 0064 02       		.uleb128 0x2
+ 2064 0065 04       		.byte	0x4
+ 2065 0066 07       		.byte	0x7
+ 2066 0067 BE010000 		.4byte	.LASF8
+ 2067 006b 02       		.uleb128 0x2
+ 2068 006c 08       		.byte	0x8
+ 2069 006d 04       		.byte	0x4
+ 2070 006e 72020000 		.4byte	.LASF9
+ 2071 0072 02       		.uleb128 0x2
+ 2072 0073 04       		.byte	0x4
+ 2073 0074 07       		.byte	0x7
+ 2074 0075 69020000 		.4byte	.LASF10
+ 2075 0079 02       		.uleb128 0x2
+ 2076 007a 01       		.byte	0x1
+ 2077 007b 08       		.byte	0x8
+ 2078 007c 0A040000 		.4byte	.LASF11
+ 2079 0080 04       		.uleb128 0x4
+ 2080 0081 04010000 		.4byte	.LASF14
+ 2081 0085 08       		.byte	0x8
+ 2082 0086 02       		.byte	0x2
+ 2083 0087 09       		.byte	0x9
+ 2084 0088 A5000000 		.4byte	0xa5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 44
+
+
+ 2085 008c 05       		.uleb128 0x5
+ 2086 008d 73040000 		.4byte	.LASF12
+ 2087 0091 02       		.byte	0x2
+ 2088 0092 0A       		.byte	0xa
+ 2089 0093 5D000000 		.4byte	0x5d
+ 2090 0097 00       		.byte	0
+ 2091 0098 05       		.uleb128 0x5
+ 2092 0099 F9020000 		.4byte	.LASF13
+ 2093 009d 02       		.byte	0x2
+ 2094 009e 0B       		.byte	0xb
+ 2095 009f 5D000000 		.4byte	0x5d
+ 2096 00a3 04       		.byte	0x4
+ 2097 00a4 00       		.byte	0
+ 2098 00a5 06       		.uleb128 0x6
+ 2099 00a6 93010000 		.4byte	.LASF23
+ 2100 00aa 02       		.byte	0x2
+ 2101 00ab 0C       		.byte	0xc
+ 2102 00ac 80000000 		.4byte	0x80
+ 2103 00b0 04       		.uleb128 0x4
+ 2104 00b1 3B030000 		.4byte	.LASF15
+ 2105 00b5 20       		.byte	0x20
+ 2106 00b6 02       		.byte	0x2
+ 2107 00b7 0D       		.byte	0xd
+ 2108 00b8 11010000 		.4byte	0x111
+ 2109 00bc 05       		.uleb128 0x5
+ 2110 00bd E7020000 		.4byte	.LASF16
+ 2111 00c1 02       		.byte	0x2
+ 2112 00c2 0E       		.byte	0xe
+ 2113 00c3 80000000 		.4byte	0x80
+ 2114 00c7 00       		.byte	0
+ 2115 00c8 05       		.uleb128 0x5
+ 2116 00c9 FE030000 		.4byte	.LASF17
+ 2117 00cd 02       		.byte	0x2
+ 2118 00ce 0F       		.byte	0xf
+ 2119 00cf 5D000000 		.4byte	0x5d
+ 2120 00d3 08       		.byte	0x8
+ 2121 00d4 05       		.uleb128 0x5
+ 2122 00d5 B4010000 		.4byte	.LASF18
+ 2123 00d9 02       		.byte	0x2
+ 2124 00da 10       		.byte	0x10
+ 2125 00db 5D000000 		.4byte	0x5d
+ 2126 00df 0C       		.byte	0xc
+ 2127 00e0 05       		.uleb128 0x5
+ 2128 00e1 0A000000 		.4byte	.LASF19
+ 2129 00e5 02       		.byte	0x2
+ 2130 00e6 11       		.byte	0x11
+ 2131 00e7 5D000000 		.4byte	0x5d
+ 2132 00eb 10       		.byte	0x10
+ 2133 00ec 05       		.uleb128 0x5
+ 2134 00ed E0020000 		.4byte	.LASF20
+ 2135 00f1 02       		.byte	0x2
+ 2136 00f2 12       		.byte	0x12
+ 2137 00f3 5D000000 		.4byte	0x5d
+ 2138 00f7 14       		.byte	0x14
+ 2139 00f8 05       		.uleb128 0x5
+ 2140 00f9 4D030000 		.4byte	.LASF21
+ 2141 00fd 02       		.byte	0x2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 45
+
+
+ 2142 00fe 13       		.byte	0x13
+ 2143 00ff 5D000000 		.4byte	0x5d
+ 2144 0103 18       		.byte	0x18
+ 2145 0104 05       		.uleb128 0x5
+ 2146 0105 33010000 		.4byte	.LASF22
+ 2147 0109 02       		.byte	0x2
+ 2148 010a 14       		.byte	0x14
+ 2149 010b 5D000000 		.4byte	0x5d
+ 2150 010f 1C       		.byte	0x1c
+ 2151 0110 00       		.byte	0
+ 2152 0111 06       		.uleb128 0x6
+ 2153 0112 3B030000 		.4byte	.LASF15
+ 2154 0116 02       		.byte	0x2
+ 2155 0117 15       		.byte	0x15
+ 2156 0118 B0000000 		.4byte	0xb0
+ 2157 011c 04       		.uleb128 0x4
+ 2158 011d DB020000 		.4byte	.LASF24
+ 2159 0121 08       		.byte	0x8
+ 2160 0122 02       		.byte	0x2
+ 2161 0123 17       		.byte	0x17
+ 2162 0124 35010000 		.4byte	0x135
+ 2163 0128 05       		.uleb128 0x5
+ 2164 0129 27030000 		.4byte	.LASF25
+ 2165 012d 02       		.byte	0x2
+ 2166 012e 18       		.byte	0x18
+ 2167 012f 80000000 		.4byte	0x80
+ 2168 0133 00       		.byte	0
+ 2169 0134 00       		.byte	0
+ 2170 0135 06       		.uleb128 0x6
+ 2171 0136 87040000 		.4byte	.LASF26
+ 2172 013a 02       		.byte	0x2
+ 2173 013b 19       		.byte	0x19
+ 2174 013c 40010000 		.4byte	0x140
+ 2175 0140 07       		.uleb128 0x7
+ 2176 0141 1C010000 		.4byte	0x11c
+ 2177 0145 51010000 		.4byte	0x151
+ 2178 0149 08       		.uleb128 0x8
+ 2179 014a 72000000 		.4byte	0x72
+ 2180 014e E703     		.2byte	0x3e7
+ 2181 0150 00       		.byte	0
+ 2182 0151 09       		.uleb128 0x9
+ 2183 0152 D6020000 		.4byte	.LASF27
+ 2184 0156 01       		.byte	0x1
+ 2185 0157 04       		.byte	0x4
+ 2186 0158 00000000 		.4byte	.LFB1
+ 2187 015c 3E000000 		.4byte	.LFE1-.LFB1
+ 2188 0160 01       		.uleb128 0x1
+ 2189 0161 9C       		.byte	0x9c
+ 2190 0162 8D010000 		.4byte	0x18d
+ 2191 0166 0A       		.uleb128 0xa
+ 2192 0167 6100     		.ascii	"a\000"
+ 2193 0169 01       		.byte	0x1
+ 2194 016a 04       		.byte	0x4
+ 2195 016b 8D010000 		.4byte	0x18d
+ 2196 016f 02       		.uleb128 0x2
+ 2197 0170 91       		.byte	0x91
+ 2198 0171 6C       		.sleb128 -20
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 46
+
+
+ 2199 0172 0A       		.uleb128 0xa
+ 2200 0173 6200     		.ascii	"b\000"
+ 2201 0175 01       		.byte	0x1
+ 2202 0176 04       		.byte	0x4
+ 2203 0177 8D010000 		.4byte	0x18d
+ 2204 017b 02       		.uleb128 0x2
+ 2205 017c 91       		.byte	0x91
+ 2206 017d 68       		.sleb128 -24
+ 2207 017e 0B       		.uleb128 0xb
+ 2208 017f AF010000 		.4byte	.LASF31
+ 2209 0183 01       		.byte	0x1
+ 2210 0184 05       		.byte	0x5
+ 2211 0185 A5000000 		.4byte	0xa5
+ 2212 0189 02       		.uleb128 0x2
+ 2213 018a 91       		.byte	0x91
+ 2214 018b 70       		.sleb128 -16
+ 2215 018c 00       		.byte	0
+ 2216 018d 0C       		.uleb128 0xc
+ 2217 018e 04       		.byte	0x4
+ 2218 018f A5000000 		.4byte	0xa5
+ 2219 0193 0D       		.uleb128 0xd
+ 2220 0194 41020000 		.4byte	.LASF28
+ 2221 0198 01       		.byte	0x1
+ 2222 0199 0B       		.byte	0xb
+ 2223 019a 00000000 		.4byte	.LFB2
+ 2224 019e DC010000 		.4byte	.LFE2-.LFB2
+ 2225 01a2 01       		.uleb128 0x1
+ 2226 01a3 9C       		.byte	0x9c
+ 2227 01a4 8A020000 		.4byte	0x28a
+ 2228 01a8 0E       		.uleb128 0xe
+ 2229 01a9 76010000 		.4byte	.LASF29
+ 2230 01ad 01       		.byte	0x1
+ 2231 01ae 0B       		.byte	0xb
+ 2232 01af 8A020000 		.4byte	0x28a
+ 2233 01b3 02       		.uleb128 0x2
+ 2234 01b4 91       		.byte	0x91
+ 2235 01b5 44       		.sleb128 -60
+ 2236 01b6 0E       		.uleb128 0xe
+ 2237 01b7 10020000 		.4byte	.LASF30
+ 2238 01bb 01       		.byte	0x1
+ 2239 01bc 0B       		.byte	0xb
+ 2240 01bd 5D000000 		.4byte	0x5d
+ 2241 01c1 02       		.uleb128 0x2
+ 2242 01c2 91       		.byte	0x91
+ 2243 01c3 40       		.sleb128 -64
+ 2244 01c4 0A       		.uleb128 0xa
+ 2245 01c5 6900     		.ascii	"i\000"
+ 2246 01c7 01       		.byte	0x1
+ 2247 01c8 0B       		.byte	0xb
+ 2248 01c9 5D000000 		.4byte	0x5d
+ 2249 01cd 03       		.uleb128 0x3
+ 2250 01ce 91       		.byte	0x91
+ 2251 01cf BC7F     		.sleb128 -68
+ 2252 01d1 0F       		.uleb128 0xf
+ 2253 01d2 14000000 		.4byte	.LBB2
+ 2254 01d6 BA010000 		.4byte	.LBE2-.LBB2
+ 2255 01da 0B       		.uleb128 0xb
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 47
+
+
+ 2256 01db 28020000 		.4byte	.LASF32
+ 2257 01df 01       		.byte	0x1
+ 2258 01e0 10       		.byte	0x10
+ 2259 01e1 5D000000 		.4byte	0x5d
+ 2260 01e5 02       		.uleb128 0x2
+ 2261 01e6 91       		.byte	0x91
+ 2262 01e7 74       		.sleb128 -12
+ 2263 01e8 10       		.uleb128 0x10
+ 2264 01e9 6C00     		.ascii	"l\000"
+ 2265 01eb 01       		.byte	0x1
+ 2266 01ec 11       		.byte	0x11
+ 2267 01ed 5D000000 		.4byte	0x5d
+ 2268 01f1 02       		.uleb128 0x2
+ 2269 01f2 91       		.byte	0x91
+ 2270 01f3 70       		.sleb128 -16
+ 2271 01f4 10       		.uleb128 0x10
+ 2272 01f5 7200     		.ascii	"r\000"
+ 2273 01f7 01       		.byte	0x1
+ 2274 01f8 12       		.byte	0x12
+ 2275 01f9 5D000000 		.4byte	0x5d
+ 2276 01fd 02       		.uleb128 0x2
+ 2277 01fe 91       		.byte	0x91
+ 2278 01ff 6C       		.sleb128 -20
+ 2279 0200 0B       		.uleb128 0xb
+ 2280 0201 DC000000 		.4byte	.LASF33
+ 2281 0205 01       		.byte	0x1
+ 2282 0206 15       		.byte	0x15
+ 2283 0207 5D000000 		.4byte	0x5d
+ 2284 020b 02       		.uleb128 0x2
+ 2285 020c 91       		.byte	0x91
+ 2286 020d 68       		.sleb128 -24
+ 2287 020e 0B       		.uleb128 0xb
+ 2288 020f 25040000 		.4byte	.LASF34
+ 2289 0213 01       		.byte	0x1
+ 2290 0214 16       		.byte	0x16
+ 2291 0215 5D000000 		.4byte	0x5d
+ 2292 0219 02       		.uleb128 0x2
+ 2293 021a 91       		.byte	0x91
+ 2294 021b 64       		.sleb128 -28
+ 2295 021c 0B       		.uleb128 0xb
+ 2296 021d 4D040000 		.4byte	.LASF35
+ 2297 0221 01       		.byte	0x1
+ 2298 0222 17       		.byte	0x17
+ 2299 0223 5D000000 		.4byte	0x5d
+ 2300 0227 02       		.uleb128 0x2
+ 2301 0228 91       		.byte	0x91
+ 2302 0229 60       		.sleb128 -32
+ 2303 022a 0B       		.uleb128 0xb
+ 2304 022b A6020000 		.4byte	.LASF36
+ 2305 022f 01       		.byte	0x1
+ 2306 0230 18       		.byte	0x18
+ 2307 0231 5D000000 		.4byte	0x5d
+ 2308 0235 02       		.uleb128 0x2
+ 2309 0236 91       		.byte	0x91
+ 2310 0237 5C       		.sleb128 -36
+ 2311 0238 0B       		.uleb128 0xb
+ 2312 0239 09010000 		.4byte	.LASF37
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 48
+
+
+ 2313 023d 01       		.byte	0x1
+ 2314 023e 19       		.byte	0x19
+ 2315 023f 5D000000 		.4byte	0x5d
+ 2316 0243 02       		.uleb128 0x2
+ 2317 0244 91       		.byte	0x91
+ 2318 0245 58       		.sleb128 -40
+ 2319 0246 0B       		.uleb128 0xb
+ 2320 0247 57040000 		.4byte	.LASF38
+ 2321 024b 01       		.byte	0x1
+ 2322 024c 1A       		.byte	0x1a
+ 2323 024d 5D000000 		.4byte	0x5d
+ 2324 0251 02       		.uleb128 0x2
+ 2325 0252 91       		.byte	0x91
+ 2326 0253 54       		.sleb128 -44
+ 2327 0254 0F       		.uleb128 0xf
+ 2328 0255 28010000 		.4byte	.LBB3
+ 2329 0259 A6000000 		.4byte	.LBE3-.LBB3
+ 2330 025d 0B       		.uleb128 0xb
+ 2331 025e 07020000 		.4byte	.LASF39
+ 2332 0262 01       		.byte	0x1
+ 2333 0263 22       		.byte	0x22
+ 2334 0264 5D000000 		.4byte	0x5d
+ 2335 0268 02       		.uleb128 0x2
+ 2336 0269 91       		.byte	0x91
+ 2337 026a 50       		.sleb128 -48
+ 2338 026b 0B       		.uleb128 0xb
+ 2339 026c 30040000 		.4byte	.LASF40
+ 2340 0270 01       		.byte	0x1
+ 2341 0271 23       		.byte	0x23
+ 2342 0272 5D000000 		.4byte	0x5d
+ 2343 0276 02       		.uleb128 0x2
+ 2344 0277 91       		.byte	0x91
+ 2345 0278 4C       		.sleb128 -52
+ 2346 0279 0B       		.uleb128 0xb
+ 2347 027a 5C020000 		.4byte	.LASF41
+ 2348 027e 01       		.byte	0x1
+ 2349 027f 24       		.byte	0x24
+ 2350 0280 5D000000 		.4byte	0x5d
+ 2351 0284 02       		.uleb128 0x2
+ 2352 0285 91       		.byte	0x91
+ 2353 0286 48       		.sleb128 -56
+ 2354 0287 00       		.byte	0
+ 2355 0288 00       		.byte	0
+ 2356 0289 00       		.byte	0
+ 2357 028a 0C       		.uleb128 0xc
+ 2358 028b 04       		.byte	0x4
+ 2359 028c 1C010000 		.4byte	0x11c
+ 2360 0290 0D       		.uleb128 0xd
+ 2361 0291 BD000000 		.4byte	.LASF42
+ 2362 0295 01       		.byte	0x1
+ 2363 0296 38       		.byte	0x38
+ 2364 0297 00000000 		.4byte	.LFB3
+ 2365 029b A4000000 		.4byte	.LFE3-.LFB3
+ 2366 029f 01       		.uleb128 0x1
+ 2367 02a0 9C       		.byte	0x9c
+ 2368 02a1 D8020000 		.4byte	0x2d8
+ 2369 02a5 0E       		.uleb128 0xe
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 49
+
+
+ 2370 02a6 76010000 		.4byte	.LASF29
+ 2371 02aa 01       		.byte	0x1
+ 2372 02ab 38       		.byte	0x38
+ 2373 02ac 8A020000 		.4byte	0x28a
+ 2374 02b0 02       		.uleb128 0x2
+ 2375 02b1 91       		.byte	0x91
+ 2376 02b2 6C       		.sleb128 -20
+ 2377 02b3 0E       		.uleb128 0xe
+ 2378 02b4 94020000 		.4byte	.LASF43
+ 2379 02b8 01       		.byte	0x1
+ 2380 02b9 38       		.byte	0x38
+ 2381 02ba A5000000 		.4byte	0xa5
+ 2382 02be 02       		.uleb128 0x2
+ 2383 02bf 91       		.byte	0x91
+ 2384 02c0 64       		.sleb128 -28
+ 2385 02c1 0F       		.uleb128 0xf
+ 2386 02c2 6E000000 		.4byte	.LBB4
+ 2387 02c6 2A000000 		.4byte	.LBE4-.LBB4
+ 2388 02ca 10       		.uleb128 0x10
+ 2389 02cb 6900     		.ascii	"i\000"
+ 2390 02cd 01       		.byte	0x1
+ 2391 02ce 43       		.byte	0x43
+ 2392 02cf 5D000000 		.4byte	0x5d
+ 2393 02d3 02       		.uleb128 0x2
+ 2394 02d4 91       		.byte	0x91
+ 2395 02d5 74       		.sleb128 -12
+ 2396 02d6 00       		.byte	0
+ 2397 02d7 00       		.byte	0
+ 2398 02d8 11       		.uleb128 0x11
+ 2399 02d9 54020000 		.4byte	.LASF90
+ 2400 02dd 01       		.byte	0x1
+ 2401 02de 4A       		.byte	0x4a
+ 2402 02df A5000000 		.4byte	0xa5
+ 2403 02e3 00000000 		.4byte	.LFB4
+ 2404 02e7 8C000000 		.4byte	.LFE4-.LFB4
+ 2405 02eb 01       		.uleb128 0x1
+ 2406 02ec 9C       		.byte	0x9c
+ 2407 02ed 24030000 		.4byte	0x324
+ 2408 02f1 0E       		.uleb128 0xe
+ 2409 02f2 76010000 		.4byte	.LASF29
+ 2410 02f6 01       		.byte	0x1
+ 2411 02f7 4A       		.byte	0x4a
+ 2412 02f8 8A020000 		.4byte	0x28a
+ 2413 02fc 02       		.uleb128 0x2
+ 2414 02fd 91       		.byte	0x91
+ 2415 02fe 60       		.sleb128 -32
+ 2416 02ff 0B       		.uleb128 0xb
+ 2417 0300 38020000 		.4byte	.LASF44
+ 2418 0304 01       		.byte	0x1
+ 2419 0305 4B       		.byte	0x4b
+ 2420 0306 A5000000 		.4byte	0xa5
+ 2421 030a 02       		.uleb128 0x2
+ 2422 030b 91       		.byte	0x91
+ 2423 030c 6C       		.sleb128 -20
+ 2424 030d 0F       		.uleb128 0xf
+ 2425 030e 46000000 		.4byte	.LBB5
+ 2426 0312 2A000000 		.4byte	.LBE5-.LBB5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 50
+
+
+ 2427 0316 10       		.uleb128 0x10
+ 2428 0317 6900     		.ascii	"i\000"
+ 2429 0319 01       		.byte	0x1
+ 2430 031a 55       		.byte	0x55
+ 2431 031b 5D000000 		.4byte	0x5d
+ 2432 031f 02       		.uleb128 0x2
+ 2433 0320 91       		.byte	0x91
+ 2434 0321 74       		.sleb128 -12
+ 2435 0322 00       		.byte	0
+ 2436 0323 00       		.byte	0
+ 2437 0324 09       		.uleb128 0x9
+ 2438 0325 CB010000 		.4byte	.LASF45
+ 2439 0329 01       		.byte	0x1
+ 2440 032a 5C       		.byte	0x5c
+ 2441 032b 00000000 		.4byte	.LFB5
+ 2442 032f 58010000 		.4byte	.LFE5-.LFB5
+ 2443 0333 01       		.uleb128 0x1
+ 2444 0334 9C       		.byte	0x9c
+ 2445 0335 78030000 		.4byte	0x378
+ 2446 0339 0E       		.uleb128 0xe
+ 2447 033a B0020000 		.4byte	.LASF46
+ 2448 033e 01       		.byte	0x1
+ 2449 033f 5C       		.byte	0x5c
+ 2450 0340 88030000 		.4byte	0x388
+ 2451 0344 02       		.uleb128 0x2
+ 2452 0345 91       		.byte	0x91
+ 2453 0346 6C       		.sleb128 -20
+ 2454 0347 0F       		.uleb128 0xf
+ 2455 0348 08000000 		.4byte	.LBB6
+ 2456 034c 40010000 		.4byte	.LBE6-.LBB6
+ 2457 0350 10       		.uleb128 0x10
+ 2458 0351 726F7700 		.ascii	"row\000"
+ 2459 0355 01       		.byte	0x1
+ 2460 0356 5D       		.byte	0x5d
+ 2461 0357 5D000000 		.4byte	0x5d
+ 2462 035b 02       		.uleb128 0x2
+ 2463 035c 91       		.byte	0x91
+ 2464 035d 74       		.sleb128 -12
+ 2465 035e 0F       		.uleb128 0xf
+ 2466 035f 0E000000 		.4byte	.LBB7
+ 2467 0363 2C010000 		.4byte	.LBE7-.LBB7
+ 2468 0367 10       		.uleb128 0x10
+ 2469 0368 636F6C00 		.ascii	"col\000"
+ 2470 036c 01       		.byte	0x1
+ 2471 036d 5E       		.byte	0x5e
+ 2472 036e 5D000000 		.4byte	0x5d
+ 2473 0372 02       		.uleb128 0x2
+ 2474 0373 91       		.byte	0x91
+ 2475 0374 70       		.sleb128 -16
+ 2476 0375 00       		.byte	0
+ 2477 0376 00       		.byte	0
+ 2478 0377 00       		.byte	0
+ 2479 0378 07       		.uleb128 0x7
+ 2480 0379 5D000000 		.4byte	0x5d
+ 2481 037d 88030000 		.4byte	0x388
+ 2482 0381 12       		.uleb128 0x12
+ 2483 0382 72000000 		.4byte	0x72
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 51
+
+
+ 2484 0386 12       		.byte	0x12
+ 2485 0387 00       		.byte	0
+ 2486 0388 0C       		.uleb128 0xc
+ 2487 0389 04       		.byte	0x4
+ 2488 038a 78030000 		.4byte	0x378
+ 2489 038e 09       		.uleb128 0x9
+ 2490 038f F7010000 		.4byte	.LASF47
+ 2491 0393 01       		.byte	0x1
+ 2492 0394 71       		.byte	0x71
+ 2493 0395 00000000 		.4byte	.LFB6
+ 2494 0399 60000000 		.4byte	.LFE6-.LFB6
+ 2495 039d 01       		.uleb128 0x1
+ 2496 039e 9C       		.byte	0x9c
+ 2497 039f DC030000 		.4byte	0x3dc
+ 2498 03a3 0E       		.uleb128 0xe
+ 2499 03a4 CE020000 		.4byte	.LASF48
+ 2500 03a8 01       		.byte	0x1
+ 2501 03a9 71       		.byte	0x71
+ 2502 03aa A5000000 		.4byte	0xa5
+ 2503 03ae 02       		.uleb128 0x2
+ 2504 03af 91       		.byte	0x91
+ 2505 03b0 68       		.sleb128 -24
+ 2506 03b1 0E       		.uleb128 0xe
+ 2507 03b2 31020000 		.4byte	.LASF49
+ 2508 03b6 01       		.byte	0x1
+ 2509 03b7 71       		.byte	0x71
+ 2510 03b8 A5000000 		.4byte	0xa5
+ 2511 03bc 02       		.uleb128 0x2
+ 2512 03bd 91       		.byte	0x91
+ 2513 03be 60       		.sleb128 -32
+ 2514 03bf 0B       		.uleb128 0xb
+ 2515 03c0 2B040000 		.4byte	.LASF50
+ 2516 03c4 01       		.byte	0x1
+ 2517 03c5 72       		.byte	0x72
+ 2518 03c6 5D000000 		.4byte	0x5d
+ 2519 03ca 02       		.uleb128 0x2
+ 2520 03cb 91       		.byte	0x91
+ 2521 03cc 74       		.sleb128 -12
+ 2522 03cd 0B       		.uleb128 0xb
+ 2523 03ce F9030000 		.4byte	.LASF51
+ 2524 03d2 01       		.byte	0x1
+ 2525 03d3 73       		.byte	0x73
+ 2526 03d4 5D000000 		.4byte	0x5d
+ 2527 03d8 02       		.uleb128 0x2
+ 2528 03d9 91       		.byte	0x91
+ 2529 03da 70       		.sleb128 -16
+ 2530 03db 00       		.byte	0
+ 2531 03dc 09       		.uleb128 0x9
+ 2532 03dd 40010000 		.4byte	.LASF52
+ 2533 03e1 01       		.byte	0x1
+ 2534 03e2 7A       		.byte	0x7a
+ 2535 03e3 00000000 		.4byte	.LFB7
+ 2536 03e7 44000000 		.4byte	.LFE7-.LFB7
+ 2537 03eb 01       		.uleb128 0x1
+ 2538 03ec 9C       		.byte	0x9c
+ 2539 03ed 2A040000 		.4byte	0x42a
+ 2540 03f1 0E       		.uleb128 0xe
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 52
+
+
+ 2541 03f2 7E020000 		.4byte	.LASF53
+ 2542 03f6 01       		.byte	0x1
+ 2543 03f7 7A       		.byte	0x7a
+ 2544 03f8 A5000000 		.4byte	0xa5
+ 2545 03fc 02       		.uleb128 0x2
+ 2546 03fd 91       		.byte	0x91
+ 2547 03fe 68       		.sleb128 -24
+ 2548 03ff 0E       		.uleb128 0xe
+ 2549 0400 ED030000 		.4byte	.LASF54
+ 2550 0404 01       		.byte	0x1
+ 2551 0405 7A       		.byte	0x7a
+ 2552 0406 5D000000 		.4byte	0x5d
+ 2553 040a 02       		.uleb128 0x2
+ 2554 040b 91       		.byte	0x91
+ 2555 040c 64       		.sleb128 -28
+ 2556 040d 0B       		.uleb128 0xb
+ 2557 040e 2B040000 		.4byte	.LASF50
+ 2558 0412 01       		.byte	0x1
+ 2559 0413 7B       		.byte	0x7b
+ 2560 0414 5D000000 		.4byte	0x5d
+ 2561 0418 02       		.uleb128 0x2
+ 2562 0419 91       		.byte	0x91
+ 2563 041a 74       		.sleb128 -12
+ 2564 041b 0B       		.uleb128 0xb
+ 2565 041c F9030000 		.4byte	.LASF51
+ 2566 0420 01       		.byte	0x1
+ 2567 0421 7C       		.byte	0x7c
+ 2568 0422 5D000000 		.4byte	0x5d
+ 2569 0426 02       		.uleb128 0x2
+ 2570 0427 91       		.byte	0x91
+ 2571 0428 70       		.sleb128 -16
+ 2572 0429 00       		.byte	0
+ 2573 042a 0D       		.uleb128 0xd
+ 2574 042b 19040000 		.4byte	.LASF55
+ 2575 042f 01       		.byte	0x1
+ 2576 0430 82       		.byte	0x82
+ 2577 0431 00000000 		.4byte	.LFB8
+ 2578 0435 140A0000 		.4byte	.LFE8-.LFB8
+ 2579 0439 01       		.uleb128 0x1
+ 2580 043a 9C       		.byte	0x9c
+ 2581 043b 61060000 		.4byte	0x661
+ 2582 043f 0E       		.uleb128 0xe
+ 2583 0440 12000000 		.4byte	.LASF56
+ 2584 0444 01       		.byte	0x1
+ 2585 0445 82       		.byte	0x82
+ 2586 0446 88030000 		.4byte	0x388
+ 2587 044a 04       		.uleb128 0x4
+ 2588 044b 91       		.byte	0x91
+ 2589 044c A4C67D   		.sleb128 -40156
+ 2590 044f 0E       		.uleb128 0xe
+ 2591 0450 B8020000 		.4byte	.LASF57
+ 2592 0454 01       		.byte	0x1
+ 2593 0455 82       		.byte	0x82
+ 2594 0456 5D000000 		.4byte	0x5d
+ 2595 045a 04       		.uleb128 0x4
+ 2596 045b 91       		.byte	0x91
+ 2597 045c A0C67D   		.sleb128 -40160
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 53
+
+
+ 2598 045f 0E       		.uleb128 0xe
+ 2599 0460 6A010000 		.4byte	.LASF58
+ 2600 0464 01       		.byte	0x1
+ 2601 0465 82       		.byte	0x82
+ 2602 0466 5D000000 		.4byte	0x5d
+ 2603 046a 04       		.uleb128 0x4
+ 2604 046b 91       		.byte	0x91
+ 2605 046c 9CC67D   		.sleb128 -40164
+ 2606 046f 0E       		.uleb128 0xe
+ 2607 0470 EF020000 		.4byte	.LASF59
+ 2608 0474 01       		.byte	0x1
+ 2609 0475 82       		.byte	0x82
+ 2610 0476 5D000000 		.4byte	0x5d
+ 2611 047a 04       		.uleb128 0x4
+ 2612 047b 91       		.byte	0x91
+ 2613 047c 98C67D   		.sleb128 -40168
+ 2614 047f 0E       		.uleb128 0xe
+ 2615 0480 A5010000 		.4byte	.LASF60
+ 2616 0484 01       		.byte	0x1
+ 2617 0485 82       		.byte	0x82
+ 2618 0486 5D000000 		.4byte	0x5d
+ 2619 048a 02       		.uleb128 0x2
+ 2620 048b 91       		.byte	0x91
+ 2621 048c 00       		.sleb128 0
+ 2622 048d 0B       		.uleb128 0xb
+ 2623 048e 3A010000 		.4byte	.LASF61
+ 2624 0492 01       		.byte	0x1
+ 2625 0493 83       		.byte	0x83
+ 2626 0494 35010000 		.4byte	0x135
+ 2627 0498 03       		.uleb128 0x3
+ 2628 0499 91       		.byte	0x91
+ 2629 049a 8041     		.sleb128 -8064
+ 2630 049c 0B       		.uleb128 0xb
+ 2631 049d 41030000 		.4byte	.LASF62
+ 2632 04a1 01       		.byte	0x1
+ 2633 04a2 84       		.byte	0x84
+ 2634 04a3 35010000 		.4byte	0x135
+ 2635 04a7 04       		.uleb128 0x4
+ 2636 04a8 91       		.byte	0x91
+ 2637 04a9 C0827F   		.sleb128 -16064
+ 2638 04ac 0B       		.uleb128 0xb
+ 2639 04ad 81040000 		.4byte	.LASF63
+ 2640 04b1 01       		.byte	0x1
+ 2641 04b2 85       		.byte	0x85
+ 2642 04b3 35010000 		.4byte	0x135
+ 2643 04b7 04       		.uleb128 0x4
+ 2644 04b8 91       		.byte	0x91
+ 2645 04b9 80C47E   		.sleb128 -24064
+ 2646 04bc 0B       		.uleb128 0xb
+ 2647 04bd 31020000 		.4byte	.LASF49
+ 2648 04c1 01       		.byte	0x1
+ 2649 04c2 88       		.byte	0x88
+ 2650 04c3 A5000000 		.4byte	0xa5
+ 2651 04c7 04       		.uleb128 0x4
+ 2652 04c8 91       		.byte	0x91
+ 2653 04c9 F8C37E   		.sleb128 -24072
+ 2654 04cc 0B       		.uleb128 0xb
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 54
+
+
+ 2655 04cd 7B040000 		.4byte	.LASF64
+ 2656 04d1 01       		.byte	0x1
+ 2657 04d2 88       		.byte	0x88
+ 2658 04d3 A5000000 		.4byte	0xa5
+ 2659 04d7 04       		.uleb128 0x4
+ 2660 04d8 91       		.byte	0x91
+ 2661 04d9 F0C37E   		.sleb128 -24080
+ 2662 04dc 0B       		.uleb128 0xb
+ 2663 04dd 01030000 		.4byte	.LASF65
+ 2664 04e1 01       		.byte	0x1
+ 2665 04e2 90       		.byte	0x90
+ 2666 04e3 5D000000 		.4byte	0x5d
+ 2667 04e7 02       		.uleb128 0x2
+ 2668 04e8 91       		.byte	0x91
+ 2669 04e9 58       		.sleb128 -40
+ 2670 04ea 0B       		.uleb128 0xb
+ 2671 04eb E2000000 		.4byte	.LASF66
+ 2672 04ef 01       		.byte	0x1
+ 2673 04f0 91       		.byte	0x91
+ 2674 04f1 5D000000 		.4byte	0x5d
+ 2675 04f5 02       		.uleb128 0x2
+ 2676 04f6 91       		.byte	0x91
+ 2677 04f7 6C       		.sleb128 -20
+ 2678 04f8 0B       		.uleb128 0xb
+ 2679 04f9 8A010000 		.4byte	.LASF67
+ 2680 04fd 01       		.byte	0x1
+ 2681 04fe 92       		.byte	0x92
+ 2682 04ff A5000000 		.4byte	0xa5
+ 2683 0503 04       		.uleb128 0x4
+ 2684 0504 91       		.byte	0x91
+ 2685 0505 E8C37E   		.sleb128 -24088
+ 2686 0508 0B       		.uleb128 0xb
+ 2687 0509 EC010000 		.4byte	.LASF68
+ 2688 050d 01       		.byte	0x1
+ 2689 050e 92       		.byte	0x92
+ 2690 050f A5000000 		.4byte	0xa5
+ 2691 0513 04       		.uleb128 0x4
+ 2692 0514 91       		.byte	0x91
+ 2693 0515 E0C37E   		.sleb128 -24096
+ 2694 0518 0B       		.uleb128 0xb
+ 2695 0519 C4020000 		.4byte	.LASF69
+ 2696 051d 01       		.byte	0x1
+ 2697 051e 92       		.byte	0x92
+ 2698 051f A5000000 		.4byte	0xa5
+ 2699 0523 04       		.uleb128 0x4
+ 2700 0524 91       		.byte	0x91
+ 2701 0525 D8C37E   		.sleb128 -24104
+ 2702 0528 0B       		.uleb128 0xb
+ 2703 0529 49020000 		.4byte	.LASF70
+ 2704 052d 01       		.byte	0x1
+ 2705 052e 92       		.byte	0x92
+ 2706 052f A5000000 		.4byte	0xa5
+ 2707 0533 04       		.uleb128 0x4
+ 2708 0534 91       		.byte	0x91
+ 2709 0535 D0C37E   		.sleb128 -24112
+ 2710 0538 0B       		.uleb128 0xb
+ 2711 0539 1A000000 		.4byte	.LASF71
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 55
+
+
+ 2712 053d 01       		.byte	0x1
+ 2713 053e 92       		.byte	0x92
+ 2714 053f A5000000 		.4byte	0xa5
+ 2715 0543 04       		.uleb128 0x4
+ 2716 0544 91       		.byte	0x91
+ 2717 0545 C8C37E   		.sleb128 -24120
+ 2718 0548 0B       		.uleb128 0xb
+ 2719 0549 39040000 		.4byte	.LASF72
+ 2720 054d 01       		.byte	0x1
+ 2721 054e 95       		.byte	0x95
+ 2722 054f 5D000000 		.4byte	0x5d
+ 2723 0553 02       		.uleb128 0x2
+ 2724 0554 91       		.byte	0x91
+ 2725 0555 68       		.sleb128 -24
+ 2726 0556 0B       		.uleb128 0xb
+ 2727 0557 89020000 		.4byte	.LASF73
+ 2728 055b 01       		.byte	0x1
+ 2729 055c 96       		.byte	0x96
+ 2730 055d 5D000000 		.4byte	0x5d
+ 2731 0561 02       		.uleb128 0x2
+ 2732 0562 91       		.byte	0x91
+ 2733 0563 50       		.sleb128 -48
+ 2734 0564 0B       		.uleb128 0xb
+ 2735 0565 28010000 		.4byte	.LASF74
+ 2736 0569 01       		.byte	0x1
+ 2737 056a 96       		.byte	0x96
+ 2738 056b 5D000000 		.4byte	0x5d
+ 2739 056f 02       		.uleb128 0x2
+ 2740 0570 91       		.byte	0x91
+ 2741 0571 54       		.sleb128 -44
+ 2742 0572 0B       		.uleb128 0xb
+ 2743 0573 99010000 		.4byte	.LASF75
+ 2744 0577 01       		.byte	0x1
+ 2745 0578 E9       		.byte	0xe9
+ 2746 0579 80000000 		.4byte	0x80
+ 2747 057d 04       		.uleb128 0x4
+ 2748 057e 91       		.byte	0x91
+ 2749 057f C0C37E   		.sleb128 -24128
+ 2750 0582 0B       		.uleb128 0xb
+ 2751 0583 0E030000 		.4byte	.LASF76
+ 2752 0587 01       		.byte	0x1
+ 2753 0588 EA       		.byte	0xea
+ 2754 0589 80000000 		.4byte	0x80
+ 2755 058d 04       		.uleb128 0x4
+ 2756 058e 91       		.byte	0x91
+ 2757 058f B8C37E   		.sleb128 -24136
+ 2758 0592 0B       		.uleb128 0xb
+ 2759 0593 7C010000 		.4byte	.LASF77
+ 2760 0597 01       		.byte	0x1
+ 2761 0598 EB       		.byte	0xeb
+ 2762 0599 35010000 		.4byte	0x135
+ 2763 059d 04       		.uleb128 0x4
+ 2764 059e 91       		.byte	0x91
+ 2765 059f F8847E   		.sleb128 -32136
+ 2766 05a2 0B       		.uleb128 0xb
+ 2767 05a3 1F040000 		.4byte	.LASF78
+ 2768 05a7 01       		.byte	0x1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 56
+
+
+ 2769 05a8 EC       		.byte	0xec
+ 2770 05a9 5D000000 		.4byte	0x5d
+ 2771 05ad 02       		.uleb128 0x2
+ 2772 05ae 91       		.byte	0x91
+ 2773 05af 60       		.sleb128 -32
+ 2774 05b0 13       		.uleb128 0x13
+ 2775 05b1 00000000 		.4byte	.Ldebug_ranges0+0
+ 2776 05b5 32060000 		.4byte	0x632
+ 2777 05b9 0B       		.uleb128 0xb
+ 2778 05ba 24000000 		.4byte	.LASF79
+ 2779 05be 01       		.byte	0x1
+ 2780 05bf B5       		.byte	0xb5
+ 2781 05c0 35010000 		.4byte	0x135
+ 2782 05c4 04       		.uleb128 0x4
+ 2783 05c5 91       		.byte	0x91
+ 2784 05c6 A8C67D   		.sleb128 -40152
+ 2785 05c9 0F       		.uleb128 0xf
+ 2786 05ca BE030000 		.4byte	.LBB9
+ 2787 05ce 8E040000 		.4byte	.LBE9-.LBB9
+ 2788 05d2 10       		.uleb128 0x10
+ 2789 05d3 6900     		.ascii	"i\000"
+ 2790 05d5 01       		.byte	0x1
+ 2791 05d6 B9       		.byte	0xb9
+ 2792 05d7 5D000000 		.4byte	0x5d
+ 2793 05db 02       		.uleb128 0x2
+ 2794 05dc 91       		.byte	0x91
+ 2795 05dd 64       		.sleb128 -28
+ 2796 05de 0F       		.uleb128 0xf
+ 2797 05df D0030000 		.4byte	.LBB10
+ 2798 05e3 56040000 		.4byte	.LBE10-.LBB10
+ 2799 05e7 0B       		.uleb128 0xb
+ 2800 05e8 5D040000 		.4byte	.LASF80
+ 2801 05ec 01       		.byte	0x1
+ 2802 05ed BA       		.byte	0xba
+ 2803 05ee A5000000 		.4byte	0xa5
+ 2804 05f2 04       		.uleb128 0x4
+ 2805 05f3 91       		.byte	0x91
+ 2806 05f4 F0847E   		.sleb128 -32144
+ 2807 05f7 10       		.uleb128 0x10
+ 2808 05f8 726F7700 		.ascii	"row\000"
+ 2809 05fc 01       		.byte	0x1
+ 2810 05fd BC       		.byte	0xbc
+ 2811 05fe 5D000000 		.4byte	0x5d
+ 2812 0602 02       		.uleb128 0x2
+ 2813 0603 91       		.byte	0x91
+ 2814 0604 4C       		.sleb128 -52
+ 2815 0605 10       		.uleb128 0x10
+ 2816 0606 636F6C00 		.ascii	"col\000"
+ 2817 060a 01       		.byte	0x1
+ 2818 060b BD       		.byte	0xbd
+ 2819 060c 5D000000 		.4byte	0x5d
+ 2820 0610 02       		.uleb128 0x2
+ 2821 0611 91       		.byte	0x91
+ 2822 0612 48       		.sleb128 -56
+ 2823 0613 0B       		.uleb128 0xb
+ 2824 0614 0F040000 		.4byte	.LASF81
+ 2825 0618 01       		.byte	0x1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 57
+
+
+ 2826 0619 BE       		.byte	0xbe
+ 2827 061a 5D000000 		.4byte	0x5d
+ 2828 061e 02       		.uleb128 0x2
+ 2829 061f 91       		.byte	0x91
+ 2830 0620 44       		.sleb128 -60
+ 2831 0621 0B       		.uleb128 0xb
+ 2832 0622 00000000 		.4byte	.LASF82
+ 2833 0626 01       		.byte	0x1
+ 2834 0627 BF       		.byte	0xbf
+ 2835 0628 5D000000 		.4byte	0x5d
+ 2836 062c 02       		.uleb128 0x2
+ 2837 062d 91       		.byte	0x91
+ 2838 062e 40       		.sleb128 -64
+ 2839 062f 00       		.byte	0
+ 2840 0630 00       		.byte	0
+ 2841 0631 00       		.byte	0
+ 2842 0632 14       		.uleb128 0x14
+ 2843 0633 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 2844 0637 15       		.uleb128 0x15
+ 2845 0638 6A00     		.ascii	"j\000"
+ 2846 063a 01       		.byte	0x1
+ 2847 063b 0301     		.2byte	0x103
+ 2848 063d 5D000000 		.4byte	0x5d
+ 2849 0641 02       		.uleb128 0x2
+ 2850 0642 91       		.byte	0x91
+ 2851 0643 5C       		.sleb128 -36
+ 2852 0644 0F       		.uleb128 0xf
+ 2853 0645 7A090000 		.4byte	.LBB13
+ 2854 0649 52000000 		.4byte	.LBE13-.LBB13
+ 2855 064d 16       		.uleb128 0x16
+ 2856 064e 2C030000 		.4byte	.LASF83
+ 2857 0652 01       		.byte	0x1
+ 2858 0653 0401     		.2byte	0x104
+ 2859 0655 A5000000 		.4byte	0xa5
+ 2860 0659 04       		.uleb128 0x4
+ 2861 065a 91       		.byte	0x91
+ 2862 065b E8847E   		.sleb128 -32152
+ 2863 065e 00       		.byte	0
+ 2864 065f 00       		.byte	0
+ 2865 0660 00       		.byte	0
+ 2866 0661 07       		.uleb128 0x7
+ 2867 0662 77060000 		.4byte	0x677
+ 2868 0666 77060000 		.4byte	0x677
+ 2869 066a 12       		.uleb128 0x12
+ 2870 066b 72000000 		.4byte	0x72
+ 2871 066f 0E       		.byte	0xe
+ 2872 0670 12       		.uleb128 0x12
+ 2873 0671 72000000 		.4byte	0x72
+ 2874 0675 12       		.byte	0x12
+ 2875 0676 00       		.byte	0
+ 2876 0677 17       		.uleb128 0x17
+ 2877 0678 11010000 		.4byte	0x111
+ 2878 067c 0B       		.uleb128 0xb
+ 2879 067d 9B020000 		.4byte	.LASF84
+ 2880 0681 02       		.byte	0x2
+ 2881 0682 1B       		.byte	0x1b
+ 2882 0683 8D060000 		.4byte	0x68d
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 58
+
+
+ 2883 0687 05       		.uleb128 0x5
+ 2884 0688 03       		.byte	0x3
+ 2885 0689 00000000 		.4byte	nodesArray
+ 2886 068d 17       		.uleb128 0x17
+ 2887 068e 61060000 		.4byte	0x661
+ 2888 0692 0B       		.uleb128 0xb
+ 2889 0693 10020000 		.4byte	.LASF30
+ 2890 0697 02       		.byte	0x2
+ 2891 0698 1D       		.byte	0x1d
+ 2892 0699 A3060000 		.4byte	0x6a3
+ 2893 069d 05       		.uleb128 0x5
+ 2894 069e 03       		.byte	0x3
+ 2895 069f A0230000 		.4byte	size
+ 2896 06a3 17       		.uleb128 0x17
+ 2897 06a4 5D000000 		.4byte	0x5d
+ 2898 06a8 18       		.uleb128 0x18
+ 2899 06a9 69040000 		.4byte	.LASF85
+ 2900 06ad 01       		.byte	0x1
+ 2901 06ae 80       		.byte	0x80
+ 2902 06af B9060000 		.4byte	0x6b9
+ 2903 06b3 05       		.uleb128 0x5
+ 2904 06b4 03       		.byte	0x3
+ 2905 06b5 00000000 		.4byte	finalPath
+ 2906 06b9 17       		.uleb128 0x17
+ 2907 06ba 40010000 		.4byte	0x140
+ 2908 06be 18       		.uleb128 0x18
+ 2909 06bf 18010000 		.4byte	.LASF86
+ 2910 06c3 01       		.byte	0x1
+ 2911 06c4 81       		.byte	0x81
+ 2912 06c5 A3060000 		.4byte	0x6a3
+ 2913 06c9 05       		.uleb128 0x5
+ 2914 06ca 03       		.byte	0x3
+ 2915 06cb 00000000 		.4byte	finalArrayIndex
+ 2916 06cf 00       		.byte	0
+ 2917              		.section	.debug_abbrev,"",%progbits
+ 2918              	.Ldebug_abbrev0:
+ 2919 0000 01       		.uleb128 0x1
+ 2920 0001 11       		.uleb128 0x11
+ 2921 0002 01       		.byte	0x1
+ 2922 0003 25       		.uleb128 0x25
+ 2923 0004 0E       		.uleb128 0xe
+ 2924 0005 13       		.uleb128 0x13
+ 2925 0006 0B       		.uleb128 0xb
+ 2926 0007 03       		.uleb128 0x3
+ 2927 0008 0E       		.uleb128 0xe
+ 2928 0009 1B       		.uleb128 0x1b
+ 2929 000a 0E       		.uleb128 0xe
+ 2930 000b 55       		.uleb128 0x55
+ 2931 000c 17       		.uleb128 0x17
+ 2932 000d 11       		.uleb128 0x11
+ 2933 000e 01       		.uleb128 0x1
+ 2934 000f 10       		.uleb128 0x10
+ 2935 0010 17       		.uleb128 0x17
+ 2936 0011 00       		.byte	0
+ 2937 0012 00       		.byte	0
+ 2938 0013 02       		.uleb128 0x2
+ 2939 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 59
+
+
+ 2940 0015 00       		.byte	0
+ 2941 0016 0B       		.uleb128 0xb
+ 2942 0017 0B       		.uleb128 0xb
+ 2943 0018 3E       		.uleb128 0x3e
+ 2944 0019 0B       		.uleb128 0xb
+ 2945 001a 03       		.uleb128 0x3
+ 2946 001b 0E       		.uleb128 0xe
+ 2947 001c 00       		.byte	0
+ 2948 001d 00       		.byte	0
+ 2949 001e 03       		.uleb128 0x3
+ 2950 001f 24       		.uleb128 0x24
+ 2951 0020 00       		.byte	0
+ 2952 0021 0B       		.uleb128 0xb
+ 2953 0022 0B       		.uleb128 0xb
+ 2954 0023 3E       		.uleb128 0x3e
+ 2955 0024 0B       		.uleb128 0xb
+ 2956 0025 03       		.uleb128 0x3
+ 2957 0026 08       		.uleb128 0x8
+ 2958 0027 00       		.byte	0
+ 2959 0028 00       		.byte	0
+ 2960 0029 04       		.uleb128 0x4
+ 2961 002a 13       		.uleb128 0x13
+ 2962 002b 01       		.byte	0x1
+ 2963 002c 03       		.uleb128 0x3
+ 2964 002d 0E       		.uleb128 0xe
+ 2965 002e 0B       		.uleb128 0xb
+ 2966 002f 0B       		.uleb128 0xb
+ 2967 0030 3A       		.uleb128 0x3a
+ 2968 0031 0B       		.uleb128 0xb
+ 2969 0032 3B       		.uleb128 0x3b
+ 2970 0033 0B       		.uleb128 0xb
+ 2971 0034 01       		.uleb128 0x1
+ 2972 0035 13       		.uleb128 0x13
+ 2973 0036 00       		.byte	0
+ 2974 0037 00       		.byte	0
+ 2975 0038 05       		.uleb128 0x5
+ 2976 0039 0D       		.uleb128 0xd
+ 2977 003a 00       		.byte	0
+ 2978 003b 03       		.uleb128 0x3
+ 2979 003c 0E       		.uleb128 0xe
+ 2980 003d 3A       		.uleb128 0x3a
+ 2981 003e 0B       		.uleb128 0xb
+ 2982 003f 3B       		.uleb128 0x3b
+ 2983 0040 0B       		.uleb128 0xb
+ 2984 0041 49       		.uleb128 0x49
+ 2985 0042 13       		.uleb128 0x13
+ 2986 0043 38       		.uleb128 0x38
+ 2987 0044 0B       		.uleb128 0xb
+ 2988 0045 00       		.byte	0
+ 2989 0046 00       		.byte	0
+ 2990 0047 06       		.uleb128 0x6
+ 2991 0048 16       		.uleb128 0x16
+ 2992 0049 00       		.byte	0
+ 2993 004a 03       		.uleb128 0x3
+ 2994 004b 0E       		.uleb128 0xe
+ 2995 004c 3A       		.uleb128 0x3a
+ 2996 004d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 60
+
+
+ 2997 004e 3B       		.uleb128 0x3b
+ 2998 004f 0B       		.uleb128 0xb
+ 2999 0050 49       		.uleb128 0x49
+ 3000 0051 13       		.uleb128 0x13
+ 3001 0052 00       		.byte	0
+ 3002 0053 00       		.byte	0
+ 3003 0054 07       		.uleb128 0x7
+ 3004 0055 01       		.uleb128 0x1
+ 3005 0056 01       		.byte	0x1
+ 3006 0057 49       		.uleb128 0x49
+ 3007 0058 13       		.uleb128 0x13
+ 3008 0059 01       		.uleb128 0x1
+ 3009 005a 13       		.uleb128 0x13
+ 3010 005b 00       		.byte	0
+ 3011 005c 00       		.byte	0
+ 3012 005d 08       		.uleb128 0x8
+ 3013 005e 21       		.uleb128 0x21
+ 3014 005f 00       		.byte	0
+ 3015 0060 49       		.uleb128 0x49
+ 3016 0061 13       		.uleb128 0x13
+ 3017 0062 2F       		.uleb128 0x2f
+ 3018 0063 05       		.uleb128 0x5
+ 3019 0064 00       		.byte	0
+ 3020 0065 00       		.byte	0
+ 3021 0066 09       		.uleb128 0x9
+ 3022 0067 2E       		.uleb128 0x2e
+ 3023 0068 01       		.byte	0x1
+ 3024 0069 3F       		.uleb128 0x3f
+ 3025 006a 19       		.uleb128 0x19
+ 3026 006b 03       		.uleb128 0x3
+ 3027 006c 0E       		.uleb128 0xe
+ 3028 006d 3A       		.uleb128 0x3a
+ 3029 006e 0B       		.uleb128 0xb
+ 3030 006f 3B       		.uleb128 0x3b
+ 3031 0070 0B       		.uleb128 0xb
+ 3032 0071 27       		.uleb128 0x27
+ 3033 0072 19       		.uleb128 0x19
+ 3034 0073 11       		.uleb128 0x11
+ 3035 0074 01       		.uleb128 0x1
+ 3036 0075 12       		.uleb128 0x12
+ 3037 0076 06       		.uleb128 0x6
+ 3038 0077 40       		.uleb128 0x40
+ 3039 0078 18       		.uleb128 0x18
+ 3040 0079 9742     		.uleb128 0x2117
+ 3041 007b 19       		.uleb128 0x19
+ 3042 007c 01       		.uleb128 0x1
+ 3043 007d 13       		.uleb128 0x13
+ 3044 007e 00       		.byte	0
+ 3045 007f 00       		.byte	0
+ 3046 0080 0A       		.uleb128 0xa
+ 3047 0081 05       		.uleb128 0x5
+ 3048 0082 00       		.byte	0
+ 3049 0083 03       		.uleb128 0x3
+ 3050 0084 08       		.uleb128 0x8
+ 3051 0085 3A       		.uleb128 0x3a
+ 3052 0086 0B       		.uleb128 0xb
+ 3053 0087 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 61
+
+
+ 3054 0088 0B       		.uleb128 0xb
+ 3055 0089 49       		.uleb128 0x49
+ 3056 008a 13       		.uleb128 0x13
+ 3057 008b 02       		.uleb128 0x2
+ 3058 008c 18       		.uleb128 0x18
+ 3059 008d 00       		.byte	0
+ 3060 008e 00       		.byte	0
+ 3061 008f 0B       		.uleb128 0xb
+ 3062 0090 34       		.uleb128 0x34
+ 3063 0091 00       		.byte	0
+ 3064 0092 03       		.uleb128 0x3
+ 3065 0093 0E       		.uleb128 0xe
+ 3066 0094 3A       		.uleb128 0x3a
+ 3067 0095 0B       		.uleb128 0xb
+ 3068 0096 3B       		.uleb128 0x3b
+ 3069 0097 0B       		.uleb128 0xb
+ 3070 0098 49       		.uleb128 0x49
+ 3071 0099 13       		.uleb128 0x13
+ 3072 009a 02       		.uleb128 0x2
+ 3073 009b 18       		.uleb128 0x18
+ 3074 009c 00       		.byte	0
+ 3075 009d 00       		.byte	0
+ 3076 009e 0C       		.uleb128 0xc
+ 3077 009f 0F       		.uleb128 0xf
+ 3078 00a0 00       		.byte	0
+ 3079 00a1 0B       		.uleb128 0xb
+ 3080 00a2 0B       		.uleb128 0xb
+ 3081 00a3 49       		.uleb128 0x49
+ 3082 00a4 13       		.uleb128 0x13
+ 3083 00a5 00       		.byte	0
+ 3084 00a6 00       		.byte	0
+ 3085 00a7 0D       		.uleb128 0xd
+ 3086 00a8 2E       		.uleb128 0x2e
+ 3087 00a9 01       		.byte	0x1
+ 3088 00aa 3F       		.uleb128 0x3f
+ 3089 00ab 19       		.uleb128 0x19
+ 3090 00ac 03       		.uleb128 0x3
+ 3091 00ad 0E       		.uleb128 0xe
+ 3092 00ae 3A       		.uleb128 0x3a
+ 3093 00af 0B       		.uleb128 0xb
+ 3094 00b0 3B       		.uleb128 0x3b
+ 3095 00b1 0B       		.uleb128 0xb
+ 3096 00b2 27       		.uleb128 0x27
+ 3097 00b3 19       		.uleb128 0x19
+ 3098 00b4 11       		.uleb128 0x11
+ 3099 00b5 01       		.uleb128 0x1
+ 3100 00b6 12       		.uleb128 0x12
+ 3101 00b7 06       		.uleb128 0x6
+ 3102 00b8 40       		.uleb128 0x40
+ 3103 00b9 18       		.uleb128 0x18
+ 3104 00ba 9642     		.uleb128 0x2116
+ 3105 00bc 19       		.uleb128 0x19
+ 3106 00bd 01       		.uleb128 0x1
+ 3107 00be 13       		.uleb128 0x13
+ 3108 00bf 00       		.byte	0
+ 3109 00c0 00       		.byte	0
+ 3110 00c1 0E       		.uleb128 0xe
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 62
+
+
+ 3111 00c2 05       		.uleb128 0x5
+ 3112 00c3 00       		.byte	0
+ 3113 00c4 03       		.uleb128 0x3
+ 3114 00c5 0E       		.uleb128 0xe
+ 3115 00c6 3A       		.uleb128 0x3a
+ 3116 00c7 0B       		.uleb128 0xb
+ 3117 00c8 3B       		.uleb128 0x3b
+ 3118 00c9 0B       		.uleb128 0xb
+ 3119 00ca 49       		.uleb128 0x49
+ 3120 00cb 13       		.uleb128 0x13
+ 3121 00cc 02       		.uleb128 0x2
+ 3122 00cd 18       		.uleb128 0x18
+ 3123 00ce 00       		.byte	0
+ 3124 00cf 00       		.byte	0
+ 3125 00d0 0F       		.uleb128 0xf
+ 3126 00d1 0B       		.uleb128 0xb
+ 3127 00d2 01       		.byte	0x1
+ 3128 00d3 11       		.uleb128 0x11
+ 3129 00d4 01       		.uleb128 0x1
+ 3130 00d5 12       		.uleb128 0x12
+ 3131 00d6 06       		.uleb128 0x6
+ 3132 00d7 00       		.byte	0
+ 3133 00d8 00       		.byte	0
+ 3134 00d9 10       		.uleb128 0x10
+ 3135 00da 34       		.uleb128 0x34
+ 3136 00db 00       		.byte	0
+ 3137 00dc 03       		.uleb128 0x3
+ 3138 00dd 08       		.uleb128 0x8
+ 3139 00de 3A       		.uleb128 0x3a
+ 3140 00df 0B       		.uleb128 0xb
+ 3141 00e0 3B       		.uleb128 0x3b
+ 3142 00e1 0B       		.uleb128 0xb
+ 3143 00e2 49       		.uleb128 0x49
+ 3144 00e3 13       		.uleb128 0x13
+ 3145 00e4 02       		.uleb128 0x2
+ 3146 00e5 18       		.uleb128 0x18
+ 3147 00e6 00       		.byte	0
+ 3148 00e7 00       		.byte	0
+ 3149 00e8 11       		.uleb128 0x11
+ 3150 00e9 2E       		.uleb128 0x2e
+ 3151 00ea 01       		.byte	0x1
+ 3152 00eb 3F       		.uleb128 0x3f
+ 3153 00ec 19       		.uleb128 0x19
+ 3154 00ed 03       		.uleb128 0x3
+ 3155 00ee 0E       		.uleb128 0xe
+ 3156 00ef 3A       		.uleb128 0x3a
+ 3157 00f0 0B       		.uleb128 0xb
+ 3158 00f1 3B       		.uleb128 0x3b
+ 3159 00f2 0B       		.uleb128 0xb
+ 3160 00f3 27       		.uleb128 0x27
+ 3161 00f4 19       		.uleb128 0x19
+ 3162 00f5 49       		.uleb128 0x49
+ 3163 00f6 13       		.uleb128 0x13
+ 3164 00f7 11       		.uleb128 0x11
+ 3165 00f8 01       		.uleb128 0x1
+ 3166 00f9 12       		.uleb128 0x12
+ 3167 00fa 06       		.uleb128 0x6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 63
+
+
+ 3168 00fb 40       		.uleb128 0x40
+ 3169 00fc 18       		.uleb128 0x18
+ 3170 00fd 9642     		.uleb128 0x2116
+ 3171 00ff 19       		.uleb128 0x19
+ 3172 0100 01       		.uleb128 0x1
+ 3173 0101 13       		.uleb128 0x13
+ 3174 0102 00       		.byte	0
+ 3175 0103 00       		.byte	0
+ 3176 0104 12       		.uleb128 0x12
+ 3177 0105 21       		.uleb128 0x21
+ 3178 0106 00       		.byte	0
+ 3179 0107 49       		.uleb128 0x49
+ 3180 0108 13       		.uleb128 0x13
+ 3181 0109 2F       		.uleb128 0x2f
+ 3182 010a 0B       		.uleb128 0xb
+ 3183 010b 00       		.byte	0
+ 3184 010c 00       		.byte	0
+ 3185 010d 13       		.uleb128 0x13
+ 3186 010e 0B       		.uleb128 0xb
+ 3187 010f 01       		.byte	0x1
+ 3188 0110 55       		.uleb128 0x55
+ 3189 0111 17       		.uleb128 0x17
+ 3190 0112 01       		.uleb128 0x1
+ 3191 0113 13       		.uleb128 0x13
+ 3192 0114 00       		.byte	0
+ 3193 0115 00       		.byte	0
+ 3194 0116 14       		.uleb128 0x14
+ 3195 0117 0B       		.uleb128 0xb
+ 3196 0118 01       		.byte	0x1
+ 3197 0119 55       		.uleb128 0x55
+ 3198 011a 17       		.uleb128 0x17
+ 3199 011b 00       		.byte	0
+ 3200 011c 00       		.byte	0
+ 3201 011d 15       		.uleb128 0x15
+ 3202 011e 34       		.uleb128 0x34
+ 3203 011f 00       		.byte	0
+ 3204 0120 03       		.uleb128 0x3
+ 3205 0121 08       		.uleb128 0x8
+ 3206 0122 3A       		.uleb128 0x3a
+ 3207 0123 0B       		.uleb128 0xb
+ 3208 0124 3B       		.uleb128 0x3b
+ 3209 0125 05       		.uleb128 0x5
+ 3210 0126 49       		.uleb128 0x49
+ 3211 0127 13       		.uleb128 0x13
+ 3212 0128 02       		.uleb128 0x2
+ 3213 0129 18       		.uleb128 0x18
+ 3214 012a 00       		.byte	0
+ 3215 012b 00       		.byte	0
+ 3216 012c 16       		.uleb128 0x16
+ 3217 012d 34       		.uleb128 0x34
+ 3218 012e 00       		.byte	0
+ 3219 012f 03       		.uleb128 0x3
+ 3220 0130 0E       		.uleb128 0xe
+ 3221 0131 3A       		.uleb128 0x3a
+ 3222 0132 0B       		.uleb128 0xb
+ 3223 0133 3B       		.uleb128 0x3b
+ 3224 0134 05       		.uleb128 0x5
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 64
+
+
+ 3225 0135 49       		.uleb128 0x49
+ 3226 0136 13       		.uleb128 0x13
+ 3227 0137 02       		.uleb128 0x2
+ 3228 0138 18       		.uleb128 0x18
+ 3229 0139 00       		.byte	0
+ 3230 013a 00       		.byte	0
+ 3231 013b 17       		.uleb128 0x17
+ 3232 013c 35       		.uleb128 0x35
+ 3233 013d 00       		.byte	0
+ 3234 013e 49       		.uleb128 0x49
+ 3235 013f 13       		.uleb128 0x13
+ 3236 0140 00       		.byte	0
+ 3237 0141 00       		.byte	0
+ 3238 0142 18       		.uleb128 0x18
+ 3239 0143 34       		.uleb128 0x34
+ 3240 0144 00       		.byte	0
+ 3241 0145 03       		.uleb128 0x3
+ 3242 0146 0E       		.uleb128 0xe
+ 3243 0147 3A       		.uleb128 0x3a
+ 3244 0148 0B       		.uleb128 0xb
+ 3245 0149 3B       		.uleb128 0x3b
+ 3246 014a 0B       		.uleb128 0xb
+ 3247 014b 49       		.uleb128 0x49
+ 3248 014c 13       		.uleb128 0x13
+ 3249 014d 3F       		.uleb128 0x3f
+ 3250 014e 19       		.uleb128 0x19
+ 3251 014f 02       		.uleb128 0x2
+ 3252 0150 18       		.uleb128 0x18
+ 3253 0151 00       		.byte	0
+ 3254 0152 00       		.byte	0
+ 3255 0153 00       		.byte	0
+ 3256              		.section	.debug_aranges,"",%progbits
+ 3257 0000 54000000 		.4byte	0x54
+ 3258 0004 0200     		.2byte	0x2
+ 3259 0006 00000000 		.4byte	.Ldebug_info0
+ 3260 000a 04       		.byte	0x4
+ 3261 000b 00       		.byte	0
+ 3262 000c 0000     		.2byte	0
+ 3263 000e 0000     		.2byte	0
+ 3264 0010 00000000 		.4byte	.LFB1
+ 3265 0014 3E000000 		.4byte	.LFE1-.LFB1
+ 3266 0018 00000000 		.4byte	.LFB2
+ 3267 001c DC010000 		.4byte	.LFE2-.LFB2
+ 3268 0020 00000000 		.4byte	.LFB3
+ 3269 0024 A4000000 		.4byte	.LFE3-.LFB3
+ 3270 0028 00000000 		.4byte	.LFB4
+ 3271 002c 8C000000 		.4byte	.LFE4-.LFB4
+ 3272 0030 00000000 		.4byte	.LFB5
+ 3273 0034 58010000 		.4byte	.LFE5-.LFB5
+ 3274 0038 00000000 		.4byte	.LFB6
+ 3275 003c 60000000 		.4byte	.LFE6-.LFB6
+ 3276 0040 00000000 		.4byte	.LFB7
+ 3277 0044 44000000 		.4byte	.LFE7-.LFB7
+ 3278 0048 00000000 		.4byte	.LFB8
+ 3279 004c 140A0000 		.4byte	.LFE8-.LFB8
+ 3280 0050 00000000 		.4byte	0
+ 3281 0054 00000000 		.4byte	0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 65
+
+
+ 3282              		.section	.debug_ranges,"",%progbits
+ 3283              	.Ldebug_ranges0:
+ 3284 0000 F0000000 		.4byte	.LBB8
+ 3285 0004 44010000 		.4byte	.LBE8
+ 3286 0008 BA010000 		.4byte	.LBB11
+ 3287 000c 4C080000 		.4byte	.LBE11
+ 3288 0010 00000000 		.4byte	0
+ 3289 0014 00000000 		.4byte	0
+ 3290 0018 F0080000 		.4byte	.LBB12
+ 3291 001c 06090000 		.4byte	.LBE12
+ 3292 0020 7A090000 		.4byte	.LBB14
+ 3293 0024 F0090000 		.4byte	.LBE14
+ 3294 0028 00000000 		.4byte	0
+ 3295 002c 00000000 		.4byte	0
+ 3296 0030 00000000 		.4byte	.LFB1
+ 3297 0034 3E000000 		.4byte	.LFE1
+ 3298 0038 00000000 		.4byte	.LFB2
+ 3299 003c DC010000 		.4byte	.LFE2
+ 3300 0040 00000000 		.4byte	.LFB3
+ 3301 0044 A4000000 		.4byte	.LFE3
+ 3302 0048 00000000 		.4byte	.LFB4
+ 3303 004c 8C000000 		.4byte	.LFE4
+ 3304 0050 00000000 		.4byte	.LFB5
+ 3305 0054 58010000 		.4byte	.LFE5
+ 3306 0058 00000000 		.4byte	.LFB6
+ 3307 005c 60000000 		.4byte	.LFE6
+ 3308 0060 00000000 		.4byte	.LFB7
+ 3309 0064 44000000 		.4byte	.LFE7
+ 3310 0068 00000000 		.4byte	.LFB8
+ 3311 006c 140A0000 		.4byte	.LFE8
+ 3312 0070 00000000 		.4byte	0
+ 3313 0074 00000000 		.4byte	0
+ 3314              		.section	.debug_line,"",%progbits
+ 3315              	.Ldebug_line0:
+ 3316 0000 6C020000 		.section	.debug_str,"MS",%progbits,1
+ 3316      02003B00 
+ 3316      00000201 
+ 3316      FB0E0D00 
+ 3316      01010101 
+ 3317              	.LASF82:
+ 3318 0000 6F6C6446 		.ascii	"oldFscore\000"
+ 3318      73636F72 
+ 3318      6500
+ 3319              	.LASF19:
+ 3320 000a 696E5175 		.ascii	"inQueue\000"
+ 3320      65756500 
+ 3321              	.LASF56:
+ 3322 0012 6D61706D 		.ascii	"mapmaze\000"
+ 3322      617A6500 
+ 3323              	.LASF71:
+ 3324 001a 77657374 		.ascii	"westNeigh\000"
+ 3324      4E656967 
+ 3324      6800
+ 3325              	.LASF79:
+ 3326 0024 6E656967 		.ascii	"neighbours\000"
+ 3326      68626F75 
+ 3326      727300
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 66
+
+
+ 3327              	.LASF87:
+ 3328 002f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3328      43313120 
+ 3328      352E342E 
+ 3328      31203230 
+ 3328      31363036 
+ 3329 0062 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3329      20726576 
+ 3329      6973696F 
+ 3329      6E203233 
+ 3329      37373135 
+ 3330 0095 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 3330      66756E63 
+ 3330      74696F6E 
+ 3330      2D736563 
+ 3330      74696F6E 
+ 3331              	.LASF42:
+ 3332 00bd 656E7175 		.ascii	"enqueue\000"
+ 3332      65756500 
+ 3333              	.LASF7:
+ 3334 00c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3334      206C6F6E 
+ 3334      6720756E 
+ 3334      7369676E 
+ 3334      65642069 
+ 3335              	.LASF33:
+ 3336 00dc 6C5F726F 		.ascii	"l_row\000"
+ 3336      7700
+ 3337              	.LASF66:
+ 3338 00e2 73746570 		.ascii	"stepNum\000"
+ 3338      4E756D00 
+ 3339              	.LASF6:
+ 3340 00ea 6C6F6E67 		.ascii	"long long int\000"
+ 3340      206C6F6E 
+ 3340      6720696E 
+ 3340      7400
+ 3341              	.LASF0:
+ 3342 00f8 7369676E 		.ascii	"signed char\000"
+ 3342      65642063 
+ 3342      68617200 
+ 3343              	.LASF14:
+ 3344 0104 50616972 		.ascii	"Pair\000"
+ 3344      00
+ 3345              	.LASF37:
+ 3346 0109 725F726F 		.ascii	"r_row\000"
+ 3346      7700
+ 3347              	.LASF4:
+ 3348 010f 6C6F6E67 		.ascii	"long int\000"
+ 3348      20696E74 
+ 3348      00
+ 3349              	.LASF86:
+ 3350 0118 66696E61 		.ascii	"finalArrayIndex\000"
+ 3350      6C417272 
+ 3350      6179496E 
+ 3350      64657800 
+ 3351              	.LASF74:
+ 3352 0128 63757272 		.ascii	"currentCol\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 67
+
+
+ 3352      656E7443 
+ 3352      6F6C00
+ 3353              	.LASF22:
+ 3354 0133 6853636F 		.ascii	"hScore\000"
+ 3354      726500
+ 3355              	.LASF61:
+ 3356 013a 71756575 		.ascii	"queue\000"
+ 3356      6500
+ 3357              	.LASF52:
+ 3358 0140 63616C63 		.ascii	"calculateGScore\000"
+ 3358      756C6174 
+ 3358      65475363 
+ 3358      6F726500 
+ 3359              	.LASF88:
+ 3360 0150 2E2E5C33 		.ascii	"..\\301-Astar-code\\astar.c\000"
+ 3360      30312D41 
+ 3360      73746172 
+ 3360      2D636F64 
+ 3360      655C6173 
+ 3361              	.LASF58:
+ 3362 016a 73746172 		.ascii	"startLocCol\000"
+ 3362      744C6F63 
+ 3362      436F6C00 
+ 3363              	.LASF29:
+ 3364 0176 61727261 		.ascii	"array\000"
+ 3364      7900
+ 3365              	.LASF77:
+ 3366 017c 72657665 		.ascii	"reversedArray\000"
+ 3366      72736564 
+ 3366      41727261 
+ 3366      7900
+ 3367              	.LASF67:
+ 3368 018a 76697369 		.ascii	"visiting\000"
+ 3368      74696E67 
+ 3368      00
+ 3369              	.LASF23:
+ 3370 0193 50616972 		.ascii	"Pairs\000"
+ 3370      7300
+ 3371              	.LASF75:
+ 3372 0199 63757272 		.ascii	"currentNode\000"
+ 3372      656E744E 
+ 3372      6F646500 
+ 3373              	.LASF60:
+ 3374 01a5 656E644C 		.ascii	"endLocCol\000"
+ 3374      6F63436F 
+ 3374      6C00
+ 3375              	.LASF31:
+ 3376 01af 74656D70 		.ascii	"temp\000"
+ 3376      00
+ 3377              	.LASF18:
+ 3378 01b4 696E5669 		.ascii	"inVisited\000"
+ 3378      73697465 
+ 3378      6400
+ 3379              	.LASF8:
+ 3380 01be 756E7369 		.ascii	"unsigned int\000"
+ 3380      676E6564 
+ 3380      20696E74 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 68
+
+
+ 3380      00
+ 3381              	.LASF45:
+ 3382 01cb 696E7469 		.ascii	"intialiseNodes\000"
+ 3382      616C6973 
+ 3382      654E6F64 
+ 3382      657300
+ 3383              	.LASF5:
+ 3384 01da 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3384      20756E73 
+ 3384      69676E65 
+ 3384      6420696E 
+ 3384      7400
+ 3385              	.LASF68:
+ 3386 01ec 6E6F7274 		.ascii	"northNeigh\000"
+ 3386      684E6569 
+ 3386      676800
+ 3387              	.LASF47:
+ 3388 01f7 63616C63 		.ascii	"calculateHScore\000"
+ 3388      756C6174 
+ 3388      65485363 
+ 3388      6F726500 
+ 3389              	.LASF39:
+ 3390 0207 6C5F6673 		.ascii	"l_fscore\000"
+ 3390      636F7265 
+ 3390      00
+ 3391              	.LASF30:
+ 3392 0210 73697A65 		.ascii	"size\000"
+ 3392      00
+ 3393              	.LASF3:
+ 3394 0215 73686F72 		.ascii	"short unsigned int\000"
+ 3394      7420756E 
+ 3394      7369676E 
+ 3394      65642069 
+ 3394      6E7400
+ 3395              	.LASF32:
+ 3396 0228 736D616C 		.ascii	"smallest\000"
+ 3396      6C657374 
+ 3396      00
+ 3397              	.LASF49:
+ 3398 0231 74617267 		.ascii	"target\000"
+ 3398      657400
+ 3399              	.LASF44:
+ 3400 0238 6C6F6341 		.ascii	"locAtTop\000"
+ 3400      74546F70 
+ 3400      00
+ 3401              	.LASF28:
+ 3402 0241 68656170 		.ascii	"heapify\000"
+ 3402      69667900 
+ 3403              	.LASF70:
+ 3404 0249 736F7574 		.ascii	"southNeigh\000"
+ 3404      684E6569 
+ 3404      676800
+ 3405              	.LASF90:
+ 3406 0254 64657175 		.ascii	"dequeue\000"
+ 3406      65756500 
+ 3407              	.LASF41:
+ 3408 025c 736D616C 		.ascii	"small_fscore\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 69
+
+
+ 3408      6C5F6673 
+ 3408      636F7265 
+ 3408      00
+ 3409              	.LASF10:
+ 3410 0269 73697A65 		.ascii	"sizetype\000"
+ 3410      74797065 
+ 3410      00
+ 3411              	.LASF9:
+ 3412 0272 6C6F6E67 		.ascii	"long double\000"
+ 3412      20646F75 
+ 3412      626C6500 
+ 3413              	.LASF53:
+ 3414 027e 63757272 		.ascii	"currentpos\000"
+ 3414      656E7470 
+ 3414      6F7300
+ 3415              	.LASF73:
+ 3416 0289 63757272 		.ascii	"currentRow\000"
+ 3416      656E7452 
+ 3416      6F7700
+ 3417              	.LASF43:
+ 3418 0294 6E65774C 		.ascii	"newLoc\000"
+ 3418      6F6300
+ 3419              	.LASF84:
+ 3420 029b 6E6F6465 		.ascii	"nodesArray\000"
+ 3420      73417272 
+ 3420      617900
+ 3421              	.LASF36:
+ 3422 02a6 736D616C 		.ascii	"small_col\000"
+ 3422      6C5F636F 
+ 3422      6C00
+ 3423              	.LASF46:
+ 3424 02b0 6D617A65 		.ascii	"mazeMap\000"
+ 3424      4D617000 
+ 3425              	.LASF57:
+ 3426 02b8 73746172 		.ascii	"startLocRow\000"
+ 3426      744C6F63 
+ 3426      526F7700 
+ 3427              	.LASF69:
+ 3428 02c4 65617374 		.ascii	"eastNeigh\000"
+ 3428      4E656967 
+ 3428      6800
+ 3429              	.LASF48:
+ 3430 02ce 63757272 		.ascii	"current\000"
+ 3430      656E7400 
+ 3431              	.LASF27:
+ 3432 02d6 73776170 		.ascii	"swap\000"
+ 3432      00
+ 3433              	.LASF24:
+ 3434 02db 50617468 		.ascii	"Path\000"
+ 3434      00
+ 3435              	.LASF20:
+ 3436 02e0 6653636F 		.ascii	"fScore\000"
+ 3436      726500
+ 3437              	.LASF16:
+ 3438 02e7 70617265 		.ascii	"parents\000"
+ 3438      6E747300 
+ 3439              	.LASF59:
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 70
+
+
+ 3440 02ef 656E644C 		.ascii	"endLocRow\000"
+ 3440      6F63526F 
+ 3440      7700
+ 3441              	.LASF13:
+ 3442 02f9 70616972 		.ascii	"pairCol\000"
+ 3442      436F6C00 
+ 3443              	.LASF65:
+ 3444 0301 63757272 		.ascii	"currentGcost\000"
+ 3444      656E7447 
+ 3444      636F7374 
+ 3444      00
+ 3445              	.LASF76:
+ 3446 030e 70617265 		.ascii	"parentNode\000"
+ 3446      6E744E6F 
+ 3446      646500
+ 3447              	.LASF1:
+ 3448 0319 756E7369 		.ascii	"unsigned char\000"
+ 3448      676E6564 
+ 3448      20636861 
+ 3448      7200
+ 3449              	.LASF25:
+ 3450 0327 70616972 		.ascii	"pair\000"
+ 3450      00
+ 3451              	.LASF83:
+ 3452 032c 6E6F6465 		.ascii	"node\000"
+ 3452      00
+ 3453              	.LASF2:
+ 3454 0331 73686F72 		.ascii	"short int\000"
+ 3454      7420696E 
+ 3454      7400
+ 3455              	.LASF15:
+ 3456 033b 4E6F6465 		.ascii	"Nodes\000"
+ 3456      7300
+ 3457              	.LASF62:
+ 3458 0341 76697369 		.ascii	"visitedList\000"
+ 3458      7465644C 
+ 3458      69737400 
+ 3459              	.LASF21:
+ 3460 034d 6753636F 		.ascii	"gScore\000"
+ 3460      726500
+ 3461              	.LASF89:
+ 3462 0354 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 3462      6C65732E 
+ 3462      6175636B 
+ 3462      6C616E64 
+ 3462      2E61632E 
+ 3463 0382 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 3463      6A656374 
+ 3463      2D70726F 
+ 3463      6A656374 
+ 3463      5F67726F 
+ 3464 03b2 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
+ 3464      61636B5C 
+ 3464      70736F63 
+ 3464      20737475 
+ 3464      64656E74 
+ 3465 03e2 6C617373 		.ascii	"lass.cydsn\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 71
+
+
+ 3465      2E637964 
+ 3465      736E00
+ 3466              	.LASF54:
+ 3467 03ed 63757272 		.ascii	"currentcost\000"
+ 3467      656E7463 
+ 3467      6F737400 
+ 3468              	.LASF51:
+ 3469 03f9 796C6F63 		.ascii	"yloc\000"
+ 3469      00
+ 3470              	.LASF17:
+ 3471 03fe 74726176 		.ascii	"traversable\000"
+ 3471      65727361 
+ 3471      626C6500 
+ 3472              	.LASF11:
+ 3473 040a 63686172 		.ascii	"char\000"
+ 3473      00
+ 3474              	.LASF81:
+ 3475 040f 6E657746 		.ascii	"newFscore\000"
+ 3475      73636F72 
+ 3475      6500
+ 3476              	.LASF55:
+ 3477 0419 61737461 		.ascii	"astar\000"
+ 3477      7200
+ 3478              	.LASF78:
+ 3479 041f 696E6465 		.ascii	"index\000"
+ 3479      7800
+ 3480              	.LASF34:
+ 3481 0425 6C5F636F 		.ascii	"l_col\000"
+ 3481      6C00
+ 3482              	.LASF50:
+ 3483 042b 786C6F63 		.ascii	"xloc\000"
+ 3483      00
+ 3484              	.LASF40:
+ 3485 0430 725F6673 		.ascii	"r_fscore\000"
+ 3485      636F7265 
+ 3485      00
+ 3486              	.LASF72:
+ 3487 0439 63757272 		.ascii	"currentVisitedIndex\000"
+ 3487      656E7456 
+ 3487      69736974 
+ 3487      6564496E 
+ 3487      64657800 
+ 3488              	.LASF35:
+ 3489 044d 736D616C 		.ascii	"small_row\000"
+ 3489      6C5F726F 
+ 3489      7700
+ 3490              	.LASF38:
+ 3491 0457 725F636F 		.ascii	"r_col\000"
+ 3491      6C00
+ 3492              	.LASF80:
+ 3493 045d 61646A61 		.ascii	"adjacentPos\000"
+ 3493      63656E74 
+ 3493      506F7300 
+ 3494              	.LASF85:
+ 3495 0469 66696E61 		.ascii	"finalPath\000"
+ 3495      6C506174 
+ 3495      6800
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccX5vxR6.s 			page 72
+
+
+ 3496              	.LASF12:
+ 3497 0473 70616972 		.ascii	"pairRow\000"
+ 3497      526F7700 
+ 3498              	.LASF64:
+ 3499 047b 73746172 		.ascii	"start\000"
+ 3499      7400
+ 3500              	.LASF63:
+ 3501 0481 73746570 		.ascii	"steps\000"
+ 3501      7300
+ 3502              	.LASF26:
+ 3503 0487 50617468 		.ascii	"Paths\000"
+ 3503      7300
+ 3504              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

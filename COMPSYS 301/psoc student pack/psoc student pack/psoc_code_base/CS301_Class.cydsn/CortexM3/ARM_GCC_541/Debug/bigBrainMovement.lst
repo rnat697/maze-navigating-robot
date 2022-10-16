@@ -1,0 +1,1530 @@
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"bigBrainMovement.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.bss
+  20              		.align	2
+  21              	nodesArray:
+  22 0000 00000000 		.space	9120
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  23              		.align	2
+  24              	size:
+  25 23a0 00000000 		.space	4
+  26              		.comm	arrayPointer,4,4
+  27              		.comm	result,4000,4
+  28              		.section	.text.calculateDirection,"ax",%progbits
+  29              		.align	2
+  30              		.global	calculateDirection
+  31              		.thumb
+  32              		.thumb_func
+  33              		.type	calculateDirection, %function
+  34              	calculateDirection:
+  35              	.LFB1:
+  36              		.file 1 "bigBrainMovement.c"
+   1:bigBrainMovement.c **** /******************************************************************************
+   2:bigBrainMovement.c **** 
+   3:bigBrainMovement.c **** Welcome to GDB Online.
+   4:bigBrainMovement.c **** GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+   5:bigBrainMovement.c **** C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+   6:bigBrainMovement.c **** Code, Compile, Run and Debug online from anywhere in world.
+   7:bigBrainMovement.c **** 
+   8:bigBrainMovement.c **** *******************************************************************************/
+   9:bigBrainMovement.c **** #include <stdio.h>
+  10:bigBrainMovement.c **** #include "astar.h"
+  11:bigBrainMovement.c **** #include "bigBrainMovement.h"
+  12:bigBrainMovement.c **** int arrayPointer;
+  13:bigBrainMovement.c **** volatile static int size;
+  14:bigBrainMovement.c **** int result[1000];
+  15:bigBrainMovement.c **** enum direction{NORTH, SOUTH, WEST, EAST};
+  16:bigBrainMovement.c **** 
+  17:bigBrainMovement.c ****     
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 2
+
+
+  18:bigBrainMovement.c ****     // Pair coordinate;
+  19:bigBrainMovement.c ****     // coordinate.pairRow = 9;
+  20:bigBrainMovement.c ****     // coordinate.pairCol = 0;
+  21:bigBrainMovement.c ****     // finalArray[2]= coordinate;
+  22:bigBrainMovement.c ****     
+  23:bigBrainMovement.c ****     
+  24:bigBrainMovement.c **** 
+  25:bigBrainMovement.c ****     
+  26:bigBrainMovement.c ****     //column == x, row == y
+  27:bigBrainMovement.c ****    
+  28:bigBrainMovement.c ****  
+  29:bigBrainMovement.c **** 
+  30:bigBrainMovement.c ****     
+  31:bigBrainMovement.c **** enum direction calculateDirection(int currentCol, int currentRow, int nextCol, int nextRow) {
+  37              		.loc 1 31 0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 16
+  40              		@ frame_needed = 1, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 80B4     		push	{r7}
+  43              		.cfi_def_cfa_offset 4
+  44              		.cfi_offset 7, -4
+  45 0002 85B0     		sub	sp, sp, #20
+  46              		.cfi_def_cfa_offset 24
+  47 0004 00AF     		add	r7, sp, #0
+  48              		.cfi_def_cfa_register 7
+  49 0006 F860     		str	r0, [r7, #12]
+  50 0008 B960     		str	r1, [r7, #8]
+  51 000a 7A60     		str	r2, [r7, #4]
+  52 000c 3B60     		str	r3, [r7]
+  32:bigBrainMovement.c ****     
+  33:bigBrainMovement.c ****     
+  34:bigBrainMovement.c ****     if ((nextCol == currentCol + 1) && (nextRow == currentRow)) {
+  53              		.loc 1 34 0
+  54 000e FB68     		ldr	r3, [r7, #12]
+  55 0010 5A1C     		adds	r2, r3, #1
+  56 0012 7B68     		ldr	r3, [r7, #4]
+  57 0014 9A42     		cmp	r2, r3
+  58 0016 05D1     		bne	.L2
+  59              		.loc 1 34 0 is_stmt 0 discriminator 1
+  60 0018 3A68     		ldr	r2, [r7]
+  61 001a BB68     		ldr	r3, [r7, #8]
+  62 001c 9A42     		cmp	r2, r3
+  63 001e 01D1     		bne	.L2
+  35:bigBrainMovement.c ****         //must be going EAST
+  36:bigBrainMovement.c ****         return EAST;
+  64              		.loc 1 36 0 is_stmt 1
+  65 0020 0323     		movs	r3, #3
+  66 0022 20E0     		b	.L1
+  67              	.L2:
+  37:bigBrainMovement.c ****     } else if ((nextCol == currentCol - 1) && (nextRow == currentRow)) {
+  68              		.loc 1 37 0
+  69 0024 FB68     		ldr	r3, [r7, #12]
+  70 0026 5A1E     		subs	r2, r3, #1
+  71 0028 7B68     		ldr	r3, [r7, #4]
+  72 002a 9A42     		cmp	r2, r3
+  73 002c 05D1     		bne	.L4
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 3
+
+
+  74              		.loc 1 37 0 is_stmt 0 discriminator 1
+  75 002e 3A68     		ldr	r2, [r7]
+  76 0030 BB68     		ldr	r3, [r7, #8]
+  77 0032 9A42     		cmp	r2, r3
+  78 0034 01D1     		bne	.L4
+  38:bigBrainMovement.c ****         //must be going WEST
+  39:bigBrainMovement.c ****         return WEST;
+  79              		.loc 1 39 0 is_stmt 1
+  80 0036 0223     		movs	r3, #2
+  81 0038 15E0     		b	.L1
+  82              	.L4:
+  40:bigBrainMovement.c ****     } else if ((nextCol == currentCol) && (nextRow == currentRow + 1)) {
+  83              		.loc 1 40 0
+  84 003a 7A68     		ldr	r2, [r7, #4]
+  85 003c FB68     		ldr	r3, [r7, #12]
+  86 003e 9A42     		cmp	r2, r3
+  87 0040 06D1     		bne	.L5
+  88              		.loc 1 40 0 is_stmt 0 discriminator 1
+  89 0042 BB68     		ldr	r3, [r7, #8]
+  90 0044 5A1C     		adds	r2, r3, #1
+  91 0046 3B68     		ldr	r3, [r7]
+  92 0048 9A42     		cmp	r2, r3
+  93 004a 01D1     		bne	.L5
+  41:bigBrainMovement.c ****         //must be going NORTH
+  42:bigBrainMovement.c ****         return SOUTH;
+  94              		.loc 1 42 0 is_stmt 1
+  95 004c 0123     		movs	r3, #1
+  96 004e 0AE0     		b	.L1
+  97              	.L5:
+  43:bigBrainMovement.c ****     } else if ((nextCol == currentCol) && (nextRow == currentRow - 1)) {
+  98              		.loc 1 43 0
+  99 0050 7A68     		ldr	r2, [r7, #4]
+ 100 0052 FB68     		ldr	r3, [r7, #12]
+ 101 0054 9A42     		cmp	r2, r3
+ 102 0056 06D1     		bne	.L6
+ 103              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 104 0058 BB68     		ldr	r3, [r7, #8]
+ 105 005a 5A1E     		subs	r2, r3, #1
+ 106 005c 3B68     		ldr	r3, [r7]
+ 107 005e 9A42     		cmp	r2, r3
+ 108 0060 01D1     		bne	.L6
+  44:bigBrainMovement.c ****         //must be going SOUTH
+  45:bigBrainMovement.c ****         return NORTH;
+ 109              		.loc 1 45 0 is_stmt 1
+ 110 0062 0023     		movs	r3, #0
+ 111 0064 FFE7     		b	.L1
+ 112              	.L6:
+ 113              	.L1:
+  46:bigBrainMovement.c ****     }
+  47:bigBrainMovement.c **** }
+ 114              		.loc 1 47 0
+ 115 0066 1846     		mov	r0, r3
+ 116 0068 1437     		adds	r7, r7, #20
+ 117              		.cfi_def_cfa_offset 4
+ 118 006a BD46     		mov	sp, r7
+ 119              		.cfi_def_cfa_register 13
+ 120              		@ sp needed
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 4
+
+
+ 121 006c 80BC     		pop	{r7}
+ 122              		.cfi_restore 7
+ 123              		.cfi_def_cfa_offset 0
+ 124 006e 7047     		bx	lr
+ 125              		.cfi_endproc
+ 126              	.LFE1:
+ 127              		.size	calculateDirection, .-calculateDirection
+ 128              		.section	.text.findDirections,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	findDirections
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.type	findDirections, %function
+ 134              	findDirections:
+ 135              	.LFB2:
+  48:bigBrainMovement.c **** 
+  49:bigBrainMovement.c **** void findDirections()       //////////main
+  50:bigBrainMovement.c **** {
+ 136              		.loc 1 50 0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 24
+ 139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 140 0000 80B5     		push	{r7, lr}
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 86B0     		sub	sp, sp, #24
+ 145              		.cfi_def_cfa_offset 32
+ 146 0004 00AF     		add	r7, sp, #0
+ 147              		.cfi_def_cfa_register 7
+  51:bigBrainMovement.c ****     //declare arraypointer
+  52:bigBrainMovement.c ****     arrayPointer = 0;
+ 148              		.loc 1 52 0
+ 149 0006 704B     		ldr	r3, .L25
+ 150 0008 0022     		movs	r2, #0
+ 151 000a 1A60     		str	r2, [r3]
+  53:bigBrainMovement.c ****     //declare result array
+  54:bigBrainMovement.c ****     size= finalArrayIndex;
+ 152              		.loc 1 54 0
+ 153 000c 6F4B     		ldr	r3, .L25+4
+ 154 000e 1B68     		ldr	r3, [r3]
+ 155 0010 6F4A     		ldr	r2, .L25+8
+ 156 0012 1360     		str	r3, [r2]
+  55:bigBrainMovement.c ****     //result[size];
+  56:bigBrainMovement.c **** 
+  57:bigBrainMovement.c ****     
+  58:bigBrainMovement.c ****     //current coordinate
+  59:bigBrainMovement.c ****         int currentCol = finalPath[arrayPointer].pair.pairCol;
+ 157              		.loc 1 59 0
+ 158 0014 6C4B     		ldr	r3, .L25
+ 159 0016 1B68     		ldr	r3, [r3]
+ 160 0018 6E4A     		ldr	r2, .L25+12
+ 161 001a DB00     		lsls	r3, r3, #3
+ 162 001c 1344     		add	r3, r3, r2
+ 163 001e 5B68     		ldr	r3, [r3, #4]
+ 164 0020 FB60     		str	r3, [r7, #12]
+  60:bigBrainMovement.c ****         int currentRow = finalPath[arrayPointer].pair.pairRow;
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 5
+
+
+ 165              		.loc 1 60 0
+ 166 0022 694B     		ldr	r3, .L25
+ 167 0024 1B68     		ldr	r3, [r3]
+ 168 0026 6B4A     		ldr	r2, .L25+12
+ 169 0028 52F83330 		ldr	r3, [r2, r3, lsl #3]
+ 170 002c BB60     		str	r3, [r7, #8]
+  61:bigBrainMovement.c ****     
+  62:bigBrainMovement.c ****      //next coordinate
+  63:bigBrainMovement.c ****         int nextCol = finalPath[arrayPointer + 1].pair.pairCol;
+ 171              		.loc 1 63 0
+ 172 002e 664B     		ldr	r3, .L25
+ 173 0030 1B68     		ldr	r3, [r3]
+ 174 0032 0133     		adds	r3, r3, #1
+ 175 0034 674A     		ldr	r2, .L25+12
+ 176 0036 DB00     		lsls	r3, r3, #3
+ 177 0038 1344     		add	r3, r3, r2
+ 178 003a 5B68     		ldr	r3, [r3, #4]
+ 179 003c 7B60     		str	r3, [r7, #4]
+  64:bigBrainMovement.c ****         int nextRow = finalPath[arrayPointer + 1].pair.pairRow;
+ 180              		.loc 1 64 0
+ 181 003e 624B     		ldr	r3, .L25
+ 182 0040 1B68     		ldr	r3, [r3]
+ 183 0042 0133     		adds	r3, r3, #1
+ 184 0044 634A     		ldr	r2, .L25+12
+ 185 0046 52F83330 		ldr	r3, [r2, r3, lsl #3]
+ 186 004a 3B60     		str	r3, [r7]
+  65:bigBrainMovement.c ****     
+  66:bigBrainMovement.c ****     
+  67:bigBrainMovement.c **** 
+  68:bigBrainMovement.c ****     //calculate initial direction
+  69:bigBrainMovement.c ****     enum direction dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
+ 187              		.loc 1 69 0
+ 188 004c 3B68     		ldr	r3, [r7]
+ 189 004e 7A68     		ldr	r2, [r7, #4]
+ 190 0050 B968     		ldr	r1, [r7, #8]
+ 191 0052 F868     		ldr	r0, [r7, #12]
+ 192 0054 FFF7FEFF 		bl	calculateDirection
+ 193 0058 0346     		mov	r3, r0
+ 194 005a FB75     		strb	r3, [r7, #23]
+ 195              	.LBB2:
+  70:bigBrainMovement.c ****     
+  71:bigBrainMovement.c ****     for (int i = 0;i<size-1;i++) {
+ 196              		.loc 1 71 0
+ 197 005c 0023     		movs	r3, #0
+ 198 005e 3B61     		str	r3, [r7, #16]
+ 199 0060 A7E0     		b	.L8
+ 200              	.L24:
+  72:bigBrainMovement.c ****         
+  73:bigBrainMovement.c ****         currentCol = finalPath[arrayPointer].pair.pairCol;
+ 201              		.loc 1 73 0
+ 202 0062 594B     		ldr	r3, .L25
+ 203 0064 1B68     		ldr	r3, [r3]
+ 204 0066 5B4A     		ldr	r2, .L25+12
+ 205 0068 DB00     		lsls	r3, r3, #3
+ 206 006a 1344     		add	r3, r3, r2
+ 207 006c 5B68     		ldr	r3, [r3, #4]
+ 208 006e FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 6
+
+
+  74:bigBrainMovement.c ****         currentRow = finalPath[arrayPointer].pair.pairRow;
+ 209              		.loc 1 74 0
+ 210 0070 554B     		ldr	r3, .L25
+ 211 0072 1B68     		ldr	r3, [r3]
+ 212 0074 574A     		ldr	r2, .L25+12
+ 213 0076 52F83330 		ldr	r3, [r2, r3, lsl #3]
+ 214 007a BB60     		str	r3, [r7, #8]
+  75:bigBrainMovement.c ****     
+  76:bigBrainMovement.c ****      //next coordinate
+  77:bigBrainMovement.c ****         nextCol = finalPath[arrayPointer + 1].pair.pairCol;
+ 215              		.loc 1 77 0
+ 216 007c 524B     		ldr	r3, .L25
+ 217 007e 1B68     		ldr	r3, [r3]
+ 218 0080 0133     		adds	r3, r3, #1
+ 219 0082 544A     		ldr	r2, .L25+12
+ 220 0084 DB00     		lsls	r3, r3, #3
+ 221 0086 1344     		add	r3, r3, r2
+ 222 0088 5B68     		ldr	r3, [r3, #4]
+ 223 008a 7B60     		str	r3, [r7, #4]
+  78:bigBrainMovement.c ****         nextRow = finalPath[arrayPointer + 1].pair.pairRow;
+ 224              		.loc 1 78 0
+ 225 008c 4E4B     		ldr	r3, .L25
+ 226 008e 1B68     		ldr	r3, [r3]
+ 227 0090 0133     		adds	r3, r3, #1
+ 228 0092 504A     		ldr	r2, .L25+12
+ 229 0094 52F83330 		ldr	r3, [r2, r3, lsl #3]
+ 230 0098 3B60     		str	r3, [r7]
+  79:bigBrainMovement.c ****         
+  80:bigBrainMovement.c ****         
+  81:bigBrainMovement.c ****         if (dir == NORTH) {
+ 231              		.loc 1 81 0
+ 232 009a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 233 009c 002B     		cmp	r3, #0
+ 234 009e 1CD1     		bne	.L9
+  82:bigBrainMovement.c ****         //if col change postively turn right, if col change negatively turn left.
+  83:bigBrainMovement.c ****             if (nextCol > currentCol) {
+ 235              		.loc 1 83 0
+ 236 00a0 7A68     		ldr	r2, [r7, #4]
+ 237 00a2 FB68     		ldr	r3, [r7, #12]
+ 238 00a4 9A42     		cmp	r2, r3
+ 239 00a6 06DD     		ble	.L10
+  84:bigBrainMovement.c ****                 //record right turn
+  85:bigBrainMovement.c ****                 result[arrayPointer] = 2;
+ 240              		.loc 1 85 0
+ 241 00a8 474B     		ldr	r3, .L25
+ 242 00aa 1B68     		ldr	r3, [r3]
+ 243 00ac 4A4A     		ldr	r2, .L25+16
+ 244 00ae 0221     		movs	r1, #2
+ 245 00b0 42F82310 		str	r1, [r2, r3, lsl #2]
+ 246 00b4 6DE0     		b	.L13
+ 247              	.L10:
+  86:bigBrainMovement.c ****                 
+  87:bigBrainMovement.c ****             } else if (nextCol < currentCol) {
+ 248              		.loc 1 87 0
+ 249 00b6 7A68     		ldr	r2, [r7, #4]
+ 250 00b8 FB68     		ldr	r3, [r7, #12]
+ 251 00ba 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 7
+
+
+ 252 00bc 06DA     		bge	.L12
+  88:bigBrainMovement.c ****                 //record left turn
+  89:bigBrainMovement.c ****                 result[arrayPointer] = 0;
+ 253              		.loc 1 89 0
+ 254 00be 424B     		ldr	r3, .L25
+ 255 00c0 1B68     		ldr	r3, [r3]
+ 256 00c2 454A     		ldr	r2, .L25+16
+ 257 00c4 0021     		movs	r1, #0
+ 258 00c6 42F82310 		str	r1, [r2, r3, lsl #2]
+ 259 00ca 62E0     		b	.L13
+ 260              	.L12:
+  90:bigBrainMovement.c ****             } else {
+  91:bigBrainMovement.c ****                 //record straight
+  92:bigBrainMovement.c ****                 result[arrayPointer] = 1;
+ 261              		.loc 1 92 0
+ 262 00cc 3E4B     		ldr	r3, .L25
+ 263 00ce 1B68     		ldr	r3, [r3]
+ 264 00d0 414A     		ldr	r2, .L25+16
+ 265 00d2 0121     		movs	r1, #1
+ 266 00d4 42F82310 		str	r1, [r2, r3, lsl #2]
+ 267 00d8 5BE0     		b	.L13
+ 268              	.L9:
+  93:bigBrainMovement.c ****             }
+  94:bigBrainMovement.c ****             
+  95:bigBrainMovement.c ****         } else if (dir == SOUTH) {
+ 269              		.loc 1 95 0
+ 270 00da FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 271 00dc 012B     		cmp	r3, #1
+ 272 00de 1CD1     		bne	.L14
+  96:bigBrainMovement.c ****             //if col change postively turn left, if col change negatively turn right.
+  97:bigBrainMovement.c ****             if (nextCol > currentCol) {
+ 273              		.loc 1 97 0
+ 274 00e0 7A68     		ldr	r2, [r7, #4]
+ 275 00e2 FB68     		ldr	r3, [r7, #12]
+ 276 00e4 9A42     		cmp	r2, r3
+ 277 00e6 06DD     		ble	.L15
+  98:bigBrainMovement.c ****                 //record left turn
+  99:bigBrainMovement.c ****                 result[arrayPointer] = 0;
+ 278              		.loc 1 99 0
+ 279 00e8 374B     		ldr	r3, .L25
+ 280 00ea 1B68     		ldr	r3, [r3]
+ 281 00ec 3A4A     		ldr	r2, .L25+16
+ 282 00ee 0021     		movs	r1, #0
+ 283 00f0 42F82310 		str	r1, [r2, r3, lsl #2]
+ 284 00f4 4DE0     		b	.L13
+ 285              	.L15:
+ 100:bigBrainMovement.c ****                 
+ 101:bigBrainMovement.c ****             } else if (nextCol < currentCol) {
+ 286              		.loc 1 101 0
+ 287 00f6 7A68     		ldr	r2, [r7, #4]
+ 288 00f8 FB68     		ldr	r3, [r7, #12]
+ 289 00fa 9A42     		cmp	r2, r3
+ 290 00fc 06DA     		bge	.L17
+ 102:bigBrainMovement.c ****                 //record right turn
+ 103:bigBrainMovement.c ****                 result[arrayPointer] = 2;
+ 291              		.loc 1 103 0
+ 292 00fe 324B     		ldr	r3, .L25
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 8
+
+
+ 293 0100 1B68     		ldr	r3, [r3]
+ 294 0102 354A     		ldr	r2, .L25+16
+ 295 0104 0221     		movs	r1, #2
+ 296 0106 42F82310 		str	r1, [r2, r3, lsl #2]
+ 297 010a 42E0     		b	.L13
+ 298              	.L17:
+ 104:bigBrainMovement.c ****             } else {
+ 105:bigBrainMovement.c ****                 //record straight
+ 106:bigBrainMovement.c ****                 result[arrayPointer] = 1;
+ 299              		.loc 1 106 0
+ 300 010c 2E4B     		ldr	r3, .L25
+ 301 010e 1B68     		ldr	r3, [r3]
+ 302 0110 314A     		ldr	r2, .L25+16
+ 303 0112 0121     		movs	r1, #1
+ 304 0114 42F82310 		str	r1, [r2, r3, lsl #2]
+ 305 0118 3BE0     		b	.L13
+ 306              	.L14:
+ 107:bigBrainMovement.c ****             }
+ 108:bigBrainMovement.c ****             
+ 109:bigBrainMovement.c ****         } else if (dir == WEST) {
+ 307              		.loc 1 109 0
+ 308 011a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 309 011c 022B     		cmp	r3, #2
+ 310 011e 1CD1     		bne	.L18
+ 110:bigBrainMovement.c ****             //if row change negatively turn right, if row change positively turn left.
+ 111:bigBrainMovement.c ****             if (nextRow > currentRow) {
+ 311              		.loc 1 111 0
+ 312 0120 3A68     		ldr	r2, [r7]
+ 313 0122 BB68     		ldr	r3, [r7, #8]
+ 314 0124 9A42     		cmp	r2, r3
+ 315 0126 06DD     		ble	.L19
+ 112:bigBrainMovement.c ****                 //record left turn
+ 113:bigBrainMovement.c ****                 result[arrayPointer] = 0;
+ 316              		.loc 1 113 0
+ 317 0128 274B     		ldr	r3, .L25
+ 318 012a 1B68     		ldr	r3, [r3]
+ 319 012c 2A4A     		ldr	r2, .L25+16
+ 320 012e 0021     		movs	r1, #0
+ 321 0130 42F82310 		str	r1, [r2, r3, lsl #2]
+ 322 0134 2DE0     		b	.L13
+ 323              	.L19:
+ 114:bigBrainMovement.c ****                 
+ 115:bigBrainMovement.c ****             } else if (nextRow < currentRow) {
+ 324              		.loc 1 115 0
+ 325 0136 3A68     		ldr	r2, [r7]
+ 326 0138 BB68     		ldr	r3, [r7, #8]
+ 327 013a 9A42     		cmp	r2, r3
+ 328 013c 06DA     		bge	.L21
+ 116:bigBrainMovement.c ****                 //record right turn
+ 117:bigBrainMovement.c ****                 result[arrayPointer] = 2;
+ 329              		.loc 1 117 0
+ 330 013e 224B     		ldr	r3, .L25
+ 331 0140 1B68     		ldr	r3, [r3]
+ 332 0142 254A     		ldr	r2, .L25+16
+ 333 0144 0221     		movs	r1, #2
+ 334 0146 42F82310 		str	r1, [r2, r3, lsl #2]
+ 335 014a 22E0     		b	.L13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 9
+
+
+ 336              	.L21:
+ 118:bigBrainMovement.c ****             } else {
+ 119:bigBrainMovement.c ****                 //record straight
+ 120:bigBrainMovement.c ****                 result[arrayPointer] = 1;
+ 337              		.loc 1 120 0
+ 338 014c 1E4B     		ldr	r3, .L25
+ 339 014e 1B68     		ldr	r3, [r3]
+ 340 0150 214A     		ldr	r2, .L25+16
+ 341 0152 0121     		movs	r1, #1
+ 342 0154 42F82310 		str	r1, [r2, r3, lsl #2]
+ 343 0158 1BE0     		b	.L13
+ 344              	.L18:
+ 121:bigBrainMovement.c ****             }
+ 122:bigBrainMovement.c ****         } else {
+ 123:bigBrainMovement.c ****             //if row change negatively turn left, if row change positively turn right.
+ 124:bigBrainMovement.c ****             if (nextRow > currentRow) {
+ 345              		.loc 1 124 0
+ 346 015a 3A68     		ldr	r2, [r7]
+ 347 015c BB68     		ldr	r3, [r7, #8]
+ 348 015e 9A42     		cmp	r2, r3
+ 349 0160 06DD     		ble	.L22
+ 125:bigBrainMovement.c ****                 //record right turn
+ 126:bigBrainMovement.c ****                 result[arrayPointer] = 2;
+ 350              		.loc 1 126 0
+ 351 0162 194B     		ldr	r3, .L25
+ 352 0164 1B68     		ldr	r3, [r3]
+ 353 0166 1C4A     		ldr	r2, .L25+16
+ 354 0168 0221     		movs	r1, #2
+ 355 016a 42F82310 		str	r1, [r2, r3, lsl #2]
+ 356 016e 10E0     		b	.L13
+ 357              	.L22:
+ 127:bigBrainMovement.c ****                 
+ 128:bigBrainMovement.c ****             } else if (nextRow < currentRow) {
+ 358              		.loc 1 128 0
+ 359 0170 3A68     		ldr	r2, [r7]
+ 360 0172 BB68     		ldr	r3, [r7, #8]
+ 361 0174 9A42     		cmp	r2, r3
+ 362 0176 06DA     		bge	.L23
+ 129:bigBrainMovement.c ****                 //record left turn
+ 130:bigBrainMovement.c ****                 result[arrayPointer] = 0;
+ 363              		.loc 1 130 0
+ 364 0178 134B     		ldr	r3, .L25
+ 365 017a 1B68     		ldr	r3, [r3]
+ 366 017c 164A     		ldr	r2, .L25+16
+ 367 017e 0021     		movs	r1, #0
+ 368 0180 42F82310 		str	r1, [r2, r3, lsl #2]
+ 369 0184 05E0     		b	.L13
+ 370              	.L23:
+ 131:bigBrainMovement.c ****             } else {
+ 132:bigBrainMovement.c ****                 //record straight
+ 133:bigBrainMovement.c ****                 result[arrayPointer] = 1;
+ 371              		.loc 1 133 0
+ 372 0186 104B     		ldr	r3, .L25
+ 373 0188 1B68     		ldr	r3, [r3]
+ 374 018a 134A     		ldr	r2, .L25+16
+ 375 018c 0121     		movs	r1, #1
+ 376 018e 42F82310 		str	r1, [r2, r3, lsl #2]
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 10
+
+
+ 377              	.L13:
+ 134:bigBrainMovement.c ****             }
+ 135:bigBrainMovement.c ****         }
+ 136:bigBrainMovement.c ****         
+ 137:bigBrainMovement.c ****         //recalculate direction vector for future coordinate
+ 138:bigBrainMovement.c ****         dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
+ 378              		.loc 1 138 0 discriminator 2
+ 379 0192 3B68     		ldr	r3, [r7]
+ 380 0194 7A68     		ldr	r2, [r7, #4]
+ 381 0196 B968     		ldr	r1, [r7, #8]
+ 382 0198 F868     		ldr	r0, [r7, #12]
+ 383 019a FFF7FEFF 		bl	calculateDirection
+ 384 019e 0346     		mov	r3, r0
+ 385 01a0 FB75     		strb	r3, [r7, #23]
+ 139:bigBrainMovement.c ****         
+ 140:bigBrainMovement.c ****         
+ 141:bigBrainMovement.c ****         arrayPointer++;
+ 386              		.loc 1 141 0 discriminator 2
+ 387 01a2 094B     		ldr	r3, .L25
+ 388 01a4 1B68     		ldr	r3, [r3]
+ 389 01a6 0133     		adds	r3, r3, #1
+ 390 01a8 074A     		ldr	r2, .L25
+ 391 01aa 1360     		str	r3, [r2]
+  71:bigBrainMovement.c ****         
+ 392              		.loc 1 71 0 discriminator 2
+ 393 01ac 3B69     		ldr	r3, [r7, #16]
+ 394 01ae 0133     		adds	r3, r3, #1
+ 395 01b0 3B61     		str	r3, [r7, #16]
+ 396              	.L8:
+  71:bigBrainMovement.c ****         
+ 397              		.loc 1 71 0 is_stmt 0 discriminator 1
+ 398 01b2 074B     		ldr	r3, .L25+8
+ 399 01b4 1B68     		ldr	r3, [r3]
+ 400 01b6 5A1E     		subs	r2, r3, #1
+ 401 01b8 3B69     		ldr	r3, [r7, #16]
+ 402 01ba 9A42     		cmp	r2, r3
+ 403 01bc 3FF751AF 		bgt	.L24
+ 404              	.LBE2:
+ 142:bigBrainMovement.c ****         
+ 143:bigBrainMovement.c ****     }
+ 144:bigBrainMovement.c ****     
+ 145:bigBrainMovement.c **** //    for (int i=0;i<size-1;i++) {
+ 146:bigBrainMovement.c **** //        //0 - left, 1 - straight, 2- right
+ 147:bigBrainMovement.c **** //        printf("%d", result[i]);
+ 148:bigBrainMovement.c **** //    }
+ 149:bigBrainMovement.c ****     
+ 150:bigBrainMovement.c **** }
+ 405              		.loc 1 150 0 is_stmt 1
+ 406 01c0 00BF     		nop
+ 407 01c2 1837     		adds	r7, r7, #24
+ 408              		.cfi_def_cfa_offset 8
+ 409 01c4 BD46     		mov	sp, r7
+ 410              		.cfi_def_cfa_register 13
+ 411              		@ sp needed
+ 412 01c6 80BD     		pop	{r7, pc}
+ 413              	.L26:
+ 414              		.align	2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 11
+
+
+ 415              	.L25:
+ 416 01c8 00000000 		.word	arrayPointer
+ 417 01cc 00000000 		.word	finalArrayIndex
+ 418 01d0 A0230000 		.word	size
+ 419 01d4 00000000 		.word	finalPath
+ 420 01d8 00000000 		.word	result
+ 421              		.cfi_endproc
+ 422              	.LFE2:
+ 423              		.size	findDirections, .-findDirections
+ 424              		.text
+ 425              	.Letext0:
+ 426              		.file 2 "astar.h"
+ 427              		.section	.debug_info,"",%progbits
+ 428              	.Ldebug_info0:
+ 429 0000 BA020000 		.4byte	0x2ba
+ 430 0004 0400     		.2byte	0x4
+ 431 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 432 000a 04       		.byte	0x4
+ 433 000b 01       		.uleb128 0x1
+ 434 000c 00000000 		.4byte	.LASF39
+ 435 0010 0C       		.byte	0xc
+ 436 0011 C5020000 		.4byte	.LASF40
+ 437 0015 BB010000 		.4byte	.LASF41
+ 438 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 439 001d 00000000 		.4byte	0
+ 440 0021 00000000 		.4byte	.Ldebug_line0
+ 441 0025 02       		.uleb128 0x2
+ 442 0026 01       		.byte	0x1
+ 443 0027 06       		.byte	0x6
+ 444 0028 A9020000 		.4byte	.LASF0
+ 445 002c 02       		.uleb128 0x2
+ 446 002d 01       		.byte	0x1
+ 447 002e 08       		.byte	0x8
+ 448 002f 31010000 		.4byte	.LASF1
+ 449 0033 02       		.uleb128 0x2
+ 450 0034 02       		.byte	0x2
+ 451 0035 05       		.byte	0x5
+ 452 0036 7F020000 		.4byte	.LASF2
+ 453 003a 02       		.uleb128 0x2
+ 454 003b 02       		.byte	0x2
+ 455 003c 07       		.byte	0x7
+ 456 003d 0F010000 		.4byte	.LASF3
+ 457 0041 02       		.uleb128 0x2
+ 458 0042 04       		.byte	0x4
+ 459 0043 05       		.byte	0x5
+ 460 0044 94020000 		.4byte	.LASF4
+ 461 0048 02       		.uleb128 0x2
+ 462 0049 04       		.byte	0x4
+ 463 004a 07       		.byte	0x7
+ 464 004b 3F010000 		.4byte	.LASF5
+ 465 004f 02       		.uleb128 0x2
+ 466 0050 08       		.byte	0x8
+ 467 0051 05       		.byte	0x5
+ 468 0052 6C020000 		.4byte	.LASF6
+ 469 0056 02       		.uleb128 0x2
+ 470 0057 08       		.byte	0x8
+ 471 0058 07       		.byte	0x7
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 12
+
+
+ 472 0059 96010000 		.4byte	.LASF7
+ 473 005d 03       		.uleb128 0x3
+ 474 005e 04       		.byte	0x4
+ 475 005f 05       		.byte	0x5
+ 476 0060 696E7400 		.ascii	"int\000"
+ 477 0064 02       		.uleb128 0x2
+ 478 0065 04       		.byte	0x4
+ 479 0066 07       		.byte	0x7
+ 480 0067 A7000000 		.4byte	.LASF8
+ 481 006b 02       		.uleb128 0x2
+ 482 006c 08       		.byte	0x8
+ 483 006d 04       		.byte	0x4
+ 484 006e 9D020000 		.4byte	.LASF9
+ 485 0072 02       		.uleb128 0x2
+ 486 0073 04       		.byte	0x4
+ 487 0074 07       		.byte	0x7
+ 488 0075 54020000 		.4byte	.LASF10
+ 489 0079 02       		.uleb128 0x2
+ 490 007a 01       		.byte	0x1
+ 491 007b 08       		.byte	0x8
+ 492 007c 7A020000 		.4byte	.LASF11
+ 493 0080 04       		.uleb128 0x4
+ 494 0081 0A010000 		.4byte	.LASF14
+ 495 0085 08       		.byte	0x8
+ 496 0086 02       		.byte	0x2
+ 497 0087 09       		.byte	0x9
+ 498 0088 A5000000 		.4byte	0xa5
+ 499 008c 05       		.uleb128 0x5
+ 500 008d 64010000 		.4byte	.LASF12
+ 501 0091 02       		.byte	0x2
+ 502 0092 0A       		.byte	0xa
+ 503 0093 5D000000 		.4byte	0x5d
+ 504 0097 00       		.byte	0
+ 505 0098 05       		.uleb128 0x5
+ 506 0099 29010000 		.4byte	.LASF13
+ 507 009d 02       		.byte	0x2
+ 508 009e 0B       		.byte	0xb
+ 509 009f 5D000000 		.4byte	0x5d
+ 510 00a3 04       		.byte	0x4
+ 511 00a4 00       		.byte	0
+ 512 00a5 04       		.uleb128 0x4
+ 513 00a6 04010000 		.4byte	.LASF15
+ 514 00aa 20       		.byte	0x20
+ 515 00ab 02       		.byte	0x2
+ 516 00ac 0D       		.byte	0xd
+ 517 00ad 06010000 		.4byte	0x106
+ 518 00b1 05       		.uleb128 0x5
+ 519 00b2 D0000000 		.4byte	.LASF16
+ 520 00b6 02       		.byte	0x2
+ 521 00b7 0E       		.byte	0xe
+ 522 00b8 80000000 		.4byte	0x80
+ 523 00bc 00       		.byte	0
+ 524 00bd 05       		.uleb128 0x5
+ 525 00be DE000000 		.4byte	.LASF17
+ 526 00c2 02       		.byte	0x2
+ 527 00c3 0F       		.byte	0xf
+ 528 00c4 5D000000 		.4byte	0x5d
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 13
+
+
+ 529 00c8 08       		.byte	0x8
+ 530 00c9 05       		.uleb128 0x5
+ 531 00ca 8E000000 		.4byte	.LASF18
+ 532 00ce 02       		.byte	0x2
+ 533 00cf 10       		.byte	0x10
+ 534 00d0 5D000000 		.4byte	0x5d
+ 535 00d4 0C       		.byte	0xc
+ 536 00d5 05       		.uleb128 0x5
+ 537 00d6 FC000000 		.4byte	.LASF19
+ 538 00da 02       		.byte	0x2
+ 539 00db 11       		.byte	0x11
+ 540 00dc 5D000000 		.4byte	0x5d
+ 541 00e0 10       		.byte	0x10
+ 542 00e1 05       		.uleb128 0x5
+ 543 00e2 C9000000 		.4byte	.LASF20
+ 544 00e6 02       		.byte	0x2
+ 545 00e7 12       		.byte	0x12
+ 546 00e8 5D000000 		.4byte	0x5d
+ 547 00ec 14       		.byte	0x14
+ 548 00ed 05       		.uleb128 0x5
+ 549 00ee 22010000 		.4byte	.LASF21
+ 550 00f2 02       		.byte	0x2
+ 551 00f3 13       		.byte	0x13
+ 552 00f4 5D000000 		.4byte	0x5d
+ 553 00f8 18       		.byte	0x18
+ 554 00f9 05       		.uleb128 0x5
+ 555 00fa B4010000 		.4byte	.LASF22
+ 556 00fe 02       		.byte	0x2
+ 557 00ff 14       		.byte	0x14
+ 558 0100 5D000000 		.4byte	0x5d
+ 559 0104 1C       		.byte	0x1c
+ 560 0105 00       		.byte	0
+ 561 0106 06       		.uleb128 0x6
+ 562 0107 04010000 		.4byte	.LASF15
+ 563 010b 02       		.byte	0x2
+ 564 010c 15       		.byte	0x15
+ 565 010d A5000000 		.4byte	0xa5
+ 566 0111 04       		.uleb128 0x4
+ 567 0112 98000000 		.4byte	.LASF23
+ 568 0116 08       		.byte	0x8
+ 569 0117 02       		.byte	0x2
+ 570 0118 17       		.byte	0x17
+ 571 0119 2A010000 		.4byte	0x12a
+ 572 011d 05       		.uleb128 0x5
+ 573 011e A2000000 		.4byte	.LASF24
+ 574 0122 02       		.byte	0x2
+ 575 0123 18       		.byte	0x18
+ 576 0124 80000000 		.4byte	0x80
+ 577 0128 00       		.byte	0
+ 578 0129 00       		.byte	0
+ 579 012a 07       		.uleb128 0x7
+ 580 012b 11010000 		.4byte	0x111
+ 581 012f 3B010000 		.4byte	0x13b
+ 582 0133 08       		.uleb128 0x8
+ 583 0134 72000000 		.4byte	0x72
+ 584 0138 E703     		.2byte	0x3e7
+ 585 013a 00       		.byte	0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 14
+
+
+ 586 013b 09       		.uleb128 0x9
+ 587 013c B4000000 		.4byte	.LASF42
+ 588 0140 01       		.byte	0x1
+ 589 0141 2C000000 		.4byte	0x2c
+ 590 0145 01       		.byte	0x1
+ 591 0146 0F       		.byte	0xf
+ 592 0147 64010000 		.4byte	0x164
+ 593 014b 0A       		.uleb128 0xa
+ 594 014c D8020000 		.4byte	.LASF25
+ 595 0150 00       		.byte	0
+ 596 0151 0A       		.uleb128 0xa
+ 597 0152 D8000000 		.4byte	.LASF26
+ 598 0156 01       		.byte	0x1
+ 599 0157 0A       		.uleb128 0xa
+ 600 0158 F2000000 		.4byte	.LASF27
+ 601 015c 02       		.byte	0x2
+ 602 015d 0A       		.uleb128 0xa
+ 603 015e 9D000000 		.4byte	.LASF28
+ 604 0162 03       		.byte	0x3
+ 605 0163 00       		.byte	0
+ 606 0164 0B       		.uleb128 0xb
+ 607 0165 51010000 		.4byte	.LASF43
+ 608 0169 01       		.byte	0x1
+ 609 016a 1F       		.byte	0x1f
+ 610 016b 3B010000 		.4byte	0x13b
+ 611 016f 00000000 		.4byte	.LFB1
+ 612 0173 70000000 		.4byte	.LFE1-.LFB1
+ 613 0177 01       		.uleb128 0x1
+ 614 0178 9C       		.byte	0x9c
+ 615 0179 B6010000 		.4byte	0x1b6
+ 616 017d 0C       		.uleb128 0xc
+ 617 017e 83010000 		.4byte	.LASF29
+ 618 0182 01       		.byte	0x1
+ 619 0183 1F       		.byte	0x1f
+ 620 0184 5D000000 		.4byte	0x5d
+ 621 0188 02       		.uleb128 0x2
+ 622 0189 91       		.byte	0x91
+ 623 018a 74       		.sleb128 -12
+ 624 018b 0C       		.uleb128 0xc
+ 625 018c 89020000 		.4byte	.LASF30
+ 626 0190 01       		.byte	0x1
+ 627 0191 1F       		.byte	0x1f
+ 628 0192 5D000000 		.4byte	0x5d
+ 629 0196 02       		.uleb128 0x2
+ 630 0197 91       		.byte	0x91
+ 631 0198 70       		.sleb128 -16
+ 632 0199 0C       		.uleb128 0xc
+ 633 019a EA000000 		.4byte	.LASF31
+ 634 019e 01       		.byte	0x1
+ 635 019f 1F       		.byte	0x1f
+ 636 01a0 5D000000 		.4byte	0x5d
+ 637 01a4 02       		.uleb128 0x2
+ 638 01a5 91       		.byte	0x91
+ 639 01a6 6C       		.sleb128 -20
+ 640 01a7 0C       		.uleb128 0xc
+ 641 01a8 8E010000 		.4byte	.LASF32
+ 642 01ac 01       		.byte	0x1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 15
+
+
+ 643 01ad 1F       		.byte	0x1f
+ 644 01ae 5D000000 		.4byte	0x5d
+ 645 01b2 02       		.uleb128 0x2
+ 646 01b3 91       		.byte	0x91
+ 647 01b4 68       		.sleb128 -24
+ 648 01b5 00       		.byte	0
+ 649 01b6 0D       		.uleb128 0xd
+ 650 01b7 5D020000 		.4byte	.LASF44
+ 651 01bb 01       		.byte	0x1
+ 652 01bc 31       		.byte	0x31
+ 653 01bd 00000000 		.4byte	.LFB2
+ 654 01c1 DC010000 		.4byte	.LFE2-.LFB2
+ 655 01c5 01       		.uleb128 0x1
+ 656 01c6 9C       		.byte	0x9c
+ 657 01c7 28020000 		.4byte	0x228
+ 658 01cb 0E       		.uleb128 0xe
+ 659 01cc 83010000 		.4byte	.LASF29
+ 660 01d0 01       		.byte	0x1
+ 661 01d1 3B       		.byte	0x3b
+ 662 01d2 5D000000 		.4byte	0x5d
+ 663 01d6 02       		.uleb128 0x2
+ 664 01d7 91       		.byte	0x91
+ 665 01d8 6C       		.sleb128 -20
+ 666 01d9 0E       		.uleb128 0xe
+ 667 01da 89020000 		.4byte	.LASF30
+ 668 01de 01       		.byte	0x1
+ 669 01df 3C       		.byte	0x3c
+ 670 01e0 5D000000 		.4byte	0x5d
+ 671 01e4 02       		.uleb128 0x2
+ 672 01e5 91       		.byte	0x91
+ 673 01e6 68       		.sleb128 -24
+ 674 01e7 0E       		.uleb128 0xe
+ 675 01e8 EA000000 		.4byte	.LASF31
+ 676 01ec 01       		.byte	0x1
+ 677 01ed 3F       		.byte	0x3f
+ 678 01ee 5D000000 		.4byte	0x5d
+ 679 01f2 02       		.uleb128 0x2
+ 680 01f3 91       		.byte	0x91
+ 681 01f4 64       		.sleb128 -28
+ 682 01f5 0E       		.uleb128 0xe
+ 683 01f6 8E010000 		.4byte	.LASF32
+ 684 01fa 01       		.byte	0x1
+ 685 01fb 40       		.byte	0x40
+ 686 01fc 5D000000 		.4byte	0x5d
+ 687 0200 02       		.uleb128 0x2
+ 688 0201 91       		.byte	0x91
+ 689 0202 60       		.sleb128 -32
+ 690 0203 0F       		.uleb128 0xf
+ 691 0204 64697200 		.ascii	"dir\000"
+ 692 0208 01       		.byte	0x1
+ 693 0209 45       		.byte	0x45
+ 694 020a 3B010000 		.4byte	0x13b
+ 695 020e 02       		.uleb128 0x2
+ 696 020f 91       		.byte	0x91
+ 697 0210 77       		.sleb128 -9
+ 698 0211 10       		.uleb128 0x10
+ 699 0212 5C000000 		.4byte	.LBB2
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 16
+
+
+ 700 0216 64010000 		.4byte	.LBE2-.LBB2
+ 701 021a 0F       		.uleb128 0xf
+ 702 021b 6900     		.ascii	"i\000"
+ 703 021d 01       		.byte	0x1
+ 704 021e 47       		.byte	0x47
+ 705 021f 5D000000 		.4byte	0x5d
+ 706 0223 02       		.uleb128 0x2
+ 707 0224 91       		.byte	0x91
+ 708 0225 70       		.sleb128 -16
+ 709 0226 00       		.byte	0
+ 710 0227 00       		.byte	0
+ 711 0228 07       		.uleb128 0x7
+ 712 0229 3E020000 		.4byte	0x23e
+ 713 022d 3E020000 		.4byte	0x23e
+ 714 0231 11       		.uleb128 0x11
+ 715 0232 72000000 		.4byte	0x72
+ 716 0236 0E       		.byte	0xe
+ 717 0237 11       		.uleb128 0x11
+ 718 0238 72000000 		.4byte	0x72
+ 719 023c 12       		.byte	0x12
+ 720 023d 00       		.byte	0
+ 721 023e 12       		.uleb128 0x12
+ 722 023f 06010000 		.4byte	0x106
+ 723 0243 0E       		.uleb128 0xe
+ 724 0244 BE000000 		.4byte	.LASF33
+ 725 0248 02       		.byte	0x2
+ 726 0249 1B       		.byte	0x1b
+ 727 024a 54020000 		.4byte	0x254
+ 728 024e 05       		.uleb128 0x5
+ 729 024f 03       		.byte	0x3
+ 730 0250 00000000 		.4byte	nodesArray
+ 731 0254 12       		.uleb128 0x12
+ 732 0255 28020000 		.4byte	0x228
+ 733 0259 0E       		.uleb128 0xe
+ 734 025a F7000000 		.4byte	.LASF34
+ 735 025e 02       		.byte	0x2
+ 736 025f 1D       		.byte	0x1d
+ 737 0260 6A020000 		.4byte	0x26a
+ 738 0264 05       		.uleb128 0x5
+ 739 0265 03       		.byte	0x3
+ 740 0266 A0230000 		.4byte	size
+ 741 026a 12       		.uleb128 0x12
+ 742 026b 5D000000 		.4byte	0x5d
+ 743 026f 13       		.uleb128 0x13
+ 744 0270 79010000 		.4byte	.LASF35
+ 745 0274 02       		.byte	0x2
+ 746 0275 1C       		.byte	0x1c
+ 747 0276 7A020000 		.4byte	0x27a
+ 748 027a 12       		.uleb128 0x12
+ 749 027b 2A010000 		.4byte	0x12a
+ 750 027f 13       		.uleb128 0x13
+ 751 0280 B5020000 		.4byte	.LASF36
+ 752 0284 02       		.byte	0x2
+ 753 0285 1E       		.byte	0x1e
+ 754 0286 6A020000 		.4byte	0x26a
+ 755 028a 14       		.uleb128 0x14
+ 756 028b 6C010000 		.4byte	.LASF37
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 17
+
+
+ 757 028f 01       		.byte	0x1
+ 758 0290 0C       		.byte	0xc
+ 759 0291 5D000000 		.4byte	0x5d
+ 760 0295 05       		.uleb128 0x5
+ 761 0296 03       		.byte	0x3
+ 762 0297 00000000 		.4byte	arrayPointer
+ 763 029b 07       		.uleb128 0x7
+ 764 029c 5D000000 		.4byte	0x5d
+ 765 02a0 AC020000 		.4byte	0x2ac
+ 766 02a4 08       		.uleb128 0x8
+ 767 02a5 72000000 		.4byte	0x72
+ 768 02a9 E703     		.2byte	0x3e7
+ 769 02ab 00       		.byte	0
+ 770 02ac 14       		.uleb128 0x14
+ 771 02ad AD010000 		.4byte	.LASF38
+ 772 02b1 01       		.byte	0x1
+ 773 02b2 0E       		.byte	0xe
+ 774 02b3 9B020000 		.4byte	0x29b
+ 775 02b7 05       		.uleb128 0x5
+ 776 02b8 03       		.byte	0x3
+ 777 02b9 00000000 		.4byte	result
+ 778 02bd 00       		.byte	0
+ 779              		.section	.debug_abbrev,"",%progbits
+ 780              	.Ldebug_abbrev0:
+ 781 0000 01       		.uleb128 0x1
+ 782 0001 11       		.uleb128 0x11
+ 783 0002 01       		.byte	0x1
+ 784 0003 25       		.uleb128 0x25
+ 785 0004 0E       		.uleb128 0xe
+ 786 0005 13       		.uleb128 0x13
+ 787 0006 0B       		.uleb128 0xb
+ 788 0007 03       		.uleb128 0x3
+ 789 0008 0E       		.uleb128 0xe
+ 790 0009 1B       		.uleb128 0x1b
+ 791 000a 0E       		.uleb128 0xe
+ 792 000b 55       		.uleb128 0x55
+ 793 000c 17       		.uleb128 0x17
+ 794 000d 11       		.uleb128 0x11
+ 795 000e 01       		.uleb128 0x1
+ 796 000f 10       		.uleb128 0x10
+ 797 0010 17       		.uleb128 0x17
+ 798 0011 00       		.byte	0
+ 799 0012 00       		.byte	0
+ 800 0013 02       		.uleb128 0x2
+ 801 0014 24       		.uleb128 0x24
+ 802 0015 00       		.byte	0
+ 803 0016 0B       		.uleb128 0xb
+ 804 0017 0B       		.uleb128 0xb
+ 805 0018 3E       		.uleb128 0x3e
+ 806 0019 0B       		.uleb128 0xb
+ 807 001a 03       		.uleb128 0x3
+ 808 001b 0E       		.uleb128 0xe
+ 809 001c 00       		.byte	0
+ 810 001d 00       		.byte	0
+ 811 001e 03       		.uleb128 0x3
+ 812 001f 24       		.uleb128 0x24
+ 813 0020 00       		.byte	0
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 18
+
+
+ 814 0021 0B       		.uleb128 0xb
+ 815 0022 0B       		.uleb128 0xb
+ 816 0023 3E       		.uleb128 0x3e
+ 817 0024 0B       		.uleb128 0xb
+ 818 0025 03       		.uleb128 0x3
+ 819 0026 08       		.uleb128 0x8
+ 820 0027 00       		.byte	0
+ 821 0028 00       		.byte	0
+ 822 0029 04       		.uleb128 0x4
+ 823 002a 13       		.uleb128 0x13
+ 824 002b 01       		.byte	0x1
+ 825 002c 03       		.uleb128 0x3
+ 826 002d 0E       		.uleb128 0xe
+ 827 002e 0B       		.uleb128 0xb
+ 828 002f 0B       		.uleb128 0xb
+ 829 0030 3A       		.uleb128 0x3a
+ 830 0031 0B       		.uleb128 0xb
+ 831 0032 3B       		.uleb128 0x3b
+ 832 0033 0B       		.uleb128 0xb
+ 833 0034 01       		.uleb128 0x1
+ 834 0035 13       		.uleb128 0x13
+ 835 0036 00       		.byte	0
+ 836 0037 00       		.byte	0
+ 837 0038 05       		.uleb128 0x5
+ 838 0039 0D       		.uleb128 0xd
+ 839 003a 00       		.byte	0
+ 840 003b 03       		.uleb128 0x3
+ 841 003c 0E       		.uleb128 0xe
+ 842 003d 3A       		.uleb128 0x3a
+ 843 003e 0B       		.uleb128 0xb
+ 844 003f 3B       		.uleb128 0x3b
+ 845 0040 0B       		.uleb128 0xb
+ 846 0041 49       		.uleb128 0x49
+ 847 0042 13       		.uleb128 0x13
+ 848 0043 38       		.uleb128 0x38
+ 849 0044 0B       		.uleb128 0xb
+ 850 0045 00       		.byte	0
+ 851 0046 00       		.byte	0
+ 852 0047 06       		.uleb128 0x6
+ 853 0048 16       		.uleb128 0x16
+ 854 0049 00       		.byte	0
+ 855 004a 03       		.uleb128 0x3
+ 856 004b 0E       		.uleb128 0xe
+ 857 004c 3A       		.uleb128 0x3a
+ 858 004d 0B       		.uleb128 0xb
+ 859 004e 3B       		.uleb128 0x3b
+ 860 004f 0B       		.uleb128 0xb
+ 861 0050 49       		.uleb128 0x49
+ 862 0051 13       		.uleb128 0x13
+ 863 0052 00       		.byte	0
+ 864 0053 00       		.byte	0
+ 865 0054 07       		.uleb128 0x7
+ 866 0055 01       		.uleb128 0x1
+ 867 0056 01       		.byte	0x1
+ 868 0057 49       		.uleb128 0x49
+ 869 0058 13       		.uleb128 0x13
+ 870 0059 01       		.uleb128 0x1
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 19
+
+
+ 871 005a 13       		.uleb128 0x13
+ 872 005b 00       		.byte	0
+ 873 005c 00       		.byte	0
+ 874 005d 08       		.uleb128 0x8
+ 875 005e 21       		.uleb128 0x21
+ 876 005f 00       		.byte	0
+ 877 0060 49       		.uleb128 0x49
+ 878 0061 13       		.uleb128 0x13
+ 879 0062 2F       		.uleb128 0x2f
+ 880 0063 05       		.uleb128 0x5
+ 881 0064 00       		.byte	0
+ 882 0065 00       		.byte	0
+ 883 0066 09       		.uleb128 0x9
+ 884 0067 04       		.uleb128 0x4
+ 885 0068 01       		.byte	0x1
+ 886 0069 03       		.uleb128 0x3
+ 887 006a 0E       		.uleb128 0xe
+ 888 006b 0B       		.uleb128 0xb
+ 889 006c 0B       		.uleb128 0xb
+ 890 006d 49       		.uleb128 0x49
+ 891 006e 13       		.uleb128 0x13
+ 892 006f 3A       		.uleb128 0x3a
+ 893 0070 0B       		.uleb128 0xb
+ 894 0071 3B       		.uleb128 0x3b
+ 895 0072 0B       		.uleb128 0xb
+ 896 0073 01       		.uleb128 0x1
+ 897 0074 13       		.uleb128 0x13
+ 898 0075 00       		.byte	0
+ 899 0076 00       		.byte	0
+ 900 0077 0A       		.uleb128 0xa
+ 901 0078 28       		.uleb128 0x28
+ 902 0079 00       		.byte	0
+ 903 007a 03       		.uleb128 0x3
+ 904 007b 0E       		.uleb128 0xe
+ 905 007c 1C       		.uleb128 0x1c
+ 906 007d 0B       		.uleb128 0xb
+ 907 007e 00       		.byte	0
+ 908 007f 00       		.byte	0
+ 909 0080 0B       		.uleb128 0xb
+ 910 0081 2E       		.uleb128 0x2e
+ 911 0082 01       		.byte	0x1
+ 912 0083 3F       		.uleb128 0x3f
+ 913 0084 19       		.uleb128 0x19
+ 914 0085 03       		.uleb128 0x3
+ 915 0086 0E       		.uleb128 0xe
+ 916 0087 3A       		.uleb128 0x3a
+ 917 0088 0B       		.uleb128 0xb
+ 918 0089 3B       		.uleb128 0x3b
+ 919 008a 0B       		.uleb128 0xb
+ 920 008b 27       		.uleb128 0x27
+ 921 008c 19       		.uleb128 0x19
+ 922 008d 49       		.uleb128 0x49
+ 923 008e 13       		.uleb128 0x13
+ 924 008f 11       		.uleb128 0x11
+ 925 0090 01       		.uleb128 0x1
+ 926 0091 12       		.uleb128 0x12
+ 927 0092 06       		.uleb128 0x6
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 20
+
+
+ 928 0093 40       		.uleb128 0x40
+ 929 0094 18       		.uleb128 0x18
+ 930 0095 9742     		.uleb128 0x2117
+ 931 0097 19       		.uleb128 0x19
+ 932 0098 01       		.uleb128 0x1
+ 933 0099 13       		.uleb128 0x13
+ 934 009a 00       		.byte	0
+ 935 009b 00       		.byte	0
+ 936 009c 0C       		.uleb128 0xc
+ 937 009d 05       		.uleb128 0x5
+ 938 009e 00       		.byte	0
+ 939 009f 03       		.uleb128 0x3
+ 940 00a0 0E       		.uleb128 0xe
+ 941 00a1 3A       		.uleb128 0x3a
+ 942 00a2 0B       		.uleb128 0xb
+ 943 00a3 3B       		.uleb128 0x3b
+ 944 00a4 0B       		.uleb128 0xb
+ 945 00a5 49       		.uleb128 0x49
+ 946 00a6 13       		.uleb128 0x13
+ 947 00a7 02       		.uleb128 0x2
+ 948 00a8 18       		.uleb128 0x18
+ 949 00a9 00       		.byte	0
+ 950 00aa 00       		.byte	0
+ 951 00ab 0D       		.uleb128 0xd
+ 952 00ac 2E       		.uleb128 0x2e
+ 953 00ad 01       		.byte	0x1
+ 954 00ae 3F       		.uleb128 0x3f
+ 955 00af 19       		.uleb128 0x19
+ 956 00b0 03       		.uleb128 0x3
+ 957 00b1 0E       		.uleb128 0xe
+ 958 00b2 3A       		.uleb128 0x3a
+ 959 00b3 0B       		.uleb128 0xb
+ 960 00b4 3B       		.uleb128 0x3b
+ 961 00b5 0B       		.uleb128 0xb
+ 962 00b6 11       		.uleb128 0x11
+ 963 00b7 01       		.uleb128 0x1
+ 964 00b8 12       		.uleb128 0x12
+ 965 00b9 06       		.uleb128 0x6
+ 966 00ba 40       		.uleb128 0x40
+ 967 00bb 18       		.uleb128 0x18
+ 968 00bc 9642     		.uleb128 0x2116
+ 969 00be 19       		.uleb128 0x19
+ 970 00bf 01       		.uleb128 0x1
+ 971 00c0 13       		.uleb128 0x13
+ 972 00c1 00       		.byte	0
+ 973 00c2 00       		.byte	0
+ 974 00c3 0E       		.uleb128 0xe
+ 975 00c4 34       		.uleb128 0x34
+ 976 00c5 00       		.byte	0
+ 977 00c6 03       		.uleb128 0x3
+ 978 00c7 0E       		.uleb128 0xe
+ 979 00c8 3A       		.uleb128 0x3a
+ 980 00c9 0B       		.uleb128 0xb
+ 981 00ca 3B       		.uleb128 0x3b
+ 982 00cb 0B       		.uleb128 0xb
+ 983 00cc 49       		.uleb128 0x49
+ 984 00cd 13       		.uleb128 0x13
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 21
+
+
+ 985 00ce 02       		.uleb128 0x2
+ 986 00cf 18       		.uleb128 0x18
+ 987 00d0 00       		.byte	0
+ 988 00d1 00       		.byte	0
+ 989 00d2 0F       		.uleb128 0xf
+ 990 00d3 34       		.uleb128 0x34
+ 991 00d4 00       		.byte	0
+ 992 00d5 03       		.uleb128 0x3
+ 993 00d6 08       		.uleb128 0x8
+ 994 00d7 3A       		.uleb128 0x3a
+ 995 00d8 0B       		.uleb128 0xb
+ 996 00d9 3B       		.uleb128 0x3b
+ 997 00da 0B       		.uleb128 0xb
+ 998 00db 49       		.uleb128 0x49
+ 999 00dc 13       		.uleb128 0x13
+ 1000 00dd 02       		.uleb128 0x2
+ 1001 00de 18       		.uleb128 0x18
+ 1002 00df 00       		.byte	0
+ 1003 00e0 00       		.byte	0
+ 1004 00e1 10       		.uleb128 0x10
+ 1005 00e2 0B       		.uleb128 0xb
+ 1006 00e3 01       		.byte	0x1
+ 1007 00e4 11       		.uleb128 0x11
+ 1008 00e5 01       		.uleb128 0x1
+ 1009 00e6 12       		.uleb128 0x12
+ 1010 00e7 06       		.uleb128 0x6
+ 1011 00e8 00       		.byte	0
+ 1012 00e9 00       		.byte	0
+ 1013 00ea 11       		.uleb128 0x11
+ 1014 00eb 21       		.uleb128 0x21
+ 1015 00ec 00       		.byte	0
+ 1016 00ed 49       		.uleb128 0x49
+ 1017 00ee 13       		.uleb128 0x13
+ 1018 00ef 2F       		.uleb128 0x2f
+ 1019 00f0 0B       		.uleb128 0xb
+ 1020 00f1 00       		.byte	0
+ 1021 00f2 00       		.byte	0
+ 1022 00f3 12       		.uleb128 0x12
+ 1023 00f4 35       		.uleb128 0x35
+ 1024 00f5 00       		.byte	0
+ 1025 00f6 49       		.uleb128 0x49
+ 1026 00f7 13       		.uleb128 0x13
+ 1027 00f8 00       		.byte	0
+ 1028 00f9 00       		.byte	0
+ 1029 00fa 13       		.uleb128 0x13
+ 1030 00fb 34       		.uleb128 0x34
+ 1031 00fc 00       		.byte	0
+ 1032 00fd 03       		.uleb128 0x3
+ 1033 00fe 0E       		.uleb128 0xe
+ 1034 00ff 3A       		.uleb128 0x3a
+ 1035 0100 0B       		.uleb128 0xb
+ 1036 0101 3B       		.uleb128 0x3b
+ 1037 0102 0B       		.uleb128 0xb
+ 1038 0103 49       		.uleb128 0x49
+ 1039 0104 13       		.uleb128 0x13
+ 1040 0105 3F       		.uleb128 0x3f
+ 1041 0106 19       		.uleb128 0x19
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 22
+
+
+ 1042 0107 3C       		.uleb128 0x3c
+ 1043 0108 19       		.uleb128 0x19
+ 1044 0109 00       		.byte	0
+ 1045 010a 00       		.byte	0
+ 1046 010b 14       		.uleb128 0x14
+ 1047 010c 34       		.uleb128 0x34
+ 1048 010d 00       		.byte	0
+ 1049 010e 03       		.uleb128 0x3
+ 1050 010f 0E       		.uleb128 0xe
+ 1051 0110 3A       		.uleb128 0x3a
+ 1052 0111 0B       		.uleb128 0xb
+ 1053 0112 3B       		.uleb128 0x3b
+ 1054 0113 0B       		.uleb128 0xb
+ 1055 0114 49       		.uleb128 0x49
+ 1056 0115 13       		.uleb128 0x13
+ 1057 0116 3F       		.uleb128 0x3f
+ 1058 0117 19       		.uleb128 0x19
+ 1059 0118 02       		.uleb128 0x2
+ 1060 0119 18       		.uleb128 0x18
+ 1061 011a 00       		.byte	0
+ 1062 011b 00       		.byte	0
+ 1063 011c 00       		.byte	0
+ 1064              		.section	.debug_aranges,"",%progbits
+ 1065 0000 24000000 		.4byte	0x24
+ 1066 0004 0200     		.2byte	0x2
+ 1067 0006 00000000 		.4byte	.Ldebug_info0
+ 1068 000a 04       		.byte	0x4
+ 1069 000b 00       		.byte	0
+ 1070 000c 0000     		.2byte	0
+ 1071 000e 0000     		.2byte	0
+ 1072 0010 00000000 		.4byte	.LFB1
+ 1073 0014 70000000 		.4byte	.LFE1-.LFB1
+ 1074 0018 00000000 		.4byte	.LFB2
+ 1075 001c DC010000 		.4byte	.LFE2-.LFB2
+ 1076 0020 00000000 		.4byte	0
+ 1077 0024 00000000 		.4byte	0
+ 1078              		.section	.debug_ranges,"",%progbits
+ 1079              	.Ldebug_ranges0:
+ 1080 0000 00000000 		.4byte	.LFB1
+ 1081 0004 70000000 		.4byte	.LFE1
+ 1082 0008 00000000 		.4byte	.LFB2
+ 1083 000c DC010000 		.4byte	.LFE2
+ 1084 0010 00000000 		.4byte	0
+ 1085 0014 00000000 		.4byte	0
+ 1086              		.section	.debug_line,"",%progbits
+ 1087              	.Ldebug_line0:
+ 1088 0000 BD000000 		.section	.debug_str,"MS",%progbits,1
+ 1088      02003400 
+ 1088      00000201 
+ 1088      FB0E0D00 
+ 1088      01010101 
+ 1089              	.LASF39:
+ 1090 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1090      43313120 
+ 1090      352E342E 
+ 1090      31203230 
+ 1090      31363036 
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 23
+
+
+ 1091 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1091      20726576 
+ 1091      6973696F 
+ 1091      6E203233 
+ 1091      37373135 
+ 1092 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1092      66756E63 
+ 1092      74696F6E 
+ 1092      2D736563 
+ 1092      74696F6E 
+ 1093              	.LASF18:
+ 1094 008e 696E5669 		.ascii	"inVisited\000"
+ 1094      73697465 
+ 1094      6400
+ 1095              	.LASF23:
+ 1096 0098 50617468 		.ascii	"Path\000"
+ 1096      00
+ 1097              	.LASF28:
+ 1098 009d 45415354 		.ascii	"EAST\000"
+ 1098      00
+ 1099              	.LASF24:
+ 1100 00a2 70616972 		.ascii	"pair\000"
+ 1100      00
+ 1101              	.LASF8:
+ 1102 00a7 756E7369 		.ascii	"unsigned int\000"
+ 1102      676E6564 
+ 1102      20696E74 
+ 1102      00
+ 1103              	.LASF42:
+ 1104 00b4 64697265 		.ascii	"direction\000"
+ 1104      6374696F 
+ 1104      6E00
+ 1105              	.LASF33:
+ 1106 00be 6E6F6465 		.ascii	"nodesArray\000"
+ 1106      73417272 
+ 1106      617900
+ 1107              	.LASF20:
+ 1108 00c9 6653636F 		.ascii	"fScore\000"
+ 1108      726500
+ 1109              	.LASF16:
+ 1110 00d0 70617265 		.ascii	"parents\000"
+ 1110      6E747300 
+ 1111              	.LASF26:
+ 1112 00d8 534F5554 		.ascii	"SOUTH\000"
+ 1112      4800
+ 1113              	.LASF17:
+ 1114 00de 74726176 		.ascii	"traversable\000"
+ 1114      65727361 
+ 1114      626C6500 
+ 1115              	.LASF31:
+ 1116 00ea 6E657874 		.ascii	"nextCol\000"
+ 1116      436F6C00 
+ 1117              	.LASF27:
+ 1118 00f2 57455354 		.ascii	"WEST\000"
+ 1118      00
+ 1119              	.LASF34:
+ 1120 00f7 73697A65 		.ascii	"size\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 24
+
+
+ 1120      00
+ 1121              	.LASF19:
+ 1122 00fc 696E5175 		.ascii	"inQueue\000"
+ 1122      65756500 
+ 1123              	.LASF15:
+ 1124 0104 4E6F6465 		.ascii	"Nodes\000"
+ 1124      7300
+ 1125              	.LASF14:
+ 1126 010a 50616972 		.ascii	"Pair\000"
+ 1126      00
+ 1127              	.LASF3:
+ 1128 010f 73686F72 		.ascii	"short unsigned int\000"
+ 1128      7420756E 
+ 1128      7369676E 
+ 1128      65642069 
+ 1128      6E7400
+ 1129              	.LASF21:
+ 1130 0122 6753636F 		.ascii	"gScore\000"
+ 1130      726500
+ 1131              	.LASF13:
+ 1132 0129 70616972 		.ascii	"pairCol\000"
+ 1132      436F6C00 
+ 1133              	.LASF1:
+ 1134 0131 756E7369 		.ascii	"unsigned char\000"
+ 1134      676E6564 
+ 1134      20636861 
+ 1134      7200
+ 1135              	.LASF5:
+ 1136 013f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1136      20756E73 
+ 1136      69676E65 
+ 1136      6420696E 
+ 1136      7400
+ 1137              	.LASF43:
+ 1138 0151 63616C63 		.ascii	"calculateDirection\000"
+ 1138      756C6174 
+ 1138      65446972 
+ 1138      65637469 
+ 1138      6F6E00
+ 1139              	.LASF12:
+ 1140 0164 70616972 		.ascii	"pairRow\000"
+ 1140      526F7700 
+ 1141              	.LASF37:
+ 1142 016c 61727261 		.ascii	"arrayPointer\000"
+ 1142      79506F69 
+ 1142      6E746572 
+ 1142      00
+ 1143              	.LASF35:
+ 1144 0179 66696E61 		.ascii	"finalPath\000"
+ 1144      6C506174 
+ 1144      6800
+ 1145              	.LASF29:
+ 1146 0183 63757272 		.ascii	"currentCol\000"
+ 1146      656E7443 
+ 1146      6F6C00
+ 1147              	.LASF32:
+ 1148 018e 6E657874 		.ascii	"nextRow\000"
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 25
+
+
+ 1148      526F7700 
+ 1149              	.LASF7:
+ 1150 0196 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1150      206C6F6E 
+ 1150      6720756E 
+ 1150      7369676E 
+ 1150      65642069 
+ 1151              	.LASF38:
+ 1152 01ad 72657375 		.ascii	"result\000"
+ 1152      6C7400
+ 1153              	.LASF22:
+ 1154 01b4 6853636F 		.ascii	"hScore\000"
+ 1154      726500
+ 1155              	.LASF41:
+ 1156 01bb 5C5C6669 		.ascii	"\\\\files.auckland.ac.nz\\myhome\\Documents\\GitHub"
+ 1156      6C65732E 
+ 1156      6175636B 
+ 1156      6C616E64 
+ 1156      2E61632E 
+ 1157 01e9 5C70726F 		.ascii	"\\project-project_group_11\\COMPSYS 301\\psoc stude"
+ 1157      6A656374 
+ 1157      2D70726F 
+ 1157      6A656374 
+ 1157      5F67726F 
+ 1158 0219 6E742070 		.ascii	"nt pack\\psoc student pack\\psoc_code_base\\CS301_C"
+ 1158      61636B5C 
+ 1158      70736F63 
+ 1158      20737475 
+ 1158      64656E74 
+ 1159 0249 6C617373 		.ascii	"lass.cydsn\000"
+ 1159      2E637964 
+ 1159      736E00
+ 1160              	.LASF10:
+ 1161 0254 73697A65 		.ascii	"sizetype\000"
+ 1161      74797065 
+ 1161      00
+ 1162              	.LASF44:
+ 1163 025d 66696E64 		.ascii	"findDirections\000"
+ 1163      44697265 
+ 1163      6374696F 
+ 1163      6E7300
+ 1164              	.LASF6:
+ 1165 026c 6C6F6E67 		.ascii	"long long int\000"
+ 1165      206C6F6E 
+ 1165      6720696E 
+ 1165      7400
+ 1166              	.LASF11:
+ 1167 027a 63686172 		.ascii	"char\000"
+ 1167      00
+ 1168              	.LASF2:
+ 1169 027f 73686F72 		.ascii	"short int\000"
+ 1169      7420696E 
+ 1169      7400
+ 1170              	.LASF30:
+ 1171 0289 63757272 		.ascii	"currentRow\000"
+ 1171      656E7452 
+ 1171      6F7700
+ARM GAS  C:\Users\smiy200\AppData\Local\Temp\ccBu9IXR.s 			page 26
+
+
+ 1172              	.LASF4:
+ 1173 0294 6C6F6E67 		.ascii	"long int\000"
+ 1173      20696E74 
+ 1173      00
+ 1174              	.LASF9:
+ 1175 029d 6C6F6E67 		.ascii	"long double\000"
+ 1175      20646F75 
+ 1175      626C6500 
+ 1176              	.LASF0:
+ 1177 02a9 7369676E 		.ascii	"signed char\000"
+ 1177      65642063 
+ 1177      68617200 
+ 1178              	.LASF36:
+ 1179 02b5 66696E61 		.ascii	"finalArrayIndex\000"
+ 1179      6C417272 
+ 1179      6179496E 
+ 1179      64657800 
+ 1180              	.LASF40:
+ 1181 02c5 62696742 		.ascii	"bigBrainMovement.c\000"
+ 1181      7261696E 
+ 1181      4D6F7665 
+ 1181      6D656E74 
+ 1181      2E6300
+ 1182              	.LASF25:
+ 1183 02d8 4E4F5254 		.ascii	"NORTH\000"
+ 1183      4800
+ 1184              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
