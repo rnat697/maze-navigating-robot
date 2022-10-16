@@ -88,6 +88,7 @@ Pairs dequeue(Paths array) {
     return locAtTop;
 }
 //--- End of priority queue ---
+volatile Nodes nodesArray[MAP_ROWS][MAP_COLS];
 void intialiseNodes(int mazeMap[MAP_ROWS][MAP_COLS]){
     for(int row=0; row<MAP_ROWS; row++){
         for(int col=0; col<MAP_COLS; col++){
@@ -188,7 +189,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
         int col = adjacentPos.pairCol;
         int newFscore = 0;
         int oldFscore = 2000;
-        int currentGScore = nodesArray[row][col].gScore;
+        currentGcost = nodesArray[row][col].gScore;
         //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
         
         //not a wall and has not been visited

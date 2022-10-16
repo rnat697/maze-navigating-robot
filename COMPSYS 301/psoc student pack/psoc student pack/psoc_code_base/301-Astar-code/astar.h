@@ -24,7 +24,7 @@ typedef struct Path{
     struct Pair pair;
 }Paths[1000];
 
-volatile static Nodes nodesArray[MAP_ROWS][MAP_COLS];
+extern volatile Nodes nodesArray[MAP_ROWS][MAP_COLS];
 extern volatile Paths finalPath;
 volatile static int size = 0;
 extern volatile int finalArrayIndex;
