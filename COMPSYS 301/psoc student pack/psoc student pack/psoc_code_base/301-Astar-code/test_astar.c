@@ -31,6 +31,7 @@ void findDirections()
     //declare arraypointer
     arrayPointer = 0;
     size = finalArrayIndex;
+    int ind =0;
     //declare result array
     //result[size];
     //initializeFinalArray
@@ -66,21 +67,23 @@ void findDirections()
 
             if (lastdir == SOUTH) {
                
-               result[arrayPointer] = 3;
-               arrayPointer++;
+               result[ind] = 3;
+               ind++;
             }
 
-
-            if (nextCol > currentCol) {
-                //record right turn
-                result[arrayPointer] = 2;
-                
-            } else if (nextCol < currentCol) {
-                //record left turn
-                result[arrayPointer] = 0;
-            } else {
-                //record straight
-                result[arrayPointer] = 1;
+            if (lastdir != dir) {
+               if (nextCol > currentCol) {
+                  //record right turn
+                  result[ind] = 2;
+                  
+               } else if (nextCol < currentCol) {
+                  //record left turn
+                  result[ind] = 0;
+               } else {
+                  //record straight
+                  result[ind] = 1;
+               }
+               ind++;
             }
             
         } else if (dir == SOUTH) {
@@ -88,61 +91,68 @@ void findDirections()
 
             if (lastdir == NORTH) {
                
-               result[arrayPointer] = 3;
-               arrayPointer++;
+               result[ind] = 3;
+               ind++;
             }
-
-            if (nextCol > currentCol) {
-                //record left turn
-                result[arrayPointer] = 0;
-                
-            } else if (nextCol < currentCol) {
-                //record right turn
-                result[arrayPointer] = 2;
-            } else {
-                //record straight
-                result[arrayPointer] = 1;
+            if (lastdir != dir) {
+               if (nextCol > currentCol) {
+                  //record left turn
+                  result[ind] = 0;
+                  
+               } else if (nextCol < currentCol) {
+                  //record right turn
+                  result[ind] = 2;
+               } else {
+                  //record straight
+                  result[ind] = 1;
+               }
+               ind++;
             }
-            
+               
         } else if (dir == WEST) {
             //if row change negatively turn right, if row change positively turn left.
             if (lastdir == EAST) {
                
-               result[arrayPointer] = 3;
-               arrayPointer++;
+               result[ind] = 3;
+               ind++;
             }
 
-
+         if (lastdir != dir) {
             if (nextRow > currentRow) {
                 //record left turn
-                result[arrayPointer] = 0;
+                result[ind] = 0;
                 
             } else if (nextRow < currentRow) {
                 //record right turn
-                result[arrayPointer] = 2;
+                result[ind] = 2;
             } else {
                 //record straight
-                result[arrayPointer] = 1;
+                result[ind] = 1;
             }
+            ind++;
+         }
         } else {
             //if row change negatively turn left, if row change positively turn right.
 
             if (lastdir == WEST) {
                
-               result[arrayPointer] = 3;
-               arrayPointer++;
+               result[ind] = 3;
+               ind++;
             }
 
-            if (nextRow > currentRow) {
-                //record right turn
-                result[arrayPointer] = 2;
-                
-            } else if (nextRow < currentRow) {
-                //record left turn
-                result[arrayPointer] = 0;
-            } else {
-                //record straight
-                result[arrayPointer] = 1;
+            if (lastdir != dir) {
+               if (nextRow > currentRow) {
+                  //record right turn
+                  result[ind] = 2;
+                  
+               } else if (nextRow < currentRow) {
+                  //record left turn
+                  result[ind] = 0;
+               } else {
+                  //record straight
+                  result[ind] = 1;
+               }
+               ind++;
             }
         }
 
@@ -156,10 +166,11 @@ void findDirections()
         
     }
     
-    for (int i=0;i<=arrayPointer;i++) {
+    for (int i=0;i<=ind;i++) {
         //0 - left, 1 - straight, 2- right
         printf("%d,", result[i]);
     }
+    printf("\nQueue size: %d", arrayPointer + 1);
     
 }
 
