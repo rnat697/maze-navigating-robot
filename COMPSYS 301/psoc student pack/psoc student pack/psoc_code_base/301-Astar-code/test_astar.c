@@ -78,7 +78,7 @@ void findDirections()
                
          } else if (nextCol < currentCol) {
                //record left turn
-               result[arrayPointer] = -1;
+               result[arrayPointer] = 0;
                arrayPointer++;
          } else {
                //record straight
@@ -99,7 +99,7 @@ void findDirections()
 
          if (nextCol > currentCol) {
                //record left turn
-               result[arrayPointer] = -1;
+               result[arrayPointer] = 0;
                arrayPointer++;
                
          } else if (nextCol < currentCol) {
@@ -125,7 +125,7 @@ void findDirections()
 
          if (nextRow > currentRow) {
                //record left turn
-               result[arrayPointer] = -1;
+               result[arrayPointer] = 0;
                arrayPointer++;
                
          } else if (nextRow < currentRow) {
@@ -155,7 +155,7 @@ void findDirections()
                
          } else if (nextRow < currentRow) {
                //record left turn
-               result[arrayPointer] = -1;
+               result[arrayPointer] = 0;
                arrayPointer++;
          } else {
                //record straight
