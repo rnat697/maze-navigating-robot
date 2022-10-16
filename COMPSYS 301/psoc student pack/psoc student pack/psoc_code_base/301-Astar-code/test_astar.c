@@ -81,8 +81,10 @@ void findDirections()
          } else {
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // record U
-                  result[arrayPointer] = 3;
-                  arrayPointer++;
+                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                     result[arrayPointer] = 3;
+                     arrayPointer++; 
+                  }
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -108,8 +110,10 @@ void findDirections()
 
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // uturn
-                  result[arrayPointer] = 3;
-                  arrayPointer++;
+                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                     result[arrayPointer] = 3;
+                     arrayPointer++; 
+                  }
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -135,8 +139,10 @@ void findDirections()
          } else {
                if (prevCol  == nextCol && prevRow == nextRow) { // U turn
                   // record uturn
-                  result[arrayPointer] = 3;
-                  arrayPointer++;
+                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                     result[arrayPointer] = 3;
+                     arrayPointer++; 
+                  }
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -160,8 +166,10 @@ void findDirections()
                
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // record u turn
-                  result[arrayPointer] = 3;
-                  arrayPointer++;
+                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                     result[arrayPointer] = 3;
+                     arrayPointer++; 
+                  }
                }
                else if(intersectionArray[currentRow][currentCol] == 1){
                    //record straight
