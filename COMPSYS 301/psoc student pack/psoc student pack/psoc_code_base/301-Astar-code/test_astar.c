@@ -43,9 +43,12 @@ void findDirections()
      //next coordinate
         int nextCol = finalPath[arrayPointer + 1].pair.pairCol;
         int nextRow = finalPath[arrayPointer + 1].pair.pairRow;
+
+      // previous co-ordinate
+      int prevCol, prevRow;
     
-    //record last direction
-    enum direction lastdir;
+    //record next direction
+    //enum direction lastdir;
 
 
     //calculate initial direction
@@ -60,15 +63,10 @@ void findDirections()
       nextCol = finalPath[i + 1].pair.pairCol;
       nextRow = finalPath[i + 1].pair.pairRow;
       
+      
         
       if (dir == NORTH) {
       //if col change postively turn right, if col change negatively turn left.
-
-         if (lastdir == SOUTH) {
-            
-            result[arrayPointer] = 3;
-            arrayPointer++;
-         }
 
 
          if (nextCol > currentCol) {
@@ -81,8 +79,13 @@ void findDirections()
                result[arrayPointer] = 0;
                arrayPointer++;
          } else {
+               if (prevCol  == nextCol && prevRow == nextRow) {
+                  // record U
+                  result[arrayPointer] = 3;
+                  arrayPointer++;
+               }
                //record straight
-               if(intersectionArray[currentRow][currentCol] == 1){
+               else if(intersectionArray[currentRow][currentCol] == 1){
                   result[arrayPointer] = 1;
                   arrayPointer++;
                }
@@ -91,11 +94,6 @@ void findDirections()
       } else if (dir == SOUTH) {
          //if col change postively turn left, if col change negatively turn right.
 
-         if (lastdir == NORTH) {
-            
-            result[arrayPointer] = 3;
-            arrayPointer++;
-         }
 
          if (nextCol > currentCol) {
                //record left turn
@@ -107,8 +105,14 @@ void findDirections()
                result[arrayPointer] = 2;
                arrayPointer++;
          } else {
+
+               if (prevCol  == nextCol && prevRow == nextRow) {
+                  // uturn
+                  result[arrayPointer] = 3;
+                  arrayPointer++;
+               }
                //record straight
-               if(intersectionArray[currentRow][currentCol] == 1){
+               else if(intersectionArray[currentRow][currentCol] == 1){
                   result[arrayPointer] = 1;
                   arrayPointer++;
                }
@@ -116,11 +120,7 @@ void findDirections()
          
       } else if (dir == WEST) {
          //if row change negatively turn right, if row change positively turn left.
-         if (lastdir == EAST) {
-            
-            result[arrayPointer] = 3;
-            arrayPointer++;
-         }
+   
 
 
          if (nextRow > currentRow) {
@@ -133,8 +133,13 @@ void findDirections()
                result[arrayPointer] = 2;
                arrayPointer++;
          } else {
+               if (prevCol  == nextCol && prevRow == nextRow) { // U turn
+                  // record uturn
+                  result[arrayPointer] = 3;
+                  arrayPointer++;
+               }
                //record straight
-               if(intersectionArray[currentRow][currentCol] == 1){
+               else if(intersectionArray[currentRow][currentCol] == 1){
                   result[arrayPointer] = 1;
                   arrayPointer++;
                }
@@ -142,12 +147,6 @@ void findDirections()
       } else {
          //if row change negatively turn left, if row change positively turn right.
 
-         if (lastdir == WEST) {
-            
-            result[arrayPointer] = 3;
-            arrayPointer++;
-         }
-
          if (nextRow > currentRow) {
                //record right turn
                result[arrayPointer] = 2;
@@ -158,16 +157,26 @@ void findDirections()
                result[arrayPointer] = 0;
                arrayPointer++;
          } else {
-               //record straight
-               if(intersectionArray[currentRow][currentCol] == 1){
+               
+               if (prevCol  == nextCol && prevRow == nextRow) {
+                  // record u turn
+                  result[arrayPointer] = 3;
+                  arrayPointer++;
+               }
+               else if(intersectionArray[currentRow][currentCol] == 1){
+                   //record straight
                   result[arrayPointer] = 1;
                   arrayPointer++;
                }
          }
       }
+      // update previous columns and rows
+      prevRow = currentRow;
+      prevCol = currentCol;
+
       
 
-      lastdir = dir;
+      //lastdir = dir;
       
       //recalculate direction vector for future coordinate
       dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
