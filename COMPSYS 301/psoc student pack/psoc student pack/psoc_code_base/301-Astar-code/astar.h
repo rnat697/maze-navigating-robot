@@ -22,11 +22,12 @@ typedef struct Nodes{
 
 typedef struct Path{
     struct Pair pair;
-}Paths[100];
+}Paths[1000];
 
 volatile static Nodes nodesArray[MAP_ROWS][MAP_COLS];
-volatile static Paths finalPath;
+extern volatile Paths finalPath;
 volatile static int size = 0;
+extern volatile int finalArrayIndex;
 
 void swap(Pairs*a, Pairs *b);
 void heapify(Paths array, int size, int i);

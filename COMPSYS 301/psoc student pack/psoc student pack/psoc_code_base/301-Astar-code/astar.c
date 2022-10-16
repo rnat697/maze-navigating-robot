@@ -25,7 +25,10 @@ void heapify(Paths array, int size, int i) {
     int r_row = array[r].pair.pairRow;
     int r_col = array[r].pair.pairCol;
     
-    if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row < MAP_ROWS && r_col < MAP_COLS && l_row > 0 && l_col >0 && r_col>0 && r_row>0){
+    if(l_row < MAP_ROWS && l_col < MAP_COLS && r_row < MAP_ROWS 
+        && r_col < MAP_COLS && l_row > 0 && l_col >0 && r_col>0 
+        && r_row>0 && small_row < MAP_ROWS && small_row > 0
+        && small_col <MAP_COLS && small_col >0){
 
       // Find Fscores
       int l_fscore = nodesArray[l_row][l_col].fScore;
@@ -71,7 +74,7 @@ Pairs dequeue(Paths array) {
     Pairs locAtTop;
     locAtTop.pairRow = array[0].pair.pairRow;
     locAtTop.pairCol = array[0].pair.pairCol;
-    printf("Top of queue: %d, %d \n", locAtTop.pairRow, locAtTop.pairCol);
+    // printf("Top of queue: %d, %d \n", locAtTop.pairRow, locAtTop.pairCol);
 
     swap(&array[0].pair, &array[size - 1].pair);
     size -= 1;
@@ -121,6 +124,8 @@ void calculateGScore(Pairs currentpos,int currentcost){
     nodesArray[yloc][xloc].gScore = currentcost +1;
 }
 
+volatile Paths finalPath;
+volatile int finalArrayIndex = 0;
 void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int endLocRow, int endLocCol){
     Paths queue;
     Paths visitedList;
@@ -130,7 +135,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
     Pairs target, start;
     target.pairRow = endLocRow;
     target.pairCol = endLocCol;
-    start.pairCol = startLocRow;
+    start.pairCol = startLocCol;
     start.pairRow = startLocRow;
     
     queue[0].pair.pairRow = startLocRow;
@@ -144,10 +149,10 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
     int currentRow, currentCol;
 
    while(!((visiting.pairRow == target.pairRow) && (visiting.pairCol == target.pairCol))){
-      printf("Size of queue: %d \n", size);
+      // printf("Size of queue: %d \n", size);
       visiting =  dequeue(queue);
-      printf("Size of queue after dequeue: %d \n", size);
-      printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pairRow+1);
+      // printf("Size of queue after dequeue: %d \n", size);
+      // printf("visiting (in matlab format [col][row]): %d,%d\n", visiting.pairCol+1,visiting.pairRow+1);
       stepNum += 1;
       // Append to visitied list
       visitedList[currentVisitedIndex].pair.pairRow = visiting.pairRow;
@@ -188,7 +193,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
           if((nodesArray[row][col].traversable == 1) && (nodesArray[row][col].inVisited == 0)){
             // check if open list (queue) does not contain current neighbouring position
             if(nodesArray[row][col].inQueue == 0){
-              printf("Enqueuing: %d,%d\n",col,row);
+              // printf("Enqueuing: %d,%d\n",col,row);
               //calculate Fscore, Gscore and Hscore
               // Fscore = Gscore + Hscore
               calculateHScore(adjacentPos,target);
@@ -214,7 +219,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
                   nodesArray[row][col].parents.pairRow = visiting.pairRow;
               }
             }
-            printf("Adjacent: (%d,%d), Parents: (%d,%d)\n", adjacentPos.pairCol+1,adjacentPos.pairRow+1,nodesArray[row][col].parents.pairCol+1,nodesArray[row][col].parents.pairRow+1);
+            // printf("Adjacent: (%d,%d), Parents: (%d,%d)\n", adjacentPos.pairCol+1,adjacentPos.pairRow+1,nodesArray[row][col].parents.pairCol+1,nodesArray[row][col].parents.pairRow+1);
           }
         }
       }
@@ -230,29 +235,40 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
     reversedArray[index].pair = target;
     index = 1;
 
-    while(!(currentNode.pairRow == start.pairRow && currentNode.pairCol == start.pairCol)){
-      //printf("current reversed Nodes: (%d,%d)\n", currentNode.pairCol+1,currentNode.pairRow+1);
+    while(1){
+      // printf("current reversed Nodes: (%d,%d)\n", currentNode.pairCol+1,currentNode.pairRow+1);
       parentNode = nodesArray[currentNode.pairRow][currentNode.pairCol].parents;
-      //printf("parent Node: (%d,%d)\n",parentNode.pairCol+1,parentNode.pairRow+1);
-
+      // printf("parent Node: (%d,%d)\n",parentNode.pairCol+1,parentNode.pairRow+1);
+      if(parentNode.pairRow == start.pairRow && parentNode.pairCol == start.pairCol){
+        reversedArray[index].pair = parentNode;
+        break;
+      }
       reversedArray[index].pair = parentNode;
       currentNode.pairCol = parentNode.pairCol;
       currentNode.pairRow = parentNode.pairRow;
       index++;
 
     }
-
-    
-    int i = 0;
-    printf("Final Path\n");
-    for(int j=index; j--; j>=0){
+    // printf("Final path index: %d", finalArrayIndex);
+    // printf("Final Path\n");
+    // finalpath should have at lest 117 in the thing but idk man
+    for(int j=index;j>=0; j--){
       Pairs node = reversedArray[j].pair;
-      finalPath[i].pair = node;
+      finalPath[finalArrayIndex].pair = node;
+      printf("%d",finalPath[finalArrayIndex].pair.pairRow);
       printf("(%d,%d)\n", node.pairCol+1,node.pairRow+1);
-      i++;
+      finalArrayIndex++;
     }
 
+    finalArrayIndex--; // to allow for the addition of start location for next iteration
+    printf("Final path index: %d", finalArrayIndex);
 
+  // Paths* returnPointer(){
+  //   Paths *arraypointer;
+  //   arraypointer = &finalPath;
+  //   return arraypointer;
+
+  // }
 
       
     // currentNode = targetlocation;
