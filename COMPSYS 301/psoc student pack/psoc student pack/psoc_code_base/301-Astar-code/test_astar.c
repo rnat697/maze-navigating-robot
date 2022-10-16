@@ -44,7 +44,9 @@ void findDirections()
         int nextCol = finalPath[arrayPointer + 1].pair.pairCol;
         int nextRow = finalPath[arrayPointer + 1].pair.pairRow;
     
-    
+    //record last direction
+    enum direction lastdir;
+
 
     //calculate initial direction
     enum direction dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
@@ -61,6 +63,14 @@ void findDirections()
         
         if (dir == NORTH) {
         //if col change postively turn right, if col change negatively turn left.
+
+            if (lastdir == SOUTH) {
+               
+               result[arrayPointer] = 3;
+               arrayPointer++;
+            }
+
+
             if (nextCol > currentCol) {
                 //record right turn
                 result[arrayPointer] = 2;
@@ -75,6 +85,13 @@ void findDirections()
             
         } else if (dir == SOUTH) {
             //if col change postively turn left, if col change negatively turn right.
+
+            if (lastdir == NORTH) {
+               
+               result[arrayPointer] = 3;
+               arrayPointer++;
+            }
+
             if (nextCol > currentCol) {
                 //record left turn
                 result[arrayPointer] = 0;
@@ -89,6 +106,13 @@ void findDirections()
             
         } else if (dir == WEST) {
             //if row change negatively turn right, if row change positively turn left.
+            if (lastdir == EAST) {
+               
+               result[arrayPointer] = 3;
+               arrayPointer++;
+            }
+
+
             if (nextRow > currentRow) {
                 //record left turn
                 result[arrayPointer] = 0;
@@ -102,6 +126,13 @@ void findDirections()
             }
         } else {
             //if row change negatively turn left, if row change positively turn right.
+
+            if (lastdir == WEST) {
+               
+               result[arrayPointer] = 3;
+               arrayPointer++;
+            }
+
             if (nextRow > currentRow) {
                 //record right turn
                 result[arrayPointer] = 2;
@@ -114,6 +145,8 @@ void findDirections()
                 result[arrayPointer] = 1;
             }
         }
+
+        lastdir = dir;
         
         //recalculate direction vector for future coordinate
         dir = calculateDirection(currentCol, currentRow, nextCol, nextRow);
@@ -123,9 +156,9 @@ void findDirections()
         
     }
     
-    for (int i=0;i<size-1;i++) {
+    for (int i=0;i<=arrayPointer;i++) {
         //0 - left, 1 - straight, 2- right
-        printf("%d", result[i]);
+        printf("%d,", result[i]);
     }
     
 }
