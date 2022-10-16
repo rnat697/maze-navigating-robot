@@ -74,6 +74,13 @@ void motorStop(){
     PWM_2_WriteCompare(127);
 }
 
+void motorBeyblade(uint8 x){
+    // TO DO
+    
+    PWM_1_WriteCompare(x); //55
+    PWM_2_WriteCompare(x); //201
+    
+}
 void motorTurnLeft(uint8 x){
     // TO DO
     
@@ -347,9 +354,9 @@ int main()
     // 1 go right
     //5 is die
     
-    int queue[1000] = { 2, 0, 2, 0, 0, 2, 2, 1, 2, 1, 0, 0};
+    int queue[1000] = {5};
     int indexPointer = 0;
-    int queueSize = 12;
+    int queueSize = 1;
     int motoerFlagSTOP=0;
             
     
@@ -383,7 +390,7 @@ int main()
                             }
                             
                         
-                            else if(backOps == 5){
+                            else if(backOps <= 5){
                                 motorGoStraight();
                             }   
                             break;
@@ -462,6 +469,12 @@ int main()
                         CyDelay(500);
                         
                         break;
+                        
+                        case 5:
+                        motorStop();
+                        CyDelay(400);
+                        motorBeyblade(170);
+                        CyDelay(800);
                     }
                     
                     indexPointer++;
