@@ -374,8 +374,12 @@ int main()
                   
                             if(backOps == 7){
                                 
-                                 motorCircle(40);
-                                
+                                if (motoerFlagSTOP==1){
+                                    motorStop();
+                                }
+                                else{
+                                motorCircle(40);
+                                }
                             }
                             
                         
