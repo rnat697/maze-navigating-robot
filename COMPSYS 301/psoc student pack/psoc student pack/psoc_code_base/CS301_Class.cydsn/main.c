@@ -356,10 +356,15 @@ int main()
     //3 is uturn
     
                      
-    int queue[1000] = {1,0,2,1,0,0,2,2,3,0,0,2,2,1,1,2,2,0,1,2,0,0,2,2,1,2,0,0,0,2,1,0,1,2,0};
+    //int queue[1000] = {2,2,0,0,2,3,0,0,2,2,3,1,0,2,2,3,0,2,0,0};
+    //int queue[1000] = {2,2,0,1,2,0,0,1,1,0,0,2,2,3,0,0,2,2,1,1,2,2,0,1,2,0,0,3,2,2,1,2,0,0,0,2,0,0,2,2,1,2,1,1,0,2,3,0,2,1,0,0};
+    int queue[1000] = {2,2,0,0,2,1,2,1,1,0,3,2,1,0,0,2,2,0,0,2,0,2,0,1,0,0,2,3,0,2,2,2,0,2,0,0,2,2,2,0};
     int indexPointer = 0;
-    int queueSize = 36;
+    //int queueSize = 19;
+    //int queueSize = 52;
+    int queueSize = 40;
     int motoerFlagSTOP=0;
+    
             
     
    ///////////////////////////////////////// LINE TRACKING////////
@@ -373,31 +378,36 @@ int main()
                    
             int operation = convertSensorBinary();
             int backOps = convertBackBinary();
+            int decision = queue[indexPointer];
 
                 switch(operation){
                 //where 1 is on white, 0 is on black.
                     
                     case 7: // 111 // all under white\\
                         
-                    
-                  
-                            if(backOps == 7){
+//                            if(backOps == 7 &&(decision == 3)){
+//                                decisionflag = 1;
+//                                break;
+//                            }
+//                  
+                           if(backOps == 7){
                                 
                                 if (motoerFlagSTOP==1){
                                     motorStop();
                                 }
                                 else{
                                     //motorStop();
-//                                    motorGoBackwards();
-//                                    CyDelay(100);
+                                    //motorGoBackwards();
+                                    //CyDelay(100);
                                     motorCircle(40);
+                                    //CyDelay(800);
                                 }
                             }
                             
                         
-                            else if(backOps <= 5){
+                            if(backOps <=5){
                                 motorGoStraight();
-                            }   
+                            } 
                             break;
                         
                     case 3:// 0 1 1 // Q3 under black
@@ -447,7 +457,6 @@ int main()
                     
                     //0 - left, 1 -straight, 2 - right 
                     
-                    int decision = queue[indexPointer];
                     
                     switch(decision) {
                       case 0:
@@ -475,11 +484,14 @@ int main()
                         
                         break;
                         
-                        case 3:
+                    case 3:
                         motorStop();
                         CyDelay(400);
                         motorBeyblade(170);
                         CyDelay(800);
+                       // motorGoStraight();
+                        //CyDelay(400);
+                        break;
                     }
                     
                     indexPointer++;
