@@ -261,7 +261,7 @@ int main(){
 
    // start and end in format of [row][col] THIS IS WHAT WE CHANGE FOR THE DEMO
    // start_pos[2] = {13, 3};
-   int STARTROW = 13;
+   int STARTROW = 13; // what
    int STARTCOL = 3;
    // int TARGETROW = 1;
    // int TARGETCOL = 1;
@@ -273,8 +273,8 @@ int main(){
 
 
    for(int i=0; i<5; i++){
-      int row = food_list[i][1];
-       int col = food_list[i][0];
+      int row = food_list[i][0];
+       int col = food_list[i][1];
        
       // update current end node to the ones in the food list
       currentEndRow = row;
