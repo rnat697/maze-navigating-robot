@@ -81,10 +81,10 @@ void findDirections()
          } else {
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // record U
-                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                  //if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
                      result[arrayPointer] = 3;
                      arrayPointer++; 
-                  }
+                  //}
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -110,10 +110,10 @@ void findDirections()
 
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // uturn
-                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                  //if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
                      result[arrayPointer] = 3;
                      arrayPointer++; 
-                  }
+                 // }
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -139,10 +139,10 @@ void findDirections()
          } else {
                if (prevCol  == nextCol && prevRow == nextRow) { // U turn
                   // record uturn
-                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                 // if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
                      result[arrayPointer] = 3;
                      arrayPointer++; 
-                  }
+                  //}
                }
                //record straight
                else if(intersectionArray[currentRow][currentCol] == 1){
@@ -166,10 +166,10 @@ void findDirections()
                
                if (prevCol  == nextCol && prevRow == nextRow) {
                   // record u turn
-                  if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
+                  //if(intersectionArray[currentRow][currentCol] == 1){ // check if its actually an intersection
                      result[arrayPointer] = 3;
                      arrayPointer++; 
-                  }
+                  //}
                }
                else if(intersectionArray[currentRow][currentCol] == 1){
                    //record straight
@@ -260,10 +260,11 @@ int main(){
    // map file, start row, start col, endrow, end col
 
    // start and end in format of [row][col] THIS IS WHAT WE CHANGE FOR THE DEMO
-   int STARTROW = 1;
-   int STARTCOL = 16;
-   int TARGETROW = 1;
-   int TARGETCOL = 1;
+   // start_pos[2] = {13, 3};
+   int STARTROW = 13;
+   int STARTCOL = 3;
+   // int TARGETROW = 1;
+   // int TARGETCOL = 1;
 
    int currentStartRow, currentStartCol, currentEndRow, currentEndCol;
    
@@ -282,7 +283,7 @@ int main(){
       printf("Current Start - row:%d, col:%d\n", currentStartRow,currentStartCol);
       printf("Current End - row:%d, col:%d\n", currentEndRow,currentEndCol);
       // function call here 
-      astar(map,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
+      astar(map_final,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
       
       // update current start nodes to the ones in the food list
       currentStartRow = row;
@@ -290,12 +291,12 @@ int main(){
    } 
    
    // update current end nodes to TARGET nodes
-   currentEndCol = TARGETCOL;
-   currentEndRow = TARGETROW;
-   printf("Current Start - row:%d, col:%d\n", currentStartRow,currentStartCol);
-   printf("Current End - row:%d, col:%d\n", currentEndRow,currentEndCol);
-   // function call here 
-   astar(map,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
+   // currentEndCol = TARGETCOL;
+   // currentEndRow = TARGETROW;
+   // printf("Current Start - row:%d, col:%d\n", currentStartRow,currentStartCol);
+   // printf("Current End - row:%d, col:%d\n", currentEndRow,currentEndCol);
+   // // function call here 
+   // astar(map,currentStartRow,currentStartCol,currentEndRow,currentEndCol);
   
   initialiseIntersectionArray();
    // printf("\nINTERSECTION ARRAY");

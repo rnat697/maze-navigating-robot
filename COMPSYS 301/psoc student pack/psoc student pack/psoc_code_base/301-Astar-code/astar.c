@@ -178,7 +178,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
       westNeigh.pairCol = currentCol-1;
       
       // Neighbours are S, N,E, W from the current location
-      Paths neighbours = {southNeigh,northNeigh,eastNeigh,westNeigh};
+      Paths neighbours = {southNeigh,northNeigh,westNeigh,eastNeigh};
 
       //calculate Fscore if neighbour is not in closed list (visitedList --> ie visted array)
       // and not in open list (queue) and is not a wall
@@ -187,7 +187,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
         adjacentPos = neighbours[i].pair;
         int row = adjacentPos.pairRow;
         int col = adjacentPos.pairCol;
-        int newFscore = 0;
+        int newFscore = 2000;
         int oldFscore = 2000;
         currentGcost = nodesArray[row][col].gScore;
         //printf("Adjacent: %d,%d\n", adjacentPos.pairCol,adjacentPos.pairRow);
