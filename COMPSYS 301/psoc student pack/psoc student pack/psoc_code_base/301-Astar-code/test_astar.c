@@ -261,8 +261,8 @@ int main(){
 
    // start and end in format of [row][col] THIS IS WHAT WE CHANGE FOR THE DEMO
    // start_pos[2] = {13, 3};
-   int STARTROW = 13;
-   int STARTCOL = 3;
+   int STARTROW = 3;
+   int STARTCOL = 13;
    // int TARGETROW = 1;
    // int TARGETCOL = 1;
 
