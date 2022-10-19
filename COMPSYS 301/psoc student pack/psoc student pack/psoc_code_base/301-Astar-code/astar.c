@@ -178,7 +178,7 @@ void astar(int mapmaze[MAP_ROWS][MAP_COLS], int startLocRow,int startLocCol, int
       westNeigh.pairCol = currentCol-1;
       
       // Neighbours are S, N,E, W from the current location
-      Paths neighbours = {southNeigh,northNeigh,westNeigh,eastNeigh};
+      Paths neighbours = {southNeigh,northNeigh,eastNeigh,westNeigh};
 
       //calculate Fscore if neighbour is not in closed list (visitedList --> ie visted array)
       // and not in open list (queue) and is not a wall
