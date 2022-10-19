@@ -261,8 +261,8 @@ int main(){
 
    // start and end in format of [row][col] THIS IS WHAT WE CHANGE FOR THE DEMO
    // start_pos[2] = {13, 3};
-   int STARTROW = 13; // what
-   int STARTCOL = 3;
+   int STARTROW = 3; 
+   int STARTCOL = 13;
    // int TARGETROW = 1;
    // int TARGETCOL = 1;
 
@@ -273,8 +273,8 @@ int main(){
 
 
    for(int i=0; i<5; i++){
-      int row = food_list[i][0];
-       int col = food_list[i][1];
+      int row = food_list[i][1];
+       int col = food_list[i][0];
        
       // update current end node to the ones in the food list
       currentEndRow = row;
@@ -319,8 +319,10 @@ int main(){
    for(int j = 0; j<=finalArrayIndex; j++){
       finalRow = finalPath[j].pair.pairRow;
       finalCol = finalPath[j].pair.pairCol;
-      printf("(%d,%d)\n", finalRow+1,finalCol+1); // formatting to reference matlab maze
+      printf("(%d,%d) -> ", finalRow,finalCol); // formatting to reference matlab maze
    }
+   printf("\n");
+   printf("Turns via intersection: \n");
 
 
    findDirections();
